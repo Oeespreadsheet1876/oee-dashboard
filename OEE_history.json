@@ -4328,5 +4328,389 @@
         1848
       ]
     }
+  },
+  {
+    "date": "02/06/2026",
+    "dayOEE": 0.5432,
+    "lateOEE": 0.7165,
+    "dayAvail": 0.7398,
+    "lateAvail": 0.8795,
+    "dayPerf": 0.7342,
+    "latePerf": 0.8147,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 9704,
+    "lateOut": 11756,
+    "dayTheo": 10853,
+    "lateTheo": 14431,
+    "totalDT": 17.75,
+    "topIssue": "Waiting for Batch/Material",
+    "pareto": [
+      {
+        "cat": "Waiting for Batch/Material",
+        "mins": 840,
+        "cum": 79
+      },
+      {
+        "cat": "Other",
+        "mins": 135,
+        "cum": 92
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 60,
+        "cum": 97
+      },
+      {
+        "cat": "Equipment Failure",
+        "mins": 30,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A009",
+        "reason": "issues with sachets / issues with batch printer",
+        "downtime": 3.75,
+        "mins": 225,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A031",
+        "reason": "CLEAN LINE/ LABELLING/WAIT ON NEW BATCH",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "labelling tubes / waiting for scrape out",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "issues with batch",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "waiting for batch",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "WAITING FOR BATCH",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "waiting for batch",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "issues with batch ( fluffy and not fit in the buckets )",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "waiting for buckets",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "change ribbon / push the pipe",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "waiting for batch",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "waiting for batch",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "issues with belt / moved to A007 from 8:45",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "LABELLING",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A019",
+        "reason": "SET UP",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A004",
+        "reason": "CHANGEOVER ( PROBLEM WITH TUB DISPENSER)",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A004",
+        "reason": "CHANGEOVER",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "labelling buckets",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "MOVE TO PVA",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "cat": "Other",
+        "imp": "med"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A015",
+      "A019",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.3511,
+        null
+      ],
+      "A004": [
+        0.7811,
+        0.7636
+      ],
+      "A005": [
+        0.7862,
+        1.093
+      ],
+      "A009": [
+        0.5399,
+        null
+      ],
+      "A008": [
+        0.6136,
+        null
+      ],
+      "A006 B": [
+        0.6916,
+        0.8577
+      ],
+      "A015": [
+        null,
+        0.8292
+      ],
+      "A019": [
+        null,
+        0.6021
+      ],
+      "A031": [
+        null,
+        0.5933
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.6486,
+        null
+      ],
+      "A004": [
+        0.7838,
+        0.9459
+      ],
+      "A005": [
+        0.7568,
+        0.8649
+      ],
+      "A009": [
+        0.5946,
+        null
+      ],
+      "A008": [
+        0.8182,
+        null
+      ],
+      "A006 B": [
+        0.8919,
+        0.9189
+      ],
+      "A015": [
+        null,
+        1
+      ],
+      "A019": [
+        null,
+        0.8947
+      ],
+      "A031": [
+        null,
+        0.7576
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.5413,
+        null
+      ],
+      "A004": [
+        0.9966,
+        0.8072
+      ],
+      "A005": [
+        1.039,
+        1.2638
+      ],
+      "A009": [
+        0.908,
+        null
+      ],
+      "A008": [
+        0.75,
+        null
+      ],
+      "A006 B": [
+        0.7754,
+        0.9334
+      ],
+      "A015": [
+        null,
+        0.8292
+      ],
+      "A019": [
+        null,
+        0.6729
+      ],
+      "A031": [
+        null,
+        0.7831
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        9000,
+        null
+      ],
+      "A004": [
+        3251,
+        4950
+      ],
+      "A005": [
+        1040,
+        1598
+      ],
+      "A009": [
+        2749,
+        null
+      ],
+      "A008": [
+        2700,
+        null
+      ],
+      "A006 B": [
+        1113,
+        852
+      ],
+      "A015": [
+        null,
+        30
+      ],
+      "A019": [
+        null,
+        5100
+      ],
+      "A031": [
+        null,
+        1900
+      ]
+    }
   }
 ]
