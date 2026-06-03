@@ -356,20 +356,19 @@ function extract(wb){
   const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
-    // Priority order matters - more specific checks first
-    if(r.includes('heater')||r.includes('printer')||r.includes('label')||r.includes('engineer')||r.includes('engineering')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')){
+    if(r.includes('heater')||r.includes('printer')||r.includes('label')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||r.includes('darrel on machine')||r.includes('james on machine')||r.includes('corey on machine')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
       i.cat='Engineering Issues';i.imp='hi';
     } else if(r.includes('waiting for batch')||r.includes('waiting for blend')||r.includes('batch')||r.includes('dropping')){
       i.cat='Waiting for Blending';i.imp='hi';
-    } else if(r.includes('waiting for packet')||r.includes('waiting for')||r.includes('component')||r.includes('shortage')||r.includes('parts')){
+    } else if(r.includes('waiting for')||r.includes('component')||r.includes('shortage')||r.includes('parts')){
       i.cat='Component Shortage';i.imp='hi';
-    } else if(r.includes('raw material')||r.includes('material')){
-      i.cat='Raw Material Outage';i.imp='hi';
+    } else if(r.includes('sachet')||r.includes('lid')||r.includes('pot')||r.includes('tub')||r.includes('container')||r.includes('pouch')||r.includes('sleeve')||r.includes('viscosity')||r.includes('colour')||r.includes('color')||r.includes('shade')||r.includes('consistency')||r.includes('texture')||r.includes('smell')||r.includes('taste')||r.includes('wrong')||r.includes('incorrect')||r.includes('raw material')||r.includes('material')){
+      i.cat='Raw Material Issues';i.imp='hi';
     } else if(r.includes('plan change')||r.includes('schedule')||r.includes('product change')){
       i.cat='Plan Change';i.imp='med';
-    } else if(r.includes('staff')||r.includes('running with')||r.includes('short staffed')||r.includes('person')||r.includes('people')||r.includes('operator')){
+    } else if(r.includes('staff')||r.includes('running with')||r.includes('short staffed')||r.includes('person')||r.includes('people')||r.includes('operator')||r.includes('darrel')||r.includes('james')||r.includes('corey')){
       i.cat='Staff Shortage';i.imp='med';
-    } else if(r.includes('changeover')||r.includes('change over')||r.includes('set up')||r.includes('setup')||r.includes('scrape')||r.includes('change film')||r.includes('changing packet')||r.includes('film')){
+    } else if(r.includes('changeover')||r.includes('change over')||r.includes('set up')||r.includes('setup')||r.includes('scrape')||r.includes('change film')||r.includes('changing packet')||r.includes('film')||r.includes('push pipe')||r.includes('change ribbon')||r.includes('ribbon')){
       i.cat='Changeover / Setup';i.imp='lo';
     } else {
       i.cat='Other';i.imp='med';
