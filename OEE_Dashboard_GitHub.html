@@ -456,7 +456,7 @@ async function autoLoadFromOneDrive(){
   const statusEl = document.getElementById('load-status');
   try {
     statusEl.textContent = 'Loading latest data...';
-    const resp = await fetch(JSON_URL, {cache:'no-store'});
+    const resp = await fetch(JSON_URL + '?t=' + Date.now(), {cache:'no-store'});
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     const imported = await resp.json();
     if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data format');
@@ -872,7 +872,7 @@ function dedupeHistory(){
 function refreshFromOneDrive(){
   const btn = document.querySelector('.hdr-btn');
   btn.textContent = '↻ Refreshing...';
-  fetch(JSON_URL, {cache:'no-store'})
+  fetch(JSON_URL + '?t=' + Date.now(), {cache:'no-store'})
     .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
     .then(imported=>{
       if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data');
