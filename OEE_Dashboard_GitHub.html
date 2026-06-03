@@ -896,8 +896,7 @@ function exportHistory(){
   const blob=new Blob([JSON.stringify(h,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  const from=h[0].date.replace(/\//g,'-'), to=h[h.length-1].date.replace(/\//g,'-');
-  a.href=url;a.download=`OEE_history_${from}_to_${to}.json`;
+  a.href=url;a.download='OEE_history.json';
   a.click();URL.revokeObjectURL(url);
 }
 function importHistoryFile(input){
