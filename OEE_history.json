@@ -1,6 +1,7 @@
 [
   {
     "date": "05/05/2026",
+    "noteLog": [],
     "dayOEE": 0.6252,
     "lateOEE": 0.5229,
     "dayAvail": 0.777,
@@ -14,15 +15,15 @@
     "dayTheo": 15519,
     "lateTheo": 13570,
     "totalDT": 18.75,
-    "topIssue": "Equipment Failure",
+    "topIssue": "Engineering Issues",
     "pareto": [
       {
-        "cat": "Equipment Failure",
+        "cat": "Engineering Issues",
         "mins": 630,
         "cum": 56
       },
       {
-        "cat": "Waiting for Batch/Material",
+        "cat": "Waiting for Blending",
         "mins": 405,
         "cum": 92
       },
@@ -35,119 +36,132 @@
     "dtLog": [
       {
         "machine": "A009",
-        "reason": "waiting for batch / line running with 2 people",
+        "reason": "Waiting for Batch / Line Running With 2 People",
         "downtime": 4.75,
         "mins": 285,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes",
+        "reason": "Labelling Tubes",
         "downtime": 3,
         "mins": 180,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "CLEANING LINE/LABELLING",
+        "reason": "Cleaning Line/labelling",
         "downtime": 2.75,
         "mins": 165,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "LABELLING",
+        "reason": "Labelling",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "LABELLING BUCKETS",
+        "reason": "Labelling Buckets",
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "CHANGEOVER/LABELLING",
+        "reason": "Changeover/labelling",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "HEATER ISSUES",
+        "reason": "Heater Issues",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "BANGOUT/CHANGEOVER",
+        "reason": "Bangout/changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "line runing with 2 people / labelling buckets",
+        "reason": "Line Runing With 2 People / Labelling Buckets",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       }
     ],
@@ -283,6 +297,7 @@
   },
   {
     "date": "06/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5591,
     "lateOEE": 0.8391,
     "dayAvail": 0.8168,
@@ -296,10 +311,10 @@
     "dayTheo": 13015,
     "lateTheo": 15580,
     "totalDT": 13.2,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
+        "cat": "Waiting for Blending",
         "mins": 492,
         "cum": 62
       },
@@ -309,7 +324,7 @@
         "cum": 92
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Engineering Issues",
         "mins": 60,
         "cum": 100
       }
@@ -317,155 +332,172 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 3,
         "mins": 180,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / waiting for cartons",
+        "reason": "Labelling Tubes / Waiting for Cartons",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "set up the line",
+        "reason": "Set up the Line",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "batch out",
+        "reason": "Batch Out",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A019",
-        "reason": "set up",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A019",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER/WAITING ON BATCH",
+        "reason": "Changeover/waiting on Batch",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "batch out",
+        "reason": "Batch Out",
         "downtime": 0.2,
         "mins": 12,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       }
     ],
@@ -618,6 +650,7 @@
   },
   {
     "date": "07/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5198,
     "lateOEE": 0.6293,
     "dayAvail": 0.5769,
@@ -631,15 +664,15 @@
     "dayTheo": 1275,
     "lateTheo": 14600,
     "totalDT": 11.75,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
+        "cat": "Waiting for Blending",
         "mins": 555,
         "cum": 79
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Engineering Issues",
         "mins": 120,
         "cum": 96
       },
@@ -649,7 +682,7 @@
         "cum": 100
       },
       {
-        "cat": "Other",
+        "cat": "Raw Material Issues",
         "mins": 0,
         "cum": 100
       }
@@ -657,93 +690,103 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH / SCRAP OUT",
+        "reason": "Waiting on Batch / Scrap Out",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "SCRAPEOUT/ WAITING FOR BATCH/SETUP",
+        "reason": "Scrapeout/ Waiting for Batch/setup",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "LABELLING/CHANGEOVER",
+        "reason": "Labelling/changeover",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "WAITING ON BATCH /WORKING ALONE",
+        "reason": "Waiting on Batch /working Alone",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "set up",
+        "reason": "Set up",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "SORTING THROUGH LIDS",
+        "reason": "Sorting Through Lids",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       }
     ],
     "machines": [
@@ -861,6 +904,7 @@
   },
   {
     "date": "11/05/2026",
+    "noteLog": [],
     "dayOEE": 0.7016,
     "lateOEE": 0.6768,
     "dayAvail": 0.7813,
@@ -874,25 +918,25 @@
     "dayTheo": 14450,
     "lateTheo": 16225,
     "totalDT": 19.25,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 540,
-        "cum": 47
+        "cat": "Waiting for Blending",
+        "mins": 420,
+        "cum": 36
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 330,
+        "cum": 65
       },
       {
         "cat": "Other",
         "mins": 240,
-        "cum": 68
-      },
-      {
-        "cat": "Changeover / Setup",
-        "mins": 210,
         "cum": 86
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Engineering Issues",
         "mins": 165,
         "cum": 100
       }
@@ -900,137 +944,152 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "set up/ loose wire ( engineer on the line )",
+        "reason": "Set Up/ Loose Wire ( Engineer on the Line )",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "scrape out",
+        "reason": "Scrape Out",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "LABELLING",
+        "reason": "Labelling",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "( emergency stop button broken line not working )",
+        "reason": "( Emergency Stop Button Broken Line Not Working )",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A005",
-        "reason": "reworking part pallet from the racking",
+        "reason": "Reworking Part Pallet From the Racking",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "waiting for batch / change film",
+        "reason": "Waiting for Batch / Change Film",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "BAGS OPENING",
+        "reason": "Bags Opening",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes",
+        "reason": "Labelling Tubes",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "set up the line",
+        "reason": "Set up the Line",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A008",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A019",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "LABELLING",
+        "reason": "Labelling",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       }
     ],
@@ -1183,6 +1242,7 @@
   },
   {
     "date": "12/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5152,
     "lateOEE": 0.7294,
     "dayAvail": 0.7738,
@@ -1196,137 +1256,159 @@
     "dayTheo": 19529,
     "lateTheo": 19459,
     "totalDT": 16,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 765,
+        "cat": "Waiting for Blending",
+        "mins": 645,
+        "cum": 67
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 120,
         "cum": 80
       },
       {
-        "cat": "Other",
-        "mins": 75,
-        "cum": 88
-      },
-      {
-        "cat": "Equipment Failure",
-        "mins": 75,
-        "cum": 95
-      },
-      {
         "cat": "Changeover / Setup",
-        "mins": 45,
+        "mins": 105,
+        "cum": 91
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 75,
+        "cum": 98
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 15,
+        "cum": 100
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 0,
         "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 3.75,
         "mins": 225,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "waiting for scrape out",
+        "reason": "Waiting for Scrape Out",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "batch no printing on sachets / banging out",
+        "reason": "Batch No Printing on Sachets / Banging Out",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "labels issue",
+        "reason": "Labels Issue",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "issues with film",
+        "reason": "Issues With Film",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "set up / batch no printing on sachets",
+        "reason": "Set up / Batch No Printing on Sachets",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A007",
-        "reason": "tubes issues",
+        "reason": "Tubes Issues",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "change film",
+        "reason": "Change Film",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A008",
-        "reason": "line running with speed 8 as one person only / issues with packets",
+        "reason": "Line Running With Speed 8 as One Person Only / Issues With Packets",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Staff Shortage",
+        "imp": "med"
       }
     ],
     "machines": [
@@ -1461,6 +1543,7 @@
   },
   {
     "date": "13/05/2026",
+    "noteLog": [],
     "dayOEE": 0.4626,
     "lateOEE": 0.5445,
     "dayAvail": 0.8423,
@@ -1474,191 +1557,224 @@
     "dayTheo": 21015,
     "lateTheo": 16906,
     "totalDT": 14.75,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 645,
-        "cum": 73
+        "cat": "Waiting for Blending",
+        "mins": 540,
+        "cum": 61
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 150,
+        "cum": 78
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 120,
+        "cum": 92
       },
       {
         "cat": "Other",
-        "mins": 150,
-        "cum": 90
-      },
-      {
-        "cat": "Equipment Failure",
-        "mins": 75,
+        "mins": 60,
         "cum": 98
       },
       {
         "cat": "Changeover / Setup",
         "mins": 15,
         "cum": 100
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 0,
+        "cum": 100
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 0,
+        "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A004",
-        "reason": "NO BATCH AT START/ WAITING ON BATCH",
+        "reason": "No Batch at Start/ Waiting on Batch",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "waiting for batch / issues with silo",
+        "reason": "Waiting for Batch / Issues With Silo",
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "waiting for components",
+        "reason": "Waiting for Components",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
-      },
-      {
-        "machine": "A007",
-        "reason": "issues with tubes / issues with heater",
-        "downtime": 1.25,
-        "mins": 75,
-        "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "waiting for scrape out / scrape out",
+        "reason": "Issues With Tubes / Issues With Heater",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Waiting for Scrape Out / Scrape Out",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "banging out",
+        "reason": "Banging Out",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A031",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "BANG OUT/ SET UP/ISSUES WITH BATCH PRINTER",
+        "reason": "Bang Out/ Set Up/issues With Batch Printer",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "SACHET LABELS",
+        "reason": "Sachet Labels",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "line running with speed 8 as one person only / issues with packets",
+        "reason": "Line Running With Speed 8 as One Person Only / Issues With Packets",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Staff Shortage",
+        "imp": "med"
       },
       {
         "machine": "A008",
-        "reason": "200G GRAHAM & BROWN",
+        "reason": "200g Graham & Brown",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A006 B",
-        "reason": "SORTING THROUGH LIDS",
+        "reason": "Sorting Through Lids",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       }
     ],
     "machines": [
@@ -1793,6 +1909,7 @@
   },
   {
     "date": "14/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5727,
     "lateOEE": 0.7344,
     "dayAvail": 0.8604,
@@ -1806,114 +1923,134 @@
     "dayTheo": 20242,
     "lateTheo": 17347,
     "totalDT": 14.25,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 600,
-        "cum": 70
+        "cat": "Waiting for Blending",
+        "mins": 450,
+        "cum": 53
       },
       {
-        "cat": "Equipment Failure",
-        "mins": 195,
+        "cat": "Engineering Issues",
+        "mins": 255,
+        "cum": 82
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 90,
         "cum": 93
       },
       {
         "cat": "Changeover / Setup",
         "mins": 60,
         "cum": 100
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 0,
+        "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 4,
         "mins": 240,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH/ SCRAPE OUT",
+        "reason": "Waiting on Batch/ Scrape Out",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "LABELLING",
+        "reason": "Labelling",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "nozzle issues / waiting for scrape out",
+        "reason": "Nozzle Issues / Waiting for Scrape Out",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "Issues with batch / issues with printer",
+        "reason": "Issues With Batch / Issues With Printer",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "line set up",
+        "reason": "Line Set up",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "issues with batch",
+        "reason": "Issues With Batch",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "SET UP LINE",
+        "reason": "Set up Line",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "LABELIG SACHETS, CHANGING THREAD",
+        "reason": "Labelig Sachets, Changing Thread",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "only 1 person on the line / max speed 8 (packets issues )",
+        "reason": "Only 1 Person on the Line / Max Speed 8 (packets Issues )",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Staff Shortage",
+        "imp": "med"
       }
     ],
     "machines": [
@@ -2048,6 +2185,7 @@
   },
   {
     "date": "18/05/2026",
+    "noteLog": [],
     "dayOEE": 0.7016,
     "lateOEE": 0.7627,
     "dayAvail": 0.8739,
@@ -2061,25 +2199,30 @@
     "dayTheo": 22002,
     "lateTheo": 17259,
     "totalDT": 11.25,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Engineering Issues",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 210,
-        "cum": 31
+        "cat": "Engineering Issues",
+        "mins": 285,
+        "cum": 42
       },
       {
         "cat": "Other",
-        "mins": 210,
-        "cum": 62
+        "mins": 105,
+        "cum": 58
       },
       {
-        "cat": "Equipment Failure",
-        "mins": 165,
-        "cum": 87
+        "cat": "Raw Material Issues",
+        "mins": 105,
+        "cum": 73
       },
       {
         "cat": "Changeover / Setup",
+        "mins": 90,
+        "cum": 87
+      },
+      {
+        "cat": "Waiting for Blending",
         "mins": 90,
         "cum": 100
       }
@@ -2087,119 +2230,132 @@
     "dtLog": [
       {
         "machine": "A007",
-        "reason": "issues with batch / issues with nozzle / issues with taper machine / issues printer",
+        "reason": "Issues With Batch / Issues With Nozzle / Issues With Taper Machine / Issues Printer",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "PROBLEM WITH PRINT AND APPLY , HAND LABELLING BOXES",
+        "reason": "Problem With Print and Apply , Hand Labelling Boxes",
         "downtime": 1.75,
         "mins": 105,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "separating the lids",
+        "reason": "Separating the Lids",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / setting up the line",
+        "reason": "Labelling Tubes / Setting up the Line",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A019",
-        "reason": "setting up the line",
+        "reason": "Setting up the Line",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A005",
-        "reason": "taper issues",
+        "reason": "Taper Issues",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A019",
-        "reason": "set up",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "SCRAPEOUT/SET UP LINE waiting on batch",
+        "reason": "Scrapeout/set up Line Waiting on Batch",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "LABELLING BUCKETS",
+        "reason": "Labelling Buckets",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       }
     ],
@@ -2335,6 +2491,7 @@
   },
   {
     "date": "19/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5808,
     "lateOEE": 0.6131,
     "dayAvail": 0.7523,
@@ -2352,34 +2509,45 @@
     "pareto": [
       {
         "cat": "Other",
-        "mins": 675,
-        "cum": 54
+        "mins": 330,
+        "cum": 27
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Component Shortage",
+        "mins": 300,
+        "cum": 51
+      },
+      {
+        "cat": "Engineering Issues",
         "mins": 285,
-        "cum": 77
+        "cum": 73
       },
       {
         "cat": "Changeover / Setup",
         "mins": 195,
-        "cum": 93
+        "cum": 89
       },
       {
-        "cat": "Waiting for Batch/Material",
+        "cat": "Waiting for Blending",
         "mins": 90,
+        "cum": 96
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 45,
         "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A019",
-        "reason": "waiting for flake / making displays",
+        "reason": "Waiting for Flake / Making Displays",
         "downtime": 5,
         "mins": 300,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -2387,177 +2555,197 @@
         "downtime": 3,
         "mins": 180,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A015",
-        "reason": "MACHINE BLOCKED",
+        "reason": "Machine Blocked",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / printer issues",
+        "reason": "Labelling Tubes / Printer Issues",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "printer issues",
+        "reason": "Printer Issues",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "labelling buckets",
+        "reason": "Labelling Buckets",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "tube dispenser issues / censor for dispenser issues",
+        "reason": "Tube Dispenser Issues / Censor for Dispenser Issues",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "LABEL ISSUES",
+        "reason": "Label Issues",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "issues with labeller",
+        "reason": "Issues With Labeller",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A015",
-        "reason": "inspection on the line / change film",
+        "reason": "Inspection on the Line / Change Film",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A019",
-        "reason": "making displays",
+        "reason": "Making Displays",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A015",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       }
@@ -2694,6 +2882,7 @@
   },
   {
     "date": "20/05/2026",
+    "noteLog": [],
     "dayOEE": 0.426,
     "lateOEE": 0.6338,
     "dayAvail": 0.8559,
@@ -2707,25 +2896,30 @@
     "dayTheo": 20597,
     "lateTheo": 16036,
     "totalDT": 18.5,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 615,
-        "cum": 55
+        "cat": "Waiting for Blending",
+        "mins": 465,
+        "cum": 42
       },
       {
-        "cat": "Other",
+        "cat": "Engineering Issues",
         "mins": 240,
+        "cum": 64
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 150,
         "cum": 77
       },
       {
-        "cat": "Understaffing",
+        "cat": "Other",
         "mins": 150,
         "cum": 91
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Raw Material Issues",
         "mins": 90,
         "cum": 99
       },
@@ -2733,124 +2927,142 @@
         "cat": "Changeover / Setup",
         "mins": 15,
         "cum": 100
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 0,
+        "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 3,
         "mins": 180,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "waiting for border / running with one person",
+        "reason": "Waiting for Border / Running With One Person",
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
-        "cat": "Understaffing",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "LABELLING/WAITING ON BATCH",
+        "reason": "Labelling/waiting on Batch",
         "downtime": 2.5,
         "mins": 150,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling / one person only",
+        "reason": "Labelling / One Person Only",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "Issues with sachets / only 2 people most of the time",
+        "reason": "Issues With Sachets / Only 2 People Most of the Time",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       },
       {
         "machine": "A015",
-        "reason": "LINE DOWN",
+        "reason": "Line Down",
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A004",
-        "reason": "NO BATCH AT START",
+        "reason": "No Batch at Start",
         "downtime": 1.25,
         "mins": 75,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "WAITING ON BATCH AT START",
+        "reason": "Waiting on Batch at Start",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "WAITING ON FLAKE TO BE FILLED",
+        "reason": "Waiting on Flake to Be Filled",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "running with 2 people only",
+        "reason": "Running With 2 People Only",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Other",
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "med"
       },
       {
         "machine": "A009",
-        "reason": "running with 2 people only",
+        "reason": "Running With 2 People Only",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Other",
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "med"
       }
     ],
@@ -3020,6 +3232,7 @@
   },
   {
     "date": "26/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5317,
     "lateOEE": 0.6308,
     "dayAvail": 0.7904,
@@ -3033,21 +3246,21 @@
     "dayTheo": 23071,
     "lateTheo": 18481,
     "totalDT": 21.5,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 675,
-        "cum": 52
-      },
-      {
-        "cat": "Equipment Failure",
-        "mins": 210,
-        "cum": 69
+        "cat": "Waiting for Blending",
+        "mins": 615,
+        "cum": 48
       },
       {
         "cat": "Changeover / Setup",
-        "mins": 165,
+        "mins": 225,
+        "cum": 65
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 210,
         "cum": 81
       },
       {
@@ -3056,7 +3269,7 @@
         "cum": 92
       },
       {
-        "cat": "Understaffing",
+        "cat": "Staff Shortage",
         "mins": 105,
         "cum": 100
       }
@@ -3064,173 +3277,192 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 5,
         "mins": 300,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCHES",
+        "reason": "Waiting on Batches",
         "downtime": 4,
         "mins": 240,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "issues with printer / labelling tubes",
+        "reason": "Issues With Printer / Labelling Tubes",
         "downtime": 3,
         "mins": 180,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A019",
-        "reason": "COVERING ON OTHER LINE DUE TO STAFF BEING LATE",
+        "reason": "Covering on Other Line Due to Staff Being Late",
         "downtime": 1.75,
         "mins": 105,
         "shift": "late",
-        "cat": "Understaffing",
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "med"
       },
       {
         "machine": "A004",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "issues with bucket dispenser",
+        "reason": "Issues With Bucket Dispenser",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A004",
-        "reason": "SCRAPEOUT",
+        "reason": "Scrapeout",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "issues with bags",
+        "reason": "Issues With Bags",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A009",
-        "reason": "BANGOUT/CHANGEOVER",
+        "reason": "Bangout/changeover",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "waiting for labels",
+        "reason": "Waiting for Labels",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A019",
-        "reason": "LOOKING FOR FILM / CHANGEOVER",
+        "reason": "Looking for Film / Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A015",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER/ SAME AS ABOVE",
+        "reason": "Changeover/ Same as Above",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A019",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "2 people only (sachets labels )",
+        "reason": "2 People Only (sachets Labels )",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "2 people only (sachets labels )",
+        "reason": "2 People Only (sachets Labels )",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "2 PEOPLE WORKING ON SACHET LABEL JOB",
+        "reason": "2 People Working on Sachet Label Job",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       }
     ],
@@ -3366,6 +3598,7 @@
   },
   {
     "date": "27/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5477,
     "lateOEE": 0.6267,
     "dayAvail": 0.7059,
@@ -3379,21 +3612,26 @@
     "dayTheo": 12565,
     "lateTheo": 10968,
     "totalDT": 21.41,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 805,
-        "cum": 63
+        "cat": "Waiting for Blending",
+        "mins": 655,
+        "cum": 51
       },
       {
-        "cat": "Equipment Failure",
-        "mins": 240,
-        "cum": 81
+        "cat": "Engineering Issues",
+        "mins": 270,
+        "cum": 72
       },
       {
         "cat": "Other",
         "mins": 165,
+        "cum": 85
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 120,
         "cum": 94
       },
       {
@@ -3405,191 +3643,212 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch / air line issue",
+        "reason": "Waiting for Batch / Air Line Issue",
         "downtime": 4.75,
         "mins": 285,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "set up the line/ waiting for scrape out",
+        "reason": "Set up the Line/ Waiting for Scrape Out",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "labelling the buckets",
+        "reason": "Labelling the Buckets",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "NO BATCH , WAITING ON SCRAPE",
+        "reason": "No Batch , Waiting on Scrape",
         "downtime": 1.66,
         "mins": 100,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "cleaning before start from the previous job ( border )",
+        "reason": "Cleaning Before Start From the Previous Job ( Border )",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / changing IBC",
+        "reason": "Labelling Tubes / Changing Ibc",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "dropping the batch, changing the film",
+        "reason": "Dropping the Batch, Changing the Film",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "making displays / line stopped ar 9:40 as issues with flake",
+        "reason": "Making Displays / Line Stopped Ar 9:40 as Issues With Flake",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes",
+        "reason": "Labelling Tubes",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "waiting for batch / labelling issue",
+        "reason": "Waiting for Batch / Labelling Issue",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "seting up the line",
+        "reason": "Seting up the Line",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "line only running for 1 hours",
+        "reason": "Line Only Running for 1 Hours",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A031",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       }
     ],
@@ -3725,6 +3984,7 @@
   },
   {
     "date": "28/05/2026",
+    "noteLog": [],
     "dayOEE": 0.5961,
     "lateOEE": 0.7361,
     "dayAvail": 0.7624,
@@ -3738,16 +3998,16 @@
     "dayTheo": 7805,
     "lateTheo": 15672,
     "totalDT": 14.7,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 582,
-        "cum": 66
+        "cat": "Waiting for Blending",
+        "mins": 402,
+        "cum": 46
       },
       {
-        "cat": "Equipment Failure",
-        "mins": 180,
+        "cat": "Engineering Issues",
+        "mins": 360,
         "cum": 86
       },
       {
@@ -3756,12 +4016,12 @@
         "cum": 97
       },
       {
-        "cat": "Other",
+        "cat": "Component Shortage",
         "mins": 30,
         "cum": 100
       },
       {
-        "cat": "Understaffing",
+        "cat": "Staff Shortage",
         "mins": 0,
         "cum": 100
       }
@@ -3769,110 +4029,122 @@
     "dtLog": [
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 3.45,
         "mins": 207,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "issues with batch / issues with nozzle",
+        "reason": "Issues With Batch / Issues With Nozzle",
         "downtime": 2.25,
         "mins": 135,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "labelling lids and cartons",
+        "reason": "Labelling Lids and Cartons",
         "downtime": 2,
         "mins": 120,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A015",
-        "reason": "droping batch / change the film / labelling sacks",
+        "reason": "Droping Batch / Change the Film / Labelling Sacks",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "retest batch / batch printer issues/ pushing thru the batch",
+        "reason": "Retest Batch / Batch Printer Issues/ Pushing Thru the Batch",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "labelling lids and cartons",
+        "reason": "Labelling Lids and Cartons",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "WAITING FOR MACHINE TO WARM UP",
+        "reason": "Waiting for Machine to Warm up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A031",
-        "reason": "1 PERSON WORKING",
+        "reason": "1 Person Working",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Understaffing",
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "med"
       }
     ],
@@ -4008,6 +4280,7 @@
   },
   {
     "date": "01/06/2026",
+    "noteLog": [],
     "dayOEE": 0.6228,
     "lateOEE": 0.699,
     "dayAvail": 0.8422,
@@ -4021,25 +4294,30 @@
     "dayTheo": 18909,
     "lateTheo": 17662,
     "totalDT": 13.55,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 528,
-        "cum": 65
+        "cat": "Waiting for Blending",
+        "mins": 393,
+        "cum": 48
       },
       {
-        "cat": "Equipment Failure",
+        "cat": "Engineering Issues",
         "mins": 180,
-        "cum": 87
+        "cum": 70
       },
       {
         "cat": "Changeover / Setup",
+        "mins": 135,
+        "cum": 87
+      },
+      {
+        "cat": "Component Shortage",
         "mins": 105,
         "cum": 100
       },
       {
-        "cat": "Understaffing",
+        "cat": "Staff Shortage",
         "mins": 0,
         "cum": 100
       }
@@ -4047,155 +4325,172 @@
     "dtLog": [
       {
         "machine": "A004",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "heater issues / printer issues",
+        "reason": "Heater Issues / Printer Issues",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for scrape out",
+        "reason": "Waiting for Scrape Out",
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING ON BATCH",
+        "reason": "Waiting on Batch",
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.3,
         "mins": 78,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / heater issue",
+        "reason": "Labelling Tubes / Heater Issue",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A009",
-        "reason": "droping batch / waiting for packets / film change",
+        "reason": "Droping Batch / Waiting for Packets / Film Change",
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A009",
-        "reason": "CHANGEOVER ( PACKETS HARD TO OPEN SO HAVING TO RUN AT REDUCED SPEED )",
+        "reason": "Changeover ( Packets Hard to Open So Having to Run at Reduced Speed )",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
-        "imp": "hi"
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A008",
-        "reason": "set up / change film",
+        "reason": "Set up / Change Film",
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A008",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A006 B",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "set up/ waiting for batch",
+        "reason": "Set Up/ Waiting for Batch",
         "downtime": 0,
         "mins": 0,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "ONLY 1 PERSON WORKING ON LINE",
+        "reason": "Only 1 Person Working on Line",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
-        "cat": "Understaffing",
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "med"
       }
     ],
@@ -4331,6 +4626,18 @@
   },
   {
     "date": "02/06/2026",
+    "noteLog": [
+      {
+        "machine": "A006 B",
+        "reason": "Labelling Buckets",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "isNote": true,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      }
+    ],
     "dayOEE": 0.5432,
     "lateOEE": 0.7165,
     "dayAvail": 0.7398,
@@ -4344,180 +4651,207 @@
     "dayTheo": 10853,
     "lateTheo": 14431,
     "totalDT": 17.75,
-    "topIssue": "Waiting for Batch/Material",
+    "topIssue": "Engineering Issues",
     "pareto": [
       {
-        "cat": "Waiting for Batch/Material",
-        "mins": 840,
-        "cum": 79
+        "cat": "Engineering Issues",
+        "mins": 465,
+        "cum": 44
       },
       {
-        "cat": "Other",
-        "mins": 135,
-        "cum": 92
+        "cat": "Waiting for Blending",
+        "mins": 405,
+        "cum": 82
       },
       {
         "cat": "Changeover / Setup",
-        "mins": 60,
-        "cum": 97
+        "mins": 75,
+        "cum": 89
       },
       {
-        "cat": "Equipment Failure",
-        "mins": 30,
+        "cat": "Component Shortage",
+        "mins": 60,
+        "cum": 94
+      },
+      {
+        "cat": "Other",
+        "mins": 45,
+        "cum": 99
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 15,
         "cum": 100
       }
     ],
     "dtLog": [
       {
         "machine": "A009",
-        "reason": "issues with sachets / issues with batch printer",
+        "reason": "Issues With Sachets / Issues With Batch Printer",
         "downtime": 3.75,
         "mins": 225,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A031",
-        "reason": "CLEAN LINE/ LABELLING/WAIT ON NEW BATCH",
+        "reason": "Clean Line/ Labelling/wait on New Batch",
         "downtime": 2,
         "mins": 120,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "labelling tubes / waiting for scrape out",
+        "reason": "Labelling Tubes / Waiting for Scrape Out",
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "issues with batch",
+        "reason": "Issues With Batch",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "WAITING FOR BATCH",
+        "reason": "Waiting for Batch",
         "downtime": 1.25,
         "mins": 75,
         "shift": "late",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "issues with batch ( fluffy and not fit in the buckets )",
+        "reason": "Issues With Batch ( Fluffy and Not Fit in the Buckets )",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A006 B",
-        "reason": "waiting for buckets",
+        "reason": "Waiting for Buckets",
         "downtime": 1,
         "mins": 60,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
       },
       {
         "machine": "A007",
-        "reason": "change ribbon / push the pipe",
+        "reason": "Change Ribbon / Push the Pipe",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Other",
-        "imp": "med"
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A005",
-        "reason": "waiting for batch",
+        "reason": "Waiting for Batch",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
-        "cat": "Waiting for Batch/Material",
+        "isNote": false,
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
         "machine": "A008",
-        "reason": "issues with belt / moved to A007 from 8:45",
+        "reason": "Issues With Belt / Moved to A007 From 8:45",
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
         "machine": "A006 B",
-        "reason": "LABELLING",
+        "reason": "Labelling",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
-        "cat": "Equipment Failure",
+        "isNote": false,
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
         "machine": "A019",
-        "reason": "SET UP",
+        "reason": "Set up",
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER ( PROBLEM WITH TUB DISPENSER)",
+        "reason": "Changeover ( Problem With Tub Dispenser)",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
-        "cat": "Changeover / Setup",
-        "imp": "lo"
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
       },
       {
         "machine": "A004",
-        "reason": "CHANGEOVER",
+        "reason": "Changeover",
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
       },
@@ -4527,24 +4861,17 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       },
       {
-        "machine": "A006 B",
-        "reason": "labelling buckets",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "cat": "Equipment Failure",
-        "imp": "hi"
-      },
-      {
         "machine": "A015",
-        "reason": "MOVE TO PVA",
+        "reason": "Move to Pva",
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "isNote": false,
         "cat": "Other",
         "imp": "med"
       }
