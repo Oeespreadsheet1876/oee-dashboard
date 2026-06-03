@@ -1,5 +1,276 @@
 [
   {
+    "date": "10/03/2026",
+    "dayOEE": 0.6429,
+    "lateOEE": 0.6389,
+    "dayAvail": 0.773,
+    "lateAvail": 0.8378,
+    "dayPerf": 0.8317,
+    "latePerf": 0.7625,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 12796,
+    "lateOut": 11828,
+    "dayTheo": 15612,
+    "lateTheo": 15085,
+    "totalDT": 16.5,
+    "topIssue": "Equipment Failure",
+    "pareto": [
+      {
+        "cat": "Equipment Failure",
+        "mins": 480,
+        "cum": 48
+      },
+      {
+        "cat": "Other",
+        "mins": 390,
+        "cum": 88
+      },
+      {
+        "cat": "Waiting for Batch/Material",
+        "mins": 60,
+        "cum": 94
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 60,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A031",
+        "reason": "labelling lids / cartons",
+        "downtime": 2.5,
+        "mins": 150,
+        "shift": "day",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "setting up /  nozzle leaking / channge from A to B tubes",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A031",
+        "reason": "labelling lids and cartons",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A031",
+        "reason": "LABELING BUCKETS AND CARTONS",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "late",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "changing the tubes / issues with the nozzle",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "cleaning after brown wood filler",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "WAITING FOR BATCH",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "PROBLEMS WITH LABELS , CHANGE OVER",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Issues with weight",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "CHECKING LIDS",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "issues with labels",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "SET UP LINE",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A005",
+        "reason": "SET UP",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "CHANGEOVER",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "line works slower as issues with lids",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.4406,
+        0.436
+      ],
+      "A004": [
+        0.8486,
+        0.587
+      ],
+      "A005": [
+        0.7216,
+        0.8532
+      ],
+      "A031": [
+        0.3686,
+        0.2689
+      ],
+      "A006 B": [
+        0.751,
+        1.102
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.5135,
+        0.6667
+      ],
+      "A004": [
+        0.9459,
+        0.8378
+      ],
+      "A005": [
+        0.8919,
+        0.973
+      ],
+      "A031": [
+        0.5135,
+        0.68
+      ],
+      "A006 B": [
+        1,
+        0.8649
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.8581,
+        0.654
+      ],
+      "A004": [
+        0.8971,
+        0.7006
+      ],
+      "A005": [
+        0.8091,
+        0.8769
+      ],
+      "A031": [
+        0.7178,
+        0.3955
+      ],
+      "A006 B": [
+        0.751,
+        1.2742
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        7125,
+        3000
+      ],
+      "A004": [
+        5250,
+        4650
+      ],
+      "A005": [
+        6600,
+        7198
+      ],
+      "A031": [
+        2374,
+        2124
+      ],
+      "A006 B": [
+        1388,
+        1113
+      ]
+    }
+  },
+  {
     "date": "05/05/2026",
     "dayOEE": 0.6252,
     "lateOEE": 0.5229,
