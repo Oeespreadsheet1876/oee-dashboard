@@ -450,13 +450,13 @@ function updateDropHint(){
 updateDropHint();
 
 // ── Auto-load from OneDrive ───────────────────────────────────────────────────
-const ONEDRIVE_URL = "https://oeespreadsheet1876.github.io/oee-dashboard/OEE_history.json";
+const JSON_URL = "https://raw.githubusercontent.com/Oeespreadsheet1876/oee-dashboard/main/OEE_history.json";
 
 async function autoLoadFromOneDrive(){
   const statusEl = document.getElementById('load-status');
   try {
-    statusEl.textContent = 'Loading latest data from OneDrive...';
-    const resp = await fetch(ONEDRIVE_URL, {cache:'no-store'});
+    statusEl.textContent = 'Loading latest data...';
+    const resp = await fetch(JSON_URL, {cache:'no-store'});
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     const imported = await resp.json();
     if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data format');
@@ -472,17 +472,17 @@ async function autoLoadFromOneDrive(){
       buildDashboard(latest, merged);
     }, 800);
   } catch(err) {
-    console.warn('OneDrive auto-load failed:', err.message);
+    console.warn('Auto-load failed:', err.message);
     // Fall back to local history or show drop zone
     const local = loadHist();
     if(local.length > 0){
-      statusEl.textContent = `OneDrive unavailable — showing ${local.length} days from local history`;
+      statusEl.textContent = `Showing ${local.length} days from local history`;
       setTimeout(()=>{
         const latest = local[local.length-1];
         buildDashboard(latest, local);
       }, 800);
     } else {
-      statusEl.textContent = 'Could not load from OneDrive. Drop a file below to get started.';
+      statusEl.textContent = 'Could not load data. Drop a file below to get started.';
       document.getElementById('drop-area').style.display = 'flex';
     }
   }
@@ -872,7 +872,7 @@ function dedupeHistory(){
 function refreshFromOneDrive(){
   const btn = document.querySelector('.hdr-btn');
   btn.textContent = '↻ Refreshing...';
-  fetch(ONEDRIVE_URL, {cache:'no-store'})
+  fetch(JSON_URL, {cache:'no-store'})
     .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
     .then(imported=>{
       if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data');
@@ -885,7 +885,7 @@ function refreshFromOneDrive(){
       btn.textContent = '↻ Refresh';
     })
     .catch(err=>{
-      alert('Could not refresh from OneDrive: '+err.message);
+      alert('Could not refresh: '+err.message);
       btn.textContent = '↻ Refresh';
     });
 }
