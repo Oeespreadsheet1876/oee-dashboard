@@ -142,6 +142,13 @@ input[type=file]{display:none}
     <span style="font-size:10px;color:var(--muted)" id="filter-label"></span>
     <button onclick="clearMachineFilter()" id="clear-filter-btn" style="display:none;padding:3px 10px;background:rgba(74,158,255,.15);color:var(--blue);border:1px solid rgba(74,158,255,.3);border-radius:5px;font-size:10px;cursor:pointer;font-family:var(--font)">✕ Clear filter</button>
   </div>
+  <div id="date-filter-bar" style="background:var(--surf);border-bottom:1px solid var(--bdr);padding:8px 22px;display:flex;align-items:center;gap:12px;flex-shrink:0">
+    <span style="font-size:11px;color:var(--muted)">Viewing date:</span>
+    <select id="date-sel" onchange="applyDateFilter()" style="background:var(--surf2);color:var(--text);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;font-size:12px;font-family:var(--font);cursor:pointer">
+      <option value="">— select date —</option>
+    </select>
+    <span style="font-size:10px;color:var(--muted)" id="date-filter-label"></span>
+  </div>
   <div class="content">
     <div id="err-box" class="err" style="display:none"></div>
 
@@ -176,6 +183,15 @@ input[type=file]{display:none}
           <thead><tr><th>Shift</th><th>Machine</th><th>Reason</th><th>Hrs</th><th>Mins</th><th>Category</th><th>Impact</th></tr></thead>
           <tbody id="dt-log"></tbody>
         </table>
+      </div>
+      <div class="sec">Notes & observations (no downtime recorded)</div>
+      <div id="note-log-wrap">
+        <div class="card" style="margin-bottom:13px;overflow-x:auto">
+          <table class="tbl" style="min-width:480px">
+            <thead><tr><th>Shift</th><th>Machine</th><th>Comment</th><th>Category</th><th>Impact</th></tr></thead>
+            <tbody id="note-log"></tbody>
+          </table>
+        </div>
       </div>
       <div class="sec">Key observations</div>
       <div class="card" id="obs-box"></div>
@@ -308,7 +324,7 @@ function extract(wb){
       if(cs(ws,3,r).toUpperCase()!=='Y') continue;
       const mac=cs(ws,2,r); if(!mac||mac.toUpperCase().includes('NOT REQUIRED')) continue;
       const intended=cn(ws,8,r),downtime=cn(ws,9,r),count=cn(ws,11,r);
-      const scrap=cn(ws,12,r),reason=cs(ws,14,r),run=cn(ws,16,r);
+      const scrap=cn(ws,12,r),reason=toTitleCase(cs(ws,14,r)),run=cn(ws,16,r);
       const theoAct=cn(ws,24,r),theoInt=cn(ws,15,r);
       if(!mach[mac]) mach[mac]={
         day:{count:0,good:0,theoAct:0,theoInt:0,intended:0,run:0,issues:[]},
@@ -317,7 +333,7 @@ function extract(wb){
       const s=mach[mac][shift];
       s.count+=count; s.good+=count-scrap; s.theoAct+=theoAct; s.theoInt+=theoInt;
       s.intended+=intended; s.run+=run;
-      if(downtime>0||reason) s.issues.push({machine:mac,reason,downtime,mins:Math.round(downtime*60),shift});
+      if(downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,isNote:downtime===0&&(!count||count===0)});
     }
   }
   scan(dWs,'day',51); scan(lWs,'late',49);
@@ -340,23 +356,37 @@ function extract(wb){
   const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
-    if(r.includes('batch')||r.includes('scrape')||r.includes('packet')||r.includes('material')||r.includes('dropping')){i.cat='Waiting for Batch/Material';i.imp='hi'}
-    else if(r.includes('heater')||r.includes('printer')||r.includes('label')){i.cat='Equipment Failure';i.imp='hi'}
-    else if(r.includes('changeover')||r.includes('set up')||r.includes('change film')){i.cat='Changeover / Setup';i.imp='lo'}
-    else if(r.includes('person')||r.includes('staff')){i.cat='Understaffing';i.imp='med'}
-    else{i.cat='Other';i.imp='med'}
+    // Priority order matters - more specific checks first
+    if(r.includes('heater')||r.includes('printer')||r.includes('label')||r.includes('engineer')||r.includes('engineering')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')){
+      i.cat='Engineering Issues';i.imp='hi';
+    } else if(r.includes('waiting for batch')||r.includes('waiting for blend')||r.includes('batch')||r.includes('dropping')){
+      i.cat='Waiting for Blending';i.imp='hi';
+    } else if(r.includes('waiting for packet')||r.includes('waiting for')||r.includes('component')||r.includes('shortage')||r.includes('parts')){
+      i.cat='Component Shortage';i.imp='hi';
+    } else if(r.includes('raw material')||r.includes('material')){
+      i.cat='Raw Material Outage';i.imp='hi';
+    } else if(r.includes('plan change')||r.includes('schedule')||r.includes('product change')){
+      i.cat='Plan Change';i.imp='med';
+    } else if(r.includes('staff')||r.includes('running with')||r.includes('short staffed')||r.includes('person')||r.includes('people')||r.includes('operator')){
+      i.cat='Staff Shortage';i.imp='med';
+    } else if(r.includes('changeover')||r.includes('change over')||r.includes('set up')||r.includes('setup')||r.includes('scrape')||r.includes('change film')||r.includes('changing packet')||r.includes('film')){
+      i.cat='Changeover / Setup';i.imp='lo';
+    } else {
+      i.cat='Other';i.imp='med';
+    }
   });
   const catMins={};
-  allIssues.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+  allIssues.filter(i=>!i.isNote).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
   let cum=0; const tot=Object.values(catMins).reduce((a,v)=>a+v,0);
   const pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
     .map(([k,v])=>{cum+=v;return{cat:k,mins:v,cum:tot>0?Math.round(cum/tot*100):0}});
-  const dtLog=allIssues.sort((a,b)=>b.mins-a.mins);
+  const dtLog=allIssues.filter(i=>!i.isNote).sort((a,b)=>b.mins-a.mins);
+  const noteLog=allIssues.filter(i=>i.isNote);
   const totalDT=round2(dtLog.reduce((a,i)=>a+i.downtime,0));
   const topIssue=pareto.length?pareto[0].cat:'—';
   const machines=Object.keys(mach).sort();
 
-  return{date,dayOEE:round4(dayOEE),lateOEE:round4(lateOEE),
+  return{date,noteLog,dayOEE:round4(dayOEE),lateOEE:round4(lateOEE),
     dayAvail:round4(dayAvail),lateAvail:round4(lateAvail),
     dayPerf:round4(dayPerf),latePerf:round4(latePerf),
     dayQual:round4(dayQual),lateQual:round4(lateQual),
@@ -426,10 +456,13 @@ function buildDashboard(data,hist){
   buildBarCharts(data);
   buildPareto(data);
   buildDTLog(data);
+  buildNoteLog(data);
   buildObs(data);
   buildTrends(hist);
   populateMacSelect();
   populateGlobalMacFilter(data.machines);
+  populateDateSelector(hist);
+  CURRENT_DATE_DATA = data;
   updateDropHint();
 }
 
@@ -494,6 +527,8 @@ function showPanel(id,btn){
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
   if(btn) btn.classList.add('active');
+  const showDate = ['overview','oee','pareto'].includes(id);
+  document.getElementById('date-filter-bar').style.display = showDate ? 'flex' : 'none';
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -917,6 +952,28 @@ function importHistoryFile(input){
   reader.readAsText(file);
 }
 
+// ── Title case helper ─────────────────────────────────────────────────────────
+function toTitleCase(str){
+  if(!str) return str;
+  const minor = new Set(['a','an','the','and','but','or','for','nor','on','at','to','by','in','of','up','as']);
+  return str.toLowerCase().split(' ').map((w,i)=>
+    (i===0||!minor.has(w)) ? w.charAt(0).toUpperCase()+w.slice(1) : w
+  ).join(' ');
+}
+// ── Date selector for Overview, OEE Report, Summary & Pareto ─────────────────
+let CURRENT_DATE_DATA = null;
+
+function populateDateSelector(hist){
+  const sel = document.getElementById('date-sel');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— select date —</option>';
+  [...hist].reverse().forEach(h=>{
+    const o = document.createElement('option');
+    o.value = h.date; o.textContent = h.date;
+    if(h.date === cur || (!cur && h.date === hist[hist.length-1].date)) o.selected = true;
+    sel.appendChild(o);
+  });
+}
 // ── Global machine filter ─────────────────────────────────────────────────────
 let FILTER_MAC = '';
 
@@ -949,15 +1006,21 @@ function applyMachineFilter(){
     buildBarCharts(CUR);
     buildPareto(CUR);
     buildDTLog(CUR);
+    buildNoteLog(CUR);
     buildObs(CUR);
   }
   // If on Trends tab and a machine is selected, switch to Machine Trends
+  // and clear the global filter so only the Machine Trends dropdown is active
   if(FILTER_MAC){
     const active = document.querySelector('.panel.active');
     if(active && active.id === 'panel-trends'){
-      // Sync the machine select in Machine Trends tab
       const macSel = document.getElementById('mac-sel');
       if(macSel) macSel.value = FILTER_MAC;
+      // Clear global filter bar - Machine Trends has its own dropdown
+      FILTER_MAC = '';
+      document.getElementById('global-mac-sel').value = '';
+      document.getElementById('filter-label').textContent = '';
+      document.getElementById('clear-filter-btn').style.display = 'none';
       showPanel('mtrends', document.querySelectorAll('.nb')[4]);
       buildMachineTrends();
     }
