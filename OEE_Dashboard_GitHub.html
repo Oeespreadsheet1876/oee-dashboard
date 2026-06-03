@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Production OEE Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1623;--surf:#171f2e;--surf2:#1e2840;--bdr:#2a3550;
+  --text:#e8edf5;--muted:#7a8aaa;--blue:#4a9eff;--green:#3ecf8e;
+  --amber:#f5a623;--red:#f0544f;--orange:#ed7d31;--navy:#1F3864;
+  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+#dropzone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px;transition:background .2s}
+#dropzone.over{background:rgba(74,158,255,.07)}
+.drop-icon{width:68px;height:68px;border:2px dashed var(--bdr);border-radius:14px;display:flex;align-items:center;justify-content:center}
+.drop-icon svg{width:30px;height:30px;stroke:var(--muted);fill:none;stroke-width:1.5}
+.drop-title{font-size:19px;font-weight:500}
+.drop-sub{font-size:13px;color:var(--muted);text-align:center;line-height:1.6}
+.drop-btn{padding:9px 22px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font)}
+.drop-btn:hover{opacity:.85}
+.history-pill{display:flex;align-items:center;gap:7px;background:var(--surf);border:1px solid var(--bdr);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted);cursor:pointer}
+.history-pill:hover{border-color:var(--blue);color:var(--blue)}
+.history-pill svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+#shell{display:none;flex-direction:column;height:100vh}
+.hdr{background:var(--navy);padding:11px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hdr-title{font-size:14px;font-weight:600}
+.hdr-date{font-family:var(--mono);font-size:11px;color:#BDD7EE;background:rgba(255,255,255,.1);padding:3px 9px;border-radius:5px}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.hdr-btn{padding:4px 11px;background:rgba(255,255,255,.1);color:#BDD7EE;border:none;border-radius:5px;font-size:11px;cursor:pointer;font-family:var(--font)}
+.hdr-btn:hover{background:rgba(255,255,255,.18)}
+.hdr-btn.danger{background:rgba(240,84,79,.2);color:#f0544f}
+.nav{background:var(--surf);border-bottom:1px solid var(--bdr);padding:0 22px;display:flex;gap:2px;flex-shrink:0}
+.nb{padding:10px 15px;font-size:12px;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s;font-family:var(--font)}
+.nb:hover{color:var(--text)}
+.nb.active{color:var(--blue);border-bottom-color:var(--blue)}
+.nb svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+.badge-count{background:var(--blue);color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;font-family:var(--mono)}
+.content{flex:1;overflow-y:auto;padding:16px 22px}
+.panel{display:none}.panel.active{display:block}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:16px}
+.kpi{background:var(--surf);border:1px solid var(--bdr);border-radius:9px;padding:12px 14px}
+.kl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.kv{font-size:22px;font-weight:600;line-height:1;font-family:var(--mono)}
+.kv.blue{color:var(--blue)}.kv.green{color:var(--green)}.kv.amber{color:var(--amber)}.kv.red{color:var(--red)}
+.ks{font-size:10px;color:var(--muted);margin-top:3px}
+.sec{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px}
+.cg{display:grid;gap:10px;margin-bottom:10px}
+.cg2{grid-template-columns:1fr 1fr}
+.card{background:var(--surf);border:1px solid var(--bdr);border-radius:9px;padding:13px}
+.card.full{grid-column:1/-1}
+.ct{font-size:11px;font-weight:500;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.cw{position:relative;width:100%}
+.leg{display:flex;gap:11px;font-size:10px;color:var(--muted);flex-wrap:wrap}
+.leg span{display:flex;align-items:center;gap:4px}
+.ld{width:8px;height:8px;border-radius:2px;display:inline-block}
+.ld.ln{border-radius:0;height:2px;width:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:11px}
+.tbl th{text-align:left;padding:7px 8px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--bdr);font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.tbl td{padding:7px 8px;border-bottom:1px solid var(--bdr)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--surf2)}
+.bc{display:flex;align-items:center;gap:5px}
+.mb{height:10px;border-radius:2px;min-width:2px}
+.badge{display:inline-block;font-size:9px;font-weight:600;padding:2px 6px;border-radius:20px;font-family:var(--mono)}
+.badge.hi{background:rgba(240,84,79,.15);color:#f0544f}
+.badge.med{background:rgba(245,166,35,.15);color:#f5a623}
+.badge.lo{background:rgba(62,207,142,.15);color:#3ecf8e}
+.badge.ok{background:rgba(74,158,255,.15);color:#4a9eff}
+.obs-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.obs-item:last-child{border-bottom:none}
+.onum{min-width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
+.otitle{font-size:12px;font-weight:500;margin-bottom:2px}
+.odet{font-size:11px;color:var(--muted);line-height:1.5}
+.trend-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.trend-count{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.del-btn{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;padding:0 4px}
+.del-btn:hover{color:var(--red)}
+.err{background:rgba(240,84,79,.1);border:1px solid rgba(240,84,79,.3);border-radius:8px;padding:11px 14px;font-size:12px;color:#f0544f;margin-bottom:12px}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+
+<div id="dropzone">
+  <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+  <div>
+    <div class="drop-title">Production OEE Dashboard</div>
+    <div class="drop-sub" id="load-status">Loading latest data from OneDrive...</div>
+  </div>
+  <div id="drop-area" style="display:none;flex-direction:column;align-items:center;gap:18px">
+    <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+    <div class="drop-sub">Drag and drop one or more .xlsx files onto this page<br>or click the button to browse</div>
+  </div>
+  <button class="drop-btn" onclick="document.getElementById('fi1').click()">Browse for files</button>
+  <div style="display:flex;gap:10px;margin-top:4px">
+    <label style="display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--bdr);border-radius:8px;font-size:12px;color:var(--muted);cursor:pointer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Import history
+      <input type="file" accept=".json" onchange="importHistoryFile(this)">
+    </label>
+  </div>
+  <div style="font-size:10px;color:var(--muted);font-family:var(--mono)">Accepts: DAYS + LATES sheet format · History saved in browser</div>
+  <div id="history-hint"></div>
+  <input type="file" id="fi1" accept=".xlsx,.xls" multiple>
+</div>
+
+<div id="shell">
+  <div class="hdr">
+    <div class="hdr-left">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#BDD7EE" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span class="hdr-title">Production OEE Dashboard</span>
+      <span class="hdr-date" id="hdr-date">—</span>
+    </div>
+    <div class="hdr-right">
+      <button class="hdr-btn" onclick="refreshFromOneDrive()">↻ Refresh</button>
+      <button class="hdr-btn" onclick="document.getElementById('fi2').click()">+ Load files</button>
+      <button class="hdr-btn" onclick="exportHistory()">↓ Export history</button>
+      <button class="hdr-btn" onclick="document.getElementById('fi3').click()">↑ Import history</button>
+      <input type="file" id="fi2" accept=".xlsx,.xls" multiple>
+      <input type="file" id="fi3" accept=".json">
+    </div>
+  </div>
+  <div class="nav">
+    <button class="nb active" onclick="showPanel('overview',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Overview</button>
+    <button class="nb" onclick="showPanel('oee',this)"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>OEE Report</button>
+    <button class="nb" onclick="showPanel('pareto',this)"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Summary & Pareto</button>
+    <button class="nb" onclick="showPanel('trends',this)"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Trends <span class="badge-count" id="trend-count">0</span></button>
+    <button class="nb" onclick="showPanel('mtrends',this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>Machine trends</button>
+  </div>
+  <div id="mac-filter-bar" style="background:var(--surf2);border-bottom:1px solid var(--bdr);padding:8px 22px;display:flex;align-items:center;gap:12px;flex-shrink:0">
+    <span style="font-size:11px;color:var(--muted)">Filter by machine:</span>
+    <select id="global-mac-sel" onchange="applyMachineFilter()" style="background:var(--surf);color:var(--text);border:1px solid var(--bdr);border-radius:6px;padding:4px 10px;font-size:12px;font-family:var(--font);cursor:pointer">
+      <option value="">All machines</option>
+    </select>
+    <span style="font-size:10px;color:var(--muted)" id="filter-label"></span>
+    <button onclick="clearMachineFilter()" id="clear-filter-btn" style="display:none;padding:3px 10px;background:rgba(74,158,255,.15);color:var(--blue);border:1px solid rgba(74,158,255,.3);border-radius:5px;font-size:10px;cursor:pointer;font-family:var(--font)">✕ Clear filter</button>
+  </div>
+  <div class="content">
+    <div id="err-box" class="err" style="display:none"></div>
+
+    <div class="panel active" id="panel-overview">
+      <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="sec">Shift OEE breakdown</div>
+      <div class="cg cg2">
+        <div class="card"><div class="ct">Day shift components<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Avail</span><span><span class="ld" style="background:#3ecf8e"></span>Perf</span><span><span class="ld" style="background:#ed7d31"></span>Qual</span></div></div><div class="cw" style="height:160px"><canvas id="c-day"></canvas></div></div>
+        <div class="card"><div class="ct">Late shift components<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Avail</span><span><span class="ld" style="background:#3ecf8e"></span>Perf</span><span><span class="ld" style="background:#ed7d31"></span>Qual</span></div></div><div class="cw" style="height:160px"><canvas id="c-late"></canvas></div></div>
+      </div>
+      <div class="sec">Machine status</div>
+      <div class="card"><table class="tbl"><thead><tr><th>Machine</th><th>Day OEE</th><th>Late OEE</th><th>Status</th></tr></thead><tbody id="mach-tbl"></tbody></table></div>
+    </div>
+
+    <div class="panel" id="panel-oee">
+      <div class="leg" style="margin-bottom:11px"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f0544f"></span>World class (85%)</span></div>
+      <div class="cg" style="grid-template-columns:1fr"><div class="card full"><div class="ct">Overall OEE by machine</div><div class="cw" style="height:220px"><canvas id="c-oee"></canvas></div></div></div>
+      <div class="cg cg2">
+        <div class="card"><div class="ct">Availability</div><div class="cw" style="height:185px"><canvas id="c-avail"></canvas></div></div>
+        <div class="card"><div class="ct">Performance</div><div class="cw" style="height:185px"><canvas id="c-perf"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-pareto">
+      <div class="cg cg2">
+        <div class="card"><div class="ct">Pareto – downtime by category</div><div class="cw" style="height:185px"><canvas id="c-pareto"></canvas></div></div>
+        <div class="card"><div class="ct">Downtime by machine (mins)</div><div class="cw" style="height:185px"><canvas id="c-machdt"></canvas></div></div>
+      </div>
+      <div class="sec">Downtime log</div>
+      <div class="card" style="margin-bottom:13px;overflow-x:auto">
+        <table class="tbl" style="min-width:580px">
+          <thead><tr><th>Shift</th><th>Machine</th><th>Reason</th><th>Hrs</th><th>Mins</th><th>Category</th><th>Impact</th></tr></thead>
+          <tbody id="dt-log"></tbody>
+        </table>
+      </div>
+      <div class="sec">Key observations</div>
+      <div class="card" id="obs-box"></div>
+    </div>
+
+    <div class="panel" id="panel-trends">
+      <div class="trend-header">
+        <div><div class="sec" style="margin:0 0 3px">Historical trends</div><div class="trend-count" id="trend-sub">—</div></div>
+        <div style="display:flex;gap:8px">
+          <button class="hdr-btn" onclick="dedupeHistory()">Remove duplicates</button>
+          <button class="hdr-btn danger" onclick="clearHistory()">Clear all history</button>
+        </div>
+      </div>
+      <div id="trends-empty" style="text-align:center;padding:40px;color:var(--muted);font-size:13px;display:none">Load more than one day to see trends.</div>
+      <div id="trends-content">
+        <div class="cg cg2">
+          <div class="card"><div class="ct">OEE trend<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f0544f"></span>World class (85%)</span></div></div><div class="cw" style="height:190px"><canvas id="c-t-oee"></canvas></div></div>
+          <div class="card"><div class="ct">Output vs theoretical (100%)<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f5a623"></span>Day theoretical (100%)</span><span><span class="ld ln" style="background:#ed7d31"></span>Late theoretical (100%)</span></div></div><div class="cw" style="height:190px"><canvas id="c-t-output"></canvas></div></div>
+        </div>
+        <div class="cg cg2">
+          <div class="card"><div class="ct">Downtime (hrs)<div class="leg"><span><span class="ld" style="background:#ed7d31"></span>Total</span></div></div><div class="cw" style="height:170px"><canvas id="c-t-dt"></canvas></div></div>
+          <div class="card"><div class="ct">Availability<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span></div></div><div class="cw" style="height:170px"><canvas id="c-t-avail"></canvas></div></div>
+        </div>
+        <div class="sec">History log</div>
+        <div class="card" style="overflow-x:auto">
+          <table class="tbl" style="min-width:600px">
+            <thead><tr><th>Date</th><th>Day OEE</th><th>Late OEE</th><th>Day Output</th><th>Late Output</th><th>Day Target</th><th>Late Target</th><th>Downtime</th><th>Top Issue</th><th></th></tr></thead>
+            <tbody id="hist-tbl"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-mtrends">
+      <div class="trend-header">
+        <div><div class="sec" style="margin:0 0 3px">Machine trends</div><div class="trend-count" id="mtrend-sub">Select a machine</div></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:11px;color:var(--muted)">Machine:</span>
+          <select id="mac-sel" onchange="buildMachineTrends()" style="background:var(--surf);color:var(--text);border:1px solid var(--bdr);border-radius:6px;padding:5px 10px;font-size:12px;font-family:var(--font);cursor:pointer"><option value="">— select —</option></select>
+        </div>
+      </div>
+      <div id="mt-empty" style="text-align:center;padding:40px;color:var(--muted);font-size:13px">Select a machine from the dropdown above.</div>
+      <div id="mt-content" style="display:none">
+        <div class="kpi-grid" id="mt-kpis" style="grid-template-columns:repeat(6,1fr)"></div>
+        <div class="cg" style="grid-template-columns:1fr">
+          <div class="card full"><div class="ct" id="mt-oee-title">OEE trend<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f0544f"></span>World class (85%)</span></div></div><div class="cw" style="height:200px"><canvas id="c-mt-oee"></canvas></div></div>
+        </div>
+        <div class="cg" style="grid-template-columns:1fr">
+          <div class="card full"><div class="ct" id="mt-avail-title">Availability trend<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f0544f"></span>World class (85%)</span></div></div><div class="cw" style="height:180px"><canvas id="c-mt-avail"></canvas></div></div>
+        </div>
+        <div class="cg" style="grid-template-columns:1fr">
+          <div class="card full"><div class="ct" id="mt-perf-title">Performance trend<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day</span><span><span class="ld" style="background:#3ecf8e"></span>Late</span><span><span class="ld ln" style="background:#f0544f"></span>World class</span></div></div><div class="cw" style="height:180px"><canvas id="c-mt-perf"></canvas></div></div>
+        </div>
+        <div class="cg" style="grid-template-columns:1fr">
+          <div class="card full"><div class="ct" id="mt-out-title">Output vs theoretical (100%)<div class="leg"><span><span class="ld" style="background:#4a9eff"></span>Day actual</span><span><span class="ld" style="background:#3ecf8e"></span>Late actual</span><span><span class="ld ln" style="background:#f5a623"></span>Day theoretical (100%)</span><span><span class="ld ln" style="background:#ed7d31"></span>Late theoretical (100%)</span></div></div><div class="cw" style="height:180px"><canvas id="c-mt-out"></canvas></div></div>
+        </div>
+        <div class="sec">Day-by-day table</div>
+        <div class="card" style="overflow-x:auto;margin-bottom:12px">
+          <table class="tbl" style="min-width:640px">
+            <thead><tr><th>Date</th><th>Day OEE</th><th>Late OEE</th><th>Day Avail</th><th>Late Avail</th><th>Day Perf</th><th>Late Perf</th><th>Day Out</th><th>Day Target</th><th>Status</th></tr></thead>
+            <tbody id="mt-tbl"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BLUE='#4a9eff',GREEN='#3ecf8e',ORANGE='#ed7d31',RED='#f0544f',AMBER='#f5a623';
+const STORAGE_KEY='oee_dashboard_v2';
+const ALL_MACHINES=['A004','A005','A006 B','A007','A008','A009','A015','A019','A031'];
+let CH={};
+let CUR=null;
+
+// ── Date utils ────────────────────────────────────────────────────────────────
+function normDate(raw){
+  if(raw instanceof Date){
+    const d=String(raw.getDate()).padStart(2,'0');
+    const m=String(raw.getMonth()+1).padStart(2,'0');
+    return d+'/'+m+'/'+raw.getFullYear();
+  }
+  const s=String(raw||'').trim();
+  if(/^\d{2}\.\d{2}\.\d{4}$/.test(s)) return s.replace(/\./g,'/');
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)){const[y,m,d]=s.split('-');return d+'/'+m+'/'+y;}
+  return s;
+}
+function dateTs(s){
+  const p=s.replace(/\./g,'/').split('/');
+  return p.length===3?new Date(+p[2],+p[1]-1,+p[0]).getTime():0;
+}
+function sortHist(arr){return [...arr].sort((a,b)=>dateTs(a.date)-dateTs(b.date));}
+
+// ── Storage ───────────────────────────────────────────────────────────────────
+function loadHist(){try{const h=localStorage.getItem(STORAGE_KEY);return h?JSON.parse(h):[]}catch{return[]}}
+function saveHist(h){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(h))}catch(e){console.warn(e)}}
+function addRecord(rec){
+  const h=loadHist();
+  const idx=h.findIndex(r=>r.date===rec.date);
+  if(idx>=0)h[idx]=rec;else h.push(rec);
+  const sorted=sortHist(h);
+  saveHist(sorted);
+  return sorted;
+}
+
+// ── Cell helpers ──────────────────────────────────────────────────────────────
+function cv(ws,c,r){const cell=ws[XLSX.utils.encode_cell({c:c-1,r:r-1})];return cell?cell.v:null}
+function cn(ws,c,r){const v=cv(ws,c,r);return typeof v==='number'?v:parseFloat(v)||0}
+function cs(ws,c,r){const v=cv(ws,c,r);return v!=null?String(v).trim():''}
+
+// ── Extract data from workbook ─────────────────────────────────────────────────
+function extract(wb){
+  const names=wb.SheetNames;
+  const dName=names.find(n=>n.trim().toUpperCase()==='DAYS'||n.trim().toUpperCase()==='DAYS ');
+  const lName=names.find(n=>n.trim().toUpperCase()==='LATES');
+  if(!dName||!lName) throw new Error('Could not find DAYS and LATES sheets. Found: '+names.join(', '));
+  const dWs=wb.Sheets[dName], lWs=wb.Sheets[lName];
+
+  const date=normDate(cv(dWs,3,7));
+  const dayOEE=cn(dWs,7,3), dayAvail=cn(dWs,4,3), dayPerf=cn(dWs,6,3);
+  const dayQual=dayAvail*dayPerf>0?dayOEE/(dayAvail*dayPerf):1;
+  const dayOut=cn(dWs,11,8), dayTheo=cn(dWs,15,8)||cn(dWs,24,8);
+  const lateOEE=cn(lWs,7,3), lateAvail=cn(lWs,4,3), latePerf=cn(lWs,6,3);
+  const lateQual=lateAvail*latePerf>0?lateOEE/(lateAvail*latePerf):1;
+  const lateOut=cn(lWs,11,8), lateTheo=cn(lWs,15,8)||cn(lWs,24,8);
+
+  const mach={};
+  function scan(ws,shift,mr){
+    for(let r=10;r<=mr;r++){
+      if(cs(ws,3,r).toUpperCase()!=='Y') continue;
+      const mac=cs(ws,2,r); if(!mac||mac.toUpperCase().includes('NOT REQUIRED')) continue;
+      const intended=cn(ws,8,r),downtime=cn(ws,9,r),count=cn(ws,11,r);
+      const scrap=cn(ws,12,r),reason=cs(ws,14,r),run=cn(ws,16,r);
+      const theoAct=cn(ws,24,r),theoInt=cn(ws,15,r);
+      if(!mach[mac]) mach[mac]={
+        day:{count:0,good:0,theoAct:0,theoInt:0,intended:0,run:0,issues:[]},
+        late:{count:0,good:0,theoAct:0,theoInt:0,intended:0,run:0,issues:[]}
+      };
+      const s=mach[mac][shift];
+      s.count+=count; s.good+=count-scrap; s.theoAct+=theoAct; s.theoInt+=theoInt;
+      s.intended+=intended; s.run+=run;
+      if(downtime>0||reason) s.issues.push({machine:mac,reason,downtime,mins:Math.round(downtime*60),shift});
+    }
+  }
+  scan(dWs,'day',51); scan(lWs,'late',49);
+
+  const machOEE={},machAvail={},machPerf={},machTarget={};
+  Object.keys(mach).forEach(m=>{
+    function calc(s){
+      if(!s.intended) return null;
+      const av=s.run/s.intended, pf=s.theoAct>0?s.count/s.theoAct:0, ql=s.count>0?s.good/s.count:1;
+      return{oee:round4(av*pf*ql),avail:round4(av),perf:round4(pf)};
+    }
+    const dr=calc(mach[m].day), lr=calc(mach[m].late);
+    machOEE[m]=[dr?dr.oee:null, lr?lr.oee:null];
+    machAvail[m]=[dr?dr.avail:null, lr?lr.avail:null];
+    machPerf[m]=[dr?dr.perf:null, lr?lr.perf:null];
+    machTarget[m]=[mach[m].day.theoInt?Math.round(mach[m].day.theoInt):null,
+                   mach[m].late.theoInt?Math.round(mach[m].late.theoInt):null];
+  });
+
+  const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
+  allIssues.forEach(i=>{
+    const r=(i.reason||'').toLowerCase();
+    if(r.includes('batch')||r.includes('scrape')||r.includes('packet')||r.includes('material')||r.includes('dropping')){i.cat='Waiting for Batch/Material';i.imp='hi'}
+    else if(r.includes('heater')||r.includes('printer')||r.includes('label')){i.cat='Equipment Failure';i.imp='hi'}
+    else if(r.includes('changeover')||r.includes('set up')||r.includes('change film')){i.cat='Changeover / Setup';i.imp='lo'}
+    else if(r.includes('person')||r.includes('staff')){i.cat='Understaffing';i.imp='med'}
+    else{i.cat='Other';i.imp='med'}
+  });
+  const catMins={};
+  allIssues.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+  let cum=0; const tot=Object.values(catMins).reduce((a,v)=>a+v,0);
+  const pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>{cum+=v;return{cat:k,mins:v,cum:tot>0?Math.round(cum/tot*100):0}});
+  const dtLog=allIssues.sort((a,b)=>b.mins-a.mins);
+  const totalDT=round2(dtLog.reduce((a,i)=>a+i.downtime,0));
+  const topIssue=pareto.length?pareto[0].cat:'—';
+  const machines=Object.keys(mach).sort();
+
+  return{date,dayOEE:round4(dayOEE),lateOEE:round4(lateOEE),
+    dayAvail:round4(dayAvail),lateAvail:round4(lateAvail),
+    dayPerf:round4(dayPerf),latePerf:round4(latePerf),
+    dayQual:round4(dayQual),lateQual:round4(lateQual),
+    dayOut:Math.round(dayOut),lateOut:Math.round(lateOut),
+    dayTheo:Math.round(dayTheo),lateTheo:Math.round(lateTheo),
+    totalDT,topIssue,pareto,dtLog,machines,
+    machOEE,machAvail,machPerf,machTarget};
+}
+function round4(v){return Math.round(v*10000)/10000}
+function round2(v){return Math.round(v*100)/100}
+
+// ── File handling ─────────────────────────────────────────────────────────────
+const dz=document.getElementById('dropzone');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');loadFiles(e.dataTransfer.files)});
+document.getElementById('fi1').addEventListener('change',e=>{loadFiles(e.target.files);e.target.value=''});
+document.getElementById('fi2').addEventListener('change',e=>{loadFiles(e.target.files);e.target.value=''});
+document.getElementById('fi3').addEventListener('change',e=>{importHistoryFile(e.target);e.target.value=''});
+
+function loadFiles(files){
+  const arr=Array.from(files);
+  if(!arr.length) return;
+  let idx=0, lastData=null, errors=[];
+  function next(){
+    if(idx>=arr.length){
+      if(lastData){
+        const h=loadHist();
+        buildDashboard(lastData,h);
+      }
+      if(errors.length) alert('Could not read:\n'+errors.join('\n'));
+      updateDropHint();
+      return;
+    }
+    const file=arr[idx++];
+    if(arr.length>1){
+      const hint=document.getElementById('history-hint');
+      hint.innerHTML=`<div class="history-pill">Processing ${idx} of ${arr.length}: ${file.name}</div>`;
+    }
+    const reader=new FileReader();
+    reader.onload=e=>{
+      try{
+        const wb=XLSX.read(e.target.result,{type:'array',cellDates:true});
+        const data=extract(wb);
+        addRecord(data);
+        lastData=data;
+      }catch(err){errors.push(file.name+': '+err.message)}
+      next();
+    };
+    reader.onerror=()=>{errors.push(file.name+': read error');next()};
+    reader.readAsArrayBuffer(file);
+  }
+  next();
+}
+
+// ── Build dashboard ───────────────────────────────────────────────────────────
+function buildDashboard(data,hist){
+  CUR=data;
+  document.getElementById('dropzone').style.display='none';
+  document.getElementById('shell').style.display='flex';
+  document.getElementById('hdr-date').textContent=data.date;
+  document.getElementById('err-box').style.display='none';
+  document.getElementById('trend-count').textContent=hist.length;
+  buildKPIs(data);
+  buildDonuts(data);
+  buildMachTable(data);
+  buildBarCharts(data);
+  buildPareto(data);
+  buildDTLog(data);
+  buildObs(data);
+  buildTrends(hist);
+  populateMacSelect();
+  populateGlobalMacFilter(data.machines);
+  updateDropHint();
+}
+
+function showShellFromHist(){
+  const hist=loadHist();
+  if(!hist.length) return;
+  const latest=hist[hist.length-1];
+  buildDashboard(latest,hist);
+  showPanel('trends',document.querySelector('#btn-trends')||document.querySelectorAll('.nb')[3]);
+}
+function updateDropHint(){
+  const hist=loadHist();
+  const el=document.getElementById('history-hint');
+  if(hist.length>0){
+    el.innerHTML=`<div class="history-pill" onclick="showShellFromHist()"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>${hist.length} day${hist.length>1?'s':''} in history — view trends</div>`;
+  }else{el.innerHTML='';}
+}
+updateDropHint();
+
+// ── Auto-load from OneDrive ───────────────────────────────────────────────────
+const ONEDRIVE_URL = "https://oeespreadsheet1876.github.io/oee-dashboard/OEE_history.json";
+
+async function autoLoadFromOneDrive(){
+  const statusEl = document.getElementById('load-status');
+  try {
+    statusEl.textContent = 'Loading latest data from OneDrive...';
+    const resp = await fetch(ONEDRIVE_URL, {cache:'no-store'});
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    const imported = await resp.json();
+    if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data format');
+    // Merge with any local data - OneDrive always wins for matching dates
+    const local = loadHist();
+    const oneDriveDates = new Set(imported.map(r=>r.date));
+    const merged = sortHist([...imported, ...local.filter(r=>!oneDriveDates.has(r.date))]);
+    saveHist(merged);
+    statusEl.textContent = `✓ Loaded ${merged.length} days of data · ${merged[0].date} – ${merged[merged.length-1].date}`;
+    // Show dashboard with latest data
+    setTimeout(()=>{
+      const latest = merged[merged.length-1];
+      buildDashboard(latest, merged);
+    }, 800);
+  } catch(err) {
+    console.warn('OneDrive auto-load failed:', err.message);
+    // Fall back to local history or show drop zone
+    const local = loadHist();
+    if(local.length > 0){
+      statusEl.textContent = `OneDrive unavailable — showing ${local.length} days from local history`;
+      setTimeout(()=>{
+        const latest = local[local.length-1];
+        buildDashboard(latest, local);
+      }, 800);
+    } else {
+      statusEl.textContent = 'Could not load from OneDrive. Drop a file below to get started.';
+      document.getElementById('drop-area').style.display = 'flex';
+    }
+  }
+}
+
+// Run auto-load on startup
+autoLoadFromOneDrive();
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+function showPanel(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function pct(v){return v!=null?Math.round(v*100)+'%':'—'}
+function n100(v){return v!=null?Math.round(v*100):null}
+const scX={ticks:{color:'#7a8aaa',font:{size:9}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}};
+const scY={ticks:{color:'#7a8aaa',callback:v=>v+'%'},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}};
+function mkCh(id,type,data,opts,plugins){
+  if(CH[id]) CH[id].destroy();
+  CH[id]=new Chart(document.getElementById(id),{type,data,options:{responsive:true,maintainAspectRatio:false,...opts},plugins:plugins||[]});
+  return CH[id];
+}
+function tgtLine(val,color,label){
+  return{afterDraw(ch){
+    const{ctx,chartArea:{left,right},scales:{y}}=ch;
+    const yp=y.getPixelForValue(val);
+    ctx.save();
+    ctx.strokeStyle=color||RED;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    if(label){
+      ctx.setLineDash([]);
+      ctx.font='10px DM Sans,sans-serif';
+      ctx.fillStyle=color||RED;
+      ctx.textAlign='right';
+      ctx.fillText(label,right-4,yp-4);
+    }
+    ctx.restore();
+  }};
+}
+
+// ── KPIs ──────────────────────────────────────────────────────────────────────
+function buildKPIs(d){
+  const dayVT=d.dayTheo?Math.round(d.dayOut/d.dayTheo*100):null;
+  const lateVT=d.lateTheo?Math.round(d.lateOut/d.lateTheo*100):null;
+  const ks=[
+    {l:'Day OEE',v:pct(d.dayOEE),c:d.dayOEE>=.85?'green':d.dayOEE>=.65?'amber':'red',s:'target 85%'},
+    {l:'Late OEE',v:pct(d.lateOEE),c:d.lateOEE>=.85?'green':d.lateOEE>=.65?'amber':'red',s:'target 85%'},
+    {l:'Day vs theoretical',v:dayVT!=null?dayVT+'%':'—',c:dayVT>=85?'green':dayVT>=65?'amber':'red',s:d.dayTheo?('actual '+d.dayOut.toLocaleString()+' / theoretical '+d.dayTheo.toLocaleString()):''},
+    {l:'Late vs theoretical',v:lateVT!=null?lateVT+'%':'—',c:lateVT>=85?'green':lateVT>=65?'amber':'red',s:d.lateTheo?('actual '+d.lateOut.toLocaleString()+' / theoretical '+d.lateTheo.toLocaleString()):''},
+    {l:'Total downtime',v:d.totalDT.toFixed(1)+'h',c:d.totalDT>10?'red':'amber',s:Math.round(d.totalDT*60)+' mins'},
+  ];
+  document.getElementById('kpi-grid').innerHTML=ks.map(k=>
+    `<div class="kpi"><div class="kl">${k.l}</div><div class="kv ${k.c}" style="font-size:${String(k.v).length>7?'15px':'22px'}">${k.v}</div><div class="ks">${k.s}</div></div>`
+  ).join('');
+}
+
+// ── Donuts ────────────────────────────────────────────────────────────────────
+function buildDonuts(d){
+  function donut(id,a,p,q){
+    mkCh(id,'doughnut',{labels:['Availability','Performance','Quality','Lost'],
+      datasets:[{data:[n100(a),n100(p),n100(q),Math.max(0,100-Math.round(a*p*q*100))],
+        backgroundColor:[BLUE,GREEN,ORANGE,'#2a3550'],borderWidth:0}]},
+      {cutout:'68%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed}%`}}}});
+  }
+  donut('c-day',d.dayAvail,d.dayPerf,d.dayQual||1);
+  donut('c-late',d.lateAvail,d.latePerf,d.lateQual||1);
+}
+
+// ── Machine table ─────────────────────────────────────────────────────────────
+function buildMachTable(d){
+  document.getElementById('mach-tbl').innerHTML=d.machines.map(m=>{
+    const[dd,ld]=d.machOEE[m]||[null,null];
+    const worst=Math.min(dd??1,ld??1);
+    const[cls,lbl]=worst>=.85?['ok','On target']:worst>=.65?['med','Review']:['hi','Action'];
+    return `<tr><td style="font-weight:500;font-family:var(--mono);font-size:10px">${m}</td>
+      <td><div class="bc"><div class="mb" style="width:${dd?Math.min(n100(dd),150)*.6:0}px;background:${BLUE}"></div><span style="font-family:var(--mono);font-size:10px">${pct(dd)}</span></div></td>
+      <td><div class="bc"><div class="mb" style="width:${ld?Math.min(n100(ld),150)*.6:0}px;background:${GREEN}"></div><span style="font-family:var(--mono);font-size:10px">${pct(ld)}</span></div></td>
+      <td><span class="badge ${cls}">${lbl}</span></td></tr>`;
+  }).join('');
+}
+
+// ── Bar charts (OEE Report) ───────────────────────────────────────────────────
+function buildBarCharts(d){
+  const macs = filteredMachines(d);
+  function bar(id,dayD,lateD,max,tgt,tgtLabel){
+    mkCh(id,'bar',{labels:macs,datasets:[
+      {label:'Day',data:dayD.map(n100),backgroundColor:BLUE,borderSkipped:false,borderRadius:3},
+      {label:'Late',data:lateD.map(n100),backgroundColor:GREEN,borderSkipped:false,borderRadius:3},
+    ]},{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y!=null?c.parsed.y+'%':'N/A'}`}}},
+      scales:{x:{...scX},y:{...scY,min:0,max:max}}},[tgtLine(tgt,RED,tgtLabel||'World class (85%)')]);
+  }
+  bar('c-oee', macs.map(m=>(d.machOEE[m]||[])[0]),  macs.map(m=>(d.machOEE[m]||[])[1]),  175,85);
+  bar('c-avail',macs.map(m=>(d.machAvail[m]||[])[0]),macs.map(m=>(d.machAvail[m]||[])[1]),115,85);
+  bar('c-perf', macs.map(m=>(d.machPerf[m]||[])[0]), macs.map(m=>(d.machPerf[m]||[])[1]), 175,100,'World class (100%)');
+  // Update machine table highlight
+  document.querySelectorAll('#mach-tbl tr').forEach(row=>{
+    const mac = row.querySelector('td')?.textContent?.trim();
+    row.style.opacity = (!FILTER_MAC || mac === FILTER_MAC) ? '1' : '0.3';
+  });
+}
+
+// ── Pareto ────────────────────────────────────────────────────────────────────
+function buildPareto(d){
+  // Recompute pareto filtered by machine if needed
+  let pareto = d.pareto;
+  let dtLogFiltered = d.dtLog;
+  if(FILTER_MAC){
+    dtLogFiltered = d.dtLog.filter(i=>i.machine===FILTER_MAC);
+    const catMins={};
+    dtLogFiltered.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+    let cum2=0; const tot2=Object.values(catMins).reduce((a,v)=>a+v,0);
+    pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
+      .map(([k,v])=>{cum2+=v;return{cat:k,mins:v,cum:tot2>0?Math.round(cum2/tot2*100):0}});
+  }
+  const labels=pareto.map(p=>p.cat), mins=pareto.map(p=>p.mins), cums=pareto.map(p=>p.cum);
+  mkCh('c-pareto','bar',{labels,datasets:[
+    {label:'Mins',data:mins,backgroundColor:ORANGE,borderRadius:3,borderSkipped:false,yAxisID:'y'},
+    {label:'Cum%',data:cums,type:'line',borderColor:BLUE,borderWidth:2,pointBackgroundColor:BLUE,pointRadius:4,tension:0,yAxisID:'y2'},
+  ]},{plugins:{legend:{display:false}},
+    scales:{x:{...scX,ticks:{...scX.ticks,maxRotation:30}},
+      y:{min:0,ticks:{color:'#7a8aaa'},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}},
+      y2:{min:0,max:100,position:'right',ticks:{color:'#7a8aaa',callback:v=>v+'%'},grid:{display:false},border:{display:false}}}});
+
+  const maxM=Math.max(...d.machines.map(m=>Math.max((d.machOEE[m]||[]).reduce((a,v,i)=>{const t=((d.machTarget[m]||[])[i]||0);return Math.max(a,t)},0))))*1.15||100;
+  mkCh('c-machdt','bar',{labels:d.machines,datasets:[
+    {label:'Day',data:d.machines.map(m=>d.machDayMins?.[m]||0),backgroundColor:BLUE,borderRadius:3,borderSkipped:false},
+    {label:'Late',data:d.machines.map(m=>d.machLateMins?.[m]||0),backgroundColor:GREEN,borderRadius:3,borderSkipped:false},
+  ]},{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} mins`}}},
+    scales:{x:{...scX},y:{min:0,ticks:{color:'#7a8aaa'},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}}}}); 
+
+  // machine downtime mins per machine
+  d.machDayMins={};d.machLateMins={};
+  d.dtLog.forEach(i=>{
+    if(i.shift==='day'){d.machDayMins[i.machine]=(d.machDayMins[i.machine]||0)+i.mins;}
+    else{d.machLateMins[i.machine]=(d.machLateMins[i.machine]||0)+i.mins;}
+  });
+  const macsDT = filteredMachines(d);
+  mkCh('c-machdt','bar',{labels:macsDT,datasets:[
+    {label:'Day',data:macsDT.map(m=>d.machDayMins[m]||0),backgroundColor:BLUE,borderRadius:3,borderSkipped:false},
+    {label:'Late',data:macsDT.map(m=>d.machLateMins[m]||0),backgroundColor:GREEN,borderRadius:3,borderSkipped:false},
+  ]},{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y} mins`}}},
+    scales:{x:{...scX},y:{min:0,ticks:{color:'#7a8aaa'},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}}}}); 
+}
+
+// ── DT log ────────────────────────────────────────────────────────────────────
+function buildDTLog(d){
+  const il={hi:'HIGH',med:'MED',lo:'LOW'};
+  const log = FILTER_MAC ? d.dtLog.filter(i=>i.machine===FILTER_MAC) : d.dtLog;
+  document.getElementById('dt-log').innerHTML=log.map(i=>
+    `<tr><td style="color:var(--muted);font-size:10px">${i.shift==='day'?'Day':'Late'}</td>
+    <td style="font-weight:500;font-family:var(--mono);font-size:10px">${i.machine}</td>
+    <td style="font-size:10px">${i.reason||'—'}</td>
+    <td style="font-family:var(--mono);font-size:10px">${i.downtime.toFixed(2)}</td>
+    <td style="font-family:var(--mono);font-size:10px">${i.mins}</td>
+    <td style="font-size:10px;color:var(--muted)">${i.cat}</td>
+    <td><span class="badge ${i.imp}">${il[i.imp]}</span></td></tr>`
+  ).join('');
+}
+
+// ── Observations ──────────────────────────────────────────────────────────────
+function buildObs(d){
+  const obs=[];
+  const pareto = FILTER_MAC ? (()=>{
+    const catMins={};
+    d.dtLog.filter(i=>i.machine===FILTER_MAC).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+    let c=0; const t=Object.values(catMins).reduce((a,v)=>a+v,0);
+    return Object.entries(catMins).sort((a,b)=>b[1]-a[1]).map(([k,v])=>{c+=v;return{cat:k,mins:v,cum:t>0?Math.round(c/t*100):0}});
+  })() : d.pareto;
+  if(pareto.length) obs.push([pareto[0].cat,`${d.pareto[0].mins} mins (${d.pareto[0].cum}% of total). Largest contributor. Action: review scheduling and setup for this category.`]);
+  const filtLog = FILTER_MAC ? d.dtLog.filter(i=>i.machine===FILTER_MAC) : d.dtLog;
+  const eq=filtLog.filter(i=>i.cat==='Equipment Failure');
+  if(eq.length) obs.push(['Equipment failure',`${eq.reduce((a,i)=>a+i.mins,0)} mins on ${[...new Set(eq.map(i=>i.machine))].join(', ')}. Action: raise PM jobs.`]);
+  const us=filtLog.filter(i=>i.cat==='Understaffing');
+  if(us.length) obs.push(['Understaffing',[...new Set(us.map(i=>i.machine))].join(', ')+' reported understaffing. Confirm minimum staffing before shift start.']);
+  const macs4obs = filteredMachines(d);
+  const over=macs4obs.filter(m=>(d.machOEE[m]||[]).some(v=>v>1));
+  if(over.length) obs.push(['OEE >100%',`${over.join(', ')} exceeded 100%. Theoretical rate may be too conservative — review standard rates.`]);
+  document.getElementById('obs-box').innerHTML=obs.map(([t,dt],i)=>
+    `<div class="obs-item"><div class="onum">${i+1}</div><div><div class="otitle">${t}</div><div class="odet">${dt}</div></div></div>`
+  ).join('')||'<div style="padding:12px;color:var(--muted);font-size:12px">No significant issues detected.</div>';
+}
+
+// ── Trends ────────────────────────────────────────────────────────────────────
+function mkLine(id,labels,datasets,yFmt,max){
+  const fixedDs=datasets.map(ds=>{
+    const d={...ds,spanGaps:true};
+    if(ds.segment){} // already fixed
+    else if(ds.borderDash){delete d.borderDash;d.segment={borderDash:ds.borderDash};}
+    return d;
+  });
+  mkCh(id,'line',{labels,datasets:fixedDs},{
+    spanGaps:true,
+    plugins:{legend:{display:datasets.length>1,position:'bottom',labels:{color:'#7a8aaa',font:{size:10},boxWidth:10,usePointStyle:true}}},
+    scales:{
+      x:{...scX,ticks:{...scX.ticks,maxRotation:35}},
+      y:{min:0,...(max?{max}:{}),ticks:{color:'#7a8aaa',callback:v=>yFmt?v+yFmt:v},grid:{color:'rgba(255,255,255,.04)'},border:{color:'rgba(255,255,255,.08)'}}
+    }});
+}
+
+function buildTrends(hist){
+  const sorted=sortHist(hist);
+  const empty=document.getElementById('trends-empty');
+  const content=document.getElementById('trends-content');
+  document.getElementById('trend-count').textContent=sorted.length;
+  if(sorted.length<1){empty.style.display='block';content.style.display='none';return;}
+  empty.style.display='none';content.style.display='block';
+  document.getElementById('trend-sub').textContent=
+    `${sorted.length} day${sorted.length>1?'s':''} · ${sorted[0].date} – ${sorted[sorted.length-1].date}`;
+
+  const labels=sorted.map(h=>h.date);
+  mkLine('c-t-oee',labels,[
+    {label:'Day OEE',data:sorted.map(h=>Math.round(h.dayOEE*100)),borderColor:BLUE,backgroundColor:'rgba(74,158,255,.1)',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+    {label:'Late OEE',data:sorted.map(h=>Math.round(h.lateOEE*100)),borderColor:GREEN,backgroundColor:'rgba(62,207,142,.08)',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+    {label:'World class (85%)',data:sorted.map(()=>85),borderColor:RED,borderWidth:1,pointRadius:0,tension:0,segment:{borderDash:[5,4]}},
+  ],'%',170);
+
+  mkLine('c-t-output',labels,[
+    {label:'Day output',data:sorted.map(h=>h.dayOut),borderColor:BLUE,tension:.3,pointRadius:3,borderWidth:2},
+    {label:'Late output',data:sorted.map(h=>h.lateOut),borderColor:GREEN,tension:.3,pointRadius:3,borderWidth:2},
+    {label:'Day theoretical (100%)',data:sorted.map(h=>h.dayTheo||null),borderColor:AMBER,borderWidth:1.5,pointRadius:2,tension:.3,segment:{borderDash:[5,4]}},
+    {label:'Late theoretical (100%)',data:sorted.map(h=>h.lateTheo||null),borderColor:ORANGE,borderWidth:1.5,pointRadius:2,tension:.3,segment:{borderDash:[5,4]}},
+  ],'');
+
+  mkLine('c-t-dt',labels,[
+    {label:'Downtime',data:sorted.map(h=>parseFloat(h.totalDT.toFixed(1))),borderColor:ORANGE,backgroundColor:'rgba(237,125,49,.1)',fill:true,tension:.3,pointRadius:3,borderWidth:2},
+  ],'h');
+
+  mkLine('c-t-avail',labels,[
+    {label:'Day avail',data:sorted.map(h=>Math.round(h.dayAvail*100)),borderColor:BLUE,tension:.3,pointRadius:3,borderWidth:2},
+    {label:'Late avail',data:sorted.map(h=>Math.round(h.lateAvail*100)),borderColor:GREEN,tension:.3,pointRadius:3,borderWidth:2},
+  ],'%',110);
+
+  // History table (newest first)
+  document.getElementById('hist-tbl').innerHTML=sorted.slice().reverse().map(h=>{
+    const cur=CUR&&h.date===CUR.date;
+    return `<tr class="${cur?'current':''}">
+      <td style="font-family:var(--mono);font-size:10px">${h.date}${cur?' ◀':''}</td>
+      <td style="color:${h.dayOEE>=.85?GREEN:h.dayOEE>=.65?AMBER:RED};font-family:var(--mono)">${Math.round(h.dayOEE*100)}%</td>
+      <td style="color:${h.lateOEE>=.85?GREEN:h.lateOEE>=.65?AMBER:RED};font-family:var(--mono)">${Math.round(h.lateOEE*100)}%</td>
+      <td style="font-family:var(--mono)">${h.dayOut.toLocaleString()}</td>
+      <td style="font-family:var(--mono)">${h.lateOut.toLocaleString()}</td>
+      <td style="font-family:var(--mono);color:var(--muted)">${h.dayTheo?h.dayTheo.toLocaleString():'—'}</td>
+      <td style="font-family:var(--mono);color:var(--muted)">${h.lateTheo?h.lateTheo.toLocaleString():'—'}</td>
+      <td style="color:${h.totalDT>10?RED:h.totalDT>6?AMBER:GREEN};font-family:var(--mono)">${h.totalDT.toFixed(1)}h</td>
+      <td style="font-size:10px;color:var(--muted)">${(h.topIssue||'—').split('/')[0].trim()}</td>
+      <td><button class="del-btn" onclick="delEntry('${h.date}')" title="Remove">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Machine trends ────────────────────────────────────────────────────────────
+function populateMacSelect(){
+  const hist=loadHist();
+  const present=new Set();
+  hist.forEach(h=>{if(h.machOEE) Object.keys(h.machOEE).forEach(m=>present.add(m))});
+  const sel=document.getElementById('mac-sel');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">— select —</option>';
+  ALL_MACHINES.filter(m=>present.has(m)).forEach(m=>{
+    const o=document.createElement('option');
+    o.value=m;o.textContent=m;if(m===cur)o.selected=true;
+    sel.appendChild(o);
+  });
+}
+
+function buildMachineTrends(){
+  const mac=document.getElementById('mac-sel').value;
+  const empty=document.getElementById('mt-empty');
+  const content=document.getElementById('mt-content');
+  if(!mac){empty.style.display='block';content.style.display='none';return;}
+  const hist=sortHist(loadHist());
+  const rows=hist.filter(h=>h.machOEE&&h.machOEE[mac]);
+  if(!rows.length){empty.style.display='block';empty.textContent=`No data for ${mac}.`;content.style.display='none';return;}
+  empty.style.display='none';content.style.display='block';
+
+  document.getElementById('mtrend-sub').textContent=`${mac} · ${rows.length} day${rows.length>1?'s':''} · ${rows[0].date} – ${rows[rows.length-1].date}`;
+  document.getElementById('mt-oee-title').firstChild.textContent=`${mac} — OEE trend`;
+  document.getElementById('mt-avail-title').firstChild.textContent=`${mac} — Availability trend`;
+  document.getElementById('mt-perf-title').firstChild.textContent=`${mac} — Performance trend`;
+  document.getElementById('mt-out-title').firstChild.textContent=`${mac} — Output vs theoretical (100%)`;
+
+  const labels=rows.map(h=>h.date);
+  const get=(h,obj,i)=>h[obj]&&h[obj][mac]&&h[obj][mac][i]!=null?Math.round(h[obj][mac][i]*100):null;
+
+  const dayOEE=rows.map(h=>get(h,'machOEE',0));
+  const lateOEE=rows.map(h=>get(h,'machOEE',1));
+  const dayAvail=rows.map(h=>get(h,'machAvail',0));
+  const lateAvail=rows.map(h=>get(h,'machAvail',1));
+  const dayPerf=rows.map(h=>get(h,'machPerf',0));
+  const latePerf=rows.map(h=>get(h,'machPerf',1));
+  const dayTgt=rows.map(h=>h.machTarget&&h.machTarget[mac]?h.machTarget[mac][0]:null);
+  const lateTgt=rows.map(h=>h.machTarget&&h.machTarget[mac]?h.machTarget[mac][1]:null);
+  const dayAct=rows.map((h,i)=>{const o=dayOEE[i],t=dayTgt[i];return o!=null&&t?Math.round(o/100*t):null});
+  const lateAct=rows.map((h,i)=>{const o=lateOEE[i],t=lateTgt[i];return o!=null&&t?Math.round(o/100*t):null});
+
+  // KPI summary
+  const vd=dayOEE.filter(v=>v!=null), vl=lateOEE.filter(v=>v!=null);
+  const kpis=[
+    {l:'Avg day OEE',v:vd.length?Math.round(vd.reduce((a,b)=>a+b,0)/vd.length)+'%':'—',c:'blue'},
+    {l:'Avg late OEE',v:vl.length?Math.round(vl.reduce((a,b)=>a+b,0)/vl.length)+'%':'—',c:'green'},
+    {l:'Best day',v:vd.length?Math.max(...vd)+'%':'—',c:'green'},
+    {l:'Worst day',v:vd.length?Math.min(...vd)+'%':'—',c:vd.length&&Math.min(...vd)<65?'red':'amber'},
+    {l:'On target',v:(vd.length+vl.length)?Math.round((dayOEE.filter(v=>v!=null&&v>=85).length+lateOEE.filter(v=>v!=null&&v>=85).length)/(vd.length+vl.length)*100)+'%':'—',c:'blue'},
+    {l:'Days of data',v:rows.length,c:'blue'},
+  ];
+  document.getElementById('mt-kpis').innerHTML=kpis.map(k=>
+    `<div class="kpi"><div class="kl">${k.l}</div><div class="kv ${k.c}" style="font-size:20px">${k.v}</div></div>`
+  ).join('');
+
+  mkLine('c-mt-oee',labels,[
+    {label:'Day',data:dayOEE,borderColor:BLUE,backgroundColor:'rgba(74,158,255,.1)',fill:true,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'Late',data:lateOEE,borderColor:GREEN,backgroundColor:'rgba(62,207,142,.08)',fill:true,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'World class (85%)',data:rows.map(()=>85),borderColor:RED,borderWidth:1,pointRadius:0,segment:{borderDash:[5,4]}},
+  ],'%',170);
+  mkLine('c-mt-avail',labels,[
+    {label:'Day',data:dayAvail,borderColor:BLUE,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'Late',data:lateAvail,borderColor:GREEN,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'World class (85%)',data:rows.map(()=>85),borderColor:RED,borderWidth:1,pointRadius:0,segment:{borderDash:[5,4]}},
+  ],'%',110);
+  mkLine('c-mt-perf',labels,[
+    {label:'Day',data:dayPerf,borderColor:BLUE,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'Late',data:latePerf,borderColor:GREEN,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'World class (100%)',data:rows.map(()=>100),borderColor:RED,borderWidth:1,pointRadius:0,segment:{borderDash:[5,4]}},
+  ],'%',170);
+  mkLine('c-mt-out',labels,[
+    {label:'Day actual',data:dayAct,borderColor:BLUE,backgroundColor:'rgba(74,158,255,.08)',fill:true,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'Late actual',data:lateAct,borderColor:GREEN,backgroundColor:'rgba(62,207,142,.06)',fill:true,tension:.3,pointRadius:4,borderWidth:2},
+    {label:'Day theoretical (100%)',data:dayTgt,borderColor:AMBER,borderWidth:1.5,pointRadius:3,tension:.3,segment:{borderDash:[5,4]}},
+    {label:'Late theoretical (100%)',data:lateTgt,borderColor:ORANGE,borderWidth:1.5,pointRadius:3,tension:.3,segment:{borderDash:[5,4]}},
+  ],'');
+
+  // Table
+  document.getElementById('mt-tbl').innerHTML=rows.slice().reverse().map((h,ri)=>{
+    const d0=dayOEE[rows.length-1-ri], d1=lateOEE[rows.length-1-ri];
+    const worst=Math.min(d0??100,d1??100);
+    const[cls,lbl]=worst>=85?['ok','On target']:worst>=65?['med','Review']:['hi','Action'];
+    const fmt=v=>v!=null?v+'%':'—';
+    const tgt=dayTgt[rows.length-1-ri];
+    const act=dayAct[rows.length-1-ri];
+    return `<tr>
+      <td style="font-family:var(--mono);font-size:10px">${h.date}</td>
+      <td style="color:${d0!=null?d0>=85?GREEN:d0>=65?AMBER:RED:'#7a8aaa'};font-family:var(--mono)">${fmt(d0)}</td>
+      <td style="color:${d1!=null?d1>=85?GREEN:d1>=65?AMBER:RED:'#7a8aaa'};font-family:var(--mono)">${fmt(d1)}</td>
+      <td style="font-family:var(--mono)">${fmt(dayAvail[rows.length-1-ri])}</td>
+      <td style="font-family:var(--mono)">${fmt(lateAvail[rows.length-1-ri])}</td>
+      <td style="font-family:var(--mono)">${fmt(dayPerf[rows.length-1-ri])}</td>
+      <td style="font-family:var(--mono)">${fmt(latePerf[rows.length-1-ri])}</td>
+      <td style="font-family:var(--mono)">${act!=null?act.toLocaleString():'—'}</td>
+      <td style="font-family:var(--mono);color:var(--muted)">${tgt!=null?tgt.toLocaleString():'—'}</td>
+      <td><span class="badge ${cls}">${lbl}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── History management ────────────────────────────────────────────────────────
+function delEntry(date){
+  const h=loadHist().filter(r=>r.date!==date);
+  saveHist(h);
+  document.getElementById('trend-count').textContent=h.length;
+  buildTrends(h);
+  populateMacSelect();
+}
+function clearHistory(){
+  if(!confirm('Clear all saved history? This cannot be undone.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  buildTrends([]);
+  document.getElementById('trend-count').textContent=0;
+  populateMacSelect();
+  updateDropHint();
+}
+function dedupeHistory(){
+  const h=loadHist();
+  const seen=new Set(), deduped=[];
+  h.forEach(r=>{if(!seen.has(r.date)){seen.add(r.date);deduped.push(r);}});
+  const removed=h.length-deduped.length;
+  if(!removed){alert('No duplicates found.');return;}
+  saveHist(sortHist(deduped));
+  buildTrends(deduped);
+  document.getElementById('trend-count').textContent=deduped.length;
+  populateMacSelect();
+  alert(`Removed ${removed} duplicate${removed>1?'s':''}. ${deduped.length} records remain.`);
+}
+function refreshFromOneDrive(){
+  const btn = document.querySelector('.hdr-btn');
+  btn.textContent = '↻ Refreshing...';
+  fetch(ONEDRIVE_URL, {cache:'no-store'})
+    .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
+    .then(imported=>{
+      if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data');
+      const local = loadHist();
+      const oneDriveDates = new Set(imported.map(r=>r.date));
+      const merged = sortHist([...imported, ...local.filter(r=>!oneDriveDates.has(r.date))]);
+      saveHist(merged);
+      const latest = merged[merged.length-1];
+      buildDashboard(latest, merged);
+      btn.textContent = '↻ Refresh';
+    })
+    .catch(err=>{
+      alert('Could not refresh from OneDrive: '+err.message);
+      btn.textContent = '↻ Refresh';
+    });
+}
+
+function exportHistory(){
+  const h=loadHist();
+  if(!h.length){alert('No history to export.');return;}
+  const blob=new Blob([JSON.stringify(h,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const from=h[0].date.replace(/\//g,'-'), to=h[h.length-1].date.replace(/\//g,'-');
+  a.href=url;a.download=`OEE_history_${from}_to_${to}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+function importHistoryFile(input){
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const imp=JSON.parse(e.target.result);
+      if(!Array.isArray(imp)||!imp[0]?.date) throw new Error('Invalid history file');
+      const existing=loadHist();
+      const existDates=new Set(existing.map(r=>r.date));
+      const merged=sortHist([...existing,...imp.filter(r=>!existDates.has(r.date))]);
+      saveHist(merged);
+      updateDropHint();
+      if(document.getElementById('shell').style.display!=='none') buildTrends(merged);
+      document.getElementById('trend-count').textContent=merged.length;
+      populateMacSelect();
+      alert(`Imported. History now has ${merged.length} records.`);
+    }catch(err){alert('Could not read file: '+err.message);}
+    input.value='';
+  };
+  reader.readAsText(file);
+}
+
+// ── Global machine filter ─────────────────────────────────────────────────────
+let FILTER_MAC = '';
+
+function populateGlobalMacFilter(machines){
+  const sel = document.getElementById('global-mac-sel');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All machines</option>';
+  (machines||ALL_MACHINES).forEach(m=>{
+    const o = document.createElement('option');
+    o.value = m; o.textContent = m;
+    if(m === cur) o.selected = true;
+    sel.appendChild(o);
+  });
+  if(cur && machines && !machines.includes(cur)) sel.value = '';
+  FILTER_MAC = sel.value;
+}
+
+function applyMachineFilter(){
+  FILTER_MAC = document.getElementById('global-mac-sel').value;
+  const lbl = document.getElementById('filter-label');
+  const btn = document.getElementById('clear-filter-btn');
+  if(FILTER_MAC){
+    lbl.textContent = `Showing ${FILTER_MAC} only`;
+    btn.style.display = 'inline-block';
+  } else {
+    lbl.textContent = '';
+    btn.style.display = 'none';
+  }
+  if(CUR) {
+    buildBarCharts(CUR);
+    buildPareto(CUR);
+    buildDTLog(CUR);
+    buildObs(CUR);
+  }
+  // If on Trends tab and a machine is selected, switch to Machine Trends
+  if(FILTER_MAC){
+    const active = document.querySelector('.panel.active');
+    if(active && active.id === 'panel-trends'){
+      // Sync the machine select in Machine Trends tab
+      const macSel = document.getElementById('mac-sel');
+      if(macSel) macSel.value = FILTER_MAC;
+      showPanel('mtrends', document.querySelectorAll('.nb')[4]);
+      buildMachineTrends();
+    }
+  }
+}
+
+function clearMachineFilter(){
+  document.getElementById('global-mac-sel').value = '';
+  applyMachineFilter();
+}
+
+function filteredMachines(d){
+  return FILTER_MAC ? (d.machines.includes(FILTER_MAC)?[FILTER_MAC]:[]) : d.machines;
+}
+</script>
+</body>
+</html>
