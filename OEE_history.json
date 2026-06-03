@@ -1,5 +1,336 @@
 [
   {
+    "date": "02/03/2026",
+    "dayOEE": 0.523,
+    "lateOEE": 0.5051,
+    "dayAvail": 0.7838,
+    "lateAvail": 0.7841,
+    "dayPerf": 0.6673,
+    "latePerf": 0.6442,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 15600,
+    "lateOut": 16169,
+    "dayTheo": 24260,
+    "lateTheo": 25099,
+    "totalDT": 26.25,
+    "topIssue": "Waiting for Batch/Material",
+    "pareto": [
+      {
+        "cat": "Waiting for Batch/Material",
+        "mins": 1200,
+        "cum": 76
+      },
+      {
+        "cat": "Other",
+        "mins": 285,
+        "cum": 94
+      },
+      {
+        "cat": "Equipment Failure",
+        "mins": 60,
+        "cum": 98
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 30,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A007",
+        "reason": "waiting for batch/ waiting for scrape out",
+        "downtime": 5,
+        "mins": 300,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "Run Out Of Batch and Can.t Make one",
+        "downtime": 4.25,
+        "mins": 255,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "WAITING FOR BATCH",
+        "downtime": 3.5,
+        "mins": 210,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A031",
+        "reason": "Waiting for batch",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "waiting for batch",
+        "downtime": 2.5,
+        "mins": 150,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "issues with film / engineer on the line",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A019",
+        "reason": "waiting for film / setting up the line",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A019",
+        "reason": "issues with euroslot",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "WAITING FOR BATCH",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "scrape out",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "cat": "Waiting for Batch/Material",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "labels issues / dispenser issues",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "set up the line",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A004",
+        "reason": "Change Ribbon /Labels",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Equipment Failure",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Change over",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "line didn’t start till 10/",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A031",
+        "reason": "Change over and clean hopper",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "cat": "Other",
+        "imp": "med"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A015",
+      "A019",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.2949,
+        null
+      ],
+      "A004": [
+        0.6293,
+        0.7526
+      ],
+      "A005": [
+        0.4991,
+        0.582
+      ],
+      "A015": [
+        0.7784,
+        0.4542
+      ],
+      "A019": [
+        0.3931,
+        0.5784
+      ],
+      "A008": [
+        0.3802,
+        0.48
+      ],
+      "A006 B": [
+        1.0192,
+        0.6732
+      ],
+      "A031": [
+        null,
+        0.1718
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.3784,
+        null
+      ],
+      "A004": [
+        0.9189,
+        0.9459
+      ],
+      "A005": [
+        1,
+        0.6216
+      ],
+      "A015": [
+        0.7297,
+        0.5405
+      ],
+      "A019": [
+        0.7297,
+        1
+      ],
+      "A008": [
+        0.7297,
+        1
+      ],
+      "A006 B": [
+        1,
+        0.8919
+      ],
+      "A031": [
+        null,
+        0.6757
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.7794,
+        null
+      ],
+      "A004": [
+        0.6848,
+        0.7956
+      ],
+      "A005": [
+        0.4991,
+        0.9362
+      ],
+      "A015": [
+        1.0667,
+        0.8403
+      ],
+      "A019": [
+        0.5387,
+        0.5784
+      ],
+      "A008": [
+        0.5211,
+        0.48
+      ],
+      "A006 B": [
+        1.0192,
+        0.7549
+      ],
+      "A031": [
+        null,
+        0.2542
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        5250,
+        null
+      ],
+      "A004": [
+        6799,
+        6998
+      ],
+      "A005": [
+        1110,
+        690
+      ],
+      "A015": [
+        2025,
+        2299
+      ],
+      "A019": [
+        7351,
+        11100
+      ],
+      "A008": [
+        5700,
+        750
+      ],
+      "A006 B": [
+        1275,
+        827
+      ],
+      "A031": [
+        null,
+        2435
+      ]
+    }
+  },
+  {
     "date": "05/05/2026",
     "dayOEE": 0.6252,
     "lateOEE": 0.5229,
