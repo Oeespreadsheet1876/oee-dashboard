@@ -2,6 +2,36 @@
   {
     "date": "05/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        8496,
+        null
+      ],
+      "A004": [
+        6000,
+        4980
+      ],
+      "A005": [
+        4401,
+        691
+      ],
+      "A009": [
+        528,
+        1216
+      ],
+      "A031": [
+        null,
+        1032
+      ],
+      "A019": [
+        null,
+        300
+      ],
+      "A006 B": [
+        null,
+        904
+      ]
+    },
     "dayOEE": 0.6252,
     "lateOEE": 0.5229,
     "dayAvail": 0.777,
@@ -40,6 +70,7 @@
         "downtime": 4.75,
         "mins": 285,
         "shift": "day",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -50,6 +81,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "day",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -60,6 +92,7 @@
         "downtime": 2.75,
         "mins": 165,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -70,6 +103,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -80,6 +114,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -90,6 +125,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -100,6 +136,7 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -110,9 +147,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 5,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -120,9 +158,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -130,9 +169,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -140,9 +180,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A006 B",
@@ -150,6 +191,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -160,9 +202,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 4,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -298,6 +341,40 @@
   {
     "date": "06/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        6048,
+        null
+      ],
+      "A004": [
+        4800,
+        3912
+      ],
+      "A005": [
+        497,
+        1466
+      ],
+      "A009": [
+        1190,
+        2002
+      ],
+      "A019": [
+        300,
+        4320
+      ],
+      "A008": [
+        300,
+        null
+      ],
+      "A006 B": [
+        906,
+        1168
+      ],
+      "A031": [
+        null,
+        1477
+      ]
+    },
     "dayOEE": 0.5591,
     "lateOEE": 0.8391,
     "dayAvail": 0.8168,
@@ -336,6 +413,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "day",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -346,6 +424,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -356,6 +435,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -366,9 +446,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -376,6 +457,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -386,9 +468,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 7.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -396,29 +479,32 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 3.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 1.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
         "imp": "hi"
-      },
-      {
-        "machine": "A004",
-        "reason": "Changeover",
-        "downtime": 0.5,
-        "mins": 30,
-        "shift": "late",
-        "isNote": false,
-        "cat": "Changeover / Setup",
-        "imp": "lo"
-      },
-      {
-        "machine": "A004",
-        "reason": "Changeover",
-        "downtime": 0.5,
-        "mins": 30,
-        "shift": "late",
-        "isNote": false,
-        "cat": "Changeover / Setup",
-        "imp": "lo"
       },
       {
         "machine": "A019",
@@ -426,9 +512,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.25,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A019",
@@ -436,9 +523,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -446,9 +534,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A009",
@@ -456,6 +545,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 7.25,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -466,6 +556,18 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A031",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -476,19 +578,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 0.25,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
-      },
-      {
-        "machine": "A031",
-        "reason": "Changeover",
-        "downtime": 0.25,
-        "mins": 15,
-        "shift": "late",
-        "isNote": false,
-        "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A006 B",
@@ -496,6 +589,7 @@
         "downtime": 0.2,
         "mins": 12,
         "shift": "day",
+        "intended": 0.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -651,6 +745,32 @@
   {
     "date": "07/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        null,
+        null
+      ],
+      "A004": [
+        756,
+        4386
+      ],
+      "A005": [
+        225,
+        1002
+      ],
+      "A009": [
+        168,
+        3120
+      ],
+      "A006 B": [
+        null,
+        1050
+      ],
+      "A031": [
+        null,
+        1850
+      ]
+    },
     "dayOEE": 0.5198,
     "lateOEE": 0.6293,
     "dayAvail": 0.5769,
@@ -694,6 +814,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 6,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -704,6 +825,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -714,6 +836,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 8.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -724,6 +847,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -734,6 +858,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -744,6 +869,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -754,9 +880,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -764,9 +891,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 1,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A009",
@@ -774,6 +902,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -784,9 +913,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -905,6 +1035,40 @@
   {
     "date": "11/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        6936,
+        null
+      ],
+      "A004": [
+        5268,
+        5340
+      ],
+      "A005": [
+        1852,
+        711
+      ],
+      "A009": [
+        1164,
+        456
+      ],
+      "A008": [
+        4410,
+        900
+      ],
+      "A006 B": [
+        1429,
+        1761
+      ],
+      "A019": [
+        null,
+        1350
+      ],
+      "A031": [
+        null,
+        2220
+      ]
+    },
     "dayOEE": 0.7016,
     "lateOEE": 0.6768,
     "dayAvail": 0.7813,
@@ -922,17 +1086,17 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 420,
-        "cum": 36
-      },
-      {
-        "cat": "Changeover / Setup",
-        "mins": 330,
-        "cum": 65
+        "mins": 540,
+        "cum": 47
       },
       {
         "cat": "Other",
         "mins": 240,
+        "cum": 68
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 210,
         "cum": 86
       },
       {
@@ -948,6 +1112,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -958,9 +1123,10 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -968,9 +1134,10 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
-        "cat": "Changeover / Setup",
-        "imp": "lo"
+        "cat": "Waiting for Blending",
+        "imp": "hi"
       },
       {
         "machine": "A031",
@@ -978,6 +1145,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -988,9 +1156,10 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -998,9 +1167,10 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 2,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -1008,6 +1178,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1018,6 +1189,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1028,6 +1200,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1038,9 +1211,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "lo"
       },
       {
         "machine": "A007",
@@ -1048,9 +1222,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -1058,9 +1233,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A008",
@@ -1068,9 +1244,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A019",
@@ -1078,9 +1255,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A006 B",
@@ -1088,6 +1266,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 0.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -1243,6 +1422,36 @@
   {
     "date": "12/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        8622,
+        null
+      ],
+      "A004": [
+        4704,
+        5040
+      ],
+      "A005": [
+        557,
+        340
+      ],
+      "A009": [
+        2373,
+        2328
+      ],
+      "A008": [
+        2298,
+        1800
+      ],
+      "A006 B": [
+        1440,
+        1652
+      ],
+      "A031": [
+        null,
+        4080
+      ]
+    },
     "dayOEE": 0.5152,
     "lateOEE": 0.7294,
     "dayAvail": 0.7738,
@@ -1260,12 +1469,7 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 645,
-        "cum": 67
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 120,
+        "mins": 765,
         "cum": 80
       },
       {
@@ -1296,6 +1500,7 @@
         "downtime": 3.75,
         "mins": 225,
         "shift": "day",
+        "intended": 6.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1306,6 +1511,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 8.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1316,8 +1522,9 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 5.75,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -1326,6 +1533,7 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1336,6 +1544,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1346,6 +1555,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -1356,9 +1566,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A009",
@@ -1366,6 +1577,7 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 1.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1376,9 +1588,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 0.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A007",
@@ -1386,9 +1599,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 1.25,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -1396,6 +1610,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -1406,9 +1621,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 6.75,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -1544,6 +1760,36 @@
   {
     "date": "13/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        5622,
+        null
+      ],
+      "A004": [
+        4178,
+        1170
+      ],
+      "A005": [
+        1384,
+        829
+      ],
+      "A009": [
+        1410,
+        1680
+      ],
+      "A008": [
+        3060,
+        1800
+      ],
+      "A006 B": [
+        1200,
+        2300
+      ],
+      "A031": [
+        null,
+        2640
+      ]
+    },
     "dayOEE": 0.4626,
     "lateOEE": 0.5445,
     "dayAvail": 0.8423,
@@ -1561,17 +1807,17 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 540,
-        "cum": 61
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 150,
-        "cum": 78
+        "mins": 600,
+        "cum": 68
       },
       {
         "cat": "Engineering Issues",
         "mins": 120,
+        "cum": 81
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 90,
         "cum": 92
       },
       {
@@ -1602,6 +1848,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1612,6 +1859,7 @@
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
+        "intended": 7.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1622,6 +1870,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Component Shortage",
         "imp": "hi"
@@ -1632,6 +1881,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -1642,8 +1892,9 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 4,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -1652,6 +1903,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1662,9 +1914,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A031",
@@ -1672,9 +1925,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -1682,9 +1936,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -1692,9 +1947,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 5,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -1702,9 +1958,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 6.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A005",
@@ -1712,6 +1969,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 0.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1722,6 +1980,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -1732,9 +1991,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -1742,9 +2002,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A008",
@@ -1752,9 +2013,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       },
       {
         "machine": "A008",
@@ -1762,9 +2024,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "lo"
       },
       {
         "machine": "A006 B",
@@ -1772,9 +2035,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -1910,6 +2174,36 @@
   {
     "date": "14/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        7908,
+        null
+      ],
+      "A004": [
+        4038,
+        4896
+      ],
+      "A005": [
+        658,
+        792
+      ],
+      "A009": [
+        1607,
+        780
+      ],
+      "A008": [
+        4140,
+        5760
+      ],
+      "A006 B": [
+        1612,
+        889
+      ],
+      "A031": [
+        null,
+        1560
+      ]
+    },
     "dayOEE": 0.5727,
     "lateOEE": 0.7344,
     "dayAvail": 0.8604,
@@ -1927,17 +2221,12 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 450,
-        "cum": 53
+        "mins": 540,
+        "cum": 63
       },
       {
         "cat": "Engineering Issues",
         "mins": 255,
-        "cum": 82
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 90,
         "cum": 93
       },
       {
@@ -1958,6 +2247,7 @@
         "downtime": 4,
         "mins": 240,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1968,6 +2258,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 6.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -1978,6 +2269,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 7.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -1988,8 +2280,9 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -1998,9 +2291,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -2008,9 +2302,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -2018,9 +2313,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -2028,6 +2324,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2038,9 +2335,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A008",
@@ -2048,9 +2346,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -2186,6 +2485,36 @@
   {
     "date": "18/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        7080,
+        null
+      ],
+      "A004": [
+        5112,
+        5856
+      ],
+      "A005": [
+        4572,
+        2184
+      ],
+      "A009": [
+        627,
+        550
+      ],
+      "A019": [
+        6600,
+        3612
+      ],
+      "A006 B": [
+        1200,
+        1028
+      ],
+      "A031": [
+        null,
+        1129
+      ]
+    },
     "dayOEE": 0.7016,
     "lateOEE": 0.7627,
     "dayAvail": 0.8739,
@@ -2234,6 +2563,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 8.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2244,6 +2574,7 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "late",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2254,9 +2585,10 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A031",
@@ -2264,6 +2596,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -2274,6 +2607,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 1,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2284,6 +2618,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 7.25,
         "isNote": false,
         "cat": "Other",
         "imp": "med"
@@ -2294,9 +2629,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "lo"
       },
       {
         "machine": "A019",
@@ -2304,9 +2640,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A031",
@@ -2314,9 +2651,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -2324,9 +2662,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -2334,9 +2673,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A005",
@@ -2344,9 +2684,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A006 B",
@@ -2354,9 +2695,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 7.5,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -2492,6 +2834,36 @@
   {
     "date": "19/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        7218,
+        null
+      ],
+      "A004": [
+        5040,
+        3642
+      ],
+      "A005": [
+        1121,
+        1225
+      ],
+      "A015": [
+        431,
+        698
+      ],
+      "A019": [
+        3444,
+        3600
+      ],
+      "A006 B": [
+        936,
+        1289
+      ],
+      "A009": [
+        null,
+        3054
+      ]
+    },
     "dayOEE": 0.5808,
     "lateOEE": 0.6131,
     "dayAvail": 0.7523,
@@ -2509,32 +2881,37 @@
     "pareto": [
       {
         "cat": "Other",
-        "mins": 330,
-        "cum": 27
+        "mins": 300,
+        "cum": 24
       },
       {
         "cat": "Component Shortage",
         "mins": 300,
-        "cum": 51
+        "cum": 48
       },
       {
         "cat": "Engineering Issues",
         "mins": 285,
-        "cum": 73
+        "cum": 71
       },
       {
         "cat": "Changeover / Setup",
         "mins": 195,
-        "cum": 89
+        "cum": 87
       },
       {
         "cat": "Waiting for Blending",
         "mins": 90,
-        "cum": 96
+        "cum": 94
       },
       {
         "cat": "Raw Material Issues",
         "mins": 45,
+        "cum": 98
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 30,
         "cum": 100
       }
     ],
@@ -2545,6 +2922,7 @@
         "downtime": 5,
         "mins": 300,
         "shift": "day",
+        "intended": 7.5,
         "isNote": false,
         "cat": "Component Shortage",
         "imp": "hi"
@@ -2555,9 +2933,10 @@
         "downtime": 3,
         "mins": 180,
         "shift": "day",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A015",
@@ -2565,9 +2944,10 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A007",
@@ -2575,6 +2955,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 4.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2585,6 +2966,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "intended": 5.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -2595,6 +2977,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2605,6 +2988,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2615,9 +2999,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 4,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -2625,6 +3010,7 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2635,9 +3021,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A004",
@@ -2645,9 +3032,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A015",
@@ -2655,9 +3043,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A019",
@@ -2665,9 +3054,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 1.75,
         "isNote": false,
-        "cat": "Other",
-        "imp": "med"
+        "cat": "Additional Work",
+        "imp": "hi"
       },
       {
         "machine": "A006 B",
@@ -2675,9 +3065,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 1,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A004",
@@ -2685,9 +3076,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -2695,6 +3087,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2705,6 +3098,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2715,6 +3109,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2725,6 +3120,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2735,6 +3131,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -2745,9 +3142,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.25,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       }
     ],
     "machines": [
@@ -2883,6 +3281,44 @@
   {
     "date": "20/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        3654,
+        null
+      ],
+      "A004": [
+        3531,
+        3066
+      ],
+      "A005": [
+        838,
+        630
+      ],
+      "A009": [
+        1824,
+        1110
+      ],
+      "A019": [
+        3105,
+        320
+      ],
+      "A006 B": [
+        1220,
+        1743
+      ],
+      "A015": [
+        null,
+        744
+      ],
+      "A008": [
+        null,
+        4500
+      ],
+      "A031": [
+        null,
+        840
+      ]
+    },
     "dayOEE": 0.426,
     "lateOEE": 0.6338,
     "dayAvail": 0.8559,
@@ -2941,6 +3377,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -2951,6 +3388,7 @@
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
+        "intended": 6,
         "isNote": false,
         "cat": "Component Shortage",
         "imp": "hi"
@@ -2961,6 +3399,7 @@
         "downtime": 2.5,
         "mins": 150,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -2971,6 +3410,7 @@
         "downtime": 2.5,
         "mins": 150,
         "shift": "late",
+        "intended": 6,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2981,6 +3421,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -2991,6 +3432,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Raw Material Issues",
         "imp": "hi"
@@ -3001,9 +3443,10 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A004",
@@ -3011,9 +3454,10 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -3021,6 +3465,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 3.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3031,6 +3476,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Other",
         "imp": "med"
@@ -3041,8 +3487,20 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Running With 2 People Only",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Staff Shortage",
         "imp": "lo"
       },
       {
@@ -3051,19 +3509,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
-      },
-      {
-        "machine": "A009",
-        "reason": "Running With 2 People Only",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "isNote": false,
-        "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -3233,6 +3682,36 @@
   {
     "date": "26/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        8142,
+        null
+      ],
+      "A004": [
+        3510,
+        5490
+      ],
+      "A005": [
+        730,
+        582
+      ],
+      "A009": [
+        1242,
+        2106
+      ],
+      "A019": [
+        7140,
+        4080
+      ],
+      "A006 B": [
+        1063,
+        1236
+      ],
+      "A015": [
+        null,
+        572
+      ]
+    },
     "dayOEE": 0.5317,
     "lateOEE": 0.6308,
     "dayAvail": 0.7904,
@@ -3281,6 +3760,7 @@
         "downtime": 5,
         "mins": 300,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3291,6 +3771,7 @@
         "downtime": 4,
         "mins": 240,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3301,6 +3782,7 @@
         "downtime": 3,
         "mins": 180,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -3311,9 +3793,10 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A004",
@@ -3321,6 +3804,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3331,9 +3815,10 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A004",
@@ -3341,9 +3826,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A009",
@@ -3351,9 +3837,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A009",
@@ -3361,9 +3848,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A004",
@@ -3371,9 +3859,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 5,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A019",
@@ -3381,9 +3870,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A015",
@@ -3391,6 +3881,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3401,9 +3892,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -3411,6 +3903,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3421,6 +3914,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3431,6 +3925,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3441,9 +3936,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A009",
@@ -3451,9 +3947,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A009",
@@ -3461,9 +3958,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -3599,6 +4097,36 @@
   {
     "date": "27/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        6978,
+        null
+      ],
+      "A004": [
+        3222,
+        2072
+      ],
+      "A005": [
+        720,
+        421
+      ],
+      "A009": [
+        2418,
+        2796
+      ],
+      "A008": [
+        2250,
+        null
+      ],
+      "A031": [
+        180,
+        800
+      ],
+      "A006 B": [
+        672,
+        1890
+      ]
+    },
     "dayOEE": 0.5477,
     "lateOEE": 0.6267,
     "dayAvail": 0.7059,
@@ -3616,27 +4144,27 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 655,
-        "cum": 51
+        "mins": 775,
+        "cum": 60
       },
       {
         "cat": "Engineering Issues",
         "mins": 270,
-        "cum": 72
+        "cum": 81
       },
       {
         "cat": "Other",
-        "mins": 165,
-        "cum": 85
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 120,
-        "cum": 94
+        "mins": 105,
+        "cum": 89
       },
       {
         "cat": "Changeover / Setup",
         "mins": 75,
+        "cum": 95
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 60,
         "cum": 100
       }
     ],
@@ -3647,6 +4175,7 @@
         "downtime": 4.75,
         "mins": 285,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3657,8 +4186,9 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 4,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -3667,6 +4197,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 7.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3677,6 +4208,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 8,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -3687,6 +4219,7 @@
         "downtime": 1.66,
         "mins": 100,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3697,9 +4230,10 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "hi"
       },
       {
         "machine": "A007",
@@ -3707,6 +4241,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -3717,6 +4252,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -3727,9 +4263,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A008",
@@ -3737,9 +4274,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3.75,
         "isNote": false,
-        "cat": "Other",
-        "imp": "med"
+        "cat": "Additional Work",
+        "imp": "hi"
       },
       {
         "machine": "A007",
@@ -3747,6 +4285,7 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 1.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -3757,9 +4296,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -3767,9 +4307,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A004",
@@ -3777,9 +4318,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -3787,6 +4329,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3797,6 +4340,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 1.25,
         "isNote": false,
         "cat": "Other",
         "imp": "med"
@@ -3807,6 +4351,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -3817,9 +4362,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "hi"
       },
       {
         "machine": "A006 B",
@@ -3827,9 +4373,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A031",
@@ -3837,9 +4384,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 1,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "lo"
       },
       {
         "machine": "A031",
@@ -3847,9 +4395,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -3985,6 +4534,36 @@
   {
     "date": "28/05/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        7458,
+        null
+      ],
+      "A004": [
+        4608,
+        6180
+      ],
+      "A005": [
+        649,
+        1142
+      ],
+      "A015": [
+        483,
+        null
+      ],
+      "A006 B": [
+        1113,
+        1438
+      ],
+      "A009": [
+        null,
+        2580
+      ],
+      "A031": [
+        null,
+        996
+      ]
+    },
     "dayOEE": 0.5961,
     "lateOEE": 0.7361,
     "dayAvail": 0.7624,
@@ -4033,6 +4612,7 @@
         "downtime": 3.45,
         "mins": 207,
         "shift": "day",
+        "intended": 8,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4043,6 +4623,7 @@
         "downtime": 2.25,
         "mins": 135,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4053,6 +4634,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "day",
+        "intended": 7.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4063,6 +4645,7 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 6,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4073,6 +4656,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 4.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4083,9 +4667,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "late",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A006 B",
@@ -4093,6 +4678,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4103,9 +4689,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -4113,9 +4700,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Component Shortage",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A009",
@@ -4123,6 +4711,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4133,6 +4722,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4143,9 +4733,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -4281,6 +4872,36 @@
   {
     "date": "01/06/2026",
     "noteLog": [],
+    "machActual": {
+      "A007": [
+        5412,
+        null
+      ],
+      "A004": [
+        5520,
+        3264
+      ],
+      "A005": [
+        1222,
+        1035
+      ],
+      "A009": [
+        3048,
+        2532
+      ],
+      "A008": [
+        4000,
+        4275
+      ],
+      "A006 B": [
+        1714,
+        1460
+      ],
+      "A031": [
+        null,
+        1272
+      ]
+    },
     "dayOEE": 0.6228,
     "lateOEE": 0.699,
     "dayAvail": 0.8422,
@@ -4298,22 +4919,17 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 393,
-        "cum": 48
+        "mins": 498,
+        "cum": 61
       },
       {
         "cat": "Engineering Issues",
         "mins": 180,
-        "cum": 70
+        "cum": 83
       },
       {
         "cat": "Changeover / Setup",
         "mins": 135,
-        "cum": 87
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 105,
         "cum": 100
       },
       {
@@ -4329,6 +4945,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 6.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4339,6 +4956,7 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 6.75,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4349,8 +4967,9 @@
         "downtime": 1.75,
         "mins": 105,
         "shift": "day",
+        "intended": 3,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -4359,6 +4978,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "late",
+        "intended": 3.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4369,6 +4989,7 @@
         "downtime": 1.3,
         "mins": 78,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4379,6 +5000,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4389,6 +5011,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4399,9 +5022,10 @@
         "downtime": 0.75,
         "mins": 45,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A005",
@@ -4409,6 +5033,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4419,6 +5044,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 7,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4429,6 +5055,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4439,6 +5066,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "day",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4449,6 +5077,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 3.25,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4459,9 +5088,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A006 B",
@@ -4469,6 +5099,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Changeover / Setup",
         "imp": "lo"
@@ -4479,9 +5110,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 1.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A031",
@@ -4489,9 +5121,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Staff Shortage",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -4633,11 +5266,50 @@
         "downtime": 0,
         "mins": 0,
         "shift": "day",
+        "intended": 3.75,
         "isNote": true,
         "cat": "Engineering Issues",
         "imp": "hi"
       }
     ],
+    "machActual": {
+      "A007": [
+        4872,
+        null
+      ],
+      "A004": [
+        3240,
+        3996
+      ],
+      "A005": [
+        1080,
+        2020
+      ],
+      "A009": [
+        2496,
+        null
+      ],
+      "A008": [
+        2025,
+        null
+      ],
+      "A006 B": [
+        863,
+        795
+      ],
+      "A015": [
+        null,
+        25
+      ],
+      "A019": [
+        null,
+        3432
+      ],
+      "A031": [
+        null,
+        1488
+      ]
+    },
     "dayOEE": 0.5432,
     "lateOEE": 0.7165,
     "dayAvail": 0.7398,
@@ -4691,6 +5363,7 @@
         "downtime": 3.75,
         "mins": 225,
         "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4701,6 +5374,7 @@
         "downtime": 2,
         "mins": 120,
         "shift": "late",
+        "intended": 5.25,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4711,6 +5385,7 @@
         "downtime": 1.5,
         "mins": 90,
         "shift": "day",
+        "intended": 2,
         "isNote": false,
         "cat": "Engineering Issues",
         "imp": "hi"
@@ -4721,6 +5396,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4731,6 +5407,7 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "day",
+        "intended": 5.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4741,9 +5418,10 @@
         "downtime": 1.25,
         "mins": 75,
         "shift": "late",
+        "intended": 9.25,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -4751,6 +5429,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4761,9 +5440,10 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 6.5,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A006 B",
@@ -4771,6 +5451,7 @@
         "downtime": 1,
         "mins": 60,
         "shift": "day",
+        "intended": 2,
         "isNote": false,
         "cat": "Component Shortage",
         "imp": "hi"
@@ -4781,9 +5462,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A005",
@@ -4791,6 +5473,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 0.75,
         "isNote": false,
         "cat": "Waiting for Blending",
         "imp": "hi"
@@ -4801,9 +5484,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Waiting for Blending",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A008",
@@ -4811,6 +5495,7 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "day",
+        "intended": 2.75,
         "isNote": false,
         "cat": "Other",
         "imp": "med"
@@ -4821,9 +5506,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4,
         "isNote": false,
         "cat": "Engineering Issues",
-        "imp": "hi"
+        "imp": "med"
       },
       {
         "machine": "A019",
@@ -4831,9 +5517,10 @@
         "downtime": 0.5,
         "mins": 30,
         "shift": "late",
+        "intended": 4.75,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A004",
@@ -4841,9 +5528,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 6.25,
         "isNote": false,
         "cat": "Raw Material Issues",
-        "imp": "hi"
+        "imp": "lo"
       },
       {
         "machine": "A004",
@@ -4851,9 +5539,10 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 1.5,
         "isNote": false,
         "cat": "Changeover / Setup",
-        "imp": "lo"
+        "imp": "med"
       },
       {
         "machine": "A006 B",
@@ -4861,6 +5550,7 @@
         "downtime": 0.25,
         "mins": 15,
         "shift": "late",
+        "intended": 2.25,
         "isNote": false,
         "cat": "Other",
         "imp": "med"
@@ -4871,9 +5561,10 @@
         "downtime": 0,
         "mins": 0,
         "shift": "late",
+        "intended": 0.75,
         "isNote": false,
         "cat": "Other",
-        "imp": "med"
+        "imp": "lo"
       }
     ],
     "machines": [
@@ -5037,6 +5728,417 @@
       "A031": [
         null,
         1900
+      ]
+    }
+  },
+  {
+    "date": "03/06/2026",
+    "noteLog": [
+      {
+        "machine": "A008",
+        "reason": "No Flake Available",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Other",
+        "imp": "hi"
+      }
+    ],
+    "machActual": {
+      "A007": [
+        8442,
+        null
+      ],
+      "A004": [
+        4536,
+        2220
+      ],
+      "A005": [
+        990,
+        1356
+      ],
+      "A009": [
+        3376,
+        2496
+      ],
+      "A008": [
+        1968,
+        null
+      ],
+      "A006 B": [
+        1664,
+        2028
+      ],
+      "A031": [
+        null,
+        1500
+      ]
+    },
+    "dayOEE": 0.7595,
+    "lateOEE": 0.6893,
+    "dayAvail": 0.8872,
+    "lateAvail": 0.8817,
+    "dayPerf": 0.856,
+    "latePerf": 0.7818,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 12534,
+    "lateOut": 9600,
+    "dayTheo": 14003,
+    "lateTheo": 12279,
+    "totalDT": 11,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 390,
+        "cum": 59
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 195,
+        "cum": 89
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 75,
+        "cum": 100
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 0,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A005",
+        "reason": "Waiting on Batch/scrape",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "late",
+        "intended": 6.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Issues With Batch",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Waiting for Components / Heater Issue",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 4.75,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Batch",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Scrape Out",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 1.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Issues With Start the Machine / Film Change",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Set up the Line",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 0.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Set up",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A031",
+        "reason": "Waiting on Batch",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 6.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "lo"
+      },
+      {
+        "machine": "A007",
+        "reason": "Labelling Tubes",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Worked With 3 People for Few Hours / Change Film / Drop Batch",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "day",
+        "intended": 6.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A005",
+        "reason": "Changeover",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 0.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A008",
+        "reason": "Making Display While Running",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Additional Work",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.6084,
+        null
+      ],
+      "A004": [
+        0.8173,
+        0.6089
+      ],
+      "A005": [
+        0.7439,
+        0.3577
+      ],
+      "A009": [
+        0.9058,
+        0.65
+      ],
+      "A008": [
+        0.656,
+        null
+      ],
+      "A006 B": [
+        1.2325,
+        1.4616
+      ],
+      "A031": [
+        null,
+        0.8739
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.7568,
+        null
+      ],
+      "A004": [
+        0.9459,
+        0.9459
+      ],
+      "A005": [
+        0.8108,
+        0.6316
+      ],
+      "A009": [
+        0.8919,
+        0.8919
+      ],
+      "A008": [
+        1,
+        null
+      ],
+      "A006 B": [
+        1,
+        1
+      ],
+      "A031": [
+        null,
+        0.9459
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.804,
+        null
+      ],
+      "A004": [
+        0.864,
+        0.6437
+      ],
+      "A005": [
+        0.9174,
+        0.5663
+      ],
+      "A009": [
+        1.0156,
+        0.7288
+      ],
+      "A008": [
+        0.656,
+        null
+      ],
+      "A006 B": [
+        1.2325,
+        1.4616
+      ],
+      "A031": [
+        null,
+        0.9238
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        10500,
+        null
+      ],
+      "A004": [
+        5250,
+        3449
+      ],
+      "A005": [
+        1079,
+        2394
+      ],
+      "A009": [
+        3324,
+        3425
+      ],
+      "A008": [
+        3000,
+        null
+      ],
+      "A006 B": [
+        1350,
+        1388
+      ],
+      "A031": [
+        null,
+        1624
       ]
     }
   }

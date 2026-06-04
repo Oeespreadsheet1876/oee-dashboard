@@ -91,11 +91,7 @@ input[type=file]{display:none}
 <div id="dropzone">
   <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
   <div>
-    <div class="drop-title">Production OEE Dashboard</div>
-    <div class="drop-sub" id="load-status">Loading latest data from OneDrive...</div>
-  </div>
-  <div id="drop-area" style="display:none;flex-direction:column;align-items:center;gap:18px">
-    <div class="drop-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+    <div class="drop-title">Drop your shift spreadsheet here</div>
     <div class="drop-sub">Drag and drop one or more .xlsx files onto this page<br>or click the button to browse</div>
   </div>
   <button class="drop-btn" onclick="document.getElementById('fi1').click()">Browse for files</button>
@@ -121,7 +117,6 @@ input[type=file]{display:none}
       </div>
     </div>
     <div class="hdr-right">
-      <button class="hdr-btn" onclick="refreshFromOneDrive()">↻ Refresh</button>
       <button class="hdr-btn" onclick="document.getElementById('fi2').click()">+ Load files</button>
       <button class="hdr-btn" onclick="exportHistory()">↓ Export history</button>
       <button class="hdr-btn" onclick="document.getElementById('fi3').click()">↑ Import history</button>
@@ -499,45 +494,6 @@ function updateDropHint(){
 }
 updateDropHint();
 
-// ── Auto-load from OneDrive ───────────────────────────────────────────────────
-const JSON_URL = "https://raw.githubusercontent.com/Oeespreadsheet1876/oee-dashboard/main/OEE_history.json";
-
-async function autoLoadFromOneDrive(){
-  const statusEl = document.getElementById('load-status');
-  try {
-    statusEl.textContent = 'Loading latest data...';
-    const resp = await fetch(JSON_URL + '?t=' + Date.now(), {cache:'no-store'});
-    if(!resp.ok) throw new Error('HTTP '+resp.status);
-    const imported = await resp.json();
-    if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data format');
-    // GitHub JSON always wins completely - replace localStorage entirely
-    const sorted = sortHist(imported);
-    saveHist(sorted);
-    statusEl.textContent = `✓ Loaded ${sorted.length} days of data · ${sorted[0].date} – ${sorted[sorted.length-1].date}`;
-    setTimeout(()=>{
-      const latest = sorted[sorted.length-1];
-      buildDashboard(latest, sorted);
-    }, 800);
-  } catch(err) {
-    console.warn('Auto-load failed:', err.message);
-    // Fall back to local history or show drop zone
-    const local = loadHist();
-    if(local.length > 0){
-      statusEl.textContent = `Showing ${local.length} days from local history`;
-      setTimeout(()=>{
-        const latest = local[local.length-1];
-        buildDashboard(latest, local);
-      }, 800);
-    } else {
-      statusEl.textContent = 'Could not load data. Drop a file below to get started.';
-      document.getElementById('drop-area').style.display = 'flex';
-    }
-  }
-}
-
-// Run auto-load on startup
-autoLoadFromOneDrive();
-
 // ── Nav ───────────────────────────────────────────────────────────────────────
 function showPanel(id,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
@@ -547,14 +503,9 @@ function showPanel(id,btn){
   // Show date selector only on Overview, OEE Report and Summary & Pareto
   const showDate = ['overview','oee','pareto'].includes(id);
   document.getElementById('date-filter-bar').style.display = showDate ? 'flex' : 'none';
-  // Hide global machine filter bar on Machine Trends tab (it has its own dropdown)
+  // Hide global machine filter bar on Machine Trends tab
   const macBar = document.getElementById('mac-filter-bar');
   if(macBar) macBar.style.display = id === 'mtrends' ? 'none' : 'flex';
-  // If switching away from mtrends, clear the machine trends selection from global filter
-  if(id !== 'mtrends'){
-    const macSel = document.getElementById('mac-sel');
-    // Don't clear mac-sel - keep it for when user switches back
-  }
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -713,6 +664,26 @@ function buildPareto(d){
 }
 
 // ── DT log ────────────────────────────────────────────────────────────────────
+function buildNoteLog(d){
+  const il={hi:'HIGH',med:'MED',lo:'LOW'};
+  const wrap = document.getElementById('note-log-wrap');
+  const notes = FILTER_MAC ? (d.noteLog||[]).filter(i=>i.machine===FILTER_MAC) : (d.noteLog||[]);
+  if(!notes.length){
+    wrap.style.display='none';
+    return;
+  }
+  wrap.style.display='block';
+  document.getElementById('note-log').innerHTML=notes.map(i=>
+    `<tr>
+    <td style="color:var(--muted);font-size:10px">${i.shift==='day'?'Day':'Late'}</td>
+    <td style="font-weight:500;font-family:var(--mono);font-size:10px">${i.machine}</td>
+    <td style="font-size:10px">${i.reason||'—'}</td>
+    <td style="font-size:10px;color:var(--muted)">${i.cat||'—'}</td>
+    <td><span class="badge ${i.imp||'med'}">${il[i.imp||'med']}</span></td>
+    </tr>`
+  ).join('');
+}
+
 function buildDTLog(d){
   const il={hi:'HIGH',med:'MED',lo:'LOW'};
   const log = FILTER_MAC ? d.dtLog.filter(i=>i.machine===FILTER_MAC) : d.dtLog;
@@ -961,26 +932,6 @@ function dedupeHistory(){
   populateMacSelect();
   alert(`Removed ${removed} duplicate${removed>1?'s':''}. ${deduped.length} records remain.`);
 }
-function refreshFromOneDrive(){
-  const btn = document.querySelector('.hdr-btn');
-  btn.textContent = '↻ Refreshing...';
-  fetch(JSON_URL + '?t=' + Date.now(), {cache:'no-store'})
-    .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
-    .then(imported=>{
-      if(!Array.isArray(imported)||!imported[0]?.date) throw new Error('Invalid data');
-      // GitHub JSON always wins - replace localStorage entirely
-      const sorted = sortHist(imported);
-      saveHist(sorted);
-      const latest = sorted[sorted.length-1];
-      buildDashboard(latest, sorted);
-      btn.textContent = '↻ Refresh';
-    })
-    .catch(err=>{
-      alert('Could not refresh: '+err.message);
-      btn.textContent = '↻ Refresh';
-    });
-}
-
 function exportHistory(){
   const h=loadHist();
   if(!h.length){alert('No history to export.');return;}
@@ -1012,6 +963,7 @@ function importHistoryFile(input){
   reader.readAsText(file);
 }
 
+
 // ── Title case helper ─────────────────────────────────────────────────────────
 function toTitleCase(str){
   if(!str) return str;
@@ -1020,6 +972,7 @@ function toTitleCase(str){
     (i===0||!minor.has(w)) ? w.charAt(0).toUpperCase()+w.slice(1) : w
   ).join(' ');
 }
+
 // ── Date selector for Overview, OEE Report, Summary & Pareto ─────────────────
 let CURRENT_DATE_DATA = null;
 
@@ -1034,6 +987,26 @@ function populateDateSelector(hist){
     sel.appendChild(o);
   });
 }
+
+function applyDateFilter(){
+  const date = document.getElementById('date-sel').value;
+  const hist = loadHist();
+  const record = hist.find(h=>h.date===date);
+  if(!record) return;
+  document.getElementById('date-filter-label').textContent = `Showing data for ${date}`;
+  // Only rebuild the day-specific panels, not trends
+  buildKPIs(record);
+  buildDonuts(record);
+  buildMachTable(record);
+  buildBarCharts(record);
+  buildPareto(record);
+  buildDTLog(record);
+  buildObs(record);
+  // Update header date
+  document.getElementById('hdr-date').textContent = date;
+  CURRENT_DATE_DATA = record;
+}
+
 // ── Global machine filter ─────────────────────────────────────────────────────
 let FILTER_MAC = '';
 
