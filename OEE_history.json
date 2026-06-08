@@ -6141,5 +6141,419 @@
         1624
       ]
     }
+  },
+  {
+    "date": "04/06/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        6048,
+        null
+      ],
+      "A004": [
+        5204,
+        3792
+      ],
+      "A005": [
+        4680,
+        4314
+      ],
+      "A009": [
+        2544,
+        null
+      ],
+      "A008": [
+        5640,
+        1260
+      ],
+      "A031": [
+        460,
+        417
+      ],
+      "A006 B": [
+        1740,
+        1690
+      ],
+      "A015": [
+        null,
+        900
+      ]
+    },
+    "dayOEE": 0.7819,
+    "lateOEE": 0.5906,
+    "dayAvail": 0.8649,
+    "lateAvail": 0.8137,
+    "dayPerf": 0.9041,
+    "latePerf": 0.7258,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 20268,
+    "lateOut": 12373,
+    "dayTheo": 22734,
+    "lateTheo": 17048,
+    "totalDT": 17,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 540,
+        "cum": 53
+      },
+      {
+        "cat": "Other",
+        "mins": 180,
+        "cum": 71
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 105,
+        "cum": 81
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 105,
+        "cum": 91
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 90,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A031",
+        "reason": "Problem Getting Batch to Pass",
+        "downtime": 6.5,
+        "mins": 390,
+        "shift": "late",
+        "intended": 7.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "Waiting Cartons / Marker Sensor Issues",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "day",
+        "intended": 5,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Set up the Line/ Waiting for Batch / Label Machine Issue",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 4.5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Waiting for Batch / Change Tape/ Tapper Issue / Dropping the Batch",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover/ Batch Out",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 3.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "Waiting for Packets",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 1.5,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "Labels Issues / Change Labels",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 3.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Waiting for Packets",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 3.25,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Waiting on Batch ( Issue With Batch)",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Waiting for Retest",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "day",
+        "intended": 0.5,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A031",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 3,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 3.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A007",
+        "reason": "11:20 Went on Pva",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 1.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "lo"
+      },
+      {
+        "machine": "A031",
+        "reason": "Came From A007",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A015",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.768,
+        null
+      ],
+      "A004": [
+        0.9554,
+        0.6832
+      ],
+      "A005": [
+        0.6326,
+        0.5831
+      ],
+      "A009": [
+        0.7581,
+        null
+      ],
+      "A008": [
+        0.5425,
+        0.6628
+      ],
+      "A031": [
+        0.7667,
+        0.3761
+      ],
+      "A006 B": [
+        0.9881,
+        0.9973
+      ],
+      "A015": [
+        null,
+        0.6486
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.8095,
+        null
+      ],
+      "A004": [
+        0.973,
+        0.8378
+      ],
+      "A005": [
+        0.8108,
+        1
+      ],
+      "A009": [
+        0.9459,
+        null
+      ],
+      "A008": [
+        0.5676,
+        0.9474
+      ],
+      "A031": [
+        1,
+        0.2703
+      ],
+      "A006 B": [
+        1,
+        0.8919
+      ],
+      "A015": [
+        null,
+        1
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.9487,
+        null
+      ],
+      "A004": [
+        0.9819,
+        0.8155
+      ],
+      "A005": [
+        0.7802,
+        0.5831
+      ],
+      "A009": [
+        0.8014,
+        null
+      ],
+      "A008": [
+        0.9559,
+        0.6997
+      ],
+      "A031": [
+        0.7667,
+        1.3914
+      ],
+      "A006 B": [
+        0.9881,
+        1.1182
+      ],
+      "A015": [
+        null,
+        0.6486
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        6375,
+        null
+      ],
+      "A004": [
+        5300,
+        4650
+      ],
+      "A005": [
+        5998,
+        7398
+      ],
+      "A009": [
+        3174,
+        null
+      ],
+      "A008": [
+        5900,
+        1801
+      ],
+      "A031": [
+        600,
+        300
+      ],
+      "A006 B": [
+        1761,
+        1511
+      ],
+      "A015": [
+        null,
+        1388
+      ]
+    }
   }
 ]
