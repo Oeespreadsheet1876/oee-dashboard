@@ -40,9 +40,9 @@
     "latePerf": 0.6723,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 10929,
+    "dayOut": 19425,
     "lateOut": 9123,
-    "dayTheo": 15519,
+    "dayTheo": 24144,
     "lateTheo": 13570,
     "totalDT": 18.75,
     "topIssue": "Engineering Issues",
@@ -383,9 +383,9 @@
     "latePerf": 0.9207,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 7993,
+    "dayOut": 14041,
     "lateOut": 14345,
-    "dayTheo": 13015,
+    "dayTheo": 20515,
     "lateTheo": 15580,
     "totalDT": 13.2,
     "topIssue": "Waiting for Blending",
@@ -1077,9 +1077,9 @@
     "latePerf": 0.7851,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 14123,
+    "dayOut": 21059,
     "lateOut": 12738,
-    "dayTheo": 14450,
+    "dayTheo": 23450,
     "lateTheo": 16225,
     "totalDT": 19.25,
     "topIssue": "Waiting for Blending",
@@ -1460,9 +1460,9 @@
     "latePerf": 0.7832,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 11372,
+    "dayOut": 19994,
     "lateOut": 15240,
-    "dayTheo": 19529,
+    "dayTheo": 30029,
     "lateTheo": 19459,
     "totalDT": 16,
     "topIssue": "Waiting for Blending",
@@ -1483,7 +1483,7 @@
         "cum": 98
       },
       {
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "mins": 15,
         "cum": 100
       },
@@ -1601,7 +1601,7 @@
         "shift": "day",
         "intended": 1.25,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "imp": "med"
       },
       {
@@ -1798,9 +1798,9 @@
     "latePerf": 0.6163,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 11232,
+    "dayOut": 16854,
     "lateOut": 10419,
-    "dayTheo": 21015,
+    "dayTheo": 30690,
     "lateTheo": 16906,
     "totalDT": 14.75,
     "topIssue": "Waiting for Blending",
@@ -2212,9 +2212,9 @@
     "latePerf": 0.8461,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 12055,
+    "dayOut": 19963,
     "lateOut": 14677,
-    "dayTheo": 20242,
+    "dayTheo": 29992,
     "lateTheo": 17347,
     "totalDT": 14.25,
     "topIssue": "Waiting for Blending",
@@ -2523,9 +2523,9 @@
     "latePerf": 0.832,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 18111,
+    "dayOut": 25191,
     "lateOut": 14359,
-    "dayTheo": 22002,
+    "dayTheo": 31377,
     "lateTheo": 17259,
     "totalDT": 11.25,
     "topIssue": "Engineering Issues",
@@ -2872,41 +2872,36 @@
     "latePerf": 0.7106,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 10972,
+    "dayOut": 18190,
     "lateOut": 13508,
-    "dayTheo": 13436,
+    "dayTheo": 23561,
     "lateTheo": 19009,
     "totalDT": 20.75,
     "topIssue": "Other",
     "pareto": [
       {
         "cat": "Other",
-        "mins": 300,
-        "cum": 24
+        "mins": 345,
+        "cum": 28
       },
       {
         "cat": "Component Shortage",
         "mins": 300,
-        "cum": 48
+        "cum": 52
       },
       {
         "cat": "Engineering Issues",
         "mins": 285,
-        "cum": 71
+        "cum": 75
       },
       {
         "cat": "Changeover / Setup",
         "mins": 195,
-        "cum": 87
+        "cum": 90
       },
       {
         "cat": "Waiting for Blending",
         "mins": 90,
-        "cum": 94
-      },
-      {
-        "cat": "Raw Material Issues",
-        "mins": 45,
         "cum": 98
       },
       {
@@ -3001,7 +2996,7 @@
         "shift": "day",
         "intended": 4,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "imp": "med"
       },
       {
@@ -3327,9 +3322,9 @@
     "latePerf": 0.8077,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 10518,
+    "dayOut": 14172,
     "lateOut": 12953,
-    "dayTheo": 20597,
+    "dayTheo": 28472,
     "lateTheo": 16036,
     "totalDT": 18.5,
     "topIssue": "Waiting for Blending",
@@ -3350,12 +3345,12 @@
         "cum": 77
       },
       {
-        "cat": "Other",
+        "cat": "Raw Material Issues",
         "mins": 150,
         "cum": 91
       },
       {
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "mins": 90,
         "cum": 99
       },
@@ -3478,7 +3473,7 @@
         "shift": "late",
         "intended": 5.25,
         "isNote": false,
-        "cat": "Other",
+        "cat": "Raw Material Issues",
         "imp": "med"
       },
       {
@@ -3720,9 +3715,9 @@
     "latePerf": 0.7611,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 13685,
+    "dayOut": 21827,
     "lateOut": 14066,
-    "dayTheo": 23071,
+    "dayTheo": 32446,
     "lateTheo": 18481,
     "totalDT": 21.5,
     "topIssue": "Waiting for Blending",
@@ -4135,9 +4130,9 @@
     "latePerf": 0.7275,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 9462,
+    "dayOut": 16440,
     "lateOut": 7979,
-    "dayTheo": 12565,
+    "dayTheo": 21190,
     "lateTheo": 10968,
     "totalDT": 21.41,
     "topIssue": "Waiting for Blending",
@@ -4163,7 +4158,7 @@
         "cum": 95
       },
       {
-        "cat": "Additional Work",
+        "cat": "Raw Material Issues",
         "mins": 60,
         "cum": 100
       }
@@ -4276,7 +4271,7 @@
         "shift": "day",
         "intended": 3.75,
         "isNote": false,
-        "cat": "Additional Work",
+        "cat": "Raw Material Issues",
         "imp": "hi"
       },
       {
@@ -4572,9 +4567,9 @@
     "latePerf": 0.7871,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 6853,
+    "dayOut": 14311,
     "lateOut": 12336,
-    "dayTheo": 7805,
+    "dayTheo": 18305,
     "lateTheo": 15672,
     "totalDT": 14.7,
     "topIssue": "Waiting for Blending",
@@ -6144,7 +6139,30 @@
   },
   {
     "date": "04/06/2026",
-    "noteLog": [],
+    "noteLog": [
+      {
+        "machine": "A004",
+        "reason": "No 1750 Cartons",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "No 1750 Cartons",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Other",
+        "imp": "hi"
+      }
+    ],
     "machActual": {
       "A007": [
         6048,
@@ -6180,17 +6198,17 @@
       ]
     },
     "dayOEE": 0.7819,
-    "lateOEE": 0.5906,
+    "lateOEE": 0.5804,
     "dayAvail": 0.8649,
     "lateAvail": 0.8137,
     "dayPerf": 0.9041,
-    "latePerf": 0.7258,
+    "latePerf": 0.7132,
     "dayQual": 1,
     "lateQual": 1,
     "dayOut": 20268,
     "lateOut": 12373,
     "dayTheo": 22734,
-    "lateTheo": 17048,
+    "lateTheo": 17348,
     "totalDT": 17,
     "topIssue": "Waiting for Blending",
     "pareto": [
@@ -6442,7 +6460,7 @@
       ],
       "A031": [
         0.7667,
-        0.3761
+        0.1879
       ],
       "A006 B": [
         0.9881,
@@ -6510,7 +6528,7 @@
       ],
       "A031": [
         0.7667,
-        1.3914
+        0.6953
       ],
       "A006 B": [
         0.9881,
@@ -6544,7 +6562,7 @@
       ],
       "A031": [
         600,
-        300
+        600
       ],
       "A006 B": [
         1761,
@@ -6553,6 +6571,425 @@
       "A015": [
         null,
         1388
+      ]
+    }
+  },
+  {
+    "date": "08/06/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        9744,
+        null
+      ],
+      "A004": [
+        3594,
+        4128
+      ],
+      "A005": [
+        3648,
+        800
+      ],
+      "A009": [
+        3096,
+        null
+      ],
+      "A008": [
+        1500,
+        null
+      ],
+      "A006 B": [
+        1337,
+        961
+      ],
+      "A015": [
+        null,
+        515
+      ],
+      "A031": [
+        null,
+        1390
+      ]
+    },
+    "dayOEE": 0.6497,
+    "lateOEE": 0.6323,
+    "dayAvail": 0.7658,
+    "lateAvail": 0.8162,
+    "dayPerf": 0.8484,
+    "latePerf": 0.7747,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 13175,
+    "lateOut": 7794,
+    "dayTheo": 16514,
+    "lateTheo": 10060,
+    "totalDT": 21.5,
+    "topIssue": "Engineering Issues",
+    "pareto": [
+      {
+        "cat": "Engineering Issues",
+        "mins": 465,
+        "cum": 36
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 285,
+        "cum": 58
+      },
+      {
+        "cat": "Waiting for Blending",
+        "mins": 270,
+        "cum": 79
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 105,
+        "cum": 87
+      },
+      {
+        "cat": "Other",
+        "mins": 105,
+        "cum": 95
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 60,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A031",
+        "reason": "Waiting for Batch / Labelling",
+        "downtime": 4.25,
+        "mins": 255,
+        "shift": "late",
+        "intended": 8.5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "Waiting for Flake / Helping on Different Line",
+        "downtime": 4,
+        "mins": 240,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting on Batch",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "late",
+        "intended": 8,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Issues With Euroslot / Changing Tubes Right Way Round",
+        "downtime": 1.75,
+        "mins": 105,
+        "shift": "day",
+        "intended": 5.75,
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Setting up the Line / Labelling Issues",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 6.5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Setting up the Line",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 2.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Issues With Nozzle / Issues With Batch / Issues With Labels",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 4.5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Scrape Out",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 3.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Scrape Out / Setting up the Line",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 1,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Issues With Sachets / Waiting for Packets",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 3,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover/labelling",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "late",
+        "intended": 7,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "Setting up the Line / Labelling Tubes",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 1.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 5.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Ribbon Change / Film Change / Batch Dropping",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 6.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "lo"
+      },
+      {
+        "machine": "A031",
+        "reason": "Clean Down",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 0.75,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1.25,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A015",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 6.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A015",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.7023,
+        null
+      ],
+      "A004": [
+        0.5731,
+        0.679
+      ],
+      "A005": [
+        0.5632,
+        0.6582
+      ],
+      "A009": [
+        0.6697,
+        null
+      ],
+      "A008": [
+        0.4052,
+        null
+      ],
+      "A006 B": [
+        0.9144,
+        0.9163
+      ],
+      "A015": [
+        null,
+        0.7423
+      ],
+      "A031": [
+        null,
+        0.3862
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.7568,
+        null
+      ],
+      "A004": [
+        0.7297,
+        0.9459
+      ],
+      "A005": [
+        0.6757,
+        0.7568
+      ],
+      "A009": [
+        0.8649,
+        null
+      ],
+      "A008": [
+        0.5676,
+        null
+      ],
+      "A006 B": [
+        1,
+        0.9189
+      ],
+      "A015": [
+        null,
+        0.973
+      ],
+      "A031": [
+        null,
+        0.4865
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.928,
+        null
+      ],
+      "A004": [
+        0.7854,
+        0.7178
+      ],
+      "A005": [
+        0.8336,
+        0.8698
+      ],
+      "A009": [
+        0.7743,
+        null
+      ],
+      "A008": [
+        0.7139,
+        null
+      ],
+      "A006 B": [
+        0.9144,
+        0.9971
+      ],
+      "A015": [
+        null,
+        0.763
+      ],
+      "A031": [
+        null,
+        0.7939
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        10500,
+        null
+      ],
+      "A004": [
+        4576,
+        5751
+      ],
+      "A005": [
+        4376,
+        920
+      ],
+      "A009": [
+        3998,
+        null
+      ],
+      "A008": [
+        2101,
+        null
+      ],
+      "A006 B": [
+        1462,
+        964
+      ],
+      "A015": [
+        null,
+        675
+      ],
+      "A031": [
+        null,
+        1751
       ]
     }
   }
