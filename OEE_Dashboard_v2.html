@@ -310,6 +310,7 @@ input[type=file]{display:none}@media print {
             <option value="">— select date —</option>
           </select>
           <button onclick="printReport('daily-report-content')" class="hdr-btn" style="background:#4a9eff;color:#fff">🖨 Print</button>
+          <button onclick="refreshDropdowns()" class="hdr-btn" title="Refresh dropdowns if they stop responding">↺ Refresh</button>
         </div>
       </div>
       <div id="daily-report-content"></div>
@@ -327,6 +328,7 @@ input[type=file]{display:none}@media print {
             <option value="">— select week —</option>
           </select>
           <button onclick="printReport('weekly-content')" class="hdr-btn" style="background:#4a9eff;color:#fff">🖨 Print</button>
+          <button onclick="refreshDropdowns()" class="hdr-btn" title="Refresh dropdowns if they stop responding">↺ Refresh</button>
         </div>
       </div>
       <div id="weekly-content"></div>
@@ -344,6 +346,7 @@ input[type=file]{display:none}@media print {
             <option value="">— select month —</option>
           </select>
           <button onclick="printReport('monthly-content')" class="hdr-btn" style="background:#4a9eff;color:#fff">🖨 Print</button>
+          <button onclick="refreshDropdowns()" class="hdr-btn" title="Refresh dropdowns if they stop responding">↺ Refresh</button>
         </div>
       </div>
       <div id="monthly-content"></div>
@@ -463,21 +466,23 @@ function extract(wb){
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
     // Category
-    if(r.includes('heater')||r.includes('printer')||r.includes('label')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
+    if(r.includes('heater')||r.includes('printer')||r.includes('label machine')||r.includes('label printer')||r.includes('labeller')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||r.includes('pot issue')||r.includes('labelling issue')||r.includes('lidder')||r.includes('sachet issue')||r.includes('issues with sachet')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
       i.cat='Engineering Issues';
-    } else if(r.includes('waiting for batch')||r.includes('waiting for blend')||r.includes('scrape out')||r.includes('batch')||r.includes('dropping')){
+    } else if(r.includes('waiting for batch')||r.includes('waiting for blend')||r.includes('waiting for batch labelling')||r.includes('waiting for retest')||r.includes('retest')||r.includes('scrape out')||r.includes('batch')||r.includes('dropping')){
       i.cat='Waiting for Blending';
-    } else if(r.includes('waiting for')||r.includes('component')||r.includes('shortage')||r.includes('parts')){
+    } else if((r.includes('waiting for')&&!r.includes('warm up')&&!r.includes('warming up'))||r.includes('component')||r.includes('shortage')||r.includes('parts')){
       i.cat='Component Shortage';
-    } else if(r.startsWith('no ')||r.includes('sachet')||r.includes('lid')||r.includes('pot')||r.includes('container')||r.includes('pouch')||r.includes('sleeve')||r.includes('viscosity')||r.includes('colour')||r.includes('color')||r.includes('shade')||r.includes('consistency')||r.includes('texture')||r.includes('smell')||r.includes('taste')||r.includes('wrong')||r.includes('incorrect')||r.includes('flake')||r.includes('raw material')||r.includes('material')){
+    } else if(r.includes('issue with flake')||r.includes('issues with flake')||r.includes('quality')||r.includes('out of spec')||r.includes('failed retest')||r.includes('viscosity')||r.includes('colour')||r.includes('color')||r.includes('shade')||r.includes('consistency')||r.includes('texture')||r.includes('smell')||r.includes('taste')||r.includes('wrong batch')||r.includes('incorrect batch')){
+      i.cat='Quality Issues';i.imp='hi';
+    } else if(r.startsWith('no ')||r.includes('tube issue')||r.includes('sorting through')||(r.includes('flake')&&!r.includes('waiting')&&!r.includes('issue'))||r.includes('raw material')){
       i.cat='Raw Material Issues';i.imp='hi';// Always HIGH
     } else if(r.includes('plan change')||r.includes('schedule')||r.includes('product change')){
       i.cat='Plan Change';
-    } else if(r.includes('staff')||r.includes('running with')||r.includes('short staffed')||r.includes('person')||r.includes('people')||r.includes('operator')||r.includes('darrel')||r.includes('james')||r.includes('corey')){
+    } else if(r.includes('staff')||r.includes('running with')||r.includes('short staffed')||r.includes('only 1')||r.includes('only 2')||r.includes('only 3')||r.includes('2 people')||r.includes('2 workers')||r.includes('1 person')||r.includes('person')||r.includes('people')||r.includes('operator')||r.includes('darrel')||r.includes('james')||r.includes('corey')){
       i.cat='Staff Shortage';
-    } else if(r.includes('labelling tube')||r.includes('making display')||r.includes('additional work')||r.includes('extra work')){
+    } else if(r.includes('labelling tube')||r.includes('labelling')||r.includes('making display')||r.includes('additional work')||r.includes('extra work')){
       i.cat='Additional Work';
-    } else if(r.includes('changeover')||r.includes('change over')||r.includes('set up')||r.includes('setup')||r.includes('scrape')||r.includes('change film')||r.includes('changing packet')||r.includes('film')||r.includes('push pipe')||r.includes('change ribbon')||r.includes('ribbon')){
+    } else if(r.includes('changeover')||r.includes('change over')||r.includes('set up')||r.includes('setup')||r.includes('scrape')||r.includes('change film')||r.includes('changing packet')||r.includes('film')||r.includes('push pipe')||r.includes('change ribbon')||r.includes('ribbon')||r.includes('warm up')||r.includes('warming up')||r.includes('sachet label')||r.includes('bang out')){
       i.cat='Changeover / Setup';
     } else {
       i.cat='Other';
@@ -1446,67 +1451,72 @@ function impBadge(imp){
   return map[imp]||map.med;
 }
 
+function refreshDropdowns(){
+  if(CUR){
+    populateDailyReportDates();
+    populateWeekSelector();
+    populateMonthSelector();
+    populateTrendPeriodSelectors();
+  }
+}
+
 function printReport(id){
   const el=document.getElementById(id);
-  const win=window.open('','_blank');
-  // Get logo from page
   const logoEl=document.querySelector('.hdr img');
   const logoSrc=logoEl?logoEl.src:'';
-  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8">
-  <title>Tetrosyl Fillers — OEE Report</title>
-  <style>
+
+  const printStyles=`
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Arial,sans-serif;font-size:11px;color:#000;padding:8mm}
+    body{font-family:Arial,sans-serif;font-size:11px;color:#000;background:#fff;padding:8mm}
     @page{size:A4 landscape;margin:8mm}
     .rpt-hdr{display:flex;align-items:center;gap:12px;border-bottom:2px solid #1F3864;padding-bottom:4mm;margin-bottom:6mm}
     .rpt-hdr img{height:40px}
     .rpt-hdr-title{font-size:16px;font-weight:bold;color:#1F3864}
-    .rpt-hdr-sub{font-size:11px;color:#555}
-    h2{font-size:13px;color:#1F3864;border-bottom:1px solid #ccc;padding-bottom:2mm;margin:5mm 0 3mm;font-weight:bold}
-    h3{font-size:11px;color:#1F3864;margin:4mm 0 2mm;font-weight:bold}
     table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:4mm}
-    th{background:#1F3864;color:#fff;padding:4px 6px;text-align:left;font-weight:normal}
+    th{background:#1F3864;color:#fff;padding:4px 6px;text-align:left;font-weight:normal;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     td{padding:4px 6px;border-bottom:1px solid #eee}
     tr:nth-child(even) td{background:#f5f5f5}
-    .kpi-row{display:flex;gap:8px;margin-bottom:5mm;flex-wrap:wrap}
-    .kpi{background:#f0f4ff;border:1px solid #dde;border-radius:4px;padding:4px 8px;min-width:100px}
-    .kpi-l{font-size:9px;color:#555;text-transform:uppercase;letter-spacing:.04em}
-    .kpi-v{font-size:16px;font-weight:bold;color:#1F3864}
-    .green{color:#217a3c}.amber{color:#854F0B}.red{color:#A32D2D}
-    .badge-hi{background:#fce;color:#900;padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold}
-    .badge-med{background:#fef3cd;color:#7a4f00;padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold}
-    .badge-lo{background:#d4edda;color:#155724;padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold}
-    .bar-wrap{display:flex;align-items:center;gap:4px}
-    .bar-bg{flex:1;background:#eee;border-radius:2px;height:6px;overflow:hidden}
-    .bar-fill{height:100%;border-radius:2px}
-    .section{margin-bottom:6mm;page-break-inside:avoid}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
-    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
-  </style>
-  </head><body>
-  <div class="rpt-hdr">
-    ${logoSrc?`<img src="${logoSrc}" alt="Tetrosyl">`:''}
-    <div>
-      <div class="rpt-hdr-title">Tetrosyl — Fillers Site</div>
-      <div class="rpt-hdr-sub" id="print-subtitle"></div>
-    </div>
-  </div>
-  ${el.innerHTML}
-  </body></html>`);
+    .kpi{background:#f0f4ff;border:1px solid #dde;border-radius:4px;padding:4px 8px;display:inline-block;min-width:100px;margin:2px;vertical-align:top}
+    .kpi-l,.kl{font-size:9px;color:#555;text-transform:uppercase;letter-spacing:.04em}
+    .kpi-v,.kv{font-size:16px;font-weight:bold;color:#1F3864}
+    .badge,.badge-hi,.badge-med,.badge-lo{padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold}
+    .hi,.badge-hi{background:#fce;color:#900}
+    .med,.badge-med{background:#fef3cd;color:#7a4f00}
+    .lo,.badge-lo{background:#d4edda;color:#155724}
+    .ok{background:#e3f2fd;color:#1565c0}
+    .report-section{margin-bottom:6mm;page-break-inside:avoid}
+    .cg,.cg2{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:4mm}
+    .card{border:1px solid #ddd;border-radius:4px;padding:8px;margin-bottom:4mm}
+    .ct{font-size:10px;color:#555;margin-bottom:6px;font-weight:bold}
+    div[style*="rgba(74,158,255"]{background:#e8f0fe!important;border:1px solid #4a9eff!important;border-radius:4px;padding:10px;margin-bottom:8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    div[style*="rgba(240,84,79"]{background:#fff0f0!important;border:1px solid #f0544f!important;border-radius:4px;padding:10px;margin-bottom:8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .print-btn{display:block;margin:10mm auto 6mm;padding:8px 24px;background:#1F3864;color:#fff;border:none;border-radius:4px;font-size:13px;cursor:pointer;font-family:Arial}
+    @media print{.print-btn{display:none!important}}
+  `;
+
+  const win=window.open('','_blank','width=1200,height=800');
+  win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Tetrosyl OEE Report</title>');
+  win.document.write('<style>'+printStyles+'</style></head><body>');
+  win.document.write('<button class="print-btn" onclick="window.print()">&#128438; Print this report</button>');
+  win.document.write('<div class="rpt-hdr">');
+  if(logoSrc) win.document.write('<img src="'+logoSrc+'" alt="Tetrosyl">');
+  win.document.write('<div><div class="rpt-hdr-title">Tetrosyl — Fillers Site</div></div></div>');
+  win.document.write(el.innerHTML);
+  win.document.write('</body></html>');
   win.document.close();
-  setTimeout(()=>win.print(),500);
 }
 
 // ── Daily Report ──────────────────────────────────────────────────────────────
 function populateDailyReportDates(){
   const hist=sortHist(loadHist());
   const sel=document.getElementById('daily-report-date-sel');
-  const cur=sel.value;
+  // Always default to most recent date
+  const latest=hist.length?hist[hist.length-1].date:'';
   sel.innerHTML='<option value="">— select date —</option>';
   [...hist].reverse().forEach(h=>{
     const o=document.createElement('option');
     o.value=h.date;o.textContent=h.date;
-    if(h.date===cur||((!cur||cur==='')&&h.date===hist[hist.length-1].date)) o.selected=true;
+    if(h.date===latest) o.selected=true;
     sel.appendChild(o);
   });
   buildDailyReport();
@@ -1579,7 +1589,8 @@ function buildDailyReport(){
   const combAtt=combTheo?Math.round(combOut/combTheo*100):null;
   const combOEE=(rec.dayOEE+rec.lateOEE)/2;
 
-  const content = `
+  const commentary = commentaryBox('Daily Performance Summary — '+date, genDailyCommentary(rec, date));
+  const content = commentary + `
     <div class="report-section">
       <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px">Combined Summary</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px">
@@ -1652,7 +1663,7 @@ function buildWeeklyReport(){
   const allIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])].map(i=>({...i,date:h.date})));
   const catCount={};
   allIssues.forEach(i=>{catCount[i.cat]=(catCount[i.cat]||0)+i.mins});
-  const topCats=Object.entries(catCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const topCats=Object.entries(catCount).sort((a,b)=>b[1]-a[1]).slice(0,12);
 
   // Per day breakdown
   const dayRows=days.map(h=>{
@@ -1689,7 +1700,8 @@ function buildWeeklyReport(){
     <td>${pctBar(totalCatMins>0?mins/totalCatMins*100:0,100)}</td>
   </tr>`;}).join('');
 
-  const content=`
+  const wCommentary=commentaryBox('Weekly Performance Summary — '+weekLabel(weekMon), genWeeklyCommentary(days, weekLabel(weekMon)));
+  const content=wCommentary+`
     <div class="report-section" style="margin-bottom:14px">
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px">
         <div class="kpi"><div class="kl">Avg Day OEE</div><div class="kv" style="color:${avgDayOEE>=.85?'#3ecf8e':avgDayOEE>=.65?'#f5a623':'#f0544f'}">${Math.round(avgDayOEE*100)}%</div></div>
@@ -1810,7 +1822,6 @@ function buildMonthlyReport(){
   const months=groupByMonth(hist);
   const sel=document.getElementById('month-sel');
   let monthKey=sel.value;
-  // Auto-select most recent month if none selected
   if(!monthKey){
     const sorted=Object.keys(months).sort((a,b)=>new Date(b)-new Date(a));
     monthKey=sorted[0]||'';
@@ -1820,9 +1831,9 @@ function buildMonthlyReport(){
   const days=months[monthKey]||[];
   if(!days.length){document.getElementById('monthly-content').innerHTML='<div style="padding:20px;color:var(--muted)">No data for this month</div>';return;}
 
-  document.getElementById('monthly-subtitle').textContent=`${monthKey} · ${days.length} day${days.length>1?'s':''} recorded`;
+  document.getElementById('monthly-subtitle').textContent=monthKey+' · '+days.length+' day'+(days.length>1?'s':'')+' recorded';
 
-  // Month totals
+  // Totals
   const totalOut=days.reduce((a,h)=>a+(h.dayOut||0)+(h.lateOut||0),0);
   const totalTheo=days.reduce((a,h)=>a+(h.dayTheo||0)+(h.lateTheo||0),0);
   const totalAtt=totalTheo?Math.round(totalOut/totalTheo*100):null;
@@ -1830,118 +1841,122 @@ function buildMonthlyReport(){
   const avgLateOEE=days.reduce((a,h)=>a+h.lateOEE,0)/days.length;
   const totalDT=days.reduce((a,h)=>a+h.totalDT,0);
 
-  // Issues by frequency - combine dtLog and noteLog, tag with date
-  // Declare monthAllIssues early so RM section below can use it
-  const monthAllIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])].map(i=>({...i,date:h.date})));
+  // All issues tagged with date
+  const allIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])].map(i=>Object.assign({},i,{date:h.date})));
+
+  // Issue frequency by category
   const issueCounts={};
-  monthAllIssues.forEach(i=>{
+  allIssues.forEach(function(i){
     const key=i.cat||'Other';
     if(!issueCounts[key]) issueCounts[key]={count:0,mins:0};
     issueCounts[key].count++;
-    issueCounts[key].mins+=i.mins;
-  }));
-  const topIssues=Object.entries(issueCounts).sort((a,b)=>b[1].count-a[1].count).slice(0,8);
+    issueCounts[key].mins+=i.mins||0;
+  });
+  const topIssues=Object.entries(issueCounts).sort((a,b)=>b[1].count-a[1].count).slice(0,12);
+  const totalIssueCount=topIssues.reduce((a,e)=>a+e[1].count,0);
+
+  // Reasons per category with hours
+  const catReasons={};
+  allIssues.forEach(function(i){
+    if(!catReasons[i.cat]) catReasons[i.cat]={};
+    if(i.reason){
+      catReasons[i.cat][i.reason]=(catReasons[i.cat][i.reason]||0)+(i.mins||0);
+    }
+  });
 
   // Weekly breakdown
   const weeks=groupByWeek(days);
-  const weekRows=Object.entries(weeks).sort((a,b)=>dateTs(a[0])-dateTs(b[0])).map(([mon,wdays])=>{
+  let weekRows='';
+  Object.entries(weeks).sort((a,b)=>dateTs(a[0])-dateTs(b[0])).forEach(function(entry){
+    const mon=entry[0], wdays=entry[1];
     const wOut=wdays.reduce((a,h)=>a+(h.dayOut||0)+(h.lateOut||0),0);
     const wTheo=wdays.reduce((a,h)=>a+(h.dayTheo||0)+(h.lateTheo||0),0);
     const wAtt=wTheo?Math.round(wOut/wTheo*100):null;
     const wOEE=wdays.reduce((a,h)=>a+(h.dayOEE+h.lateOEE)/2,0)/wdays.length;
     const wDT=wdays.reduce((a,h)=>a+h.totalDT,0);
-    const wOEECol=wOEE>=.85?'#3ecf8e':wOEE>=.65?'#f5a623':'#f0544f';
-    const wAttCol=wAtt>=85?'#3ecf8e':wAtt>=65?'#f5a623':'#f0544f';
-    const wDTCol=wDT>40?'#f0544f':'#f5a623';
-    return '<tr>'
+    const oCol=wOEE>=.85?'#3ecf8e':wOEE>=.65?'#f5a623':'#f0544f';
+    const aCol=wAtt>=85?'#3ecf8e':wAtt>=65?'#f5a623':'#f0544f';
+    weekRows+='<tr>'
       +'<td>'+weekLabel(mon)+'</td>'
       +'<td style="font-family:var(--mono)">'+wdays.length+'</td>'
-      +'<td style="color:'+wOEECol+';font-family:var(--mono)">'+Math.round(wOEE*100)+'%</td>'
+      +'<td style="color:'+oCol+';font-family:var(--mono)">'+Math.round(wOEE*100)+'%</td>'
       +'<td style="font-family:var(--mono)">'+wOut.toLocaleString()+'</td>'
       +'<td style="font-family:var(--mono);color:var(--muted)">'+wTheo.toLocaleString()+'</td>'
-      +'<td style="color:'+wAttCol+';font-family:var(--mono)">'+(wAtt!=null?wAtt+'%':'—')+'</td>'
-      +'<td style="font-family:var(--mono);color:'+wDTCol+'">'+wDT.toFixed(1)+'h</td>'
+      +'<td style="color:'+aCol+';font-family:var(--mono)">'+(wAtt!=null?wAtt+'%':'—')+'</td>'
+      +'<td style="font-family:var(--mono);color:'+(wDT>40?'#f0544f':'#f5a623')+'">'+wDT.toFixed(1)+'h</td>'
       +'</tr>';
-  }).join('');
-
-  // Build reasons with hours per category for monthly
-  const monthCatReasons={};
-  monthAllIssues.forEach(i=>{
-    if(!monthCatReasons[i.cat]) monthCatReasons[i.cat]={};
-    if(i.reason){
-      const r=i.reason;
-      monthCatReasons[i.cat][r]=(monthCatReasons[i.cat][r]||0)+i.mins;
-    }
   });
-  const totalIssueCount=topIssues.reduce((a,[,d])=>a+d.count,0);
-  const issueRows=topIssues.map(([cat,data])=>{
-    const reasonList=Object.entries(monthCatReasons[cat]||{}).sort((a,b)=>b[1]-a[1]).slice(0,5)
-      .map(([r,m])=>r+' <span style="color:#7a8aaa;font-family:var(--mono);">('+Math.round(m/60*10)/10+'h)</span>').join('<br>');
-    return `<tr>
-    <td>${cat}<div style="font-size:9px;color:var(--muted);margin-top:3px;line-height:1.6">${reasonList}</div></td>
-    <td style="font-family:var(--mono);text-align:center">${data.count}</td>
-    <td style="font-family:var(--mono)">${Math.round(data.mins/60*10)/10}h</td>
-    <td>${pctBar(totalIssueCount>0?data.count/totalIssueCount*100:0,100)} <span style="font-size:10px;color:var(--muted)">${totalIssueCount>0?Math.round(data.count/totalIssueCount*100)+'%':''}</span></td>
-  </tr>`;}).join('');
 
-  const content=`
-    <div class="report-section" style="margin-bottom:14px">
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px">
-        <div class="kpi"><div class="kl">Avg Day OEE</div><div class="kv" style="color:${avgDayOEE>=.85?'#3ecf8e':avgDayOEE>=.65?'#f5a623':'#f0544f'}">${Math.round(avgDayOEE*100)}%</div></div>
-        <div class="kpi"><div class="kl">Avg Late OEE</div><div class="kv" style="color:${avgLateOEE>=.85?'#3ecf8e':avgLateOEE>=.65?'#f5a623':'#f0544f'}">${Math.round(avgLateOEE*100)}%</div></div>
-        <div class="kpi"><div class="kl">Month output</div><div class="kv blue">${totalOut.toLocaleString()}</div></div>
-        <div class="kpi"><div class="kl">Month theoretical</div><div class="kv" style="color:var(--muted)">${totalTheo.toLocaleString()}</div></div>
-        <div class="kpi"><div class="kl">Month attainment</div><div class="kv" style="color:${totalAtt>=85?'#3ecf8e':totalAtt>=65?'#f5a623':'#f0544f'}">${totalAtt!=null?totalAtt+'%':'—'}</div></div>
-        <div class="kpi"><div class="kl">Total downtime</div><div class="kv" style="color:${totalDT>100?'#f0544f':'#f5a623'}">${totalDT.toFixed(1)}h</div></div>
-      </div>
-    </div>
-    <div class="cg cg2" style="margin-bottom:14px">
-      <div class="card">
-        <div class="ct">Weekly breakdown</div>
-        <table class="tbl">
-          <thead><tr><th>Week</th><th>Days</th><th>Avg OEE</th><th>Output</th><th>Theoretical</th><th>Attainment</th><th>Downtime</th></tr></thead>
-          <tbody>${weekRows}</tbody>
-        </table>
-      </div>
-      <div class="card">
-        <div class="ct">Top issues this month (by frequency)</div>
-        <table class="tbl">
-          <thead><tr><th>Category</th><th>Occurrences</th><th>Total hours</th><th>Relative frequency</th></tr></thead>
-          <tbody>${issueRows||'<tr><td colspan="4" style="text-align:center;color:var(--muted)">No issues recorded</td></tr>'}</tbody>
-        </table>
-      </div>
-    </div>`;
+  // Issue rows
+  let issueRows='';
+  topIssues.forEach(function(entry){
+    const cat=entry[0], data=entry[1];
+    const pct=totalIssueCount>0?Math.round(data.count/totalIssueCount*100):0;
+    const reasons=Object.entries(catReasons[cat]||{}).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    const reasonHtml=reasons.map(function(r){return r[0]+' <span style="color:#7a8aaa;font-family:var(--mono);">('+Math.round(r[1]/60*10)/10+'h)</span>';}).join('<br>');
+    issueRows+='<tr>'
+      +'<td>'+cat+'<div style="font-size:9px;color:var(--muted);margin-top:3px;line-height:1.6">'+reasonHtml+'</div></td>'
+      +'<td style="font-family:var(--mono);text-align:center">'+data.count+'</td>'
+      +'<td style="font-family:var(--mono)">'+Math.round(data.mins/60*10)/10+'h</td>'
+      +'<td>'+pctBar(pct,100)+' <span style="font-size:10px;color:var(--muted)">'+pct+'%</span></td>'
+      +'</tr>';
+  });
 
-// Raw Material Issues itemised for the month
-  const monthAllIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])].map(i=>({...i,date:h.date})));
-  const monthRM=monthAllIssues.filter(i=>i.cat==='Raw Material Issues');
-  let rmMonthHtml='';
-  if(monthRM.length){
+  // KPI cards
+  const dOEECol=avgDayOEE>=.85?'#3ecf8e':avgDayOEE>=.65?'#f5a623':'#f0544f';
+  const lOEECol=avgLateOEE>=.85?'#3ecf8e':avgLateOEE>=.65?'#f5a623':'#f0544f';
+  const attCol=totalAtt>=85?'#3ecf8e':totalAtt>=65?'#f5a623':'#f0544f';
+  const dtCol=totalDT>100?'#f0544f':'#f5a623';
+
+  const mCommentary=commentaryBox('Monthly Performance Summary — '+monthKey, genMonthlyCommentary(days, monthKey));
+  const content=mCommentary+'<div class="report-section" style="margin-bottom:14px">'
+    +'<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:14px">'
+    +'<div class="kpi"><div class="kl">Avg Day OEE</div><div class="kv" style="color:'+dOEECol+'">'+Math.round(avgDayOEE*100)+'%</div></div>'
+    +'<div class="kpi"><div class="kl">Avg Late OEE</div><div class="kv" style="color:'+lOEECol+'">'+Math.round(avgLateOEE*100)+'%</div></div>'
+    +'<div class="kpi"><div class="kl">Month output</div><div class="kv blue">'+totalOut.toLocaleString()+'</div></div>'
+    +'<div class="kpi"><div class="kl">Month theoretical</div><div class="kv" style="color:var(--muted)">'+totalTheo.toLocaleString()+'</div></div>'
+    +'<div class="kpi"><div class="kl">Month attainment</div><div class="kv" style="color:'+attCol+'">'+(totalAtt!=null?totalAtt+'%':'—')+'</div></div>'
+    +'<div class="kpi"><div class="kl">Total downtime</div><div class="kv" style="color:'+dtCol+'">'+totalDT.toFixed(1)+'h</div></div>'
+    +'</div></div>'
+    +'<div class="cg cg2" style="margin-bottom:14px">'
+    +'<div class="card"><div class="ct">Weekly breakdown</div>'
+    +'<table class="tbl"><thead><tr><th>Week</th><th>Days</th><th>Avg OEE</th><th>Output</th><th>Theoretical</th><th>Attainment</th><th>Downtime</th></tr></thead>'
+    +'<tbody>'+weekRows+'</tbody></table></div>'
+    +'<div class="card"><div class="ct">Top issues this month (by frequency)</div>'
+    +'<table class="tbl"><thead><tr><th>Category</th><th>Occurrences</th><th>Total hours</th><th>Relative frequency</th></tr></thead>'
+    +'<tbody>'+(issueRows||'<tr><td colspan="4" style="text-align:center;color:var(--muted)">No issues recorded</td></tr>')+'</tbody></table></div>'
+    +'</div>';
+
+  // Raw material issues section
+  const rmIssues=allIssues.filter(function(i){return i.cat==='Raw Material Issues';});
+  let rmHtml='';
+  if(rmIssues.length){
     const rmByDate={};
-    days.forEach(h=>{
-      const dayRM=[...(h.dtLog||[]),...(h.noteLog||[])].filter(i=>i.cat==='Raw Material Issues'&&i.shift==='day');
-      const lateRM=[...(h.dtLog||[]),...(h.noteLog||[])].filter(i=>i.cat==='Raw Material Issues'&&i.shift==='late');
-      if(dayRM.length||lateRM.length) rmByDate[h.date]={day:dayRM,late:lateRM};
+    days.forEach(function(h){
+      const dr=[...(h.dtLog||[]),...(h.noteLog||[])].filter(function(i){return i.cat==='Raw Material Issues'&&i.shift==='day';});
+      const lr=[...(h.dtLog||[]),...(h.noteLog||[])].filter(function(i){return i.cat==='Raw Material Issues'&&i.shift==='late';});
+      if(dr.length||lr.length) rmByDate[h.date]={day:dr,late:lr};
     });
-    const totalRMHrs=Object.values(rmByDate).reduce((a,v)=>a+(v.day.length?9.75:0)+(v.late.length?9.75:0),0);
-    const rmRows=monthRM.map(i=>`<tr style="background:rgba(240,84,79,.05)">
-      <td style="font-family:var(--mono);font-size:10px">${i.date||'—'}</td>
-      <td style="color:#f0544f;font-size:10px">${i.shift==='day'?'Day':'Late'}</td>
-      <td style="font-weight:500">${i.machine}</td>
-      <td>${i.reason||'—'}</td>
-      <td><span class="badge hi">HIGH</span></td>
-    </tr>`).join('');
-    rmMonthHtml=`<div class="card" style="border:1px solid rgba(240,84,79,.3);background:rgba(240,84,79,.04);margin-top:10px">
-      <div class="ct" style="color:#f0544f">⚠ Raw Material Issues — ${totalRMHrs}h total shift impact this month</div>
-      <table class="tbl">
-        <thead><tr><th>Date</th><th>Shift</th><th>Machine</th><th>Reason</th><th>Impact</th></tr></thead>
-        <tbody>${rmRows}</tbody>
-      </table>
-    </div>`;
+    const totalRMHrs=Object.values(rmByDate).reduce(function(a,v){return a+(v.day.length?9.75:0)+(v.late.length?9.75:0);},0);
+    let rmRows='';
+    rmIssues.forEach(function(i){
+      rmRows+='<tr style="background:rgba(240,84,79,.05)">'
+        +'<td style="font-family:var(--mono);font-size:10px">'+(i.date||'—')+'</td>'
+        +'<td style="color:#f0544f;font-size:10px">'+(i.shift==='day'?'Day':'Late')+'</td>'
+        +'<td style="font-weight:500">'+i.machine+'</td>'
+        +'<td>'+(i.reason||'—')+'</td>'
+        +'<td><span class="badge hi">HIGH</span></td>'
+        +'</tr>';
+    });
+    rmHtml='<div class="card" style="border:1px solid rgba(240,84,79,.3);background:rgba(240,84,79,.04);margin-top:10px">'
+      +'<div class="ct" style="color:#f0544f">&#9888; Raw Material Issues — '+totalRMHrs+'h total shift impact this month</div>'
+      +'<table class="tbl"><thead><tr><th>Date</th><th>Shift</th><th>Machine</th><th>Reason</th><th>Impact</th></tr></thead>'
+      +'<tbody>'+rmRows+'</tbody></table></div>';
   }
 
-  document.getElementById('monthly-content').innerHTML=content+rmMonthHtml;
+  document.getElementById('monthly-content').innerHTML=content+rmHtml;
 }
+
 
 </script>
 </body>
