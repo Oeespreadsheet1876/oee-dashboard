@@ -45,21 +45,31 @@
     "dayTheo": 24144,
     "lateTheo": 13570,
     "totalDT": 18.75,
-    "topIssue": "Engineering Issues",
+    "topIssue": "Additional Work",
     "pareto": [
       {
-        "cat": "Engineering Issues",
-        "mins": 630,
-        "cum": 56
+        "cat": "Additional Work",
+        "mins": 600,
+        "cum": 53
       },
       {
         "cat": "Waiting for Blending",
         "mins": 405,
-        "cum": 92
+        "cum": 89
       },
       {
         "cat": "Changeover / Setup",
         "mins": 90,
+        "cum": 97
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 30,
+        "cum": 100
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 0,
         "cum": 100
       }
     ],
@@ -83,7 +93,7 @@
         "shift": "day",
         "intended": 4.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -94,7 +104,7 @@
         "shift": "late",
         "intended": 2.75,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -116,7 +126,7 @@
         "shift": "late",
         "intended": 4,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -127,7 +137,7 @@
         "shift": "late",
         "intended": 4,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -138,7 +148,7 @@
         "shift": "late",
         "intended": 2.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -204,7 +214,7 @@
         "shift": "day",
         "intended": 4,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Staff Shortage",
         "imp": "lo"
       }
     ],
@@ -401,7 +411,7 @@
         "cum": 92
       },
       {
-        "cat": "Engineering Issues",
+        "cat": "Component Shortage",
         "mins": 60,
         "cum": 100
       }
@@ -437,7 +447,7 @@
         "shift": "day",
         "intended": 3.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Component Shortage",
         "imp": "hi"
       },
       {
@@ -792,7 +802,7 @@
         "cum": 79
       },
       {
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "mins": 120,
         "cum": 96
       },
@@ -838,7 +848,7 @@
         "shift": "late",
         "intended": 8.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -1100,7 +1110,7 @@
         "cum": 86
       },
       {
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "mins": 165,
         "cum": 100
       }
@@ -1147,7 +1157,7 @@
         "shift": "late",
         "intended": 9.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -1224,7 +1234,7 @@
         "shift": "day",
         "intended": 3,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "med"
       },
       {
@@ -1268,7 +1278,7 @@
         "shift": "late",
         "intended": 0.75,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       }
     ],
@@ -1478,13 +1488,8 @@
         "cum": 91
       },
       {
-        "cat": "Engineering Issues",
-        "mins": 75,
-        "cum": 98
-      },
-      {
         "cat": "Other",
-        "mins": 15,
+        "mins": 90,
         "cum": 100
       },
       {
@@ -1557,7 +1562,7 @@
         "shift": "day",
         "intended": 3.75,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Other",
         "imp": "hi"
       },
       {
@@ -2004,7 +2009,7 @@
         "shift": "late",
         "intended": 4.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
@@ -2225,13 +2230,23 @@
         "cum": 63
       },
       {
+        "cat": "Additional Work",
+        "mins": 180,
+        "cum": 84
+      },
+      {
         "cat": "Engineering Issues",
-        "mins": 255,
-        "cum": 93
+        "mins": 60,
+        "cum": 91
       },
       {
         "cat": "Changeover / Setup",
         "mins": 60,
+        "cum": 98
+      },
+      {
+        "cat": "Other",
+        "mins": 15,
         "cum": 100
       },
       {
@@ -2271,7 +2286,7 @@
         "shift": "late",
         "intended": 7.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -2337,7 +2352,7 @@
         "shift": "late",
         "intended": 9.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Other",
         "imp": "lo"
       },
       {
@@ -2528,21 +2543,21 @@
     "dayTheo": 31377,
     "lateTheo": 17259,
     "totalDT": 11.25,
-    "topIssue": "Engineering Issues",
+    "topIssue": "Other",
     "pareto": [
       {
-        "cat": "Engineering Issues",
-        "mins": 285,
-        "cum": 42
-      },
-      {
         "cat": "Other",
-        "mins": 105,
-        "cum": 58
+        "mins": 210,
+        "cum": 31
       },
       {
-        "cat": "Raw Material Issues",
-        "mins": 105,
+        "cat": "Additional Work",
+        "mins": 165,
+        "cum": 56
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 120,
         "cum": 73
       },
       {
@@ -2576,7 +2591,7 @@
         "shift": "late",
         "intended": 4.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -2587,7 +2602,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "imp": "med"
       },
       {
@@ -2609,7 +2624,7 @@
         "shift": "day",
         "intended": 1,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -2697,7 +2712,7 @@
         "shift": "late",
         "intended": 7.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "lo"
       }
     ],
@@ -2881,32 +2896,32 @@
     "pareto": [
       {
         "cat": "Other",
-        "mins": 345,
-        "cum": 28
+        "mins": 390,
+        "cum": 31
       },
       {
         "cat": "Component Shortage",
         "mins": 300,
-        "cum": 52
-      },
-      {
-        "cat": "Engineering Issues",
-        "mins": 285,
-        "cum": 75
+        "cum": 55
       },
       {
         "cat": "Changeover / Setup",
         "mins": 195,
-        "cum": 90
+        "cum": 71
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 180,
+        "cum": 86
       },
       {
         "cat": "Waiting for Blending",
         "mins": 90,
-        "cum": 98
+        "cum": 93
       },
       {
         "cat": "Additional Work",
-        "mins": 30,
+        "mins": 90,
         "cum": 100
       }
     ],
@@ -2985,7 +3000,7 @@
         "shift": "day",
         "intended": 3.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -3007,7 +3022,7 @@
         "shift": "late",
         "intended": 3.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Other",
         "imp": "hi"
       },
       {
@@ -3331,37 +3346,32 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 465,
-        "cum": 42
-      },
-      {
-        "cat": "Engineering Issues",
-        "mins": 240,
-        "cum": 64
+        "mins": 615,
+        "cum": 55
       },
       {
         "cat": "Component Shortage",
         "mins": 150,
-        "cum": 77
-      },
-      {
-        "cat": "Raw Material Issues",
-        "mins": 150,
-        "cum": 91
+        "cum": 69
       },
       {
         "cat": "Other",
+        "mins": 150,
+        "cum": 82
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 90,
+        "cum": 91
+      },
+      {
+        "cat": "Engineering Issues",
         "mins": 90,
         "cum": 99
       },
       {
         "cat": "Changeover / Setup",
         "mins": 15,
-        "cum": 100
-      },
-      {
-        "cat": "Staff Shortage",
-        "mins": 0,
         "cum": 100
       }
     ],
@@ -3407,7 +3417,7 @@
         "shift": "late",
         "intended": 6,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -3418,7 +3428,7 @@
         "shift": "day",
         "intended": 3.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Staff Shortage",
         "imp": "hi"
       },
       {
@@ -3429,7 +3439,7 @@
         "shift": "day",
         "intended": 4.25,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
@@ -3473,7 +3483,7 @@
         "shift": "late",
         "intended": 5.25,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "imp": "med"
       },
       {
@@ -3734,17 +3744,22 @@
       },
       {
         "cat": "Engineering Issues",
-        "mins": 210,
-        "cum": 81
+        "mins": 180,
+        "cum": 79
       },
       {
         "cat": "Other",
         "mins": 135,
-        "cum": 92
+        "cum": 90
       },
       {
         "cat": "Staff Shortage",
         "mins": 105,
+        "cum": 98
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 30,
         "cum": 100
       }
     ],
@@ -3856,7 +3871,7 @@
         "shift": "day",
         "intended": 5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Component Shortage",
         "imp": "med"
       },
       {
@@ -3933,7 +3948,7 @@
         "shift": "day",
         "intended": 3,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Staff Shortage",
         "imp": "lo"
       },
       {
@@ -3944,7 +3959,7 @@
         "shift": "day",
         "intended": 3.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Staff Shortage",
         "imp": "lo"
       },
       {
@@ -3955,7 +3970,7 @@
         "shift": "late",
         "intended": 3.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Staff Shortage",
         "imp": "lo"
       }
     ],
@@ -4143,23 +4158,28 @@
         "cum": 60
       },
       {
-        "cat": "Engineering Issues",
-        "mins": 270,
-        "cum": 81
+        "cat": "Additional Work",
+        "mins": 240,
+        "cum": 79
       },
       {
         "cat": "Other",
         "mins": 105,
-        "cum": 89
+        "cum": 87
       },
       {
         "cat": "Changeover / Setup",
         "mins": 75,
-        "cum": 95
+        "cum": 93
       },
       {
-        "cat": "Raw Material Issues",
+        "cat": "Quality Issues",
         "mins": 60,
+        "cum": 98
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 30,
         "cum": 100
       }
     ],
@@ -4205,7 +4225,7 @@
         "shift": "day",
         "intended": 8,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -4238,7 +4258,7 @@
         "shift": "day",
         "intended": 2.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -4271,7 +4291,7 @@
         "shift": "day",
         "intended": 3.75,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Quality Issues",
         "imp": "hi"
       },
       {
@@ -4282,7 +4302,7 @@
         "shift": "day",
         "intended": 1.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -4576,22 +4596,22 @@
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 402,
-        "cum": 46
+        "mins": 507,
+        "cum": 57
       },
       {
-        "cat": "Engineering Issues",
-        "mins": 360,
-        "cum": 86
+        "cat": "Additional Work",
+        "mins": 180,
+        "cum": 78
       },
       {
         "cat": "Changeover / Setup",
-        "mins": 90,
-        "cum": 97
+        "mins": 120,
+        "cum": 91
       },
       {
-        "cat": "Component Shortage",
-        "mins": 30,
+        "cat": "Engineering Issues",
+        "mins": 75,
         "cum": 100
       },
       {
@@ -4631,7 +4651,7 @@
         "shift": "day",
         "intended": 7.75,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -4642,7 +4662,7 @@
         "shift": "day",
         "intended": 6,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -4675,7 +4695,7 @@
         "shift": "day",
         "intended": 3,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -4697,7 +4717,7 @@
         "shift": "late",
         "intended": 3.5,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Changeover / Setup",
         "imp": "med"
       },
       {
@@ -4905,9 +4925,9 @@
     "latePerf": 0.7835,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 15504,
+    "dayOut": 20916,
     "lateOut": 13838,
-    "dayTheo": 18909,
+    "dayTheo": 28284,
     "lateTheo": 17662,
     "totalDT": 13.55,
     "topIssue": "Waiting for Blending",
@@ -5263,7 +5283,7 @@
         "shift": "day",
         "intended": 3.75,
         "isNote": true,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       }
     ],
@@ -5313,41 +5333,41 @@
     "latePerf": 0.8147,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 9704,
+    "dayOut": 14576,
     "lateOut": 11756,
-    "dayTheo": 10853,
+    "dayTheo": 19853,
     "lateTheo": 14431,
     "totalDT": 17.75,
-    "topIssue": "Engineering Issues",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Engineering Issues",
-        "mins": 465,
-        "cum": 44
+        "cat": "Waiting for Blending",
+        "mins": 615,
+        "cum": 58
       },
       {
-        "cat": "Waiting for Blending",
-        "mins": 405,
-        "cum": 82
+        "cat": "Engineering Issues",
+        "mins": 225,
+        "cum": 79
       },
       {
         "cat": "Changeover / Setup",
-        "mins": 75,
-        "cum": 89
+        "mins": 90,
+        "cum": 87
       },
       {
         "cat": "Component Shortage",
         "mins": 60,
-        "cum": 94
+        "cum": 93
       },
       {
         "cat": "Other",
         "mins": 45,
-        "cum": 99
+        "cum": 97
       },
       {
-        "cat": "Raw Material Issues",
-        "mins": 15,
+        "cat": "Additional Work",
+        "mins": 30,
         "cum": 100
       }
     ],
@@ -5371,7 +5391,7 @@
         "shift": "late",
         "intended": 5.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -5382,7 +5402,7 @@
         "shift": "day",
         "intended": 2,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -5503,7 +5523,7 @@
         "shift": "late",
         "intended": 4,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "med"
       },
       {
@@ -5525,7 +5545,7 @@
         "shift": "late",
         "intended": 6.25,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Changeover / Setup",
         "imp": "lo"
       },
       {
@@ -5728,19 +5748,7 @@
   },
   {
     "date": "03/06/2026",
-    "noteLog": [
-      {
-        "machine": "A008",
-        "reason": "No Flake Available",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "late",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Other",
-        "imp": "hi"
-      }
-    ],
+    "noteLog": [],
     "machActual": {
       "A007": [
         8442,
@@ -5779,9 +5787,9 @@
     "latePerf": 0.7818,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 12534,
+    "dayOut": 20976,
     "lateOut": 9600,
-    "dayTheo": 14003,
+    "dayTheo": 24503,
     "lateTheo": 12279,
     "totalDT": 11,
     "topIssue": "Waiting for Blending",
@@ -5798,12 +5806,12 @@
       },
       {
         "cat": "Engineering Issues",
-        "mins": 75,
-        "cum": 100
+        "mins": 60,
+        "cum": 98
       },
       {
         "cat": "Additional Work",
-        "mins": 0,
+        "mins": 15,
         "cum": 100
       }
     ],
@@ -5926,7 +5934,7 @@
         "shift": "day",
         "intended": 2.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "med"
       },
       {
@@ -6139,30 +6147,7 @@
   },
   {
     "date": "04/06/2026",
-    "noteLog": [
-      {
-        "machine": "A004",
-        "reason": "No 1750 Cartons",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Other",
-        "imp": "hi"
-      },
-      {
-        "machine": "A004",
-        "reason": "No 1750 Cartons",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "late",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Other",
-        "imp": "hi"
-      }
-    ],
+    "noteLog": [],
     "machActual": {
       "A007": [
         6048,
@@ -6205,36 +6190,36 @@
     "latePerf": 0.7132,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 20268,
+    "dayOut": 26316,
     "lateOut": 12373,
-    "dayTheo": 22734,
+    "dayTheo": 29109,
     "lateTheo": 17348,
     "totalDT": 17,
     "topIssue": "Waiting for Blending",
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 540,
-        "cum": 53
+        "mins": 555,
+        "cum": 54
       },
       {
         "cat": "Other",
-        "mins": 180,
-        "cum": 71
-      },
-      {
-        "cat": "Component Shortage",
-        "mins": 105,
-        "cum": 81
-      },
-      {
-        "cat": "Engineering Issues",
-        "mins": 105,
-        "cum": 91
+        "mins": 210,
+        "cum": 75
       },
       {
         "cat": "Changeover / Setup",
         "mins": 90,
+        "cum": 84
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 90,
+        "cum": 93
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 75,
         "cum": 100
       }
     ],
@@ -6324,7 +6309,7 @@
         "shift": "day",
         "intended": 3.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Other",
         "imp": "med"
       },
       {
@@ -6357,7 +6342,7 @@
         "shift": "day",
         "intended": 0.5,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -6619,36 +6604,36 @@
     "latePerf": 0.7747,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 13175,
+    "dayOut": 22919,
     "lateOut": 7794,
-    "dayTheo": 16514,
+    "dayTheo": 27014,
     "lateTheo": 10060,
     "totalDT": 21.5,
-    "topIssue": "Engineering Issues",
+    "topIssue": "Waiting for Blending",
     "pareto": [
       {
-        "cat": "Engineering Issues",
-        "mins": 465,
-        "cum": 36
+        "cat": "Waiting for Blending",
+        "mins": 585,
+        "cum": 45
       },
       {
         "cat": "Component Shortage",
-        "mins": 285,
-        "cum": 58
-      },
-      {
-        "cat": "Waiting for Blending",
-        "mins": 270,
-        "cum": 79
-      },
-      {
-        "cat": "Raw Material Issues",
-        "mins": 105,
-        "cum": 87
+        "mins": 240,
+        "cum": 64
       },
       {
         "cat": "Other",
-        "mins": 105,
+        "mins": 210,
+        "cum": 80
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 120,
+        "cum": 90
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 75,
         "cum": 95
       },
       {
@@ -6666,7 +6651,7 @@
         "shift": "late",
         "intended": 8.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -6699,7 +6684,7 @@
         "shift": "day",
         "intended": 5.75,
         "isNote": false,
-        "cat": "Raw Material Issues",
+        "cat": "Other",
         "imp": "hi"
       },
       {
@@ -6732,7 +6717,7 @@
         "shift": "day",
         "intended": 4.5,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -6765,7 +6750,7 @@
         "shift": "day",
         "intended": 3,
         "isNote": false,
-        "cat": "Component Shortage",
+        "cat": "Engineering Issues",
         "imp": "hi"
       },
       {
@@ -6776,7 +6761,7 @@
         "shift": "late",
         "intended": 7,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "med"
       },
       {
@@ -6787,7 +6772,7 @@
         "shift": "day",
         "intended": 1.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -6990,6 +6975,361 @@
       "A031": [
         null,
         1751
+      ]
+    }
+  },
+  {
+    "date": "09/06/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        6726,
+        null
+      ],
+      "A004": [
+        2112,
+        4308
+      ],
+      "A005": [
+        1900,
+        713
+      ],
+      "A009": [
+        2886,
+        null
+      ],
+      "A006 B": [
+        900,
+        960
+      ],
+      "A015": [
+        null,
+        376
+      ],
+      "A031": [
+        null,
+        1560
+      ]
+    },
+    "dayOEE": 0.5346,
+    "lateOEE": 0.6616,
+    "dayAvail": 0.773,
+    "lateAvail": 0.7701,
+    "dayPerf": 0.6917,
+    "latePerf": 0.8592,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 7798,
+    "lateOut": 7917,
+    "dayTheo": 8999,
+    "lateTheo": 9214,
+    "totalDT": 21.25,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 645,
+        "cum": 51
+      },
+      {
+        "cat": "Other",
+        "mins": 345,
+        "cum": 78
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 255,
+        "cum": 98
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 30,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A004",
+        "reason": "Scrape Out / Jet Wash",
+        "downtime": 4.25,
+        "mins": 255,
+        "shift": "day",
+        "intended": 4.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting on Batch",
+        "downtime": 2.5,
+        "mins": 150,
+        "shift": "late",
+        "intended": 5.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting on Scrape Out",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "late",
+        "intended": 2.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Labelling Buckets, Lids and Cartons",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "Hopper Blocked, Unblocking and Clean up",
+        "downtime": 1.75,
+        "mins": 105,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A031",
+        "reason": "No More Buckets",
+        "downtime": 1.75,
+        "mins": 105,
+        "shift": "late",
+        "intended": 6,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Finish Washout After Brown Wood",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "late",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "Running With 2 People Only / Labelling Tubes / Waiting for Tubes",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Waiting for Packets / Dropping Batch",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 4.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Labelling Issues / Nozzle Issues",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 5,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Batch Dropping / Change Film",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 4.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A015",
+        "reason": "Machine Stopped Working",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "late",
+        "intended": 4.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A015",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A009",
+      "A015",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.4848,
+        null
+      ],
+      "A004": [
+        0.3261,
+        0.7762
+      ],
+      "A005": [
+        1.0281,
+        0.5042
+      ],
+      "A009": [
+        0.6242,
+        null
+      ],
+      "A006 B": [
+        0.971,
+        1.0358
+      ],
+      "A015": [
+        null,
+        0.5218
+      ],
+      "A031": [
+        null,
+        0.5197
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.8649,
+        null
+      ],
+      "A004": [
+        0.4324,
+        0.8378
+      ],
+      "A005": [
+        1,
+        0.587
+      ],
+      "A009": [
+        0.7838,
+        null
+      ],
+      "A006 B": [
+        0.7838,
+        1
+      ],
+      "A015": [
+        null,
+        0.7027
+      ],
+      "A031": [
+        null,
+        0.7667
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.5605,
+        null
+      ],
+      "A004": [
+        0.7541,
+        0.9265
+      ],
+      "A005": [
+        1.0281,
+        0.8591
+      ],
+      "A009": [
+        0.7965,
+        null
+      ],
+      "A006 B": [
+        1.2389,
+        1.0358
+      ],
+      "A015": [
+        null,
+        0.7425
+      ],
+      "A031": [
+        null,
+        0.6779
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        12000,
+        null
+      ],
+      "A004": [
+        2801,
+        4650
+      ],
+      "A005": [
+        1848,
+        830
+      ],
+      "A009": [
+        3624,
+        null
+      ],
+      "A006 B": [
+        726,
+        927
+      ],
+      "A015": [
+        null,
+        506
+      ],
+      "A031": [
+        null,
+        2301
       ]
     }
   }
