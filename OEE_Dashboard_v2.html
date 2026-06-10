@@ -355,6 +355,112 @@ input[type=file]{display:none}@media print {
 </div>
 
 <script>
+// ── Auto commentary generators ───────────────────────────────────────────────
+function genDailyCommentary(rec, date){
+  const combOut=(rec.dayOut||0)+(rec.lateOut||0);
+  const combTheo=(rec.dayTheo||0)+(rec.lateTheo||0);
+  const combAtt=combTheo?Math.round(combOut/combTheo*100):null;
+  const dayOEE=Math.round(rec.dayOEE*100);
+  const lateOEE=Math.round(rec.lateOEE*100);
+  const avgOEE=Math.round((rec.dayOEE+rec.lateOEE)/2*100);
+  const dt=rec.totalDT||0;
+  const allIssues=[...(rec.dtLog||[]),...(rec.noteLog||[])];
+  const catMins={};
+  allIssues.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+(i.mins||0);});
+  const topCat=Object.entries(catMins).sort((a,b)=>b[1]-a[1])[0];
+  const rmIssues=allIssues.filter(i=>i.cat==='Raw Material Issues'||i.cat==='Quality Issues');
+
+  let txt=date+' achieved '+combAtt+'% combined output attainment';
+  txt+=', producing '+combOut.toLocaleString()+' units against a theoretical target of '+combTheo.toLocaleString()+'. ';
+  txt+='Day shift OEE was '+dayOEE+'% and late shift OEE was '+lateOEE+'%';
+  if(dayOEE<85||lateOEE<85) txt+=', both below the 85% world class target';
+  txt+='. ';
+  if(dt>0){
+    txt+='Total downtime was '+dt.toFixed(1)+'h ('+Math.round(dt*60)+' mins). ';
+    if(topCat) txt+='The primary issue was '+topCat[0]+' ('+Math.round(topCat[1]/60*10)/10+'h, '+Math.round(topCat[1]/(dt*60)*100)+'% of downtime). ';
+  } else {
+    txt+='No downtime was recorded. ';
+  }
+  if(rmIssues.length){
+    const rmMachines=[...new Set(rmIssues.map(i=>i.machine))].join(', ');
+    txt+='Raw material or quality issues were recorded on '+rmMachines+'.';
+  }
+  return txt;
+}
+
+function genWeeklyCommentary(days, weekLabel){
+  const totalOut=days.reduce((a,h)=>a+(h.dayOut||0)+(h.lateOut||0),0);
+  const totalTheo=days.reduce((a,h)=>a+(h.dayTheo||0)+(h.lateTheo||0),0);
+  const totalAtt=totalTheo?Math.round(totalOut/totalTheo*100):null;
+  const avgDayOEE=Math.round(days.reduce((a,h)=>a+h.dayOEE,0)/days.length*100);
+  const avgLateOEE=Math.round(days.reduce((a,h)=>a+h.lateOEE,0)/days.length*100);
+  const totalDT=days.reduce((a,h)=>a+h.totalDT,0);
+  const allIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])]);
+  const catMins={};
+  allIssues.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+(i.mins||0);});
+  const sorted=Object.entries(catMins).sort((a,b)=>b[1]-a[1]);
+  const top1=sorted[0], top2=sorted[1];
+  const rmDays=new Set(days.filter(h=>[...(h.dtLog||[]),...(h.noteLog||[])].some(i=>i.cat==='Raw Material Issues'||i.cat==='Quality Issues')).map(h=>h.date));
+
+  let txt='Week '+weekLabel+' achieved '+totalAtt+'% combined output attainment';
+  txt+=', producing '+totalOut.toLocaleString()+' units against a theoretical target of '+totalTheo.toLocaleString();
+  txt+=' across '+days.length+' production day'+(days.length>1?'s':'')+'. ';
+  txt+='Average OEE was '+avgDayOEE+'% day / '+avgLateOEE+'% late';
+  if(avgDayOEE<85||avgLateOEE<85) txt+=', both below the 85% world class target';
+  txt+='. ';
+  if(totalDT>0){
+    txt+='Total downtime was '+totalDT.toFixed(1)+'h. ';
+    if(top1) txt+='The primary issue was '+top1[0]+' ('+Math.round(top1[1]/60*10)/10+'h, '+Math.round(top1[1]/(totalDT*60)*100)+'% of downtime)';
+    if(top2) txt+=', followed by '+top2[0]+' ('+Math.round(top2[1]/60*10)/10+'h)';
+    txt+='. ';
+  }
+  if(rmDays.size>0) txt+='Raw material or quality issues were recorded on '+rmDays.size+' day'+(rmDays.size>1?'s':'')+'.';
+  return txt;
+}
+
+function genMonthlyCommentary(days, monthKey){
+  const totalOut=days.reduce((a,h)=>a+(h.dayOut||0)+(h.lateOut||0),0);
+  const totalTheo=days.reduce((a,h)=>a+(h.dayTheo||0)+(h.lateTheo||0),0);
+  const totalAtt=totalTheo?Math.round(totalOut/totalTheo*100):null;
+  const avgDayOEE=Math.round(days.reduce((a,h)=>a+h.dayOEE,0)/days.length*100);
+  const avgLateOEE=Math.round(days.reduce((a,h)=>a+h.lateOEE,0)/days.length*100);
+  const totalDT=days.reduce((a,h)=>a+h.totalDT,0);
+  const allIssues=days.flatMap(h=>[...(h.dtLog||[]),...(h.noteLog||[])]);
+  const catMins={};
+  allIssues.forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+(i.mins||0);});
+  const sorted=Object.entries(catMins).sort((a,b)=>b[1]-a[1]);
+  const top1=sorted[0], top2=sorted[1], top3=sorted[2];
+  const rmDays=days.filter(h=>[...(h.dtLog||[]),...(h.noteLog||[])].some(i=>i.cat==='Raw Material Issues'||i.cat==='Quality Issues')).length;
+  const bestDay=days.reduce((a,h)=>((h.dayOEE+h.lateOEE)/2>(a.dayOEE+a.lateOEE)/2)?h:a);
+  const worstDay=days.reduce((a,h)=>((h.dayOEE+h.lateOEE)/2<(a.dayOEE+a.lateOEE)/2)?h:a);
+
+  let txt=monthKey+' achieved '+totalAtt+'% combined output attainment';
+  txt+=', producing '+totalOut.toLocaleString()+' units against a theoretical target of '+totalTheo.toLocaleString();
+  txt+=' across '+days.length+' production days. ';
+  txt+='Average OEE was '+avgDayOEE+'% day / '+avgLateOEE+'% late';
+  if(avgDayOEE<85||avgLateOEE<85) txt+=', below the 85% world class target';
+  txt+='. ';
+  if(totalDT>0){
+    txt+='Total downtime was '+totalDT.toFixed(1)+'h. ';
+    if(top1) txt+='The primary issue was '+top1[0]+' ('+Math.round(top1[1]/60*10)/10+'h';
+    if(top1&&sorted.length>0) txt+=', '+Math.round(top1[1]/(totalDT*60)*100)+'% of total downtime)';
+    if(top2) txt+=', followed by '+top2[0]+' ('+Math.round(top2[1]/60*10)/10+'h)';
+    if(top3) txt+=' and '+top3[0]+' ('+Math.round(top3[1]/60*10)/10+'h)';
+    txt+='. ';
+  }
+  if(rmDays>0) txt+='Raw material or quality issues affected '+rmDays+' production day'+(rmDays>1?'s':'')+'. ';
+  txt+='Best performing day was '+bestDay.date+' ('+Math.round((bestDay.dayOEE+bestDay.lateOEE)/2*100)+'% avg OEE)';
+  txt+=', lowest was '+worstDay.date+' ('+Math.round((worstDay.dayOEE+worstDay.lateOEE)/2*100)+'% avg OEE).';
+  return txt;
+}
+
+function commentaryBox(title, text){
+  return '<div style="background:rgba(74,158,255,.07);border:1px solid rgba(74,158,255,.25);border-radius:8px;padding:14px 16px;margin-bottom:16px">'
+    +'<div style="font-size:11px;font-weight:600;color:#4a9eff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">&#128203; '+title+'</div>'
+    +'<div style="font-size:12px;color:var(--text);line-height:1.7">'+text+'</div>'
+    +'</div>';
+}
+
 const BLUE='#4a9eff',GREEN='#3ecf8e',ORANGE='#ed7d31',RED='#f0544f',AMBER='#f5a623';
 const STORAGE_KEY='oee_dashboard_v2';
 const ALL_MACHINES=['A004','A005','A006 B','A007','A008','A009','A015','A019','A031'];
