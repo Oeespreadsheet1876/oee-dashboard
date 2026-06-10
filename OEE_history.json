@@ -346,6 +346,162 @@
         null,
         902
       ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 9.5,
+      "dayDemand": 90.3,
+      "lateDemand": 94.5,
+      "dayAvail": 92.5,
+      "lateAvail": 87.9,
+      "dayUtil": 98,
+      "lateUtil": 108,
+      "dayOutPerOpHr": 215,
+      "lateOutPerOpHr": 97,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 5,
+          "opHours": 15
+        },
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 4.25,
+          "opHours": 12.8
+        },
+        {
+          "machine": "A004",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 7,
+          "opHours": 14
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 2.25,
+          "opHours": 2.3
+        },
+        {
+          "machine": "A009",
+          "part": "69400390",
+          "reqOps": 3,
+          "intended": 5.25,
+          "opHours": 15.8
+        },
+        {
+          "machine": "A009",
+          "part": "69404847",
+          "reqOps": 3,
+          "intended": 4,
+          "opHours": 12
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "69404847",
+          "reqOps": 3,
+          "intended": 4,
+          "opHours": 12
+        },
+        {
+          "machine": "A009",
+          "part": "52710693",
+          "reqOps": 3,
+          "intended": 2.75,
+          "opHours": 8.3
+        },
+        {
+          "machine": "A009",
+          "part": "52714138",
+          "reqOps": 3,
+          "intended": 1.5,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714130",
+          "reqOps": 3,
+          "intended": 1,
+          "opHours": 3
+        },
+        {
+          "machine": "A019",
+          "part": "59940125",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A031",
+          "part": "58505188",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A031",
+          "part": "58505190",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A031",
+          "part": "58510975",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511002",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        }
+      ]
     }
   },
   {
@@ -750,6 +906,225 @@
         null,
         1474
       ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 99.3,
+      "lateDemand": 93.3,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 89,
+      "lateUtil": 106,
+      "dayOutPerOpHr": 141,
+      "lateOutPerOpHr": 154,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 0.75,
+          "opHours": 2.3
+        },
+        {
+          "machine": "A007",
+          "part": "52720386",
+          "reqOps": 3,
+          "intended": 3.5,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A007",
+          "part": "52720218",
+          "reqOps": 3,
+          "intended": 0.25,
+          "opHours": 0.8
+        },
+        {
+          "machine": "A007",
+          "part": "52720210",
+          "reqOps": 3,
+          "intended": 1.5,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A004",
+          "part": "52720530",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 3.75,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 5.5,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714130",
+          "reqOps": 3,
+          "intended": 7.5,
+          "opHours": 22.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710657",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A019",
+          "part": "59940125",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943300",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720530",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A004",
+          "part": "52720610",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729230",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 3.75,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A009",
+          "part": "52710657",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52710694",
+          "reqOps": 2,
+          "intended": 7.25,
+          "opHours": 14.5
+        },
+        {
+          "machine": "A019",
+          "part": "59943561",
+          "reqOps": 1,
+          "intended": 4.5,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A031",
+          "part": "58511165",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A031",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A031",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A031",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ]
     }
   },
   {
@@ -1039,6 +1414,113 @@
       "A031": [
         null,
         2714
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 13,
+      "lateDemand": 92.5,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 12,
+      "lateUtil": 105,
+      "dayOutPerOpHr": 88,
+      "lateOutPerOpHr": 123,
+      "dayJobs": [
+        {
+          "machine": "A004",
+          "part": "52729230",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710694",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720013",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A005",
+          "part": "52720230",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710265",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A009",
+          "part": "52713250",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710070",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A031",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 8.5,
+          "opHours": 17
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
       ]
     }
   },
@@ -1427,6 +1909,232 @@
         null,
         2901
       ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 10.5,
+      "dayDemand": 112.5,
+      "lateDemand": 90.3,
+      "dayAvail": 111,
+      "lateAvail": 97.1,
+      "dayUtil": 101,
+      "lateUtil": 93,
+      "dayOutPerOpHr": 187,
+      "lateOutPerOpHr": 141,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52720430",
+          "reqOps": 3,
+          "intended": 3,
+          "opHours": 9
+        },
+        {
+          "machine": "A007",
+          "part": "52720865",
+          "reqOps": 3,
+          "intended": 3.25,
+          "opHours": 9.8
+        },
+        {
+          "machine": "A007",
+          "part": "52729157",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A007",
+          "part": "52720010",
+          "reqOps": 3,
+          "intended": 1.75,
+          "opHours": 5.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720013",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A005",
+          "part": "52720790",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A005",
+          "part": "52720330",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 4.25,
+          "opHours": 4.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710070",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A009",
+          "part": "55540001",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943563",
+          "reqOps": 1,
+          "intended": 4.5,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943564",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510998",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720358",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "55540001",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A019",
+          "part": "59943280",
+          "reqOps": 1,
+          "intended": 2,
+          "opHours": 2
+        },
+        {
+          "machine": "A008",
+          "part": "59943511",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510851",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510125",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        }
+      ]
     }
   },
   {
@@ -1759,6 +2467,162 @@
       "A031": [
         null,
         3702
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 10.5,
+      "dayDemand": 97,
+      "lateDemand": 83.3,
+      "dayAvail": 111,
+      "lateAvail": 97.1,
+      "dayUtil": 87,
+      "lateUtil": 86,
+      "dayOutPerOpHr": 206,
+      "lateOutPerOpHr": 183,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 5.75,
+          "opHours": 17.3
+        },
+        {
+          "machine": "A007",
+          "part": "52720800",
+          "reqOps": 3,
+          "intended": 2.25,
+          "opHours": 6.8
+        },
+        {
+          "machine": "A004",
+          "part": "52720358",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720600",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 2.5,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 6.75,
+          "opHours": 6.8
+        },
+        {
+          "machine": "A009",
+          "part": "55540001",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A009",
+          "part": "52714070",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A009",
+          "part": "52710780",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943511",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 9,
+          "opHours": 18
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 8.75,
+          "opHours": 8.8
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 0.5,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710780",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710694",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
       ]
     }
   },
@@ -2174,6 +3038,176 @@
         null,
         3302
       ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 10.5,
+      "dayDemand": 100.8,
+      "lateDemand": 92.5,
+      "dayAvail": 111,
+      "lateAvail": 97.1,
+      "dayUtil": 91,
+      "lateUtil": 95,
+      "dayOutPerOpHr": 167,
+      "lateOutPerOpHr": 113,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 4,
+          "opHours": 12
+        },
+        {
+          "machine": "A007",
+          "part": "52729300",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A007",
+          "part": "52850120",
+          "reqOps": 3,
+          "intended": 2.75,
+          "opHours": 8.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A004",
+          "part": "52729139",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 2.25,
+          "opHours": 2.3
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 0.5,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710655",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        },
+        {
+          "machine": "A009",
+          "part": "52714138",
+          "reqOps": 3,
+          "intended": 1.75,
+          "opHours": 5.3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 0.5,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560002",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A005",
+          "part": "55560003",
+          "reqOps": 1,
+          "intended": 3,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 1.75,
+          "opHours": 1.8
+        },
+        {
+          "machine": "A009",
+          "part": "52714138",
+          "reqOps": 3,
+          "intended": 4.25,
+          "opHours": 12.8
+        },
+        {
+          "machine": "A009",
+          "part": "52710655",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ]
     }
   },
   {
@@ -2494,6 +3528,162 @@
       "A031": [
         null,
         1801
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 10.5,
+      "dayDemand": 96,
+      "lateDemand": 87.3,
+      "dayAvail": 111,
+      "lateAvail": 97.1,
+      "dayUtil": 86,
+      "lateUtil": 90,
+      "dayOutPerOpHr": 208,
+      "lateOutPerOpHr": 168,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52850190",
+          "reqOps": 3,
+          "intended": 2.75,
+          "opHours": 8.3
+        },
+        {
+          "machine": "A007",
+          "part": "52720865",
+          "reqOps": 3,
+          "intended": 1,
+          "opHours": 3
+        },
+        {
+          "machine": "A007",
+          "part": "52720010",
+          "reqOps": 3,
+          "intended": 5.5,
+          "opHours": 16.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A004",
+          "part": "52729311",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710655",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A009",
+          "part": "52710640",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A008",
+          "part": "59940039",
+          "reqOps": 1,
+          "intended": 3.5,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510841",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511002",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52729311",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 6.5,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710640",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A008",
+          "part": "59940039",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511002",
+          "reqOps": 2,
+          "intended": 7.25,
+          "opHours": 14.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511163",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        }
       ]
     }
   },
@@ -2843,6 +4033,162 @@
       "A031": [
         null,
         1449
+      ]
+    },
+    "labour": {
+      "dayPeople": 11,
+      "latePeople": 9.5,
+      "dayDemand": 111,
+      "lateDemand": 92.5,
+      "dayAvail": 101.8,
+      "lateAvail": 87.9,
+      "dayUtil": 109,
+      "lateUtil": 105,
+      "dayOutPerOpHr": 227,
+      "lateOutPerOpHr": 155,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729157",
+          "reqOps": 3,
+          "intended": 8.25,
+          "opHours": 24.8
+        },
+        {
+          "machine": "A007",
+          "part": "52720386",
+          "reqOps": 3,
+          "intended": 1,
+          "opHours": 3
+        },
+        {
+          "machine": "A004",
+          "part": "52729311",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A005",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A019",
+          "part": "59940039",
+          "reqOps": 1,
+          "intended": 2,
+          "opHours": 2
+        },
+        {
+          "machine": "A019",
+          "part": "59942758",
+          "reqOps": 1,
+          "intended": 7.25,
+          "opHours": 7.3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510880",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 6.25,
+          "opHours": 12.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729220",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A005",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A009",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942758",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A031",
+          "part": "58511165",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A031",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510880",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        }
       ]
     }
   },
@@ -3286,6 +4632,232 @@
         null,
         4373
       ]
+    },
+    "labour": {
+      "dayPeople": 11,
+      "latePeople": 9.5,
+      "dayDemand": 105.5,
+      "lateDemand": 97.3,
+      "dayAvail": 101.8,
+      "lateAvail": 87.9,
+      "dayUtil": 104,
+      "lateUtil": 111,
+      "dayOutPerOpHr": 172,
+      "lateOutPerOpHr": 139,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52720386",
+          "reqOps": 3,
+          "intended": 4.5,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 4.75,
+          "opHours": 14.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720520",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 5.5,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832570",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A005",
+          "part": "58505275",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A015",
+          "part": "52710018",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A015",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942758",
+          "reqOps": 1,
+          "intended": 7.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942751",
+          "reqOps": 1,
+          "intended": 1.75,
+          "opHours": 1.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510952",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720520",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A004",
+          "part": "52724015",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A004",
+          "part": "52720200",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "52832570",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714080",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A009",
+          "part": "52710240",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A009",
+          "part": "52710655",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A015",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A015",
+          "part": "52710640",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942751",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510201",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510130",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510856",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        }
+      ]
     }
   },
   {
@@ -3681,6 +5253,176 @@
       "A031": [
         null,
         699
+      ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 10.5,
+      "dayDemand": 111,
+      "lateDemand": 88.3,
+      "dayAvail": 92.5,
+      "lateAvail": 97.1,
+      "dayUtil": 120,
+      "lateUtil": 91,
+      "dayOutPerOpHr": 128,
+      "lateOutPerOpHr": 147,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "58509151",
+          "reqOps": 3,
+          "intended": 6,
+          "opHours": 18
+        },
+        {
+          "machine": "A007",
+          "part": "58500677",
+          "reqOps": 3,
+          "intended": 3.25,
+          "opHours": 9.8
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "69400397",
+          "reqOps": 3,
+          "intended": 4.25,
+          "opHours": 12.8
+        },
+        {
+          "machine": "A009",
+          "part": "69400390",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710693",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A019",
+          "part": "59940106",
+          "reqOps": 1,
+          "intended": 1,
+          "opHours": 1
+        },
+        {
+          "machine": "A019",
+          "part": "59940160",
+          "reqOps": 1,
+          "intended": 8.25,
+          "opHours": 8.3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510935",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510841",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720361",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710693",
+          "reqOps": 3,
+          "intended": 3.75,
+          "opHours": 11.3
+        },
+        {
+          "machine": "A009",
+          "part": "52714138",
+          "reqOps": 3,
+          "intended": 2,
+          "opHours": 6
+        },
+        {
+          "machine": "A015",
+          "part": "52710750",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A019",
+          "part": "59940160",
+          "reqOps": 1,
+          "intended": 0.5,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A008",
+          "part": "59942741",
+          "reqOps": 1,
+          "intended": 5.25,
+          "opHours": 5.3
+        },
+        {
+          "machine": "A031",
+          "part": "58500381",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510987",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
       ]
     }
   },
@@ -4101,6 +5843,211 @@
       "A015": [
         null,
         877
+      ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 10,
+      "dayDemand": 111.5,
+      "lateDemand": 101.5,
+      "dayAvail": 92.5,
+      "lateAvail": 92.5,
+      "dayUtil": 121,
+      "lateUtil": 110,
+      "dayOutPerOpHr": 196,
+      "lateOutPerOpHr": 139,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "58500677",
+          "reqOps": 3,
+          "intended": 9.25,
+          "opHours": 27.8
+        },
+        {
+          "machine": "A004",
+          "part": "52720361",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720357",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A004",
+          "part": "52720358",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52714138",
+          "reqOps": 3,
+          "intended": 3,
+          "opHours": 9
+        },
+        {
+          "machine": "A009",
+          "part": "52710750",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A009",
+          "part": "52714130",
+          "reqOps": 3,
+          "intended": 3.25,
+          "opHours": 9.8
+        },
+        {
+          "machine": "A019",
+          "part": "59942741",
+          "reqOps": 1,
+          "intended": 6,
+          "opHours": 6
+        },
+        {
+          "machine": "A019",
+          "part": "59943561",
+          "reqOps": 1,
+          "intended": 3.25,
+          "opHours": 3.3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510987",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511150",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511140",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720358",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A004",
+          "part": "52850130",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52714130",
+          "reqOps": 3,
+          "intended": 3.25,
+          "opHours": 9.8
+        },
+        {
+          "machine": "A009",
+          "part": "52710460",
+          "reqOps": 3,
+          "intended": 3,
+          "opHours": 9
+        },
+        {
+          "machine": "A009",
+          "part": "52710630",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A015",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A019",
+          "part": "59943561",
+          "reqOps": 1,
+          "intended": 3.5,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A019",
+          "part": "59943564",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A019",
+          "part": "59943498",
+          "reqOps": 1,
+          "intended": 3,
+          "opHours": 3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        }
       ]
     }
   },
@@ -4544,6 +6491,190 @@
         751,
         1325
       ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 10,
+      "dayDemand": 98.3,
+      "lateDemand": 83.3,
+      "dayAvail": 92.5,
+      "lateAvail": 92.5,
+      "dayUtil": 106,
+      "lateUtil": 90,
+      "dayOutPerOpHr": 167,
+      "lateOutPerOpHr": 96,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "58500677",
+          "reqOps": 3,
+          "intended": 1.5,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A007",
+          "part": "58500190",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A007",
+          "part": "52729300",
+          "reqOps": 3,
+          "intended": 5.25,
+          "opHours": 15.8
+        },
+        {
+          "machine": "A004",
+          "part": "52850130",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A004",
+          "part": "52853260",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A004",
+          "part": "52850140",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710630",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943498",
+          "reqOps": 1,
+          "intended": 3.75,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A031",
+          "part": "58500381",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 8,
+          "opHours": 16
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52850140",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 2,
+          "opHours": 2
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 7.25,
+          "opHours": 7.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710630",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A009",
+          "part": "52710770",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A031",
+          "part": "58505210",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511120",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510390",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        }
+      ]
     }
   },
   {
@@ -4881,6 +7012,155 @@
       "A031": [
         null,
         1848
+      ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 10,
+      "dayDemand": 99.8,
+      "lateDemand": 92.5,
+      "dayAvail": 92.5,
+      "lateAvail": 92.5,
+      "dayUtil": 108,
+      "lateUtil": 100,
+      "dayOutPerOpHr": 143,
+      "lateOutPerOpHr": 133,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729300",
+          "reqOps": 3,
+          "intended": 9.25,
+          "opHours": 27.8
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720385",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 8,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A015",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A015",
+          "part": "52710656",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510246",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510244",
+          "reqOps": 2,
+          "intended": 7.75,
+          "opHours": 15.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720385",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560002",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A009",
+          "part": "52710770",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A009",
+          "part": "52710775",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A031",
+          "part": "58505190",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510244",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510245",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        }
       ]
     }
   },
@@ -5269,6 +7549,197 @@
       "A031": [
         null,
         1848
+      ]
+    },
+    "labour": {
+      "dayPeople": 10,
+      "latePeople": 8.5,
+      "dayDemand": 101.5,
+      "lateDemand": 93.8,
+      "dayAvail": 92.5,
+      "lateAvail": 78.6,
+      "dayUtil": 110,
+      "lateUtil": 119,
+      "dayOutPerOpHr": 206,
+      "lateOutPerOpHr": 148,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52720737",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A007",
+          "part": "52720507",
+          "reqOps": 3,
+          "intended": 6.75,
+          "opHours": 20.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720385",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A005",
+          "part": "55560002",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560003",
+          "reqOps": 1,
+          "intended": 2.5,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560001",
+          "reqOps": 1,
+          "intended": 2.5,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710775",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943498",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510880",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510952",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A004",
+          "part": "52720530",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560001",
+          "reqOps": 1,
+          "intended": 3.5,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710541",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714140",
+          "reqOps": 2,
+          "intended": 7,
+          "opHours": 14
+        },
+        {
+          "machine": "A008",
+          "part": "59943498",
+          "reqOps": 1,
+          "intended": 1.5,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A008",
+          "part": "59942745",
+          "reqOps": 1,
+          "intended": 3.25,
+          "opHours": 3.3
+        },
+        {
+          "machine": "A031",
+          "part": "58505190",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510952",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        }
       ]
     }
   },
@@ -5744,6 +8215,204 @@
         null,
         1900
       ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 8.5,
+      "dayDemand": 98.8,
+      "lateDemand": 78.3,
+      "dayAvail": 111,
+      "lateAvail": 78.6,
+      "dayUtil": 89,
+      "lateUtil": 100,
+      "dayOutPerOpHr": 148,
+      "lateOutPerOpHr": 150,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52720507",
+          "reqOps": 3,
+          "intended": 2,
+          "opHours": 6
+        },
+        {
+          "machine": "A007",
+          "part": "52720505",
+          "reqOps": 3,
+          "intended": 4.75,
+          "opHours": 14.3
+        },
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720530",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720775",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 5.75,
+          "opHours": 5.8
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714140",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A008",
+          "part": "59942745",
+          "reqOps": 1,
+          "intended": 2.75,
+          "opHours": 2.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510998",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510999",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720775",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A004",
+          "part": "52720361",
+          "reqOps": 2,
+          "intended": 6.25,
+          "opHours": 12.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A015",
+          "part": "52710656",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942762",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A031",
+          "part": "58505190",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A031",
+          "part": "58510973",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511002",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510130",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511027",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        }
+      ]
     }
   },
   {
@@ -6142,6 +8811,225 @@
       "A031": [
         null,
         1624
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 100.3,
+      "lateDemand": 86.8,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 90,
+      "lateUtil": 99,
+      "dayOutPerOpHr": 209,
+      "lateOutPerOpHr": 111,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52724011",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 2,
+          "opHours": 6
+        },
+        {
+          "machine": "A007",
+          "part": "52720865",
+          "reqOps": 3,
+          "intended": 4.75,
+          "opHours": 14.3
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A004",
+          "part": "52729141",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729140",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 4,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52710658",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A009",
+          "part": "52714140",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A008",
+          "part": "59942762",
+          "reqOps": 1,
+          "intended": 2.5,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511027",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510865",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52729140",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A004",
+          "part": "52729142",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 6.25,
+          "opHours": 6.3
+        },
+        {
+          "machine": "A005",
+          "part": "52720651",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720331",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A009",
+          "part": "52714140",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52713280",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52713270",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A009",
+          "part": "52710780",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A031",
+          "part": "58511165",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A031",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511162",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        }
       ]
     }
   },
@@ -6556,6 +9444,218 @@
       "A015": [
         null,
         1388
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 108.5,
+      "lateDemand": 102,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 98,
+      "lateUtil": 116,
+      "dayOutPerOpHr": 243,
+      "lateOutPerOpHr": 121,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729157",
+          "reqOps": 3,
+          "intended": 4,
+          "opHours": 12
+        },
+        {
+          "machine": "A007",
+          "part": "52729156",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A004",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 8.75,
+          "opHours": 17.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720331",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A005",
+          "part": "52720790",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A005",
+          "part": "52722313",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A009",
+          "part": "52710780",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A009",
+          "part": "52710775",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A008",
+          "part": "59940200",
+          "reqOps": 1,
+          "intended": 5,
+          "opHours": 5
+        },
+        {
+          "machine": "A008",
+          "part": "59942731",
+          "reqOps": 1,
+          "intended": 2.75,
+          "opHours": 2.8
+        },
+        {
+          "machine": "A008",
+          "part": "59943260",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A031",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510390",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720610",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A004",
+          "part": "52720530",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        },
+        {
+          "machine": "A005",
+          "part": "52722313",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A005",
+          "part": "52720330",
+          "reqOps": 2,
+          "intended": 7,
+          "opHours": 14
+        },
+        {
+          "machine": "A015",
+          "part": "52710640",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943260",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943300",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A031",
+          "part": "58505360",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        },
+        {
+          "machine": "A031",
+          "part": "58505275",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510390",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511120",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511110",
+          "reqOps": 2,
+          "intended": 3.5,
+          "opHours": 7
+        }
       ]
     }
   },
@@ -6976,6 +10076,204 @@
         null,
         1751
       ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 119.3,
+      "lateDemand": 84.5,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 107,
+      "lateUtil": 96,
+      "dayOutPerOpHr": 192,
+      "lateOutPerOpHr": 92,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729156",
+          "reqOps": 3,
+          "intended": 5.75,
+          "opHours": 17.3
+        },
+        {
+          "machine": "A007",
+          "part": "52720878",
+          "reqOps": 3,
+          "intended": 2.25,
+          "opHours": 6.8
+        },
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A004",
+          "part": "52724016",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A004",
+          "part": "52724014",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A004",
+          "part": "52720310",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A005",
+          "part": "52724013",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A005",
+          "part": "52720230",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 1,
+          "opHours": 1
+        },
+        {
+          "machine": "A009",
+          "part": "52710775",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A009",
+          "part": "52710070",
+          "reqOps": 2,
+          "intended": 6.25,
+          "opHours": 12.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943300",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510851",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510951",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510856",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720310",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720240",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A005",
+          "part": "52832520",
+          "reqOps": 1,
+          "intended": 8,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "52832508",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A015",
+          "part": "52710018",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A015",
+          "part": "55540001",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A031",
+          "part": "58505275",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A031",
+          "part": "58510975",
+          "reqOps": 2,
+          "intended": 8.5,
+          "opHours": 17
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510930",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510245",
+          "reqOps": 2,
+          "intended": 7,
+          "opHours": 14
+        }
+      ]
     }
   },
   {
@@ -7019,9 +10317,9 @@
     "latePerf": 0.8592,
     "dayQual": 1,
     "lateQual": 1,
-    "dayOut": 7798,
+    "dayOut": 14524,
     "lateOut": 7917,
-    "dayTheo": 8999,
+    "dayTheo": 20999,
     "lateTheo": 9214,
     "totalDT": 21.25,
     "topIssue": "Waiting for Blending",
@@ -7033,12 +10331,27 @@
       },
       {
         "cat": "Other",
-        "mins": 345,
-        "cum": 78
+        "mins": 240,
+        "cum": 69
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 120,
+        "cum": 79
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 105,
+        "cum": 87
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 75,
+        "cum": 93
       },
       {
         "cat": "Engineering Issues",
-        "mins": 255,
+        "mins": 60,
         "cum": 98
       },
       {
@@ -7089,7 +10402,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Additional Work",
         "imp": "hi"
       },
       {
@@ -7111,7 +10424,7 @@
         "shift": "late",
         "intended": 6,
         "isNote": false,
-        "cat": "Other",
+        "cat": "Raw Material Issues",
         "imp": "hi"
       },
       {
@@ -7133,7 +10446,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
-        "cat": "Engineering Issues",
+        "cat": "Component Shortage",
         "imp": "med"
       },
       {
@@ -7330,6 +10643,148 @@
       "A031": [
         null,
         2301
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 101.8,
+      "lateDemand": 88.3,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 92,
+      "lateUtil": 100,
+      "dayOutPerOpHr": 143,
+      "lateOutPerOpHr": 90,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 9.25,
+          "opHours": 27.8
+        },
+        {
+          "machine": "A004",
+          "part": "52720240",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832508",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 7.75,
+          "opHours": 15.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710070",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A009",
+          "part": "52713250",
+          "reqOps": 2,
+          "intended": 4.5,
+          "opHours": 9
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510245",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832502",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A005",
+          "part": "55560002",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A005",
+          "part": "55560003",
+          "reqOps": 1,
+          "intended": 5.25,
+          "opHours": 5.3
+        },
+        {
+          "machine": "A015",
+          "part": "55540001",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A015",
+          "part": "52710018",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A015",
+          "part": "52710663",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A031",
+          "part": "58510975",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A031",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510245",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
       ]
     }
   }
