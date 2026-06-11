@@ -1409,7 +1409,12 @@ function populateGlobalMacFilter(machines){
   const sel = document.getElementById('global-mac-sel');
   const cur = sel.value;
   sel.innerHTML = '<option value="">All machines</option>';
-  (machines||ALL_MACHINES).forEach(m=>{
+  // Build full machine list from ALL history, not just one file
+  const present=new Set();
+  loadHist().forEach(h=>{ if(h.machOEE) Object.keys(h.machOEE).forEach(m=>present.add(m)); });
+  let macList = ALL_MACHINES.filter(m=>present.has(m));
+  if(!macList.length) macList = machines||ALL_MACHINES;
+  macList.forEach(m=>{
     const o = document.createElement('option');
     o.value = m; o.textContent = m;
     if(m === cur) o.selected = true;
