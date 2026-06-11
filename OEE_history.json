@@ -10787,5 +10787,441 @@
         }
       ]
     }
+  },
+  {
+    "date": "10/06/2026",
+    "noteLog": [
+      {
+        "machine": "A005",
+        "reason": "No More H200",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      }
+    ],
+    "machActual": {
+      "A007": [
+        6462,
+        null
+      ],
+      "A004": [
+        4392,
+        3348
+      ],
+      "A005": [
+        519,
+        1334
+      ],
+      "A009": [
+        2436,
+        974
+      ],
+      "A006 B": [
+        1320,
+        1300
+      ],
+      "A019": [
+        null,
+        1500
+      ],
+      "A031": [
+        null,
+        347
+      ]
+    },
+    "dayOEE": 0.6791,
+    "lateOEE": 0.5066,
+    "dayAvail": 0.7189,
+    "lateAvail": 0.6927,
+    "dayPerf": 0.9446,
+    "latePerf": 0.7313,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 15129,
+    "lateOut": 8803,
+    "dayTheo": 16016,
+    "lateTheo": 12038,
+    "totalDT": 27.75,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 1005,
+        "cum": 60
+      },
+      {
+        "cat": "Other",
+        "mins": 480,
+        "cum": 89
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 150,
+        "cum": 98
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 30,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A031",
+        "reason": "Line Not Filling",
+        "downtime": 7,
+        "mins": 420,
+        "shift": "late",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Batch",
+        "downtime": 3.5,
+        "mins": 210,
+        "shift": "day",
+        "intended": 6.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Line Running at 2 Fills Due to Machine Error/ Batch Going Thick",
+        "downtime": 3.5,
+        "mins": 210,
+        "shift": "late",
+        "intended": 6,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Waiting for Batch / Dropping the Batch / Change Film",
+        "downtime": 2.5,
+        "mins": 150,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Scrape Out",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Running With 2 People Only / Labelling Tubes / Scrape Out",
+        "downtime": 1.75,
+        "mins": 105,
+        "shift": "day",
+        "intended": 2.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Next Batch/scrapeout",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "late",
+        "intended": 3.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Scrape Out / Issues With Electric Panel",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Machine Issue ( Moved Line )",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Retest Batch / Waiting for Buckets",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 4.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "Set up the Line",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 1,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Labelling Tubes",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Additional Work",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 3.25,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A019",
+        "reason": "Set up",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Working Alone for First 1.5 Hours",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 6.5,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A009",
+      "A019",
+      "A031"
+    ],
+    "machOEE": {
+      "A007": [
+        0.4657,
+        null
+      ],
+      "A004": [
+        0.7914,
+        0.676
+      ],
+      "A005": [
+        0.5294,
+        0.3314
+      ],
+      "A009": [
+        0.5269,
+        0.3774
+      ],
+      "A006 B": [
+        0.9514,
+        1.0321
+      ],
+      "A019": [
+        null,
+        0.7143
+      ],
+      "A031": [
+        null,
+        0.1878
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.4054,
+        null
+      ],
+      "A004": [
+        0.9189,
+        0.9189
+      ],
+      "A005": [
+        0.5405,
+        0.4595
+      ],
+      "A009": [
+        0.7297,
+        0.8378
+      ],
+      "A006 B": [
+        1,
+        0.973
+      ],
+      "A019": [
+        null,
+        0.8571
+      ],
+      "A031": [
+        null,
+        0.2432
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        1.1488,
+        null
+      ],
+      "A004": [
+        0.8612,
+        0.7357
+      ],
+      "A005": [
+        0.9793,
+        0.7212
+      ],
+      "A009": [
+        0.7221,
+        0.4505
+      ],
+      "A006 B": [
+        0.9514,
+        1.0608
+      ],
+      "A019": [
+        null,
+        0.8333
+      ],
+      "A031": [
+        null,
+        0.7719
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        5625,
+        null
+      ],
+      "A004": [
+        5100,
+        4551
+      ],
+      "A005": [
+        530,
+        1850
+      ],
+      "A009": [
+        3374,
+        2162
+      ],
+      "A006 B": [
+        1388,
+        1226
+      ],
+      "A019": [
+        null,
+        1800
+      ],
+      "A031": [
+        null,
+        450
+      ]
+    },
+    "labour": {
+      "dayPeople": 12,
+      "latePeople": 9.5,
+      "dayDemand": 0,
+      "lateDemand": 0,
+      "dayAvail": 111,
+      "lateAvail": 87.9,
+      "dayUtil": 0,
+      "lateUtil": 0,
+      "dayOutPerOpHr": null,
+      "lateOutPerOpHr": null,
+      "dayJobs": [],
+      "lateJobs": []
+    }
   }
 ]
