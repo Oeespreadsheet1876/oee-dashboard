@@ -11212,16 +11212,186 @@
     "labour": {
       "dayPeople": 12,
       "latePeople": 9.5,
-      "dayDemand": 0,
-      "lateDemand": 0,
+      "dayDemand": 93.5,
+      "lateDemand": 94.3,
       "dayAvail": 111,
       "lateAvail": 87.9,
-      "dayUtil": 0,
-      "lateUtil": 0,
-      "dayOutPerOpHr": null,
-      "lateOutPerOpHr": null,
-      "dayJobs": [],
-      "lateJobs": []
+      "dayUtil": 84,
+      "lateUtil": 107,
+      "dayOutPerOpHr": 162,
+      "lateOutPerOpHr": 93,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52724010",
+          "reqOps": 3,
+          "intended": 2.25,
+          "opHours": 6.8
+        },
+        {
+          "machine": "A007",
+          "part": "52800120",
+          "reqOps": 3,
+          "intended": 2,
+          "opHours": 6
+        },
+        {
+          "machine": "A007",
+          "part": "52800060",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A007",
+          "part": "52724012",
+          "reqOps": 3,
+          "intended": 2.5,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720882",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A005",
+          "part": "55560001",
+          "reqOps": 1,
+          "intended": 6.75,
+          "opHours": 6.8
+        },
+        {
+          "machine": "A005",
+          "part": "55550003",
+          "reqOps": 1,
+          "intended": 1.5,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A009",
+          "part": "52713250",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510981",
+          "reqOps": 2,
+          "intended": 7.5,
+          "opHours": 15
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720770",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A004",
+          "part": "52720775",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A004",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A005",
+          "part": "55550002",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A005",
+          "part": "52729139",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A009",
+          "part": "52710663",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52710640",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A009",
+          "part": "52710440",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942753",
+          "reqOps": 1,
+          "intended": 1.75,
+          "opHours": 1.8
+        },
+        {
+          "machine": "A031",
+          "part": "58511165",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510231",
+          "reqOps": 2,
+          "intended": 6.5,
+          "opHours": 13
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510885",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        }
+      ]
     }
   }
 ]
