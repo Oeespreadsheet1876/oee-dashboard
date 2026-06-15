@@ -545,7 +545,7 @@ function commentaryBox(title, text){
 }
 
 const BLUE='#4a9eff',GREEN='#3ecf8e',ORANGE='#ed7d31',RED='#f0544f',AMBER='#f5a623';
-const STORAGE_KEY='oee_dashboard_v2';
+const STORAGE_KEY='oee_dashboard_trial';
 const ALL_MACHINES=['A004','A005','A006 B','A007','A008','A009','A015','A019','A031'];
 let CH={};
 let CUR=null;
@@ -1417,7 +1417,7 @@ function exportHistory(){
   const blob=new Blob([JSON.stringify(h,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;a.download='OEE_history.json';
+  a.href=url;a.download='OEE_history_trial.json';
   a.click();URL.revokeObjectURL(url);
 }
 function importHistoryFile(input){
