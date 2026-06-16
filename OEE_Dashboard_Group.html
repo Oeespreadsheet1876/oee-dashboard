@@ -265,6 +265,19 @@ function filterDays(data){
 
 // ── Aggregate a site's days into group metrics ──
 
+function unitsOnHeadcountDays(days){
+  // Sum output only from days that have headcount captured (for matching per-direct math)
+  let out=0, vol=0;
+  days.forEach(h=>{
+    const L=h.labour; if(!L) return;
+    const dh=(L.dayHeadcount||0)+(L.lateHeadcount||0);
+    if(dh<=0) return;
+    out+=(h.dayOut||0)+(h.lateOut||0);
+    vol+=(h.dayKg||0)+(h.lateKg||0);
+  });
+  return {out, vol};
+}
+
 function aggHeadcount(days){
   // Average headcount categories across the period - ONLY over days that actually have headcount data
   // (historical days before headcount was captured have 0 and must not drag the average down)
@@ -434,6 +447,10 @@ function renderOverview(){
   const totDirects=(fL&&fL.directs?fL.directs:0)+(sL&&sL.directs?sL.directs:0);
   const totHead=(fL&&fL.headcount?fL.headcount:0)+(sL&&sL.headcount?sL.headcount:0);
   const totDT=Math.round(((f?f.dt:0)+(s?s.dt:0))*10)/10;
+  // Units per direct uses units ONLY from days that have headcount (matches denominator)
+  const fHC=unitsOnHeadcountDays(filterByPeriod(SITES.fillers));
+  const sHC=unitsOnHeadcountDays(filterByPeriod(SITES.solvents));
+  const unitsForPD=fHC.out+sHC.out;
   let gOEE=null,wn=0,ww=0;
   if(f&&f.oee!=null){ wn+=f.oee*f.out; ww+=f.out; }
   if(s&&s.oee!=null){ wn+=s.oee*s.out; ww+=s.out; }
@@ -443,7 +460,7 @@ function renderOverview(){
   html+=kcard('Group OEE', gOEE!=null?Math.round(gOEE*100)+'%':'—', oeeColor(gOEE), 'output-weighted');
   html+=kcard('Total Units', totUnits.toLocaleString(), 'var(--text)', 'both sites');
   html+=kcard('Total Directs', totDirects?(Math.round(totDirects*10)/10):'—', 'var(--text)', 'both sites');
-  html+=kcard('Total Units / Direct', totDirects>0?Math.round(totUnits/totDirects).toLocaleString():'—', '#a855f7', 'group productivity');
+  html+=kcard('Total Units / Direct', totDirects>0?Math.round(unitsForPD/totDirects).toLocaleString():'—', '#a855f7', 'group productivity');
   html+=kcard('Total Downtime', totDT+'h', totDT>20?'#f0544f':'#f5a623', 'both sites');
   html+='</div>';
 
@@ -560,12 +577,14 @@ function renderTrends(){
     if(!days||!days.length) return null;
     const m=siteMetrics(days);
     const L=aggHeadcount(days);
+    const hc=unitsOnHeadcountDays(days); // units/vol only from days with headcount
     return {
       units:m.out, vol:m.vol, oee:m.oee,
       head:L?L.headcount:null, opsC:L?L.opsContract:null, opsT:L?L.opsTemp:null,
       directs:L?L.directs:null,
-      unitsPerDirect:(L&&L.directs)?m.out/L.directs:null,
-      volPerDirect:(L&&L.directs)?m.vol/L.directs:null
+      unitsPerDirect:(L&&L.directs)?hc.out/L.directs:null,
+      volPerDirect:(L&&L.directs)?hc.vol/L.directs:null,
+      hcUnits:hc.out, hcVol:hc.vol
     };
   }
 
@@ -635,7 +654,7 @@ function renderTrends(){
         {label:'Total Units Produced', get:(fm,sm)=>fmt((fm?fm.units:0)+(sm?sm.units:0))},
         {label:'Total Directs (both sites)', get:(fm,sm)=>fmt1((fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0))},
         {label:'Total Units Per Direct', get:(fm,sm)=>{
-          const u=(fm?fm.units:0)+(sm?sm.units:0);
+          const u=(fm&&fm.hcUnits?fm.hcUnits:0)+(sm&&sm.hcUnits?sm.hcUnits:0);
           const d=(fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0);
           return d>0?fmt(u/d):'—';
         }},
