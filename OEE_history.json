@@ -19631,5 +19631,521 @@
         "downtime": 0.25
       }
     ]
+  },
+  {
+    "date": "15/06/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        6852,
+        null
+      ],
+      "A004": [
+        6720,
+        4560
+      ],
+      "A005": [
+        3048,
+        4500
+      ],
+      "A009": [
+        3312,
+        936
+      ],
+      "A006 B": [
+        616,
+        2210
+      ],
+      "A015": [
+        null,
+        91
+      ],
+      "A008": [
+        null,
+        790
+      ]
+    },
+    "dayOEE": 0.7315,
+    "lateOEE": 0.5922,
+    "dayAvail": 0.8757,
+    "lateAvail": 0.8024,
+    "dayPerf": 0.8353,
+    "latePerf": 0.738,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 20548,
+    "lateOut": 13087,
+    "dayTheo": 24599,
+    "lateTheo": 17733,
+    "totalDT": 13.9,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 480,
+        "cum": 58
+      },
+      {
+        "cat": "Other",
+        "mins": 114,
+        "cum": 71
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 105,
+        "cum": 84
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 75,
+        "cum": 93
+      },
+      {
+        "cat": "Component Shortage",
+        "mins": 60,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A004",
+        "reason": "Waiting for Batch, Batch Dropped by Itsefl",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "late",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "Problem With the Air. Cleaning Line and Move to Aoo9",
+        "downtime": 1.75,
+        "mins": 105,
+        "shift": "late",
+        "intended": 1.75,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Labelling Tubes / Tint the Batch After Dropping",
+        "downtime": 1.5,
+        "mins": 90,
+        "shift": "day",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Engineer Fixing Labeller",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 1.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Waiting for Tubes / Tint the Batch After Dropping",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 5.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Set up / Dropiing Batch / Changing Film",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A015",
+        "reason": "Bang Out/change Over",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 1.5,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A008",
+        "reason": "Waiting for Line to Heat Up, Looking for Packets",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 4.25,
+        "isNote": false,
+        "cat": "Component Shortage",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Batch",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 2.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Change Over",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "late",
+        "intended": 7.25,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "Dropiing Batch / Changing Labels",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 5.75,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Problems With Printer",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 6,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "lo"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Batch Out",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 5.25,
+        "isNote": false,
+        "cat": "Waiting for Blending",
+        "imp": "lo"
+      },
+      {
+        "machine": "A005",
+        "reason": "Change Labels",
+        "downtime": 0.15,
+        "mins": 9,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A015"
+    ],
+    "machOEE": {
+      "A007": [
+        0.4938,
+        null
+      ],
+      "A004": [
+        0.9081,
+        0.6162
+      ],
+      "A005": [
+        0.7126,
+        0.6438
+      ],
+      "A009": [
+        0.7164,
+        0.3121
+      ],
+      "A006 B": [
+        0.8205,
+        1.388
+      ],
+      "A015": [
+        null,
+        0.2794
+      ],
+      "A008": [
+        null,
+        0.3098
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.6216,
+        null
+      ],
+      "A004": [
+        1,
+        0.6757
+      ],
+      "A005": [
+        0.8649,
+        0.9027
+      ],
+      "A009": [
+        0.8919,
+        0.9583
+      ],
+      "A006 B": [
+        1,
+        0.973
+      ],
+      "A015": [
+        null,
+        0.1538
+      ],
+      "A008": [
+        null,
+        0.7647
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.7944,
+        null
+      ],
+      "A004": [
+        0.9081,
+        0.912
+      ],
+      "A005": [
+        0.8239,
+        0.7132
+      ],
+      "A009": [
+        0.8032,
+        0.3257
+      ],
+      "A006 B": [
+        0.8205,
+        1.4265
+      ],
+      "A015": [
+        null,
+        1.8164
+      ],
+      "A008": [
+        null,
+        0.4051
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        8625,
+        null
+      ],
+      "A004": [
+        7400,
+        5000
+      ],
+      "A005": [
+        3699,
+        6310
+      ],
+      "A009": [
+        4123,
+        2874
+      ],
+      "A006 B": [
+        751,
+        1549
+      ],
+      "A015": [
+        null,
+        50
+      ],
+      "A008": [
+        null,
+        1950
+      ]
+    },
+    "labour": {
+      "dayPeople": 11,
+      "latePeople": 9.5,
+      "dayDemand": 101.8,
+      "lateDemand": 84.3,
+      "dayAvail": 101.8,
+      "lateAvail": 87.9,
+      "dayUtil": 100,
+      "lateUtil": 96,
+      "dayOutPerOpHr": 202,
+      "lateOutPerOpHr": 155,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52720228",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A007",
+          "part": "52720220",
+          "reqOps": 3,
+          "intended": 5.25,
+          "opHours": 15.8
+        },
+        {
+          "machine": "A007",
+          "part": "52720425",
+          "reqOps": 3,
+          "intended": 2.75,
+          "opHours": 8.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "52729305",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A005",
+          "part": "52729292",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A005",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 5.75,
+          "opHours": 11.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710015",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511035",
+          "reqOps": 2,
+          "intended": 5,
+          "opHours": 10
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 0.25,
+          "opHours": 0.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A005",
+          "part": "52720421",
+          "reqOps": 2,
+          "intended": 7.25,
+          "opHours": 14.5
+        },
+        {
+          "machine": "A009",
+          "part": "52710015",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        },
+        {
+          "machine": "A015",
+          "part": "52710785",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A015",
+          "part": "69400401",
+          "reqOps": 3,
+          "intended": 1.75,
+          "opHours": 5.3
+        },
+        {
+          "machine": "A008",
+          "part": "59940302",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        }
+      ]
+    }
   }
 ]
