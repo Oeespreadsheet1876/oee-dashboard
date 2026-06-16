@@ -1,0 +1,620 @@
+[
+  {
+    "date": "15/06/2026",
+    "noteLog": [
+      {
+        "machine": "S009",
+        "reason": "No Labels",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S008",
+        "reason": "Awaiting White Spirtit",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "S006",
+        "reason": "Awaiting Cartons",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "cat": "Other",
+        "imp": "hi"
+      }
+    ],
+    "machActual": {
+      "S002": [
+        4320,
+        null
+      ],
+      "S004": [
+        10811,
+        null
+      ],
+      "S003": [
+        9870,
+        null
+      ],
+      "S007": [
+        8754,
+        null
+      ],
+      "S001": [
+        9500,
+        null
+      ],
+      "S005": [
+        18750,
+        null
+      ],
+      "S009": [
+        19854,
+        null
+      ],
+      "S008": [
+        9845,
+        null
+      ],
+      "S006": [
+        20458,
+        null
+      ]
+    },
+    "dayOEE": 0.7709,
+    "lateOEE": 0,
+    "dayAvail": 0.7612,
+    "lateAvail": 0,
+    "dayPerf": 1.0127,
+    "latePerf": 0,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 112162,
+    "lateOut": 0,
+    "dayKg": 97500,
+    "lateKg": 0,
+    "dayTheoKg": 95738,
+    "lateTheoKg": 0,
+    "dayTheo": 110753,
+    "lateTheo": 0,
+    "totalDT": 20,
+    "topIssue": "Changeover / Setup",
+    "pareto": [
+      {
+        "cat": "Changeover / Setup",
+        "mins": 360,
+        "cum": 30
+      },
+      {
+        "cat": "Other",
+        "mins": 360,
+        "cum": 60
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 360,
+        "cum": 90
+      },
+      {
+        "cat": "Raw Material Issues",
+        "mins": 120,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "S005",
+        "reason": "Machine Fault",
+        "downtime": 4,
+        "mins": 240,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S006",
+        "reason": "Awaiing Labels",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "S002",
+        "reason": "Line Set up",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "S003",
+        "reason": "Clean Down",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "S007",
+        "reason": "Engineer on Machine",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S001",
+        "reason": "Changeover",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.75,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "S009",
+        "reason": "No Operator",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S008",
+        "reason": "Set up Line",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "S004",
+        "reason": "Awiting Bottles",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "cat": "Other",
+        "imp": "med"
+      }
+    ],
+    "machines": [
+      "S001",
+      "S002",
+      "S003",
+      "S004",
+      "S005",
+      "S006",
+      "S007",
+      "S008",
+      "S009"
+    ],
+    "machOEE": {
+      "S002": [
+        0.8845,
+        null
+      ],
+      "S004": [
+        1.6032,
+        null
+      ],
+      "S003": [
+        0.8233,
+        null
+      ],
+      "S007": [
+        0.7302,
+        null
+      ],
+      "S001": [
+        0.7518,
+        null
+      ],
+      "S005": [
+        0.621,
+        null
+      ],
+      "S009": [
+        0.6576,
+        null
+      ],
+      "S008": [
+        0.7095,
+        null
+      ],
+      "S006": [
+        0.6776,
+        null
+      ]
+    },
+    "machAvail": {
+      "S002": [
+        0.7838,
+        null
+      ],
+      "S004": [
+        0.8919,
+        null
+      ],
+      "S003": [
+        0.7838,
+        null
+      ],
+      "S007": [
+        0.7838,
+        null
+      ],
+      "S001": [
+        0.7949,
+        null
+      ],
+      "S005": [
+        0.5676,
+        null
+      ],
+      "S009": [
+        0.7838,
+        null
+      ],
+      "S008": [
+        0.7838,
+        null
+      ],
+      "S006": [
+        0.6757,
+        null
+      ]
+    },
+    "machPerf": {
+      "S002": [
+        1.1285,
+        null
+      ],
+      "S004": [
+        1.7976,
+        null
+      ],
+      "S003": [
+        1.0504,
+        null
+      ],
+      "S007": [
+        0.9317,
+        null
+      ],
+      "S001": [
+        0.9458,
+        null
+      ],
+      "S005": [
+        1.0942,
+        null
+      ],
+      "S009": [
+        0.839,
+        null
+      ],
+      "S008": [
+        0.9053,
+        null
+      ],
+      "S006": [
+        1.0028,
+        null
+      ]
+    },
+    "machTarget": {
+      "S002": [
+        3828,
+        null
+      ],
+      "S004": [
+        6014,
+        null
+      ],
+      "S003": [
+        9396,
+        null
+      ],
+      "S007": [
+        9396,
+        null
+      ],
+      "S001": [
+        10044,
+        null
+      ],
+      "S005": [
+        17136,
+        null
+      ],
+      "S009": [
+        23664,
+        null
+      ],
+      "S008": [
+        10875,
+        null
+      ],
+      "S006": [
+        20400,
+        null
+      ]
+    },
+    "machKg": {
+      "S002": [
+        8640,
+        0
+      ],
+      "S004": [
+        10811,
+        0
+      ],
+      "S003": [
+        4935,
+        0
+      ],
+      "S007": [
+        4377,
+        0
+      ],
+      "S001": [
+        4750,
+        0
+      ],
+      "S005": [
+        14063,
+        0
+      ],
+      "S009": [
+        14891,
+        0
+      ],
+      "S008": [
+        19690,
+        0
+      ],
+      "S006": [
+        15344,
+        0
+      ]
+    },
+    "labour": {
+      "dayPeople": 14,
+      "latePeople": 0,
+      "dayOpsContract": 10,
+      "dayOpsTemp": 4,
+      "dayBlenders": 6,
+      "dayFLT": 4,
+      "daySupervisors": 2,
+      "dayOperators": 14,
+      "lateOperators": 0,
+      "dayDirects": 20,
+      "lateDirects": 0,
+      "dayHeadcount": 26,
+      "lateHeadcount": 0,
+      "dayDemand": 224,
+      "lateDemand": 0,
+      "dayAvail": 129.5,
+      "lateAvail": 0,
+      "dayUtil": 173,
+      "lateUtil": null,
+      "dayOutPerOpHr": 501,
+      "lateOutPerOpHr": null,
+      "dayUnitsPerDirect": 5608,
+      "lateUnitsPerDirect": null,
+      "dayVolPerDirect": 4875,
+      "lateVolPerDirect": null,
+      "dayJobs": [
+        {
+          "machine": "S002",
+          "part": "10954600",
+          "reqOps": 4,
+          "intended": 9.25,
+          "opHours": 37
+        },
+        {
+          "machine": "S004",
+          "part": "10954803",
+          "reqOps": 4,
+          "intended": 9.25,
+          "opHours": 37
+        },
+        {
+          "machine": "S003",
+          "part": "10954812",
+          "reqOps": 4,
+          "intended": 9.25,
+          "opHours": 37
+        },
+        {
+          "machine": "S001",
+          "part": "18458618",
+          "reqOps": 4,
+          "intended": 9.75,
+          "opHours": 39
+        },
+        {
+          "machine": "S005",
+          "part": "19514777",
+          "reqOps": 4,
+          "intended": 9.25,
+          "opHours": 37
+        },
+        {
+          "machine": "S006",
+          "part": "19925082",
+          "reqOps": 4,
+          "intended": 9.25,
+          "opHours": 37
+        }
+      ],
+      "lateJobs": []
+    },
+    "productList": [
+      {
+        "machine": "S002",
+        "shift": "day",
+        "product": "2L SUPADEC BRUSH CLEANER",
+        "part": "10954600",
+        "units": 4320,
+        "kg": 8640,
+        "theoUnits": 3828,
+        "theoKg": 7656,
+        "pallets": 12.3,
+        "run": 7.25,
+        "intended": 9.25,
+        "downtime": 2
+      },
+      {
+        "machine": "S004",
+        "shift": "day",
+        "product": "1L F/G WICKES BRUSH CLEANER SKU 600210",
+        "part": "10954803",
+        "units": 10811,
+        "kg": 10811,
+        "theoUnits": 6014,
+        "theoKg": 6014,
+        "pallets": 22.2,
+        "run": 8.25,
+        "intended": 9.25,
+        "downtime": 1
+      },
+      {
+        "machine": "S003",
+        "shift": "day",
+        "product": "500ML FLASK FLEETWOOD BRUSH CLEANSER",
+        "part": "10954812",
+        "units": 9870,
+        "kg": 4935,
+        "theoUnits": 9396,
+        "theoKg": 4698,
+        "pallets": 11.4,
+        "run": 7.25,
+        "intended": 9.25,
+        "downtime": 2
+      },
+      {
+        "machine": "S007",
+        "shift": "day",
+        "product": "500ML BARTOLINE/ROBERT DYAS BRUSH CLEANER SKU 152775",
+        "part": "10958590",
+        "units": 8754,
+        "kg": 4377,
+        "theoUnits": 9396,
+        "theoKg": 4698,
+        "pallets": 10.1,
+        "run": 7.25,
+        "intended": 9.25,
+        "downtime": 2
+      },
+      {
+        "machine": "S001",
+        "shift": "day",
+        "product": "500ML F/G B&Q VOLDEN BRUSH RESTORER EAN 5059340933610",
+        "part": "18458618",
+        "units": 9500,
+        "kg": 4750,
+        "theoUnits": 10044,
+        "theoKg": 5022,
+        "pallets": 11,
+        "run": 7.75,
+        "intended": 9.75,
+        "downtime": 2
+      },
+      {
+        "machine": "S005",
+        "shift": "day",
+        "product": "750ML SUPADEC TURPENTINE SUBSTITUTE",
+        "part": "19514777",
+        "units": 18750,
+        "kg": 14063,
+        "theoUnits": 17136,
+        "theoKg": 12852,
+        "pallets": 23,
+        "run": 5.25,
+        "intended": 9.25,
+        "downtime": 4
+      },
+      {
+        "machine": "S009",
+        "shift": "day",
+        "product": "750ML EVERBUILD WHITE SPIRIT",
+        "part": "19924611",
+        "units": 19854,
+        "kg": 14891,
+        "theoUnits": 23664,
+        "theoKg": 17748,
+        "pallets": 24.3,
+        "run": 7.25,
+        "intended": 9.25,
+        "downtime": 2
+      },
+      {
+        "machine": "S008",
+        "shift": "day",
+        "product": "2L BARTOLINE/HB WHITE SPIRIT ART 401110",
+        "part": "19925027",
+        "units": 9845,
+        "kg": 19690,
+        "theoUnits": 10875,
+        "theoKg": 21750,
+        "pallets": 28,
+        "run": 7.25,
+        "intended": 9.25,
+        "downtime": 2
+      },
+      {
+        "machine": "S006",
+        "shift": "day",
+        "product": "750ML BOTTLE ARC WHITE SPIRIT",
+        "part": "19925082",
+        "units": 20458,
+        "kg": 15344,
+        "theoUnits": 20400,
+        "theoKg": 15300,
+        "pallets": 25.1,
+        "run": 6.25,
+        "intended": 9.25,
+        "downtime": 3
+      }
+    ]
+  }
+]
