@@ -456,9 +456,10 @@ function renderOverview(){
   if(s&&s.oee!=null){ wn+=s.oee*s.out; ww+=s.out; }
   if(ww>0) gOEE=wn/ww;
   html+='<div style="font-size:13px;font-weight:700;color:#a855f7;margin:22px 0 10px;padding-bottom:6px;border-bottom:2px solid #a855f7">Group Combined</div>';
-  html+='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:760px">';
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px">';
   html+=kcard('Group OEE', gOEE!=null?Math.round(gOEE*100)+'%':'—', oeeColor(gOEE), 'output-weighted');
   html+=kcard('Total Units', totUnits.toLocaleString(), 'var(--text)', 'both sites');
+  html+=kcard('Total Headcount', totHead?(Math.round(totHead*10)/10):'—', 'var(--text)', 'all staff, both sites');
   html+=kcard('Total Directs', totDirects?(Math.round(totDirects*10)/10):'—', 'var(--text)', 'both sites');
   html+=kcard('Total Units / Direct', totDirects>0?Math.round(unitsForPD/totDirects).toLocaleString():'—', '#a855f7', 'group productivity');
   html+=kcard('Total Downtime', totDT+'h', totDT>20?'#f0544f':'#f5a623', 'both sites');
@@ -652,6 +653,7 @@ function renderTrends(){
       // Group totals: units and directs add up across both sites; per-direct = total units / total directs
       const rows=[
         {label:'Total Units Produced', get:(fm,sm)=>fmt((fm?fm.units:0)+(sm?sm.units:0))},
+        {label:'Total Headcount (both sites)', get:(fm,sm)=>fmt1((fm&&fm.head?fm.head:0)+(sm&&sm.head?sm.head:0))},
         {label:'Total Directs (both sites)', get:(fm,sm)=>fmt1((fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0))},
         {label:'Total Units Per Direct', get:(fm,sm)=>{
           const u=(fm&&fm.hcUnits?fm.hcUnits:0)+(sm&&sm.hcUnits?sm.hcUnits:0);
