@@ -2380,6 +2380,14 @@ function labourKPIs(L){
   html+=card('Utilisation', L.lateUtil!=null?L.lateUtil+'%':'—', utilColor(L.lateUtil));
   html+=card('Output / op-hr', L.lateOutPerOpHr!=null?L.lateOutPerOpHr.toLocaleString():'—','#4a9eff');
   html+='</div>';
+  // Head Count & Productivity block
+  html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
+  html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Head Count &amp; Productivity (directs = operators + blenders)</div>';
+  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—');
+  html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—');
+  html+=card('Units Produced Per Direct', L.unitsPerDirect!=null?L.unitsPerDirect.toLocaleString():'—','#4a9eff');
+  html+=card('Kg Produced Per Direct', L.kgPerDirect!=null?L.kgPerDirect.toLocaleString():'—','#4a9eff');
+  html+='</div>';
   return html;
 }
 
