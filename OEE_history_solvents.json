@@ -1,41 +1,7 @@
 [
   {
     "date": "15/06/2026",
-    "noteLog": [
-      {
-        "machine": "S009",
-        "reason": "No Labels",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Raw Material Issues",
-        "imp": "hi"
-      },
-      {
-        "machine": "S008",
-        "reason": "Awaiting White Spirtit",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Other",
-        "imp": "hi"
-      },
-      {
-        "machine": "S006",
-        "reason": "Awaiting Cartons",
-        "downtime": 0,
-        "mins": 0,
-        "shift": "day",
-        "intended": 0,
-        "isNote": true,
-        "cat": "Other",
-        "imp": "hi"
-      }
-    ],
+    "noteLog": [],
     "machActual": {
       "S002": [
         4320,
@@ -90,31 +56,67 @@
     "lateTheoKg": 0,
     "dayTheo": 110753,
     "lateTheo": 0,
-    "totalDT": 20,
-    "topIssue": "Changeover / Setup",
+    "totalDT": 47.75,
+    "topIssue": "Raw Material Issues",
     "pareto": [
+      {
+        "cat": "Raw Material Issues",
+        "mins": 1785,
+        "cum": 62
+      },
       {
         "cat": "Changeover / Setup",
         "mins": 360,
-        "cum": 30
+        "cum": 75
       },
       {
         "cat": "Other",
         "mins": 360,
-        "cum": 60
+        "cum": 87
       },
       {
         "cat": "Engineering Issues",
         "mins": 360,
-        "cum": 90
-      },
-      {
-        "cat": "Raw Material Issues",
-        "mins": 120,
         "cum": 100
       }
     ],
     "dtLog": [
+      {
+        "machine": "S009",
+        "reason": "No Labels",
+        "downtime": 9.25,
+        "mins": 555,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "planChange": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S008",
+        "reason": "Awaiting White Spirtit",
+        "downtime": 9.25,
+        "mins": 555,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "planChange": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "S006",
+        "reason": "Awaiting Cartons",
+        "downtime": 9.25,
+        "mins": 555,
+        "shift": "day",
+        "intended": 0,
+        "isNote": true,
+        "planChange": false,
+        "cat": "Raw Material Issues",
+        "imp": "hi"
+      },
       {
         "machine": "S005",
         "reason": "Machine Fault",
@@ -123,6 +125,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Engineering Issues",
         "imp": "hi"
       },
@@ -134,6 +137,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Other",
         "imp": "hi"
       },
@@ -145,6 +149,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Changeover / Setup",
         "imp": "hi"
       },
@@ -156,6 +161,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Other",
         "imp": "hi"
       },
@@ -167,6 +173,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Engineering Issues",
         "imp": "hi"
       },
@@ -178,6 +185,7 @@
         "shift": "day",
         "intended": 9.75,
         "isNote": false,
+        "planChange": false,
         "cat": "Changeover / Setup",
         "imp": "hi"
       },
@@ -189,6 +197,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Raw Material Issues",
         "imp": "hi"
       },
@@ -200,6 +209,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Changeover / Setup",
         "imp": "hi"
       },
@@ -211,6 +221,7 @@
         "shift": "day",
         "intended": 9.25,
         "isNote": false,
+        "planChange": false,
         "cat": "Other",
         "imp": "med"
       }
