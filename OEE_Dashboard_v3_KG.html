@@ -1056,6 +1056,9 @@ function buildKPIs(d){
     if(L.dayUtil!=null) ks.push({l:'Day Labour Utilisation',v:L.dayUtil+'%',c:lcol(L.dayUtil),s:L.dayDemand.toFixed(0)+'h demand / '+L.dayAvail.toFixed(0)+'h available'});
     if(L.lateUtil!=null) ks.push({l:'Late Labour Utilisation',v:L.lateUtil+'%',c:lcol(L.lateUtil),s:L.lateDemand.toFixed(0)+'h demand / '+L.lateAvail.toFixed(0)+'h available'});
     if(L.util!=null) ks.push({l:'Combined Labour Utilisation',v:L.util+'%',c:lcol(L.util),s:L.demand.toFixed(0)+'h demand / '+L.avail.toFixed(0)+'h available'});
+    if(L.avgHeadcount!=null) ks.push({l:'Head Count Total',v:L.avgHeadcount,c:'blue',s:L.avgDirects+' direct / '+L.avgIndirects+' indirect'});
+    if(L.avgDirects!=null) ks.push({l:'Total Directs',v:L.avgDirects,c:'blue',s:'operators + blenders'});
+    if(L.unitsPerDirect!=null) ks.push({l:'Units / Direct',v:L.unitsPerDirect.toLocaleString(),c:'blue',s:(L.kgPerDirect!=null?L.kgPerDirect.toLocaleString()+'kg / direct':'')});
   }
   document.getElementById('kpi-grid').innerHTML=ks.map(k=>
     `<div class="kpi"><div class="kl">${k.l}</div><div class="kv ${k.c}" style="font-size:${String(k.v).length>7?'15px':'22px'}">${k.v}</div><div class="ks">${k.s}</div></div>`
@@ -2393,19 +2396,40 @@ function labourRow(L){
   html+=card('Late Labour Utilisation', L.lateUtil!=null?L.lateUtil+'%':'—', utilCol(L.lateUtil), L.lateDemand.toFixed(0)+'h / '+L.lateAvail.toFixed(0)+'h available');
   html+=card('Combined Labour Utilisation', L.util!=null?L.util+'%':'—', utilCol(L.util), L.demand.toFixed(0)+'h / '+L.avail.toFixed(0)+'h available');
   html+='</div>';
+  // Headcount breakdown row
+  html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">';
+  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—', 'var(--text)', 'all staff');
+  html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—', 'var(--text)', 'operators + blenders');
+  html+=card('Indirects', L.avgIndirects!=null?L.avgIndirects:'—', 'var(--text)', 'FLT + supervisors');
+  html+='</div>';
+  // Per-direct productivity row
+  html+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px">';
+  html+=card('Units Produced Per Direct', L.unitsPerDirect!=null?L.unitsPerDirect.toLocaleString():'—', '#4a9eff', 'per direct');
+  html+=card('Kg Produced Per Direct', L.kgPerDirect!=null?L.kgPerDirect.toLocaleString():'—', '#4a9eff', 'per direct');
+  html+='</div>';
   return html;
 }
 
 function aggregateLabour(days){
   // Sum labour across a set of day records
   let dayDemand=0,lateDemand=0,dayAvail=0,lateAvail=0,dayOut=0,lateOut=0;
+  let dayKgT=0,lateKgT=0,directsSum=0,headSum=0,indirectSum=0,nHC=0;
   days.forEach(h=>{
     const L=h.labour; if(!L) return;
     dayDemand+=L.dayDemand||0; lateDemand+=L.lateDemand||0;
     dayAvail+=L.dayAvail||0; lateAvail+=L.lateAvail||0;
     dayOut+=h.dayOut||0; lateOut+=h.lateOut||0;
+    dayKgT+=h.dayKg||0; lateKgT+=h.lateKg||0;
+    const dh=(L.dayHeadcount||0)+(L.lateHeadcount||0);
+    if(dh>0){
+      directsSum+=(L.dayDirects||0)+(L.lateDirects||0);
+      headSum+=dh;
+      indirectSum+=dh-((L.dayDirects||0)+(L.lateDirects||0));
+      nHC++;
+    }
   });
   const demand=dayDemand+lateDemand, avail=dayAvail+lateAvail, out=dayOut+lateOut;
+  const kgT=dayKgT+lateKgT;
   return {
     dayDemand, lateDemand, demand,
     dayAvail, lateAvail, avail,
@@ -2414,7 +2438,13 @@ function aggregateLabour(days){
     util: avail?Math.round(demand/avail*100):null,
     dayOutPerOpHr: dayDemand?Math.round(dayOut/dayDemand):null,
     lateOutPerOpHr: lateDemand?Math.round(lateOut/lateDemand):null,
-    outPerOpHr: demand?Math.round(out/demand):null
+    outPerOpHr: demand?Math.round(out/demand):null,
+    avgHeadcount: nHC?Math.round(headSum/nHC*10)/10:null,
+    avgDirects: nHC?Math.round(directsSum/nHC*10)/10:null,
+    avgIndirects: nHC?Math.round(indirectSum/nHC*10)/10:null,
+    unitsPerDirect: directsSum?Math.round(out/directsSum):null,
+    kgPerDirect: directsSum?Math.round(kgT/directsSum):null,
+    daysWithHC: nHC
   };
 }
 
