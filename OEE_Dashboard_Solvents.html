@@ -638,7 +638,8 @@ function extract(wb){
     for(let r=10;r<=mr;r++){
       const ynRaw=cv(ws,3,r); 
       const ynVal=ynRaw===true?'Y':String(ynRaw||'').trim().toUpperCase(); 
-      if(ynVal!=='Y'&&ynVal!=='YES') continue;
+      const isPC=(ynVal==='PC');
+      if(ynVal!=='Y'&&ynVal!=='YES'&&!isPC) continue;
       const mac=cs(ws,2,r); if(!mac||mac.toUpperCase().includes('NOT REQUIRED')) continue;
       const intended=cn(ws,8,r),downtime=cn(ws,9,r),count=cn(ws,11,r);
       const scrap=cn(ws,12,r),reason=toTitleCase(cs(ws,14,r)),run=cn(ws,16,r);
@@ -658,7 +659,7 @@ function extract(wb){
       if(product && goodCount>0){
         productList.push({machine:mac,shift,product:product,part:cs(ws,6,r),units:goodCount,kg:Math.round(goodCount*kgPerUnit),theoUnits:Math.round(theoInt||0),theoKg:Math.round((theoInt||0)*kgPerUnit),pallets:0,run:run,intended:intended,downtime:downtime});
       }
-      if(downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0)});
+      if(isPC||downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0),planChange:isPC});
     }
   }
   scan(dWs,'day',100); if(lWs) scan(lWs,'late',100);
@@ -787,6 +788,22 @@ function extract(wb){
   const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
+    // PC in run column = Plan Change due to raw material: HIGH impact, NO time lost, kept out of Pareto
+    if(i.planChange){
+      i.cat='Plan Change (Raw Material)';
+      i.imp='hi';
+      i.downtime=0;
+      i.mins=0;
+      return;
+    }
+    // Y due to run, no figures, but a comment = Raw Material downtime, HIGH, full shift (9.25h) lost
+    if(i.isNote){
+      i.cat='Raw Material Issues';
+      i.imp='hi';
+      i.downtime=9.25;
+      i.mins=Math.round(9.25*60);
+      return;
+    }
     // Category
     if(r.includes('heater')||r.includes('printer')||r.includes('label machine')||r.includes('label printer')||r.includes('labeller')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||r.includes('pot issue')||r.includes('labelling issue')||r.includes('lidder')||r.includes('sachet issue')||r.includes('issues with sachet')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
       i.cat='Engineering Issues';
@@ -823,13 +840,14 @@ function extract(wb){
     }
   });
   const catMins={};
-  allIssues.filter(i=>!i.isNote).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+  allIssues.filter(i=>(!i.isNote||i.cat==='Raw Material Issues')&&!i.planChange&&(i.mins||0)>0).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
   let cum=0; const tot=Object.values(catMins).reduce((a,v)=>a+v,0);
   const pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
     .map(([k,v])=>{cum+=v;return{cat:k,mins:v,cum:tot>0?Math.round(cum/tot*100):0}});
-  const dtLog=allIssues.filter(i=>!i.isNote).sort((a,b)=>b.mins-a.mins);
-  const noteLog=allIssues.filter(i=>i.isNote);
-  const totalDT=round2(dtLog.reduce((a,i)=>a+i.downtime,0));
+  // Raw material notes now carry 9.25h, so they count as downtime incidents
+  const dtLog=allIssues.filter(i=>!i.isNote||i.cat==='Raw Material Issues').sort((a,b)=>b.mins-a.mins);
+  const noteLog=allIssues.filter(i=>i.isNote&&i.cat!=='Raw Material Issues');
+  const totalDT=round2(dtLog.reduce((a,i)=>a+(i.downtime||0),0));
   const topIssue=pareto.length?pareto[0].cat:'—';
   const machines=Object.keys(mach).sort();
 
@@ -1924,8 +1942,8 @@ function buildDailyReport(){
       if(!rmIssues.length) return '';
       const dayRM=rmIssues.filter(i=>i.shift==='day');
       const lateRM=rmIssues.filter(i=>i.shift==='late');
-      const dayHrs=dayRM.length>0?9.25:0;
-      const lateHrs=lateRM.length>0?9.25:0;
+      const dayHrs=dayRM.reduce((a,i)=>a+(i.downtime||0),0);
+      const lateHrs=lateRM.reduce((a,i)=>a+(i.downtime||0),0);
       const totalHrs=dayHrs+lateHrs;
       const rows=rmIssues.map(i=>`<tr style="background:rgba(240,84,79,.05)">
         <td style="color:#f0544f;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
@@ -1946,6 +1964,26 @@ function buildDailyReport(){
         </div>
         <table class="tbl">
           <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Issue</th><th>Downtime</th><th>Impact</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+    })()}    ${(()=>{
+      const pcIssues=[...(rec.dtLog||[]),...(rec.noteLog||[])].filter(i=>i.planChange);
+      if(!pcIssues.length) return '';
+      const rows=pcIssues.map(i=>`<tr style="background:rgba(245,166,35,.06)">
+        <td style="color:#f5a623;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
+        <td style="font-weight:500">${i.machine}</td>
+        <td>${i.reason||'—'}</td>
+        <td><span class="badge hi">HIGH</span></td>
+      </tr>`).join('');
+      return `<div class="report-section" style="border:1px solid rgba(245,166,35,.3);border-radius:8px;padding:12px;background:rgba(245,166,35,.05);margin-top:12px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <span style="font-size:13px;font-weight:600;color:#f5a623">&#9888; Plan Changes (Raw Material)</span>
+          <span class="badge hi">HIGH IMPACT</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Planned product could not run due to raw material; line switched to an amended plan. No line time lost, but customer requirements may be affected.</div>
+        <table class="tbl">
+          <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Comment</th><th>Impact</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
@@ -2286,7 +2324,7 @@ function buildMonthlyReport(){
       const lr=[...(h.dtLog||[]),...(h.noteLog||[])].filter(function(i){return i.cat==='Raw Material Issues'&&i.shift==='late';});
       if(dr.length||lr.length) rmByDate[h.date]={day:dr,late:lr};
     });
-    const totalRMHrs=Object.values(rmByDate).reduce(function(a,v){return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);},0);
+    const totalRMHrs=rmIssues.reduce(function(a,i){return a+(i.downtime||0);},0);
     let rmRows='';
     rmIssues.forEach(function(i){
       rmRows+='<tr style="background:rgba(240,84,79,.05)">'
