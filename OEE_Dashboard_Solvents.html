@@ -2139,7 +2139,9 @@ function buildWeeklyReport(){
       if(dayRM.length||lateRM.length) rmByDate[h.date]={day:dayRM,late:lateRM};
     });
     const totalRMHrs=Object.values(rmByDate).reduce((a,v)=>{
-      return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);
+      const dayH=v.day.reduce((s,i)=>s+(i.downtime||0),0);
+      const lateH=v.late.reduce((s,i)=>s+(i.downtime||0),0);
+      return a+dayH+lateH;
     },0);
     const rmRows=weekRM.map(i=>`<tr style="background:rgba(240,84,79,.05)">
       <td style="font-family:var(--mono);font-size:10px">${i.date||'—'}</td>
