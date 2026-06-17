@@ -1056,8 +1056,11 @@ function buildKPIs(d){
     if(L.dayUtil!=null) ks.push({l:'Day Labour Utilisation',v:L.dayUtil+'%',c:lcol(L.dayUtil),s:L.dayDemand.toFixed(0)+'h demand / '+L.dayAvail.toFixed(0)+'h available'});
     if(L.lateUtil!=null) ks.push({l:'Late Labour Utilisation',v:L.lateUtil+'%',c:lcol(L.lateUtil),s:L.lateDemand.toFixed(0)+'h demand / '+L.lateAvail.toFixed(0)+'h available'});
     if(L.util!=null) ks.push({l:'Combined Labour Utilisation',v:L.util+'%',c:lcol(L.util),s:L.demand.toFixed(0)+'h demand / '+L.avail.toFixed(0)+'h available'});
-    if(L.avgHeadcount!=null) ks.push({l:'Head Count Total',v:L.avgHeadcount,c:'blue',s:L.avgDirects+' direct / '+L.avgIndirects+' indirect'});
-    if(L.avgDirects!=null) ks.push({l:'Total Directs',v:L.avgDirects,c:'blue',s:'operators + blenders'});
+    if(L.avgDayHeadcount!=null) ks.push({l:'Day Head Count',v:L.avgDayHeadcount,c:'blue',s:L.avgDayDirects+' directs'});
+    if(L.avgLateHeadcount!=null) ks.push({l:'Late Head Count',v:L.avgLateHeadcount,c:'blue',s:L.avgLateDirects+' directs'});
+    if(L.avgHeadcount!=null) ks.push({l:'Combined Head Count',v:L.avgHeadcount,c:'blue',s:L.avgDirects+' direct / '+L.avgIndirects+' indirect'});
+    if(L.avgDayDirects!=null) ks.push({l:'Day Directs',v:L.avgDayDirects,c:'blue',s:'operators + blenders'});
+    if(L.avgLateDirects!=null) ks.push({l:'Late Directs',v:L.avgLateDirects,c:'blue',s:'operators + blenders'});
     if(L.unitsPerDirect!=null) ks.push({l:'Units / Direct',v:L.unitsPerDirect.toLocaleString(),c:'blue',s:(L.kgPerDirect!=null?L.kgPerDirect.toLocaleString()+'kg / direct':'')});
   }
   document.getElementById('kpi-grid').innerHTML=ks.map(k=>
@@ -2380,10 +2383,18 @@ function labourKPIs(L){
   html+=card('Utilisation', L.lateUtil!=null?L.lateUtil+'%':'—', utilColor(L.lateUtil));
   html+=card('Output / op-hr', L.lateOutPerOpHr!=null?L.lateOutPerOpHr.toLocaleString():'—','#4a9eff');
   html+='</div>';
-  // Head Count & Productivity block
+  // Head Count & Productivity - per shift
   html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
   html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Head Count &amp; Productivity (directs = operators + blenders)</div>';
-  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—');
+  html+=card('Day Head Count', L.avgDayHeadcount!=null?L.avgDayHeadcount:'—');
+  html+=card('Day Directs', L.avgDayDirects!=null?L.avgDayDirects:'—');
+  html+=card('Day Units / Direct', L.dayUnitsPerDirect!=null?L.dayUnitsPerDirect.toLocaleString():'—','#4a9eff');
+  html+=card('', '');
+  html+=card('Late Head Count', L.avgLateHeadcount!=null?L.avgLateHeadcount:'—');
+  html+=card('Late Directs', L.avgLateDirects!=null?L.avgLateDirects:'—');
+  html+=card('Late Units / Direct', L.lateUnitsPerDirect!=null?L.lateUnitsPerDirect.toLocaleString():'—','#4a9eff');
+  html+=card('', '');
+  html+=card('Combined Head Count', L.avgHeadcount!=null?L.avgHeadcount:'—');
   html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—');
   html+=card('Units Produced Per Direct', L.unitsPerDirect!=null?L.unitsPerDirect.toLocaleString():'—','#4a9eff');
   html+=card('Kg Produced Per Direct', L.kgPerDirect!=null?L.kgPerDirect.toLocaleString():'—','#4a9eff');
@@ -2422,6 +2433,7 @@ function aggregateLabour(days){
   // Sum labour across a set of day records
   let dayDemand=0,lateDemand=0,dayAvail=0,lateAvail=0,dayOut=0,lateOut=0;
   let dayKgT=0,lateKgT=0,directsSum=0,headSum=0,indirectSum=0,nHC=0;
+  let dayDirectsSum=0,lateDirectsSum=0,dayHeadSum=0,lateHeadSum=0,nDayHC=0,nLateHC=0;
   days.forEach(h=>{
     const L=h.labour; if(!L) return;
     dayDemand+=L.dayDemand||0; lateDemand+=L.lateDemand||0;
@@ -2435,6 +2447,8 @@ function aggregateLabour(days){
       indirectSum+=dh-((L.dayDirects||0)+(L.lateDirects||0));
       nHC++;
     }
+    if((L.dayHeadcount||0)>0){ dayDirectsSum+=L.dayDirects||0; dayHeadSum+=L.dayHeadcount||0; nDayHC++; }
+    if((L.lateHeadcount||0)>0){ lateDirectsSum+=L.lateDirects||0; lateHeadSum+=L.lateHeadcount||0; nLateHC++; }
   });
   const demand=dayDemand+lateDemand, avail=dayAvail+lateAvail, out=dayOut+lateOut;
   const kgT=dayKgT+lateKgT;
@@ -2452,6 +2466,12 @@ function aggregateLabour(days){
     avgIndirects: nHC?Math.round(indirectSum/nHC*10)/10:null,
     unitsPerDirect: directsSum?Math.round(out/directsSum):null,
     kgPerDirect: directsSum?Math.round(kgT/directsSum):null,
+    avgDayHeadcount: nDayHC?Math.round(dayHeadSum/nDayHC*10)/10:null,
+    avgLateHeadcount: nLateHC?Math.round(lateHeadSum/nLateHC*10)/10:null,
+    avgDayDirects: nDayHC?Math.round(dayDirectsSum/nDayHC*10)/10:null,
+    avgLateDirects: nLateHC?Math.round(lateDirectsSum/nLateHC*10)/10:null,
+    dayUnitsPerDirect: dayDirectsSum?Math.round(dayOut/dayDirectsSum):null,
+    lateUnitsPerDirect: lateDirectsSum?Math.round(lateOut/lateDirectsSum):null,
     daysWithHC: nHC
   };
 }
