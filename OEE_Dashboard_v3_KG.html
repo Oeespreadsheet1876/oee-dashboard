@@ -751,20 +751,45 @@ function extract(wb){
   productList.forEach(p=>{ if(p.shift==='day') dayTheoKg+=p.theoKg||0; else lateTheoKg+=p.theoKg||0; });
   dayTheoKg=Math.round(dayTheoKg); lateTheoKg=Math.round(lateTheoKg);
 
-  const dayPeople=cn(dWs,3,2)||0; // C2 people available
-  const latePeople=cn(lWs,3,2)||0;
-  const dayAvailHours=Math.round(dayPeople*SHIFT_HOURS*10)/10;
-  const lateAvailHours=Math.round(latePeople*SHIFT_HOURS*10)/10;
+  // Headcount breakdown from C2-C6 (both shifts)
+  const dayOpsContract=cn(dWs,3,2)||0;
+  const dayOpsTemp=cn(dWs,3,3)||0;
+  const dayBlenders=cn(dWs,3,4)||0;
+  const dayFLT=cn(dWs,3,5)||0;
+  const daySupervisors=cn(dWs,3,6)||0;
+  const lateOpsContract=cn(lWs,3,2)||0;
+  const lateOpsTemp=cn(lWs,3,3)||0;
+  const lateBlenders=cn(lWs,3,4)||0;
+  const lateFLT=cn(lWs,3,5)||0;
+  const lateSupervisors=cn(lWs,3,6)||0;
+  const dayOperators=dayOpsContract+dayOpsTemp;
+  const lateOperators=lateOpsContract+lateOpsTemp;
+  const dayDirects=dayOperators+dayBlenders;
+  const lateDirects=lateOperators+lateBlenders;
+  const dayHeadcount=dayOperators+dayBlenders+dayFLT+daySupervisors;
+  const lateHeadcount=lateOperators+lateBlenders+lateFLT+lateSupervisors;
+  const dayPeople=dayOperators, latePeople=lateOperators;
+  const dayAvailHours=Math.round(dayOperators*SHIFT_HOURS*10)/10;
+  const lateAvailHours=Math.round(lateOperators*SHIFT_HOURS*10)/10;
   const dayUtil=dayAvailHours?Math.round(dayLabour.opHours/dayAvailHours*100):null;
   const lateUtil=lateAvailHours?Math.round(lateLabour.opHours/lateAvailHours*100):null;
   const dayOutPerOpHr=dayLabour.opHours?Math.round(dayOut/dayLabour.opHours):null;
   const lateOutPerOpHr=lateLabour.opHours?Math.round(lateOut/lateLabour.opHours):null;
+  const dayUnitsPerDirect=dayDirects?Math.round(dayOut/dayDirects):null;
+  const lateUnitsPerDirect=lateDirects?Math.round(lateOut/lateDirects):null;
+  const dayVolPerDirect=dayDirects?Math.round(dayKg/dayDirects):null;
+  const lateVolPerDirect=lateDirects?Math.round(lateKg/lateDirects):null;
   const labour={
     dayPeople, latePeople,
+    dayOpsContract, dayOpsTemp, dayBlenders, dayFLT, daySupervisors,
+    lateOpsContract, lateOpsTemp, lateBlenders, lateFLT, lateSupervisors,
+    dayOperators, lateOperators, dayDirects, lateDirects,
+    dayHeadcount, lateHeadcount,
     dayDemand:dayLabour.opHours, lateDemand:lateLabour.opHours,
     dayAvail:dayAvailHours, lateAvail:lateAvailHours,
     dayUtil, lateUtil,
     dayOutPerOpHr, lateOutPerOpHr,
+    dayUnitsPerDirect, lateUnitsPerDirect, dayVolPerDirect, lateVolPerDirect,
     dayJobs:dayLabour.jobs, lateJobs:lateLabour.jobs
   };
 
