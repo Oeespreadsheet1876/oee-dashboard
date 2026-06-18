@@ -520,12 +520,13 @@ function paretoTable(pareto, accent){
 }
 
 function aggReasons(days){
-  // Pool downtime by individual reason (not just category)
+  // Pool downtime by machine + individual reason
   const reasons={};
   days.forEach(h=>{
     (h.dtLog||[]).forEach(i=>{
-      const key=(i.reason||'(no reason given)')+' | '+(i.cat||'');
-      if(!reasons[key]) reasons[key]={reason:i.reason||'(no reason given)',cat:i.cat||'',mins:0,count:0};
+      const mac=i.machine||'—';
+      const key=mac+' | '+(i.reason||'(no reason given)')+' | '+(i.cat||'');
+      if(!reasons[key]) reasons[key]={machine:mac,reason:i.reason||'(no reason given)',cat:i.cat||'',mins:0,count:0};
       reasons[key].mins+=(i.mins||0);
       reasons[key].count++;
     });
@@ -547,9 +548,10 @@ function aggPlanChanges(days){
 function reasonTable(reasons, accent){
   if(!reasons.length) return '<div style="color:var(--muted);font-size:12px">No downtime recorded</div>';
   const maxMins=reasons[0].mins||1;
-  let h='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Reason</th><th style="text-align:left">Category</th><th style="text-align:right">Mins</th><th style="text-align:right">Hrs</th></tr></thead><tbody>';
+  let h='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Machine</th><th style="text-align:left">Reason</th><th style="text-align:left">Category</th><th style="text-align:right">Mins</th><th style="text-align:right">Hrs</th></tr></thead><tbody>';
   reasons.forEach(p=>{
     h+='<tr>';
+    h+='<td style="font-size:11px;font-weight:500;font-family:var(--mono)">'+p.machine+'</td>';
     h+='<td style="font-size:11px">'+p.reason+'</td>';
     h+='<td style="font-size:10px;color:var(--muted)">'+p.cat+'</td>';
     h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+p.mins.toLocaleString()+'</td>';
