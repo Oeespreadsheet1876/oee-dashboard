@@ -145,9 +145,15 @@ input[type=file]{display:none}
     </div>
   </div>
   <div id="tabbar" style="display:flex;gap:4px;padding:8px 22px 0;border-bottom:1px solid var(--bdr)">
-    <button class="gtab gtab-active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
-    <button class="gtab" data-tab="trends" onclick="switchTab('trends')">Trends</button>
-    <button class="gtab" data-tab="pareto" onclick="switchTab('pareto')">Pareto Analysis</button>
+    <button class="gtab gtab-active" data-tab="daily" onclick="switchTab('daily')">Daily<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Production meeting</span></button>
+    <button class="gtab" data-tab="weekly" onclick="switchTab('weekly')">Weekly<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Operations meeting</span></button>
+    <button class="gtab" data-tab="monthly" onclick="switchTab('monthly')">Monthly<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Trend over time</span></button>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:12px;padding-bottom:6px;font-size:10px;color:var(--muted)">
+      <span style="font-weight:600">Output vs theoretical:</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#3ecf8e;display:inline-block"></span>85%+</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#f5a623;display:inline-block"></span>65-84%</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#f0544f;display:inline-block"></span>below 65%</span>
+    </div>
   </div>
   <div id="content" style="padding:18px 22px;overflow-y:auto;max-height:calc(100vh - 110px)"></div>
 </div>
@@ -407,8 +413,20 @@ function filterByPeriod(data){
   return data;
 }
 
-function renderOverview(){
+function renderDaily(){
   const c=document.getElementById('content');
+  let html=dataStatus()+periodControls();
+  // Section 1: both sites' overview metrics for the selected period
+  html+='<div style="font-size:15px;font-weight:700;margin:6px 0 12px">Site Performance</div>';
+  html+=overviewHTML();
+  // Section 2: issues (plan changes, downtime detail, category summary)
+  html+='<div style="font-size:15px;font-weight:700;margin:28px 0 4px;padding-top:18px;border-top:1px solid var(--bdr)">Issues</div>';
+  html+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Outstanding items remain until they drop out of the site spreadsheets (e.g. a raw material issue clears once the material arrives).</div>';
+  html+=issuesHTML();
+  c.innerHTML=html;
+}
+
+function overviewHTML(){
   const f=siteMetrics(filterByPeriod(SITES.fillers));
   const s=siteMetrics(filterByPeriod(SITES.solvents));
   const fL=SITES.fillers?aggHeadcount(filterByPeriod(SITES.fillers)):null;
@@ -424,8 +442,10 @@ function renderOverview(){
     h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
     h+=kcard('OEE', m.oee!=null?Math.round(m.oee*100)+'%':'—', oeeColor(m.oee), 'target 85%');
     h+=kcard('Output Attainment', m.attain!=null?m.attain+'%':'—', attColor(m.attain), 'vs theoretical');
-    h+=kcard('Units Produced', m.out.toLocaleString(), 'var(--text)', 'units');
-    h+=kcard('Volume', m.vol.toLocaleString()+' '+volUnit, 'var(--text)', volUnit==='Kg'?'kilograms':'litres');
+    const unitAtt=m.theo?Math.round(m.out/m.theo*100):null;
+    const volAtt=m.theoVol?Math.round(m.vol/m.theoVol*100):null;
+    h+=kcard('Units Produced', m.out.toLocaleString(), attColor(unitAtt), 'theoretical '+(m.theo||0).toLocaleString()+(unitAtt!=null?' ('+unitAtt+'%)':''));
+    h+=kcard('Volume ('+volUnit+')', m.vol.toLocaleString(), attColor(volAtt), 'theoretical '+(m.theoVol||0).toLocaleString()+' '+volUnit+(volAtt!=null?' ('+volAtt+'%)':''));
     h+=kcard('Labour Utilisation', m.util!=null?m.util+'%':'—', utilColor(m.util), 'demand vs available');
     h+=kcard('Total Downtime', m.dt+'h', m.dt>10?'#f0544f':'#f5a623', Math.round(m.dt*60)+' mins');
     h+=kcard('Head Count Total', L&&L.headcount!=null?(Math.round(L.headcount*10)/10):'—', 'var(--text)', 'all staff');
@@ -436,8 +456,7 @@ function renderOverview(){
     return h;
   }
 
-  let html=dataStatus()+periodControls();
-  html+='<div style="display:flex;gap:18px;flex-wrap:wrap">';
+  let html='<div style="display:flex;gap:18px;flex-wrap:wrap">';
   html+=siteCol('Fillers &amp; Adhesives', f, fL, 'Kg', '#4a9eff');
   html+=siteCol('Solvents', s, sL, 'Litres', '#3ecf8e');
   html+='</div>';
@@ -465,29 +484,31 @@ function renderOverview(){
   html+=kcard('Total Downtime', totDT+'h', totDT>20?'#f0544f':'#f5a623', 'both sites');
   html+='</div>';
 
-  c.innerHTML=html;
+  return html;
 }
 
 function aggPareto(days){
-  // Pool category minutes across the period
-  const cats={};
+  // Pool category minutes AND occurrence counts across the period
+  const cats={}; const counts={};
   let total=0;
   days.forEach(h=>{
     if(h.pareto) h.pareto.forEach(p=>{ cats[p.cat]=(cats[p.cat]||0)+p.mins; total+=p.mins; });
+    // Count occurrences from the detailed dtLog
+    (h.dtLog||[]).forEach(i=>{ if(i.cat){ counts[i.cat]=(counts[i.cat]||0)+1; } });
   });
   const sorted=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
   let cum=0;
-  return sorted.map(([cat,mins])=>{ cum+=mins; return {cat,mins,pct:total?Math.round(mins/total*100):0,cum:total?Math.round(cum/total*100):0}; });
+  return sorted.map(([cat,mins])=>{ cum+=mins; return {cat,mins,times:counts[cat]||0,pct:total?Math.round(mins/total*100):0,cum:total?Math.round(cum/total*100):0}; });
 }
 
 function paretoTable(pareto, accent){
   if(!pareto.length) return '<div style="color:var(--muted);font-size:12px">No downtime recorded</div>';
   const maxMins=pareto[0].mins;
-  let h='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Category</th><th style="text-align:right">Mins</th><th style="text-align:right">Hrs</th><th style="text-align:right">%</th><th style="text-align:right">Cum%</th></tr></thead><tbody>';
+  let h='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Category</th><th style="text-align:right">Times</th><th style="text-align:right">Mins</th><th style="text-align:right">Hrs</th><th style="text-align:right">%</th><th style="text-align:right">Cum%</th></tr></thead><tbody>';
   pareto.forEach(p=>{
-    const barW=Math.round(p.mins/maxMins*100);
     h+='<tr>';
-    h+='<td style="font-size:11px;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:'+barW+'%;background:'+accent+';opacity:.12"></div><span style="position:relative">'+p.cat+'</span></td>';
+    h+='<td style="font-size:11px">'+p.cat+'</td>';
+    h+='<td style="text-align:right;font-family:var(--mono);font-size:11px;color:var(--muted)">'+(p.times||0)+'</td>';
     h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+p.mins.toLocaleString()+'</td>';
     h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+(Math.round(p.mins/60*10)/10)+'</td>';
     h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+p.pct+'%</td>';
@@ -498,33 +519,118 @@ function paretoTable(pareto, accent){
   return h;
 }
 
-function renderPareto(){
-  const c=document.getElementById('content');
+function aggReasons(days){
+  // Pool downtime by individual reason (not just category)
+  const reasons={};
+  days.forEach(h=>{
+    (h.dtLog||[]).forEach(i=>{
+      const key=(i.reason||'(no reason given)')+' | '+(i.cat||'');
+      if(!reasons[key]) reasons[key]={reason:i.reason||'(no reason given)',cat:i.cat||'',mins:0,count:0};
+      reasons[key].mins+=(i.mins||0);
+      reasons[key].count++;
+    });
+  });
+  return Object.values(reasons).sort((a,b)=>b.mins-a.mins);
+}
+
+function aggPlanChanges(days){
+  // Pool plan change entries (PC) from dtLog and noteLog
+  const out=[];
+  days.forEach(h=>{
+    [...(h.dtLog||[]),...(h.noteLog||[])].forEach(i=>{
+      if(i.planChange) out.push({date:h.date,machine:i.machine,reason:i.reason||'(no comment)',shift:i.shift});
+    });
+  });
+  return out;
+}
+
+function reasonTable(reasons, accent){
+  if(!reasons.length) return '<div style="color:var(--muted);font-size:12px">No downtime recorded</div>';
+  const maxMins=reasons[0].mins||1;
+  let h='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Reason</th><th style="text-align:left">Category</th><th style="text-align:right">Mins</th><th style="text-align:right">Hrs</th></tr></thead><tbody>';
+  reasons.forEach(p=>{
+    h+='<tr>';
+    h+='<td style="font-size:11px">'+p.reason+'</td>';
+    h+='<td style="font-size:10px;color:var(--muted)">'+p.cat+'</td>';
+    h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+p.mins.toLocaleString()+'</td>';
+    h+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+(Math.round(p.mins/60*10)/10)+'</td>';
+    h+='</tr>';
+  });
+  h+='</tbody></table>';
+  return h;
+}
+
+function planChangeTable(pcs){
+  if(!pcs.length) return '';
+  let h='<div style="font-size:14px;font-weight:700;margin:24px 0 10px;color:#f5a623">Plan Changes (Raw Material)</div>';
+  h+='<div style="font-size:11px;color:var(--muted);margin-bottom:10px">Planned product could not run due to raw material; line switched to an amended plan. High impact on customer requirements, no line time lost.</div>';
+  h+='<table class="tbl" style="width:100%;max-width:640px"><thead><tr><th style="text-align:left">Date</th><th style="text-align:left">Shift</th><th style="text-align:left">Machine</th><th style="text-align:left">Reason / Comment</th></tr></thead><tbody>';
+  pcs.forEach(p=>{
+    h+='<tr style="background:rgba(245,166,35,.06)">';
+    h+='<td style="font-size:10px;font-family:var(--mono)">'+p.date+'</td>';
+    h+='<td style="font-size:10px">'+(p.shift==='day'?'Day':'Late')+'</td>';
+    h+='<td style="font-size:11px;font-weight:500">'+p.machine+'</td>';
+    h+='<td style="font-size:11px">'+p.reason+'</td>';
+    h+='</tr>';
+  });
+  h+='</tbody></table>';
+  return h;
+}
+
+function issuesHTML(){
   const fDays=filterByPeriod(SITES.fillers);
   const sDays=filterByPeriod(SITES.solvents);
-  const fP=aggPareto(fDays);
-  const sP=aggPareto(sDays);
-  // Combined group pareto - pool both sites
+  const fP=aggPareto(fDays), sP=aggPareto(sDays);
   const combined=aggPareto([...fDays,...sDays]);
+  const fR=aggReasons(fDays), sR=aggReasons(sDays);
+  const pcs=aggPlanChanges([...fDays,...sDays]).sort((a,b)=>dateTs(b.date)-dateTs(a.date));
 
-  let html=dataStatus()+periodControls();
+  let html='';
 
-  // Side by side per site
-  html+='<div style="font-size:14px;font-weight:700;margin:6px 0 10px">Downtime Pareto by Site</div>';
-  html+='<div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px">';
+  // 1. PLAN CHANGES - at the top
+  if(pcs.length){
+    html+=planChangeTable(pcs);
+  }
+
+  // 2. DOWNTIME BY CATEGORY - collapsible (the main issues summary)
+  html+='<div style="margin-top:'+(pcs.length?'24px':'6px')+'">';
+  html+='<button onclick="toggleCategoryPareto()" id="cat-pareto-btn" style="background:var(--surf2);color:var(--text);border:1px solid var(--bdr);border-radius:6px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font)">&#9654; Downtime by category (main issues)</button>';
+  html+='<div id="cat-pareto-body" style="display:none;margin-top:12px">';
+  html+='<div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px">';
   html+='<div style="flex:1;min-width:300px"><div style="font-size:13px;font-weight:700;color:#4a9eff;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #4a9eff">Fillers &amp; Adhesives</div>'+paretoTable(fP,'#4a9eff')+'</div>';
   html+='<div style="flex:1;min-width:300px"><div style="font-size:13px;font-weight:700;color:#3ecf8e;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #3ecf8e">Solvents</div>'+paretoTable(sP,'#3ecf8e')+'</div>';
   html+='</div>';
-
-  // Combined group pareto
-  html+='<div style="font-size:14px;font-weight:700;margin:6px 0 10px">Combined Group Downtime Pareto</div>';
+  html+='<div style="font-size:13px;font-weight:700;margin:6px 0 10px;color:#a855f7">Combined Group</div>';
   html+='<div style="max-width:640px">'+paretoTable(combined,'#a855f7')+'</div>';
-  html+='<div style="font-size:10px;color:var(--muted);margin-top:12px;line-height:1.6">Combined Pareto pools both sites\' downtime into one ranking, showing where the biggest losses are across the group. Use the period selector to view a single day, week, month, or all data.</div>';
+  html+='</div></div>';
 
-  c.innerHTML=html;
+  // 3. DOWNTIME DETAIL BY REASON - last (the full detail)
+  html+='<div style="font-size:14px;font-weight:700;margin:24px 0 10px">Downtime Detail by Reason</div>';
+  html+='<div style="display:flex;gap:18px;flex-wrap:wrap">';
+  html+='<div style="flex:1;min-width:320px"><div style="font-size:13px;font-weight:700;color:#4a9eff;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #4a9eff">Fillers &amp; Adhesives</div>'+reasonTable(fR,'#4a9eff')+'</div>';
+  html+='<div style="flex:1;min-width:320px"><div style="font-size:13px;font-weight:700;color:#3ecf8e;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #3ecf8e">Solvents</div>'+reasonTable(sR,'#3ecf8e')+'</div>';
+  html+='</div>';
+
+  return html;
 }
 
-let CURRENT_TAB='overview';
+function toggleCategoryPareto(){
+  const body=document.getElementById('cat-pareto-body');
+  const btn=document.getElementById('cat-pareto-btn');
+  if(!body) return;
+  if(body.style.display==='none'){ body.style.display='block'; btn.innerHTML='&#9660; Downtime by category (main issues)'; }
+  else { body.style.display='none'; btn.innerHTML='&#9654; Downtime by category (main issues)'; }
+}
+
+function toggleCategoryPareto(){
+  const body=document.getElementById('cat-pareto-body');
+  const btn=document.getElementById('cat-pareto-btn');
+  if(!body) return;
+  if(body.style.display==='none'){ body.style.display='block'; btn.innerHTML='&#9660; Hide downtime by category (summary)'; }
+  else { body.style.display='none'; btn.innerHTML='&#9654; Show downtime by category (summary)'; }
+}
+
+let CURRENT_TAB='daily';
 function switchTab(t){
   CURRENT_TAB=t;
   document.querySelectorAll('.gtab').forEach(b=>b.classList.toggle('gtab-active', b.dataset.tab===t));
@@ -541,12 +647,12 @@ function render(){
       +'</div>';
     return;
   }
-  if(CURRENT_TAB==='trends') return renderTrends();
-  if(CURRENT_TAB==='pareto') return renderPareto();
-  return renderOverview();
+  if(CURRENT_TAB==='weekly') return renderTrends('week');
+  if(CURRENT_TAB==='monthly') return renderTrends('month');
+  return renderDaily();
 }
 
-function renderTrends(){
+function renderTrends(mode){
   const c=document.getElementById('content');
 
   // Build period buckets: returns ordered list of {key,label,days:{fillers:[],solvents:[]}}
@@ -580,7 +686,7 @@ function renderTrends(){
     const L=aggHeadcount(days);
     const hc=unitsOnHeadcountDays(days); // units/vol only from days with headcount
     return {
-      units:m.out, vol:m.vol, oee:m.oee,
+      units:m.out, vol:m.vol, oee:m.oee, theo:m.theo, theoVol:m.theoVol,
       head:L?L.headcount:null, opsC:L?L.opsContract:null, opsT:L?L.opsTemp:null,
       directs:L?L.directs:null,
       unitsPerDirect:(L&&L.directs)?hc.out/L.directs:null,
@@ -606,8 +712,10 @@ function renderTrends(){
 
     function siteRows(siteKey, volUnit){
       const rows=[
-        {label:'Weeks Production (Units)', val:m=>m.units, get:m=>fmt(m.units)},
-        {label:'Volume Produced ('+volUnit+')', val:m=>m.vol, get:m=>fmt(m.vol)},
+        {label:'Weeks Production (Units)', val:m=>m.units, get:m=>fmt(m.units), col:m=>m.theo?attColor(Math.round(m.units/m.theo*100)):null},
+        {label:'Theoretical (Units)', val:m=>m.theo, get:m=>fmt(m.theo)},
+        {label:'Volume Produced ('+volUnit+')', val:m=>m.vol, get:m=>fmt(m.vol), col:m=>m.theoVol?attColor(Math.round(m.vol/m.theoVol*100)):null},
+        {label:'Theoretical ('+volUnit+')', val:m=>m.theoVol, get:m=>fmt(m.theoVol)},
         {label:'Head Count Total', val:m=>m.head, get:m=>fmt1(m.head)},
         {label:'Operators Contracted', val:m=>m.opsC, get:m=>fmt1(m.opsC)},
         {label:'Operators Temps', val:m=>m.opsT, get:m=>fmt1(m.opsT)},
@@ -623,7 +731,8 @@ function renderTrends(){
           const m=cellMetrics(b[siteKey]);
           const v=m?r.val(m):null;
           series.push(v);
-          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px">'+(m?r.get(m):'—')+'</td>';
+          const cc=(m&&r.col)?r.col(m):null;
+          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px'+(cc?';color:'+cc+';font-weight:600':'')+'">'+(m?r.get(m):'—')+'</td>';
         });
         if(showVar){
           // 4-week moving average of the last up-to-4 non-null values
@@ -700,10 +809,15 @@ function renderTrends(){
   }
 
   let html=dataStatus();
-  html+='<div style="font-size:14px;font-weight:700;margin:6px 0 8px">Weekly Trend</div>';
-  html+=trendTable('week');
-  html+='<div style="font-size:14px;font-weight:700;margin:22px 0 8px">Monthly Summary Trend</div>';
-  html+=trendTable('month');
+  if(mode==='week'){
+    html+='<div style="font-size:15px;font-weight:700;margin:6px 0 2px">Weekly Operations View</div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Each week across the columns; the final columns compare the latest week against the previous week.</div>';
+    html+=trendTable('week');
+  } else {
+    html+='<div style="font-size:15px;font-weight:700;margin:6px 0 2px">Monthly Trend View</div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Each month across the columns; the final columns compare the latest month against the rolling average.</div>';
+    html+=trendTable('month');
+  }
   html+='<div style="font-size:10px;color:var(--muted);margin-top:12px;line-height:1.6">Volume shown per site in its own unit (Fillers kg, Solvents litres). Head count and per-direct figures require the headcount data (C2-C6) on the shift sheets; sites without it show a dash. Scroll horizontally to see more periods.</div>';
 
   c.innerHTML=html;
