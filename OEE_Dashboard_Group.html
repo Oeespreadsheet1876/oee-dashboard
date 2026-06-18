@@ -148,7 +148,7 @@ input[type=file]{display:none}
     <button class="gtab gtab-active" data-tab="daily" onclick="switchTab('daily')">Daily<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Production meeting</span></button>
     <button class="gtab" data-tab="weekly" onclick="switchTab('weekly')">Weekly<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Operations meeting</span></button>
     <button class="gtab" data-tab="monthly" onclick="switchTab('monthly')">Monthly<span style="display:block;font-size:9px;font-weight:400;opacity:.7">Trend over time</span></button>
-    <div style="margin-left:auto;display:flex;align-items:center;gap:12px;padding-bottom:6px;font-size:10px;color:var(--muted)">
+    <div id="theo-key" style="margin-left:auto;display:flex;align-items:center;gap:12px;padding-bottom:6px;font-size:10px;color:var(--muted)">
       <span style="font-weight:600">Output vs theoretical:</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#3ecf8e;display:inline-block"></span>85%+</span>
       <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:#f5a623;display:inline-block"></span>65-84%</span>
@@ -636,6 +636,7 @@ let CURRENT_TAB='daily';
 function switchTab(t){
   CURRENT_TAB=t;
   document.querySelectorAll('.gtab').forEach(b=>b.classList.toggle('gtab-active', b.dataset.tab===t));
+  const tk=document.getElementById('theo-key'); if(tk) tk.style.display=(t==='daily')?'flex':'none';
   render();
 }
 function render(){
@@ -652,6 +653,104 @@ function render(){
   if(CURRENT_TAB==='weekly') return renderTrends('week');
   if(CURRENT_TAB==='monthly') return renderTrends('month');
   return renderDaily();
+}
+
+function weekToDateBlock(){
+  // Compare the latest (current) week's days-so-far vs the same number of days from the previous week
+  const allW=[...new Set(allDates().map(weekMonday))].sort((a,b)=>dateTs(a)-dateTs(b));
+  if(allW.length<2) return ''; // need at least two weeks
+  const curW=allW[allW.length-1], prevW=allW[allW.length-2];
+  function weekDays(site,wk){
+    if(!SITES[site]) return [];
+    return SITES[site].filter(h=>weekMonday(h.date)===wk).sort((a,b)=>dateTs(a.date)-dateTs(b.date));
+  }
+  // Number of days completed in the current week (use the max across sites)
+  const curDaysCount=Math.max(weekDays('fillers',curW).length, weekDays('solvents',curW).length);
+  if(curDaysCount===0) return '';
+  function sameDays(site,wk,n){ return weekDays(site,wk).slice(0,n); }
+
+  function siteCompare(site,volUnit,accent,title){
+    const cur=siteMetrics([...sameDays(site,curW,curDaysCount)]);
+    const prev=siteMetrics([...sameDays(site,prevW,curDaysCount)]);
+    if(!cur) return '';
+    function row(label,cv,pv,fmtFn,lowerBetter){
+      let chg='—',col='var(--muted)';
+      if(cv!=null&&pv!=null){
+        if(cv>pv){ chg='&#9650;'; col=lowerBetter?'#f0544f':'#3ecf8e'; }
+        else if(cv<pv){ chg='&#9660;'; col=lowerBetter?'#3ecf8e':'#f0544f'; }
+        else { chg='&#8211;'; col='var(--muted)'; }
+      }
+      return '<tr><td style="font-size:11px">'+label+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px">'+fmtFn(cv)+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px;color:var(--muted)">'+fmtFn(pv)+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px;font-weight:600;color:'+col+'">'+chg+'</td></tr>';
+    }
+    const dLbl=curDaysCount+(curDaysCount>1?' days':' day');
+    let h='<div style="flex:1;min-width:320px"><div style="font-size:13px;font-weight:700;color:'+accent+';margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid '+accent+'">'+title+'</div>';
+    h+='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Metric</th><th style="text-align:right">This wk<br><span style="font-weight:400;color:var(--muted);font-size:9px">first '+dLbl+'</span></th><th style="text-align:right">Last wk<br><span style="font-weight:400;color:var(--muted);font-size:9px">same '+dLbl+'</span></th><th style="text-align:right">Change</th></tr></thead><tbody>';
+    h+=row('Production (Units)', cur.out, prev?prev.out:null, v=>v==null?'—':Math.round(v).toLocaleString(), false);
+    h+=row('Volume ('+volUnit+')', cur.vol, prev?prev.vol:null, v=>v==null?'—':Math.round(v).toLocaleString(), false);
+    h+=row('OEE', cur.oee, prev?prev.oee:null, v=>v==null?'—':Math.round(v*100)+'%', false);
+    h+=row('Downtime (h)', cur.dt, prev?prev.dt:null, v=>v==null?'—':v, true);
+    h+='</tbody></table></div>';
+    return h;
+  }
+
+  let h='<div style="border:1px solid var(--bdr);border-radius:8px;padding:14px;margin-bottom:24px;background:var(--surf)">';
+  h+='<div style="font-size:14px;font-weight:700;margin-bottom:2px">This Week to Date &mdash; first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' (w/c '+curW.slice(0,5)+')</div>';
+  h+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Like-for-like start-of-week check: the first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' of this week vs the first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' of last week. These are partial-week figures, so they will not match the full-week totals in the trend table below.</div>'
+  h+='<div style="display:flex;gap:18px;flex-wrap:wrap">';
+  h+=siteCompare('fillers','Kg','#4a9eff','Fillers &amp; Adhesives');
+  h+=siteCompare('solvents','Litres','#3ecf8e','Solvents');
+  h+='</div></div>';
+  return h;
+}
+
+function monthToDateBlock(){
+  // Compare current month's days-so-far vs the same number of days from the previous month
+  const allM=[...new Set(allDates().map(monthKey))];
+  // order months chronologically
+  const mi=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  allM.sort((a,b)=>{ const pa=a.split(' '),pb=b.split(' '); return (+pa[1]*12+mi.indexOf(pa[0]))-(+pb[1]*12+mi.indexOf(pb[0])); });
+  if(allM.length<2) return '';
+  const curM=allM[allM.length-1], prevM=allM[allM.length-2];
+  function monthDays(site,mk){
+    if(!SITES[site]) return [];
+    return SITES[site].filter(h=>monthKey(h.date)===mk).sort((a,b)=>dateTs(a.date)-dateTs(b.date));
+  }
+  const curDaysCount=Math.max(monthDays('fillers',curM).length, monthDays('solvents',curM).length);
+  if(curDaysCount===0) return '';
+  function sameDays(site,mk,n){ return monthDays(site,mk).slice(0,n); }
+
+  function siteCompare(site,volUnit,accent,title){
+    const cur=siteMetrics([...sameDays(site,curM,curDaysCount)]);
+    const prev=siteMetrics([...sameDays(site,prevM,curDaysCount)]);
+    if(!cur) return '';
+    function row(label,cv,pv,fmtFn,lowerBetter){
+      let chg='—',col='var(--muted)';
+      if(cv!=null&&pv!=null){
+        if(cv>pv){ chg='&#9650;'; col=lowerBetter?'#f0544f':'#3ecf8e'; }
+        else if(cv<pv){ chg='&#9660;'; col=lowerBetter?'#3ecf8e':'#f0544f'; }
+        else { chg='&#8211;'; col='var(--muted)'; }
+      }
+      return '<tr><td style="font-size:11px">'+label+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px">'+fmtFn(cv)+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px;color:var(--muted)">'+fmtFn(pv)+'</td><td style="text-align:right;font-family:var(--mono);font-size:11px;font-weight:600;color:'+col+'">'+chg+'</td></tr>';
+    }
+    const dLbl=curDaysCount+(curDaysCount>1?' days':' day');
+    let h='<div style="flex:1;min-width:320px"><div style="font-size:13px;font-weight:700;color:'+accent+';margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid '+accent+'">'+title+'</div>';
+    h+='<table class="tbl" style="width:100%"><thead><tr><th style="text-align:left">Metric</th><th style="text-align:right">This mth<br><span style="font-weight:400;color:var(--muted);font-size:9px">first '+dLbl+'</span></th><th style="text-align:right">Last mth<br><span style="font-weight:400;color:var(--muted);font-size:9px">same '+dLbl+'</span></th><th style="text-align:right">Change</th></tr></thead><tbody>';
+    h+=row('Production (Units)', cur.out, prev?prev.out:null, v=>v==null?'—':Math.round(v).toLocaleString(), false);
+    h+=row('Volume ('+volUnit+')', cur.vol, prev?prev.vol:null, v=>v==null?'—':Math.round(v).toLocaleString(), false);
+    h+=row('OEE', cur.oee, prev?prev.oee:null, v=>v==null?'—':Math.round(v*100)+'%', false);
+    h+=row('Downtime (h)', cur.dt, prev?prev.dt:null, v=>v==null?'—':v, true);
+    h+='</tbody></table></div>';
+    return h;
+  }
+
+  let h='<div style="border:1px solid var(--bdr);border-radius:8px;padding:14px;margin-bottom:24px;background:var(--surf)">';
+  h+='<div style="font-size:14px;font-weight:700;margin-bottom:2px">This Month to Date &mdash; first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' ('+curM+')</div>';
+  h+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Like-for-like start-of-month check: the first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' of this month vs the first '+curDaysCount+' day'+(curDaysCount>1?'s':'')+' of last month. These are partial-month figures, so they will not match the full-month totals in the trend table below.</div>'
+  h+='<div style="display:flex;gap:18px;flex-wrap:wrap">';
+  h+=siteCompare('fillers','Kg','#4a9eff','Fillers &amp; Adhesives');
+  h+=siteCompare('solvents','Litres','#3ecf8e','Solvents');
+  h+='</div></div>';
+  return h;
 }
 
 function renderTrends(mode){
@@ -675,7 +774,13 @@ function renderTrends(mode){
       const tb=mode==='week'?dateTs(b):dateTs('01/'+ (['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(b.split(' ')[0])+1).toString().padStart(2,'0') +'/'+b.split(' ')[1]);
       return ta-tb;
     });
-    return keys.map(k=>buckets[k]);
+    let ordered=keys.map(k=>buckets[k]);
+    // Exclude the most recent (current, in-progress) period - it is shown separately
+    // in the To Date block. Only complete weeks/months here.
+    if(ordered.length>1){
+      ordered=ordered.slice(0,-1);
+    }
+    return ordered;
   }
 
   function fmt(n){ return n!=null?Math.round(n).toLocaleString():'—'; }
@@ -706,18 +811,16 @@ function renderTrends(mode){
     let head='<th style="text-align:left;position:sticky;left:0;background:var(--surf);min-width:200px">Metric</th>';
     buckets.forEach(b=>{ head+='<th style="text-align:right;min-width:90px;font-size:10px">'+b.label+'</th>'; });
     if(showVar){
-      const avgLabel=mode==='week'?'4-Wk Avg':'3-Mth Avg';
-      const lastLabel=mode==='week'?'Last v Avg':'Last v Avg';
-      head+='<th style="text-align:right;min-width:90px;font-size:10px;border-left:2px solid var(--bdr)">'+avgLabel+'</th>';
-      head+='<th style="text-align:right;min-width:90px;font-size:10px">'+lastLabel+'</th>';
+      const prevLabel=mode==='week'?'Prev Week':'Prev Month';
+      const chgLabel=mode==='week'?'Wk Change':'Mth Change';
+      head+='<th style="text-align:right;min-width:80px;font-size:10px;border-left:2px solid var(--bdr)">'+prevLabel+'</th>';
+      head+='<th style="text-align:right;min-width:90px;font-size:10px">'+chgLabel+'</th>';
     }
 
     function siteRows(siteKey, volUnit){
       const rows=[
-        {label:'Weeks Production (Units)', val:m=>m.units, get:m=>fmt(m.units), col:m=>m.theo?attColor(Math.round(m.units/m.theo*100)):null},
-        {label:'Theoretical (Units)', val:m=>m.theo, get:m=>fmt(m.theo)},
-        {label:'Volume Produced ('+volUnit+')', val:m=>m.vol, get:m=>fmt(m.vol), col:m=>m.theoVol?attColor(Math.round(m.vol/m.theoVol*100)):null},
-        {label:'Theoretical ('+volUnit+')', val:m=>m.theoVol, get:m=>fmt(m.theoVol)},
+        {label:'Production (Units)', val:m=>m.units, get:m=>fmt(m.units)},
+        {label:'Volume Produced ('+volUnit+')', val:m=>m.vol, get:m=>fmt(m.vol)},
         {label:'Head Count Total', val:m=>m.head, get:m=>fmt1(m.head)},
         {label:'Operators Contracted', val:m=>m.opsC, get:m=>fmt1(m.opsC)},
         {label:'Operators Temps', val:m=>m.opsT, get:m=>fmt1(m.opsT)},
@@ -737,19 +840,30 @@ function renderTrends(mode){
           tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px'+(cc?';color:'+cc+';font-weight:600':'')+'">'+(m?r.get(m):'—')+'</td>';
         });
         if(showVar){
-          // 4-week moving average of the last up-to-4 non-null values
+          // Latest period vs the period immediately before it
           const vals=series.filter(x=>x!=null);
-          const window=mode==='week'?4:3;
-          const lastN=vals.slice(-window);
-          const avg=lastN.length?lastN.reduce((a,b)=>a+b,0)/lastN.length:null;
-          const lastVal=vals.length?vals[vals.length-1]:null;
-          const ratio=(avg&&lastVal!=null&&avg!==0)?lastVal/avg:null;
-          // Format avg like the row
-          let avgFmt='—';
-          if(avg!=null){ avgFmt=(r.label==='OEE')?Math.round(avg*100)+'%':((r.label.indexOf('Per Direct')>-1||r.label.indexOf('Production')>-1||r.label.indexOf('Volume')>-1)?fmt(avg):fmt1(avg)); }
-          const ratioCol=ratio==null?'var(--muted)':(ratio>=0.98?'#3ecf8e':ratio>=0.90?'#f5a623':'#f0544f');
-          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;border-left:2px solid var(--bdr)">'+avgFmt+'</td>';
-          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;color:'+ratioCol+'">'+(ratio!=null?Math.round(ratio*100)+'%':'—')+'</td>';
+          const latest=vals.length?vals[vals.length-1]:null;
+          const prev=vals.length>=2?vals[vals.length-2]:null;
+          // Format previous like the row
+          function fmtLike(v){ if(v==null) return '—'; return (r.label==='OEE')?Math.round(v*100)+'%':((r.label.indexOf('Per Direct')>-1||r.label.indexOf('Production')>-1||r.label.indexOf('Volume')>-1)?fmt(v):fmt1(v)); }
+          // Change = latest vs prev, shown as an up/down arrow
+          let chgTxt='—', chgCol='var(--muted)';
+          if(latest!=null&&prev!=null){
+            const lowerIsBetter=(r.label.indexOf('Downtime')>-1);
+            const isHeadcount=(r.label==='Head Count Total'||r.label==='Operators Contracted'||r.label==='Operators Temps'||r.label==='Total Directs');
+            if(isHeadcount){
+              // headcount: same or down = good (green), up = amber
+              if(latest>prev){ chgTxt='&#9650;'; chgCol='#f5a623'; }
+              else if(latest<prev){ chgTxt='&#9660;'; chgCol='#3ecf8e'; }
+              else { chgTxt='&#8211;'; chgCol='#3ecf8e'; }
+            } else {
+              if(latest>prev){ chgTxt='&#9650;'; chgCol=lowerIsBetter?'#f0544f':'#3ecf8e'; }
+              else if(latest<prev){ chgTxt='&#9660;'; chgCol=lowerIsBetter?'#3ecf8e':'#f0544f'; }
+              else { chgTxt='&#8211;'; chgCol='var(--muted)'; }
+            }
+          }
+          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;border-left:2px solid var(--bdr);color:var(--muted)">'+fmtLike(prev)+'</td>';
+          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;font-weight:600;color:'+chgCol+'">'+chgTxt+'</td>';
         }
         return tr+'</tr>';
       }).join('');
@@ -788,16 +902,26 @@ function renderTrends(mode){
           tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;font-weight:600">'+txt+'</td>';
         });
         if(showVar){
-          // numeric variance on the combined row
+          // latest vs previous period on the combined row
           const nums=series.map(x=>{const n=parseFloat(String(x).replace(/[^0-9.\-]/g,''));return isNaN(n)?null:n;}).filter(x=>x!=null);
-          const window=mode==='week'?4:3;
-          const lastN=nums.slice(-window);
-          const avg=lastN.length?lastN.reduce((a,b)=>a+b,0)/lastN.length:null;
-          const lastVal=nums.length?nums[nums.length-1]:null;
-          const ratio=(avg&&lastVal!=null&&avg!==0)?lastVal/avg:null;
-          const ratioCol=ratio==null?'var(--muted)':(ratio>=0.98?'#3ecf8e':ratio>=0.90?'#f5a623':'#f0544f');
-          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;border-left:2px solid var(--bdr)">'+(avg!=null?(Math.round(avg*10)/10).toLocaleString():'—')+'</td>';
-          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;color:'+ratioCol+'">'+(ratio!=null?Math.round(ratio*100)+'%':'—')+'</td>';
+          const latest=nums.length?nums[nums.length-1]:null;
+          const prev=nums.length>=2?nums[nums.length-2]:null;
+          let chgTxt='—', ratioCol='var(--muted)';
+          const lowerIsBetter=(r.label.indexOf('Downtime')>-1);
+          const isHeadcount=(r.label==='Total Headcount (both sites)'||r.label==='Total Directs (both sites)');
+          if(latest!=null&&prev!=null){
+            if(isHeadcount){
+              if(latest>prev){ chgTxt='&#9650;'; ratioCol='#f5a623'; }
+              else if(latest<prev){ chgTxt='&#9660;'; ratioCol='#3ecf8e'; }
+              else { chgTxt='&#8211;'; ratioCol='#3ecf8e'; }
+            } else {
+              if(latest>prev){ chgTxt='&#9650;'; ratioCol=lowerIsBetter?'#f0544f':'#3ecf8e'; }
+              else if(latest<prev){ chgTxt='&#9660;'; ratioCol=lowerIsBetter?'#3ecf8e':'#f0544f'; }
+              else { chgTxt='&#8211;'; ratioCol='var(--muted)'; }
+            }
+          }
+          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;border-left:2px solid var(--bdr);color:var(--muted)">'+(prev!=null?(Math.round(prev*10)/10).toLocaleString():'—')+'</td>';
+          tr+='<td style="text-align:right;font-family:var(--mono);font-size:11px;font-weight:600;color:'+ratioCol+'">'+chgTxt+'</td>';
         }
         return tr+'</tr>';
       }).join('');
@@ -811,13 +935,18 @@ function renderTrends(mode){
   }
 
   let html=dataStatus();
+  const chgKey='<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:10px;color:var(--muted);margin:6px 0 12px"><span style="font-weight:600">Change vs previous '+(mode==='week'?'week':'month')+':</span><span style="color:#3ecf8e;font-weight:600">&#9650;/&#9660; green = better</span><span style="color:#f0544f;font-weight:600">red = worse</span><span>(downtime: lower is better &middot; headcount: same or lower is green, higher is amber)</span></div>';
   if(mode==='week'){
+    html+=weekToDateBlock();
     html+='<div style="font-size:15px;font-weight:700;margin:6px 0 2px">Weekly Operations View</div>';
-    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Each week across the columns; the final columns compare the latest week against the previous week.</div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:4px">Completed weeks only (the current in-progress week is shown in the block above). The final columns show the previous week and the change from it to the latest completed week.</div>';
+    html+=chgKey;
     html+=trendTable('week');
   } else {
+    html+=monthToDateBlock();
     html+='<div style="font-size:15px;font-weight:700;margin:6px 0 2px">Monthly Trend View</div>';
-    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Each month across the columns; the final columns compare the latest month against the rolling average.</div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-bottom:4px">Completed months only (the current in-progress month is shown in the block above). The final columns show the previous month and the change from it to the latest completed month.</div>';
+    html+=chgKey;
     html+=trendTable('month');
   }
   html+='<div style="font-size:10px;color:var(--muted);margin-top:12px;line-height:1.6">Volume shown per site in its own unit (Fillers kg, Solvents litres). Head count and per-direct figures require the headcount data (C2-C6) on the shift sheets; sites without it show a dash. Scroll horizontally to see more periods.</div>';
