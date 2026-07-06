@@ -30927,5 +30927,1083 @@
         "downtime": 0
       }
     ]
+  },
+  {
+    "date": "02/07/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        10326,
+        null
+      ],
+      "A004": [
+        3582,
+        3744
+      ],
+      "A005": [
+        1008,
+        1350
+      ],
+      "A009": [
+        1884,
+        null
+      ],
+      "A006 B": [
+        1005,
+        1671
+      ],
+      "A015": [
+        null,
+        2544
+      ],
+      "A008": [
+        null,
+        5760
+      ]
+    },
+    "dayOEE": 0.6257,
+    "lateOEE": 0.7705,
+    "dayAvail": 0.7784,
+    "lateAvail": 0.8563,
+    "dayPerf": 0.8039,
+    "latePerf": 0.8998,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 17805,
+    "lateOut": 15069,
+    "dayKg": 22098,
+    "lateKg": 19498,
+    "dayTheoKg": 25339,
+    "lateTheoKg": 18216,
+    "dayTheo": 22150,
+    "lateTheo": 16747,
+    "totalDT": 16.25,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 405,
+        "cum": 42
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 240,
+        "cum": 66
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 150,
+        "cum": 82
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 105,
+        "cum": 92
+      },
+      {
+        "cat": "Other",
+        "mins": 45,
+        "cum": 97
+      },
+      {
+        "cat": "Staff Shortage",
+        "mins": 30,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A005",
+        "reason": "Waiting for Scrape Out / Scrape Out",
+        "downtime": 3.25,
+        "mins": 195,
+        "shift": "day",
+        "intended": 3.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Issues With Taper / Labelling Issues",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 4.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting on Batches",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "late",
+        "intended": 8.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Set up / Issues With Labels",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Set up",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "day",
+        "intended": 2,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A015",
+        "reason": "Hand Labelling Cartons / Changeover",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 7,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Additional Work",
+        "imp": "med"
+      },
+      {
+        "machine": "A007",
+        "reason": "Issues With Tubes",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 1.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Other",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Scrape Out",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "late",
+        "intended": 1,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Set up / Drop the Batch",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 2.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Set up",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 2.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A005",
+        "reason": "Set up",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 2,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Issues With Sachets / Line Working With 2 People Only",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 3.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Engineering Issues",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Set up / Line With 2 People Only",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 3,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Staff Shortage",
+        "imp": "med"
+      },
+      {
+        "machine": "A015",
+        "reason": "Hand Labelling Cartons / Changeover",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 1.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Additional Work",
+        "imp": "hi"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 3.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A015",
+        "reason": "Labelling Cartons",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Additional Work",
+        "imp": "hi"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A008",
+      "A009",
+      "A015"
+    ],
+    "machOEE": {
+      "A007": [
+        0.7531,
+        null
+      ],
+      "A004": [
+        0.5357,
+        0.6746
+      ],
+      "A005": [
+        0.5555,
+        0.7305
+      ],
+      "A009": [
+        0.4075,
+        null
+      ],
+      "A006 B": [
+        1.0843,
+        1.2793
+      ],
+      "A015": [
+        null,
+        0.5503
+      ],
+      "A008": [
+        null,
+        1.0105
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.9189,
+        null
+      ],
+      "A004": [
+        0.5676,
+        0.8378
+      ],
+      "A005": [
+        0.5946,
+        0.7838
+      ],
+      "A009": [
+        0.8108,
+        null
+      ],
+      "A006 B": [
+        1,
+        0.9189
+      ],
+      "A015": [
+        null,
+        0.8108
+      ],
+      "A008": [
+        null,
+        1
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.8195,
+        null
+      ],
+      "A004": [
+        0.9438,
+        0.8052
+      ],
+      "A005": [
+        0.9342,
+        0.932
+      ],
+      "A009": [
+        0.5026,
+        null
+      ],
+      "A006 B": [
+        1.0843,
+        1.3922
+      ],
+      "A015": [
+        null,
+        0.6787
+      ],
+      "A008": [
+        null,
+        1.0105
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        12600,
+        null
+      ],
+      "A004": [
+        3795,
+        4650
+      ],
+      "A005": [
+        1079,
+        1449
+      ],
+      "A009": [
+        3749,
+        null
+      ],
+      "A006 B": [
+        927,
+        1200
+      ],
+      "A015": [
+        null,
+        3749
+      ],
+      "A008": [
+        null,
+        5700
+      ]
+    },
+    "machKg": {
+      "A007": [
+        3408,
+        0
+      ],
+      "A004": [
+        2190,
+        3744
+      ],
+      "A005": [
+        4330,
+        3375
+      ],
+      "A009": [
+        2120,
+        0
+      ],
+      "A006 B": [
+        10050,
+        9960
+      ],
+      "A015": [
+        0,
+        1699
+      ],
+      "A008": [
+        0,
+        720
+      ]
+    },
+    "labour": {
+      "dayPeople": 11,
+      "latePeople": 9.5,
+      "dayOpsContract": 5,
+      "dayOpsTemp": 6,
+      "dayBlenders": 3,
+      "dayFLT": 2,
+      "daySupervisors": 1,
+      "lateOpsContract": 7.5,
+      "lateOpsTemp": 2,
+      "lateBlenders": 2,
+      "lateFLT": 1,
+      "lateSupervisors": 1,
+      "dayOperators": 11,
+      "lateOperators": 9.5,
+      "dayDirects": 14,
+      "lateDirects": 11.5,
+      "dayHeadcount": 17,
+      "lateHeadcount": 13.5,
+      "dayDemand": 105,
+      "lateDemand": 78.8,
+      "dayAvail": 101.8,
+      "lateAvail": 87.9,
+      "dayUtil": 103,
+      "lateUtil": 90,
+      "dayOutPerOpHr": 170,
+      "lateOutPerOpHr": 191,
+      "dayUnitsPerDirect": 1272,
+      "lateUnitsPerDirect": 1310,
+      "dayVolPerDirect": 1578,
+      "lateVolPerDirect": 1695,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 8,
+          "opHours": 24
+        },
+        {
+          "machine": "A007",
+          "part": "52850120",
+          "reqOps": 3,
+          "intended": 1.25,
+          "opHours": 3.8
+        },
+        {
+          "machine": "A004",
+          "part": "52720200",
+          "reqOps": 2,
+          "intended": 4.75,
+          "opHours": 9.5
+        },
+        {
+          "machine": "A004",
+          "part": "52724013",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A004",
+          "part": "52720277",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 3.5,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832510",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832508",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A009",
+          "part": "52714130",
+          "reqOps": 3,
+          "intended": 3.75,
+          "opHours": 11.3
+        },
+        {
+          "machine": "A009",
+          "part": "52710460",
+          "reqOps": 3,
+          "intended": 3,
+          "opHours": 9
+        },
+        {
+          "machine": "A009",
+          "part": "52713240",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510952",
+          "reqOps": 2,
+          "intended": 3.25,
+          "opHours": 6.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510246",
+          "reqOps": 2,
+          "intended": 6,
+          "opHours": 12
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720277",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A004",
+          "part": "52850133",
+          "reqOps": 2,
+          "intended": 2.75,
+          "opHours": 5.5
+        },
+        {
+          "machine": "A004",
+          "part": "52853260",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A004",
+          "part": "52850130",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A005",
+          "part": "52832508",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A005",
+          "part": "52832508",
+          "reqOps": 2,
+          "intended": 8.75,
+          "opHours": 17.5
+        },
+        {
+          "machine": "A015",
+          "part": "52714100",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A015",
+          "part": "52714090",
+          "reqOps": 2,
+          "intended": 7,
+          "opHours": 14
+        },
+        {
+          "machine": "A015",
+          "part": "52710630",
+          "reqOps": 2,
+          "intended": 1.25,
+          "opHours": 2.5
+        },
+        {
+          "machine": "A008",
+          "part": "59943476",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511130",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510952",
+          "reqOps": 2,
+          "intended": 1,
+          "opHours": 2
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510856",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510922",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        }
+      ]
+    },
+    "productList": [
+      {
+        "machine": "A007",
+        "shift": "day",
+        "product": "330G SQUEEZY TUBE BARTOLINE INSTANT READY MIXED FILLER",
+        "part": "52729161",
+        "units": 9618,
+        "kg": 3174,
+        "theoUnits": 12000,
+        "theoKg": 3960,
+        "pallets": 6.8,
+        "run": 8,
+        "intended": 8,
+        "downtime": 0
+      },
+      {
+        "machine": "A007",
+        "shift": "day",
+        "product": "330G SQUEEZY TUBE BARTOLINE FIX & GROUT TILE ADHESIVE",
+        "part": "52850120",
+        "units": 708,
+        "kg": 234,
+        "theoUnits": 600,
+        "theoKg": 198,
+        "pallets": 0.5,
+        "run": 0.5,
+        "intended": 1.25,
+        "downtime": 0.75
+      },
+      {
+        "machine": "A004",
+        "shift": "day",
+        "product": "600G 151 WOOD FILLER WHITE",
+        "part": "52720200",
+        "units": 2280,
+        "kg": 1368,
+        "theoUnits": 2145,
+        "theoKg": 1287,
+        "pallets": 2.4,
+        "run": 2.75,
+        "intended": 4.75,
+        "downtime": 2
+      },
+      {
+        "machine": "A004",
+        "shift": "day",
+        "product": "500G B&Q VOLDEN WHITE WOOD FILLER 5059340487120",
+        "part": "52724013",
+        "units": 960,
+        "kg": 480,
+        "theoUnits": 1050,
+        "theoKg": 525,
+        "pallets": 1,
+        "run": 1.5,
+        "intended": 2.5,
+        "downtime": 1
+      },
+      {
+        "machine": "A004",
+        "shift": "day",
+        "product": "1KG TUB BARTOLINE WHITE WOOD FILLER",
+        "part": "52720277",
+        "units": 342,
+        "kg": 342,
+        "theoUnits": 600,
+        "theoKg": 600,
+        "pallets": 0.6,
+        "run": 1,
+        "intended": 2,
+        "downtime": 1
+      },
+      {
+        "machine": "A005",
+        "shift": "day",
+        "product": "10KG NO NONSENSE READY MIXED SKIM & FINISH SKU 673RL (FWN)",
+        "part": "55550001",
+        "units": 8,
+        "kg": 80,
+        "theoUnits": 30,
+        "theoKg": 300,
+        "pallets": 0.2,
+        "run": 0.25,
+        "intended": 3.5,
+        "downtime": 3.25
+      },
+      {
+        "machine": "A005",
+        "shift": "day",
+        "product": "5KG WICKES PLASTER SKIM SKU 607027",
+        "part": "52832510",
+        "units": 700,
+        "kg": 3500,
+        "theoUnits": 749,
+        "theoKg": 3746,
+        "pallets": 7,
+        "run": 3.75,
+        "intended": 3.75,
+        "downtime": 0
+      },
+      {
+        "machine": "A005",
+        "shift": "day",
+        "product": "2.5L BARTOLINE/THE RANGE PLASTER SKIM 631162",
+        "part": "52832508",
+        "units": 300,
+        "kg": 750,
+        "theoUnits": 300,
+        "theoKg": 749,
+        "pallets": 3,
+        "run": 1.5,
+        "intended": 2,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A009",
+        "shift": "day",
+        "product": "1.5KG BOX BARTOLINE EXTERIOR FILLER POWDER",
+        "part": "52714130",
+        "units": 624,
+        "kg": 936,
+        "theoUnits": 1624,
+        "theoKg": 2437,
+        "pallets": 1.6,
+        "run": 3.25,
+        "intended": 3.75,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A009",
+        "shift": "day",
+        "product": "1.5KG SUPADEC EXTERIOR FILLER",
+        "part": "52710460",
+        "units": 588,
+        "kg": 882,
+        "theoUnits": 1250,
+        "theoKg": 1874,
+        "pallets": 1.5,
+        "run": 2.5,
+        "intended": 3,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A009",
+        "shift": "day",
+        "product": "STANDARD SIZE (450G) BARTOLINE FILLER POWDER MULTI-PURPOSE",
+        "part": "52713240",
+        "units": 672,
+        "kg": 302,
+        "theoUnits": 875,
+        "theoKg": 394,
+        "pallets": 0.7,
+        "run": 1.75,
+        "intended": 2.5,
+        "downtime": 0.75
+      },
+      {
+        "machine": "A006 B",
+        "shift": "day",
+        "product": "10KG PROGOLD READY MIXED WALLCOVERING ADHESIVE #",
+        "part": "58510952",
+        "units": 449,
+        "kg": 4490,
+        "theoUnits": 326,
+        "theoKg": 3257,
+        "pallets": 9.4,
+        "run": 3.25,
+        "intended": 3.25,
+        "downtime": 0
+      },
+      {
+        "machine": "A006 B",
+        "shift": "day",
+        "product": "10KG BARTOLINE MEDIUM WALLCOVERING ADHESIVE C/W SAUDI LABEL",
+        "part": "58510246",
+        "units": 556,
+        "kg": 5560,
+        "theoUnits": 601,
+        "theoKg": 6012,
+        "pallets": 9.3,
+        "run": 6,
+        "intended": 6,
+        "downtime": 0
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG TUB BARTOLINE WHITE WOOD FILLER",
+        "part": "52720277",
+        "units": 72,
+        "kg": 72,
+        "theoUnits": 150,
+        "theoKg": 150,
+        "pallets": 0.1,
+        "run": 0.25,
+        "intended": 1,
+        "downtime": 0.75
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG BARTOLINE/THE RANGE FIX & GROUT 631165",
+        "part": "52850133",
+        "units": 1152,
+        "kg": 1152,
+        "theoUnits": 1350,
+        "theoKg": 1350,
+        "pallets": 2,
+        "run": 2.25,
+        "intended": 2.75,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG SUPADEC FIX & GROUT",
+        "part": "52853260",
+        "units": 576,
+        "kg": 576,
+        "theoUnits": 600,
+        "theoKg": 600,
+        "pallets": 1,
+        "run": 1,
+        "intended": 1.25,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG TUB BARTOLINE FIX & GROUT TILE ADHESIVE",
+        "part": "52850130",
+        "units": 1944,
+        "kg": 1944,
+        "theoUnits": 2550,
+        "theoKg": 2550,
+        "pallets": 3.4,
+        "run": 4.25,
+        "intended": 4.25,
+        "downtime": 0
+      },
+      {
+        "machine": "A005",
+        "shift": "late",
+        "product": "2.5L BARTOLINE/THE RANGE PLASTER SKIM 631162",
+        "part": "52832508",
+        "units": 100,
+        "kg": 250,
+        "theoUnits": 100,
+        "theoKg": 250,
+        "pallets": 1,
+        "run": 0.5,
+        "intended": 0.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A005",
+        "shift": "late",
+        "product": "2.5L BARTOLINE/THE RANGE PLASTER SKIM 631162",
+        "part": "52832508",
+        "units": 1250,
+        "kg": 3125,
+        "theoUnits": 1349,
+        "theoKg": 3372,
+        "pallets": 12.5,
+        "run": 6.75,
+        "intended": 8.75,
+        "downtime": 2
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "1.5KG BOND IT FILLER POWDER BDPF1",
+        "part": "52714100",
+        "units": 372,
+        "kg": 558,
+        "theoUnits": 375,
+        "theoKg": 562,
+        "pallets": 1,
+        "run": 0.75,
+        "intended": 1,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "450G BOND IT FILLER POWDER BDPF4",
+        "part": "52714090",
+        "units": 2016,
+        "kg": 907,
+        "theoUnits": 2999,
+        "theoKg": 1349,
+        "pallets": 2,
+        "run": 6,
+        "intended": 7,
+        "downtime": 1
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "1.5KG WICKES INTERIOR FILLER POWDER SKU 600226",
+        "part": "52710630",
+        "units": 156,
+        "kg": 234,
+        "theoUnits": 375,
+        "theoKg": 562,
+        "pallets": 0.4,
+        "run": 0.75,
+        "intended": 1.25,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A008",
+        "shift": "late",
+        "product": "125G PLAIN SACHET WALLPAPER ADHESIVE",
+        "part": "59943476",
+        "units": 5760,
+        "kg": 720,
+        "theoUnits": 5700,
+        "theoKg": 713,
+        "pallets": 2,
+        "run": 4.75,
+        "intended": 4.75,
+        "downtime": 0
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG 1876 BARTOLINE MEDIUM WALLCOVERING ADHESIVE",
+        "part": "58511130",
+        "units": 356,
+        "kg": 3560,
+        "theoUnits": 225,
+        "theoKg": 2255,
+        "pallets": 7.4,
+        "run": 2.25,
+        "intended": 2.25,
+        "downtime": 0
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG PROGOLD READY MIXED WALLCOVERING ADHESIVE #",
+        "part": "58510952",
+        "units": 127,
+        "kg": 1270,
+        "theoUnits": 75,
+        "theoKg": 751,
+        "pallets": 2.6,
+        "run": 0.75,
+        "intended": 1,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG MANGERS READY MIX WALLCOVERING ADHESIVE (NEW DESIGN) #",
+        "part": "58510856",
+        "units": 288,
+        "kg": 2880,
+        "theoUnits": 200,
+        "theoKg": 2004,
+        "pallets": 6,
+        "run": 2,
+        "intended": 2.25,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "2.5KG BARTOLINE/THE RANGE EASIPASTE ADHESIVE 914853",
+        "part": "58510922",
+        "units": 900,
+        "kg": 2250,
+        "theoUnits": 699,
+        "theoKg": 1748,
+        "pallets": 9,
+        "run": 3.5,
+        "intended": 3.75,
+        "downtime": 0.25
+      }
+    ]
   }
 ]
