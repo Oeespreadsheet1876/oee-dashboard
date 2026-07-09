@@ -34342,5 +34342,961 @@
         "downtime": 0.5
       }
     ]
+  },
+  {
+    "date": "08/07/2026",
+    "noteLog": [],
+    "machActual": {
+      "A007": [
+        7806,
+        null
+      ],
+      "A004": [
+        5640,
+        4722
+      ],
+      "A005": [
+        713,
+        667
+      ],
+      "A009": [
+        2274,
+        2256
+      ],
+      "A019": [
+        2094,
+        3564
+      ],
+      "A006 B": [
+        1770,
+        760
+      ],
+      "A015": [
+        null,
+        2190
+      ]
+    },
+    "dayOEE": 0.5845,
+    "lateOEE": 0.56,
+    "dayAvail": 0.7488,
+    "lateAvail": 0.799,
+    "dayPerf": 0.7806,
+    "latePerf": 0.7008,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 20297,
+    "lateOut": 14159,
+    "dayKg": 16957,
+    "lateKg": 23555,
+    "dayTheoKg": 20267,
+    "lateTheoKg": 25588,
+    "dayTheo": 26003,
+    "lateTheo": 20203,
+    "totalDT": 23,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 915,
+        "cum": 66
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 225,
+        "cum": 83
+      },
+      {
+        "cat": "Additional Work",
+        "mins": 120,
+        "cum": 91
+      },
+      {
+        "cat": "Engineering Issues",
+        "mins": 75,
+        "cum": 97
+      },
+      {
+        "cat": "Other",
+        "mins": 45,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A005",
+        "reason": "Waiting on Batches",
+        "downtime": 4,
+        "mins": 240,
+        "shift": "late",
+        "intended": 9.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Waiting for Batch / Labelling Lids , Cartons",
+        "downtime": 4,
+        "mins": 240,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Waiting on Batch",
+        "downtime": 4,
+        "mins": 240,
+        "shift": "late",
+        "intended": 6.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Batch / Sensor Issues",
+        "downtime": 2.75,
+        "mins": 165,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Labelling Tubes / Change Ribbon, Tape",
+        "downtime": 2,
+        "mins": 120,
+        "shift": "day",
+        "intended": 4.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Additional Work",
+        "imp": "hi"
+      },
+      {
+        "machine": "A007",
+        "reason": "Retest Batch / Labelling Cartons (labeller Issues)",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 4.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Engineering Issues",
+        "imp": "hi"
+      },
+      {
+        "machine": "A019",
+        "reason": "Set up / Change Film / Line Stopped at 10:30",
+        "downtime": 1.25,
+        "mins": 75,
+        "shift": "day",
+        "intended": 2.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Set up / Chamge Film / Labels on Every Sachet",
+        "downtime": 0.75,
+        "mins": 45,
+        "shift": "day",
+        "intended": 5.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover/waiting on Batch",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 3,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "med"
+      },
+      {
+        "machine": "A019",
+        "reason": "Set up",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "day",
+        "intended": 1.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A019",
+        "reason": "Cleaning Euro Slot and Changing Strap",
+        "downtime": 0.5,
+        "mins": 30,
+        "shift": "late",
+        "intended": 4.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Other",
+        "imp": "med"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A004",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 0.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "hi"
+      },
+      {
+        "machine": "A009",
+        "reason": "Banging Out",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "day",
+        "intended": 3.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Other",
+        "imp": "lo"
+      },
+      {
+        "machine": "A009",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 5.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "lo"
+      },
+      {
+        "machine": "A015",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A015",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 1.75,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      },
+      {
+        "machine": "A009",
+        "reason": "Sachet Labels , Only 2 Ops on Line",
+        "downtime": 0,
+        "mins": 0,
+        "shift": "late",
+        "intended": 4,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Staff Shortage",
+        "imp": "lo"
+      }
+    ],
+    "machines": [
+      "A004",
+      "A005",
+      "A006 B",
+      "A007",
+      "A009",
+      "A015",
+      "A019"
+    ],
+    "machOEE": {
+      "A007": [
+        0.5626,
+        null
+      ],
+      "A004": [
+        0.7624,
+        0.8022
+      ],
+      "A005": [
+        0.6423,
+        0.6009
+      ],
+      "A009": [
+        0.5923,
+        0.488
+      ],
+      "A019": [
+        0.3878,
+        0.6253
+      ],
+      "A006 B": [
+        0.4781,
+        0.82
+      ],
+      "A015": [
+        null,
+        0.4934
+      ]
+    },
+    "machAvail": {
+      "A007": [
+        0.6486,
+        null
+      ],
+      "A004": [
+        1,
+        0.8919
+      ],
+      "A005": [
+        0.7027,
+        0.5676
+      ],
+      "A009": [
+        0.8919,
+        0.973
+      ],
+      "A019": [
+        0.6111,
+        0.8947
+      ],
+      "A006 B": [
+        0.5676,
+        0.5676
+      ],
+      "A015": [
+        null,
+        0.9459
+      ]
+    },
+    "machPerf": {
+      "A007": [
+        0.8673,
+        null
+      ],
+      "A004": [
+        0.7624,
+        0.8995
+      ],
+      "A005": [
+        0.9141,
+        1.0587
+      ],
+      "A009": [
+        0.6641,
+        0.5015
+      ],
+      "A019": [
+        0.6345,
+        0.6988
+      ],
+      "A006 B": [
+        0.8424,
+        1.4447
+      ],
+      "A015": [
+        null,
+        0.5216
+      ]
+    },
+    "machTarget": {
+      "A007": [
+        9000,
+        null
+      ],
+      "A004": [
+        7398,
+        5250
+      ],
+      "A005": [
+        780,
+        630
+      ],
+      "A009": [
+        3424,
+        4498
+      ],
+      "A019": [
+        3300,
+        5100
+      ],
+      "A006 B": [
+        2101,
+        526
+      ],
+      "A015": [
+        null,
+        4199
+      ]
+    },
+    "machKg": {
+      "A007": [
+        2321,
+        0
+      ],
+      "A004": [
+        3384,
+        4278
+      ],
+      "A005": [
+        7130,
+        6670
+      ],
+      "A009": [
+        2352,
+        1836
+      ],
+      "A019": [
+        0,
+        0
+      ],
+      "A006 B": [
+        1770,
+        7600
+      ],
+      "A015": [
+        0,
+        3171
+      ]
+    },
+    "labour": {
+      "dayPeople": 11.5,
+      "latePeople": 9.5,
+      "dayOpsContract": 5.5,
+      "dayOpsTemp": 6,
+      "dayBlenders": 3,
+      "dayFLT": 1.5,
+      "daySupervisors": 1,
+      "lateOpsContract": 5.5,
+      "lateOpsTemp": 4,
+      "lateBlenders": 2,
+      "lateFLT": 1,
+      "lateSupervisors": 1,
+      "dayOperators": 11.5,
+      "lateOperators": 9.5,
+      "dayDirects": 14.5,
+      "lateDirects": 11.5,
+      "dayHeadcount": 17,
+      "lateHeadcount": 13.5,
+      "dayDemand": 102.5,
+      "lateDemand": 92,
+      "dayAvail": 106.4,
+      "lateAvail": 87.9,
+      "dayUtil": 96,
+      "lateUtil": 105,
+      "dayOutPerOpHr": 198,
+      "lateOutPerOpHr": 154,
+      "dayUnitsPerDirect": 1400,
+      "lateUnitsPerDirect": 1231,
+      "dayVolPerDirect": 1169,
+      "lateVolPerDirect": 2048,
+      "dayJobs": [
+        {
+          "machine": "A007",
+          "part": "52729161",
+          "reqOps": 3,
+          "intended": 4.5,
+          "opHours": 13.5
+        },
+        {
+          "machine": "A007",
+          "part": "58509151",
+          "reqOps": 3,
+          "intended": 4.75,
+          "opHours": 14.3
+        },
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "52853230",
+          "reqOps": 2,
+          "intended": 3.75,
+          "opHours": 7.5
+        },
+        {
+          "machine": "A009",
+          "part": "69400390",
+          "reqOps": 3,
+          "intended": 5.5,
+          "opHours": 16.5
+        },
+        {
+          "machine": "A019",
+          "part": "59940106",
+          "reqOps": 1,
+          "intended": 1.75,
+          "opHours": 1.8
+        },
+        {
+          "machine": "A019",
+          "part": "59942758",
+          "reqOps": 1,
+          "intended": 2.75,
+          "opHours": 2.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511161",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A004",
+          "part": "52720351",
+          "reqOps": 2,
+          "intended": 1.5,
+          "opHours": 3
+        },
+        {
+          "machine": "A004",
+          "part": "52729220",
+          "reqOps": 2,
+          "intended": 4,
+          "opHours": 8
+        },
+        {
+          "machine": "A004",
+          "part": "52729311",
+          "reqOps": 2,
+          "intended": 3,
+          "opHours": 6
+        },
+        {
+          "machine": "A004",
+          "part": "52729301",
+          "reqOps": 2,
+          "intended": 0.75,
+          "opHours": 1.5
+        },
+        {
+          "machine": "A005",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 9.25,
+          "opHours": 9.3
+        },
+        {
+          "machine": "A009",
+          "part": "69400390",
+          "reqOps": 3,
+          "intended": 4,
+          "opHours": 12
+        },
+        {
+          "machine": "A009",
+          "part": "52714085",
+          "reqOps": 2,
+          "intended": 5.25,
+          "opHours": 10.5
+        },
+        {
+          "machine": "A015",
+          "part": "52713250",
+          "reqOps": 2,
+          "intended": 5.5,
+          "opHours": 11
+        },
+        {
+          "machine": "A015",
+          "part": "52713270",
+          "reqOps": 2,
+          "intended": 2,
+          "opHours": 4
+        },
+        {
+          "machine": "A015",
+          "part": "52714140",
+          "reqOps": 2,
+          "intended": 1.75,
+          "opHours": 3.5
+        },
+        {
+          "machine": "A019",
+          "part": "59942758",
+          "reqOps": 1,
+          "intended": 4.75,
+          "opHours": 4.8
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510940",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58510410",
+          "reqOps": 2,
+          "intended": 6.75,
+          "opHours": 13.5
+        }
+      ]
+    },
+    "productList": [
+      {
+        "machine": "A007",
+        "shift": "day",
+        "product": "330G SQUEEZY TUBE BARTOLINE INSTANT READY MIXED FILLER",
+        "part": "52729161",
+        "units": 4620,
+        "kg": 1525,
+        "theoUnits": 4875,
+        "theoKg": 1609,
+        "pallets": 3.3,
+        "run": 3.25,
+        "intended": 4.5,
+        "downtime": 1.25
+      },
+      {
+        "machine": "A007",
+        "shift": "day",
+        "product": "250G SQUEEZY TUBE BARTOLINE BORDER/OVERLAP ADHESIVE",
+        "part": "58509151",
+        "units": 3186,
+        "kg": 797,
+        "theoUnits": 4125,
+        "theoKg": 1031,
+        "pallets": 2.3,
+        "run": 2.75,
+        "intended": 4.75,
+        "downtime": 2
+      },
+      {
+        "machine": "A004",
+        "shift": "day",
+        "product": "600G TUB BARTOLINE ALL PURPOSE READY MIXED FILLER",
+        "part": "52720351",
+        "units": 5640,
+        "kg": 3384,
+        "theoUnits": 7398,
+        "theoKg": 4439,
+        "pallets": 5.9,
+        "run": 9.25,
+        "intended": 9.25,
+        "downtime": 0
+      },
+      {
+        "machine": "A005",
+        "shift": "day",
+        "product": "10KG NO NONSENSE READY MIXED SKIM & FINISH SKU 673RL (FWN)",
+        "part": "55550001",
+        "units": 713,
+        "kg": 7130,
+        "theoUnits": 780,
+        "theoKg": 7800,
+        "pallets": 17.8,
+        "run": 6.5,
+        "intended": 9.25,
+        "downtime": 2.75
+      },
+      {
+        "machine": "A009",
+        "shift": "day",
+        "product": "2KG BOX BARTOLINE TILE GROUT POWDER",
+        "part": "52853230",
+        "units": 810,
+        "kg": 1620,
+        "theoUnits": 1050,
+        "theoKg": 2100,
+        "pallets": 2.1,
+        "run": 3.5,
+        "intended": 3.75,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A009",
+        "shift": "day",
+        "product": "500G BOX BARTOLINE SUGAR SOAP TRADITIONAL POWDER",
+        "part": "69400390",
+        "units": 1464,
+        "kg": 732,
+        "theoUnits": 2374,
+        "theoKg": 1187,
+        "pallets": 1.5,
+        "run": 4.75,
+        "intended": 5.5,
+        "downtime": 0.75
+      },
+      {
+        "machine": "A019",
+        "shift": "day",
+        "product": "10 ROLL NO NONSENSE WALLPAPER ADHESIVE SKU 414KH",
+        "part": "59940106",
+        "units": 1350,
+        "kg": 0,
+        "theoUnits": 1500,
+        "theoKg": 0,
+        "pallets": 1,
+        "run": 1.25,
+        "intended": 1.75,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A019",
+        "shift": "day",
+        "product": "10 ROLL DISPLAY BART/T J MORRIS WALLPAPER ADHES 41348",
+        "part": "59942758",
+        "units": 744,
+        "kg": 0,
+        "theoUnits": 1800,
+        "theoKg": 0,
+        "pallets": 0.7,
+        "run": 1.5,
+        "intended": 2.75,
+        "downtime": 1.25
+      },
+      {
+        "machine": "A006 B",
+        "shift": "day",
+        "product": "1KG B&Q VOLDEN READY MIX WALLPAPER ADHESIVE 5059340614731",
+        "part": "58511161",
+        "units": 1770,
+        "kg": 1770,
+        "theoUnits": 2101,
+        "theoKg": 2101,
+        "pallets": 4.2,
+        "run": 5.25,
+        "intended": 9.25,
+        "downtime": 4
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "600G TUB BARTOLINE ALL PURPOSE READY MIXED FILLER",
+        "part": "52720351",
+        "units": 1110,
+        "kg": 666,
+        "theoUnits": 1200,
+        "theoKg": 720,
+        "pallets": 1.2,
+        "run": 1.5,
+        "intended": 1.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG TUB BARTOLINE QUICK DRYING READY MIXED FILLER",
+        "part": "52729220",
+        "units": 1812,
+        "kg": 1812,
+        "theoUnits": 2250,
+        "theoKg": 2250,
+        "pallets": 3.1,
+        "run": 3.75,
+        "intended": 4,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG NO NONSENSE READY MIXED FILLER SKU 774RC (FW)",
+        "part": "52729311",
+        "units": 1440,
+        "kg": 1440,
+        "theoUnits": 1500,
+        "theoKg": 1500,
+        "pallets": 2.5,
+        "run": 2.5,
+        "intended": 3,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A004",
+        "shift": "late",
+        "product": "1KG VOLDEN READY MIXED FILLER EAN 5059340821566 (FW)",
+        "part": "52729301",
+        "units": 360,
+        "kg": 360,
+        "theoUnits": 300,
+        "theoKg": 300,
+        "pallets": 0.6,
+        "run": 0.5,
+        "intended": 0.75,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A005",
+        "shift": "late",
+        "product": "10KG NO NONSENSE READY MIXED SKIM & FINISH SKU 673RL (FWN)",
+        "part": "55550001",
+        "units": 667,
+        "kg": 6670,
+        "theoUnits": 630,
+        "theoKg": 6300,
+        "pallets": 16.7,
+        "run": 5.25,
+        "intended": 9.25,
+        "downtime": 4
+      },
+      {
+        "machine": "A009",
+        "shift": "late",
+        "product": "500G BOX BARTOLINE SUGAR SOAP TRADITIONAL POWDER",
+        "part": "69400390",
+        "units": 840,
+        "kg": 420,
+        "theoUnits": 1999,
+        "theoKg": 1000,
+        "pallets": 0.8,
+        "run": 4,
+        "intended": 4,
+        "downtime": 0
+      },
+      {
+        "machine": "A009",
+        "shift": "late",
+        "product": "1KG GORILLA ALL PURPOSE FILLER POWDER GF6",
+        "part": "52714085",
+        "units": 1416,
+        "kg": 1416,
+        "theoUnits": 2499,
+        "theoKg": 2499,
+        "pallets": 2.1,
+        "run": 5,
+        "intended": 5.25,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "DECORATORS SIZE (1.5KG) BARTOLINE FILLER POWDER MULTIPURPOSE",
+        "part": "52713250",
+        "units": 1530,
+        "kg": 2295,
+        "theoUnits": 2749,
+        "theoKg": 4123,
+        "pallets": 3.9,
+        "run": 5.5,
+        "intended": 5.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "1.8KG FLEETWOOD FILLER POWDER",
+        "part": "52713270",
+        "units": 420,
+        "kg": 756,
+        "theoUnits": 700,
+        "theoKg": 1261,
+        "pallets": 1,
+        "run": 1.75,
+        "intended": 2,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A015",
+        "shift": "late",
+        "product": "500G 151 ALL PURPOSE FILLER POWDER 00402C",
+        "part": "52714140",
+        "units": 240,
+        "kg": 120,
+        "theoUnits": 750,
+        "theoKg": 375,
+        "pallets": 0.2,
+        "run": 1.5,
+        "intended": 1.75,
+        "downtime": 0.25
+      },
+      {
+        "machine": "A019",
+        "shift": "late",
+        "product": "10 ROLL DISPLAY BART/T J MORRIS WALLPAPER ADHES 41348",
+        "part": "59942758",
+        "units": 3564,
+        "kg": 0,
+        "theoUnits": 5100,
+        "theoKg": 0,
+        "pallets": 3.3,
+        "run": 4.25,
+        "intended": 4.75,
+        "downtime": 0.5
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG BARTOLINE EASIPASTE READY MIXED WALLCOVERING ADHESIVE",
+        "part": "58510940",
+        "units": 340,
+        "kg": 3400,
+        "theoUnits": 250,
+        "theoKg": 2505,
+        "pallets": 7.1,
+        "run": 2.5,
+        "intended": 2.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG BARTOLINE PROFESSIONAL READY MIX WALLCOVERING ADHESIVE",
+        "part": "58510410",
+        "units": 420,
+        "kg": 4200,
+        "theoUnits": 276,
+        "theoKg": 2755,
+        "pallets": 8.8,
+        "run": 2.75,
+        "intended": 6.75,
+        "downtime": 4
+      }
+    ]
   }
 ]
