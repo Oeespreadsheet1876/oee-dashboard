@@ -39291,11 +39291,11 @@
         1296
       ]
     },
-    "dayOEE": 0.6716,
+    "dayOEE": 0.6768,
     "lateOEE": 0.5762,
-    "dayAvail": 0.7945,
+    "dayAvail": 0.7652,
     "lateAvail": 0.6,
-    "dayPerf": 0.8453,
+    "dayPerf": 0.8845,
     "latePerf": 0.9604,
     "dayQual": 1,
     "lateQual": 1,
@@ -39303,27 +39303,27 @@
     "lateOut": 10684,
     "dayKg": 16962,
     "lateKg": 10607,
-    "dayTheoKg": 20152,
+    "dayTheoKg": 19312,
     "lateTheoKg": 11326,
-    "dayTheo": 25272,
+    "dayTheo": 24152,
     "lateTheo": 11124,
-    "totalDT": 22.8,
+    "totalDT": 24.2,
     "topIssue": "Waiting for Blending",
     "pareto": [
       {
         "cat": "Waiting for Blending",
-        "mins": 663,
-        "cum": 48
+        "mins": 747,
+        "cum": 51
       },
       {
         "cat": "Changeover / Setup",
         "mins": 375,
-        "cum": 76
+        "cum": 77
       },
       {
         "cat": "Other",
         "mins": 210,
-        "cum": 91
+        "cum": 92
       },
       {
         "cat": "Additional Work",
@@ -39344,6 +39344,18 @@
         "mins": 243,
         "shift": "day",
         "intended": 5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A005",
+        "reason": "Waiting for Batch",
+        "downtime": 3.7,
+        "mins": 222,
+        "shift": "day",
+        "intended": 9.25,
         "isNote": false,
         "planChange": false,
         "cat": "Waiting for Blending",
@@ -39383,18 +39395,6 @@
         "isNote": false,
         "planChange": false,
         "cat": "Other",
-        "imp": "hi"
-      },
-      {
-        "machine": "A005",
-        "reason": "Waiting for Batch",
-        "downtime": 2.3,
-        "mins": 138,
-        "shift": "day",
-        "intended": 9.25,
-        "isNote": false,
-        "planChange": false,
-        "cat": "Waiting for Blending",
         "imp": "hi"
       },
       {
@@ -39603,7 +39603,7 @@
         0.6757
       ],
       "A005": [
-        0.7514,
+        0.6,
         0.6757
       ],
       "A009": [
@@ -39633,7 +39633,7 @@
         0.8752
       ],
       "A005": [
-        0.7878,
+        0.9865,
         1.0368
       ],
       "A009": [
@@ -39663,7 +39663,7 @@
         3750
       ],
       "A005": [
-        5560,
+        4440,
         5000
       ],
       "A009": [
@@ -40002,12 +40002,12 @@
         "part": "52720421",
         "units": 4380,
         "kg": 3285,
-        "theoUnits": 5560,
-        "theoKg": 4170,
+        "theoUnits": 4440,
+        "theoKg": 3330,
         "pallets": 3.7,
-        "run": 6.95,
+        "run": 5.55,
         "intended": 9.25,
-        "downtime": 2.3
+        "downtime": 3.7
       },
       {
         "machine": "A009",
