@@ -46676,5 +46676,342 @@
         "downtime": 0.25
       }
     ]
+  },
+  {
+    "date": "31/07/2026",
+    "noteLog": [],
+    "machActual": {
+      "A005": [
+        272,
+        null
+      ],
+      "A031": [
+        114,
+        null
+      ],
+      "A006 B": [
+        889,
+        1881
+      ]
+    },
+    "dayOEE": 0.9633,
+    "lateOEE": 1.4846,
+    "dayAvail": 0.7073,
+    "lateAvail": 0.75,
+    "dayPerf": 1.362,
+    "latePerf": 1.9795,
+    "dayQual": 1,
+    "lateQual": 1,
+    "dayOut": 1275,
+    "lateOut": 1881,
+    "dayKg": 10710,
+    "lateKg": 11175,
+    "dayTheoKg": 7487,
+    "lateTheoKg": 5381,
+    "dayTheo": 936,
+    "lateTheo": 950,
+    "totalDT": 5.25,
+    "topIssue": "Waiting for Blending",
+    "pareto": [
+      {
+        "cat": "Waiting for Blending",
+        "mins": 300,
+        "cum": 95
+      },
+      {
+        "cat": "Changeover / Setup",
+        "mins": 15,
+        "cum": 100
+      }
+    ],
+    "dtLog": [
+      {
+        "machine": "A006 B",
+        "reason": "Waiting for Batch",
+        "downtime": 3,
+        "mins": 180,
+        "shift": "day",
+        "intended": 9.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Batch Out",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 4.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Batch Out",
+        "downtime": 1,
+        "mins": 60,
+        "shift": "late",
+        "intended": 2.5,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Waiting for Blending",
+        "imp": "hi"
+      },
+      {
+        "machine": "A006 B",
+        "reason": "Changeover",
+        "downtime": 0.25,
+        "mins": 15,
+        "shift": "late",
+        "intended": 2.25,
+        "isNote": false,
+        "planChange": false,
+        "cat": "Changeover / Setup",
+        "imp": "med"
+      }
+    ],
+    "machines": [
+      "A005",
+      "A006 B",
+      "A031"
+    ],
+    "machOEE": {
+      "A005": [
+        1.0884,
+        null
+      ],
+      "A031": [
+        1.9,
+        null
+      ],
+      "A006 B": [
+        0.9592,
+        1.4846
+      ]
+    },
+    "machAvail": {
+      "A005": [
+        1,
+        null
+      ],
+      "A031": [
+        1,
+        null
+      ],
+      "A006 B": [
+        0.6757,
+        0.75
+      ]
+    },
+    "machPerf": {
+      "A005": [
+        1.0884,
+        null
+      ],
+      "A031": [
+        1.9,
+        null
+      ],
+      "A006 B": [
+        1.4196,
+        1.9795
+      ]
+    },
+    "machTarget": {
+      "A005": [
+        250,
+        null
+      ],
+      "A031": [
+        60,
+        null
+      ],
+      "A006 B": [
+        626,
+        950
+      ]
+    },
+    "machKg": {
+      "A005": [
+        680,
+        0
+      ],
+      "A031": [
+        1140,
+        0
+      ],
+      "A006 B": [
+        8890,
+        11175
+      ]
+    },
+    "labour": {
+      "dayPeople": 2,
+      "latePeople": 1,
+      "dayOpsContract": 2,
+      "dayOpsTemp": 0,
+      "dayBlenders": 1,
+      "dayFLT": 0,
+      "daySupervisors": 1,
+      "lateOpsContract": 1,
+      "lateOpsTemp": 0,
+      "lateBlenders": 0,
+      "lateFLT": 0,
+      "lateSupervisors": 1,
+      "dayOperators": 2,
+      "lateOperators": 1,
+      "dayDirects": 3,
+      "lateDirects": 1,
+      "dayHeadcount": 4,
+      "lateHeadcount": 2,
+      "dayDemand": 20,
+      "lateDemand": 18,
+      "dayAvail": 18.5,
+      "lateAvail": 9.3,
+      "dayUtil": 108,
+      "lateUtil": 194,
+      "dayOutPerOpHr": 64,
+      "lateOutPerOpHr": 105,
+      "dayUnitsPerDirect": 425,
+      "lateUnitsPerDirect": 1881,
+      "dayVolPerDirect": 3570,
+      "lateVolPerDirect": 11175,
+      "dayJobs": [
+        {
+          "machine": "A005",
+          "part": "58505200",
+          "reqOps": 2,
+          "intended": 0.5,
+          "opHours": 1
+        },
+        {
+          "machine": "A031",
+          "part": "55550001",
+          "reqOps": 1,
+          "intended": 0.5,
+          "opHours": 0.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 9.25,
+          "opHours": 18.5
+        }
+      ],
+      "lateJobs": [
+        {
+          "machine": "A006 B",
+          "part": "58511160",
+          "reqOps": 2,
+          "intended": 4.25,
+          "opHours": 8.5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511100",
+          "reqOps": 2,
+          "intended": 2.5,
+          "opHours": 5
+        },
+        {
+          "machine": "A006 B",
+          "part": "58511165",
+          "reqOps": 2,
+          "intended": 2.25,
+          "opHours": 4.5
+        }
+      ]
+    },
+    "productList": [
+      {
+        "machine": "A005",
+        "shift": "day",
+        "product": "2.5L BOTTLE BARTOLINE PVA ADHESIVE & SEALER",
+        "part": "58505200",
+        "units": 272,
+        "kg": 680,
+        "theoUnits": 250,
+        "theoKg": 625,
+        "pallets": 1.5,
+        "run": 0.5,
+        "intended": 0.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A031",
+        "shift": "day",
+        "product": "10KG NO NONSENSE READY MIXED SKIM & FINISH SKU 673RL (FWN)",
+        "part": "55550001",
+        "units": 114,
+        "kg": 1140,
+        "theoUnits": 60,
+        "theoKg": 600,
+        "pallets": 2.9,
+        "run": 0.5,
+        "intended": 0.5,
+        "downtime": 0
+      },
+      {
+        "machine": "A006 B",
+        "shift": "day",
+        "product": "10KG B&Q VOLDEN READY MIX WALLPAPER ADHESIVE 5059340614335",
+        "part": "58511160",
+        "units": 889,
+        "kg": 8890,
+        "theoUnits": 626,
+        "theoKg": 6262,
+        "pallets": 18.5,
+        "run": 6.25,
+        "intended": 9.25,
+        "downtime": 3
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "10KG B&Q VOLDEN READY MIX WALLPAPER ADHESIVE 5059340614335",
+        "part": "58511160",
+        "units": 704,
+        "kg": 7040,
+        "theoUnits": 326,
+        "theoKg": 3257,
+        "pallets": 14.7,
+        "run": 3.25,
+        "intended": 4.25,
+        "downtime": 1
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "5KG NO NONSENSE WALLCOVERING ADHESIVE SKU 990GT",
+        "part": "58511100",
+        "units": 477,
+        "kg": 2385,
+        "theoUnits": 225,
+        "theoKg": 1125,
+        "pallets": 4.8,
+        "run": 1.5,
+        "intended": 2.5,
+        "downtime": 1
+      },
+      {
+        "machine": "A006 B",
+        "shift": "late",
+        "product": "2.5KG TURNER GRAY READY MIX WALLCOVERING ADHES 308572",
+        "part": "58511165",
+        "units": 700,
+        "kg": 1750,
+        "theoUnits": 400,
+        "theoKg": 999,
+        "pallets": 7,
+        "run": 2,
+        "intended": 2.25,
+        "downtime": 0.25
+      }
+    ]
   }
 ]
