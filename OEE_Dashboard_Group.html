@@ -448,7 +448,7 @@ function overviewHTML(){
     h+=kcard('Volume ('+volUnit+')', m.vol.toLocaleString(), attColor(volAtt), 'theoretical '+(m.theoVol||0).toLocaleString()+' '+volUnit+(volAtt!=null?' ('+volAtt+'%)':''));
     h+=kcard('Labour Utilisation', m.util!=null?m.util+'%':'—', utilColor(m.util), 'demand vs available');
     h+=kcard('Total Downtime', m.dt+'h', m.dt>10?'#f0544f':'#f5a623', Math.round(m.dt*60)+' mins');
-    h+=kcard('Head Count Total', L&&L.headcount!=null?(Math.round(L.headcount*10)/10):'—', 'var(--text)', 'all staff');
+    h+=kcard('Head Count Total', L&&L.headcount!=null?(Math.round(L.headcount*10)/10):'—', 'var(--text)', L&&L.headcount!=null?((Math.round((L.headcount-(L.opsTemp||0))*10)/10)+' FT + '+(Math.round((L.opsTemp||0)*10)/10)+' temp'):'all staff');
     h+=kcard('Total Directs', L&&L.directs!=null?(Math.round(L.directs*10)/10):'—', 'var(--text)', 'ops + blenders');
     h+=kcard('Units / Direct', (L&&L.directs)?Math.round(m.out/L.directs).toLocaleString():'—', '#4a9eff', 'productivity');
     h+=kcard(volUnit+' / Direct', (L&&L.directs)?Math.round(m.vol/L.directs).toLocaleString():'—', '#4a9eff', 'productivity');
@@ -465,6 +465,7 @@ function overviewHTML(){
   const totUnits=(f?f.out:0)+(s?s.out:0);
   const totDirects=(fL&&fL.directs?fL.directs:0)+(sL&&sL.directs?sL.directs:0);
   const totHead=(fL&&fL.headcount?fL.headcount:0)+(sL&&sL.headcount?sL.headcount:0);
+  const totTemp=(fL&&fL.opsTemp?fL.opsTemp:0)+(sL&&sL.opsTemp?sL.opsTemp:0);
   const totDT=Math.round(((f?f.dt:0)+(s?s.dt:0))*10)/10;
   // Units per direct uses units ONLY from days that have headcount (matches denominator)
   const fHC=unitsOnHeadcountDays(filterByPeriod(SITES.fillers));
@@ -478,7 +479,7 @@ function overviewHTML(){
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px">';
   html+=kcard('Group OEE', gOEE!=null?Math.round(gOEE*100)+'%':'—', oeeColor(gOEE), 'output-weighted');
   html+=kcard('Total Units', totUnits.toLocaleString(), 'var(--text)', 'both sites');
-  html+=kcard('Total Headcount', totHead?(Math.round(totHead*10)/10):'—', 'var(--text)', 'all staff, both sites');
+  html+=kcard('Total Headcount', totHead?(Math.round(totHead*10)/10):'—', 'var(--text)', totHead?((Math.round((totHead-totTemp)*10)/10)+' FT + '+(Math.round(totTemp*10)/10)+' temp'):'all staff, both sites');
   html+=kcard('Total Directs', totDirects?(Math.round(totDirects*10)/10):'—', 'var(--text)', 'both sites');
   html+=kcard('Total Units / Direct', totDirects>0?Math.round(unitsForPD/totDirects).toLocaleString():'—', '#a855f7', 'group productivity');
   html+=kcard('Total Downtime', totDT+'h', totDT>20?'#f0544f':'#f5a623', 'both sites');

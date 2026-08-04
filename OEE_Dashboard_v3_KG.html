@@ -669,8 +669,7 @@ function extract(wb){
     for(let r=10;r<=mr;r++){
       const ynRaw=cv(ws,3,r); 
       const ynVal=ynRaw===true?'Y':String(ynRaw||'').trim().toUpperCase(); 
-      const isPC=(ynVal==='PC');
-      if(ynVal!=='Y'&&ynVal!=='YES'&&!isPC) continue;
+      if(ynVal!=='Y'&&ynVal!=='YES') continue;
       const mac=cs(ws,2,r); if(!mac||mac.toUpperCase().includes('NOT REQUIRED')) continue;
       const intended=cn(ws,8,r),downtime=cn(ws,9,r),count=cn(ws,11,r);
       const scrap=cn(ws,12,r),reason=toTitleCase(cs(ws,14,r)),run=cn(ws,16,r);
@@ -690,7 +689,7 @@ function extract(wb){
       if(product && goodCount>0){
         productList.push({machine:mac,shift,product:product,part:cs(ws,6,r),units:goodCount,kg:Math.round(goodCount*kgPerUnit),theoUnits:Math.round(theoInt||0),theoKg:Math.round((theoInt||0)*kgPerUnit),pallets:0,run:run,intended:intended,downtime:downtime});
       }
-      if(isPC||downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0),planChange:isPC});
+      if(downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0)});
     }
   }
   scan(dWs,'day',100); scan(lWs,'late',100);
@@ -814,22 +813,6 @@ function extract(wb){
   const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
-    // PC in run column = Plan Change due to raw material: HIGH impact, NO time lost, kept out of Pareto
-    if(i.planChange){
-      i.cat='Plan Change (Raw Material)';
-      i.imp='hi';
-      i.downtime=0;
-      i.mins=0;
-      return;
-    }
-    // Y due to run, no figures, but a comment = Raw Material downtime, HIGH, full shift (9.25h) lost
-    if(i.isNote){
-      i.cat='Raw Material Issues';
-      i.imp='hi';
-      i.downtime=9.25;
-      i.mins=Math.round(9.25*60);
-      return;
-    }
     // Category
     if(r.includes('heater')||r.includes('printer')||r.includes('label machine')||r.includes('label printer')||r.includes('labeller')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||r.includes('pot issue')||r.includes('labelling issue')||r.includes('lidder')||r.includes('sachet issue')||r.includes('issues with sachet')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
       i.cat='Engineering Issues';
@@ -866,14 +849,13 @@ function extract(wb){
     }
   });
   const catMins={};
-  allIssues.filter(i=>(!i.isNote||i.cat==='Raw Material Issues')&&!i.planChange&&(i.mins||0)>0).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+  allIssues.filter(i=>!i.isNote).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
   let cum=0; const tot=Object.values(catMins).reduce((a,v)=>a+v,0);
   const pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
     .map(([k,v])=>{cum+=v;return{cat:k,mins:v,cum:tot>0?Math.round(cum/tot*100):0}});
-  // Raw material notes now carry 9.25h, so they count as downtime incidents
-  const dtLog=allIssues.filter(i=>!i.isNote||i.cat==='Raw Material Issues').sort((a,b)=>b.mins-a.mins);
-  const noteLog=allIssues.filter(i=>i.isNote&&i.cat!=='Raw Material Issues');
-  const totalDT=round2(dtLog.reduce((a,i)=>a+(i.downtime||0),0));
+  const dtLog=allIssues.filter(i=>!i.isNote).sort((a,b)=>b.mins-a.mins);
+  const noteLog=allIssues.filter(i=>i.isNote);
+  const totalDT=round2(dtLog.reduce((a,i)=>a+i.downtime,0));
   const topIssue=pareto.length?pareto[0].cat:'—';
   const machines=Object.keys(mach).sort();
 
@@ -1074,9 +1056,9 @@ function buildKPIs(d){
     if(L.dayUtil!=null) ks.push({l:'Day Labour Utilisation',v:L.dayUtil+'%',c:lcol(L.dayUtil),s:L.dayDemand.toFixed(0)+'h demand / '+L.dayAvail.toFixed(0)+'h available'});
     if(L.lateUtil!=null) ks.push({l:'Late Labour Utilisation',v:L.lateUtil+'%',c:lcol(L.lateUtil),s:L.lateDemand.toFixed(0)+'h demand / '+L.lateAvail.toFixed(0)+'h available'});
     if(L.util!=null) ks.push({l:'Combined Labour Utilisation',v:L.util+'%',c:lcol(L.util),s:L.demand.toFixed(0)+'h demand / '+L.avail.toFixed(0)+'h available'});
-    if(L.avgDayHeadcount!=null) ks.push({l:'Day Head Count',v:L.avgDayHeadcount,c:'blue',s:L.avgDayDirects+' directs'});
-    if(L.avgLateHeadcount!=null) ks.push({l:'Late Head Count',v:L.avgLateHeadcount,c:'blue',s:L.avgLateDirects+' directs'});
-    if(L.avgHeadcount!=null) ks.push({l:'Combined Head Count',v:L.avgHeadcount,c:'blue',s:L.avgDirects+' direct / '+L.avgIndirects+' indirect'});
+    if(L.avgDayHeadcount!=null) ks.push({l:'Day Head Count',v:L.avgDayHeadcount,c:'blue',s:L.avgDayDirects+' directs'+(L.avgDayTemp!=null&&L.avgDayTemp>0?' · '+L.avgDayTemp+' temp':'')});
+    if(L.avgLateHeadcount!=null) ks.push({l:'Late Head Count',v:L.avgLateHeadcount,c:'blue',s:L.avgLateDirects+' directs'+(L.avgLateTemp!=null&&L.avgLateTemp>0?' · '+L.avgLateTemp+' temp':'')});
+    if(L.avgHeadcount!=null) ks.push({l:'Combined Head Count',v:L.avgHeadcount,c:'blue',s:(L.avgFT!=null?L.avgFT:0)+' FT + '+(L.avgTemp!=null?L.avgTemp:0)+' temp'});
     if(L.avgDayDirects!=null) ks.push({l:'Day Directs',v:L.avgDayDirects,c:'blue',s:'operators + blenders'});
     if(L.avgLateDirects!=null) ks.push({l:'Late Directs',v:L.avgLateDirects,c:'blue',s:'operators + blenders'});
     if(L.unitsPerDirect!=null) ks.push({l:'Combined Units / Direct',v:L.unitsPerDirect.toLocaleString(),c:'blue',s:(L.kgPerDirect!=null?L.kgPerDirect.toLocaleString()+'kg / direct':'')});
@@ -1965,8 +1947,8 @@ function buildDailyReport(){
       if(!rmIssues.length) return '';
       const dayRM=rmIssues.filter(i=>i.shift==='day');
       const lateRM=rmIssues.filter(i=>i.shift==='late');
-      const dayHrs=dayRM.reduce((a,i)=>a+(i.downtime||0),0);
-      const lateHrs=lateRM.reduce((a,i)=>a+(i.downtime||0),0);
+      const dayHrs=dayRM.length>0?9.25:0;
+      const lateHrs=lateRM.length>0?9.25:0;
       const totalHrs=dayHrs+lateHrs;
       const rows=rmIssues.map(i=>`<tr style="background:rgba(240,84,79,.05)">
         <td style="color:#f0544f;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
@@ -1987,26 +1969,6 @@ function buildDailyReport(){
         </div>
         <table class="tbl">
           <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Issue</th><th>Downtime</th><th>Impact</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
-    })()}    ${(()=>{
-      const pcIssues=[...(rec.dtLog||[]),...(rec.noteLog||[])].filter(i=>i.planChange);
-      if(!pcIssues.length) return '';
-      const rows=pcIssues.map(i=>`<tr style="background:rgba(245,166,35,.06)">
-        <td style="color:#f5a623;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
-        <td style="font-weight:500">${i.machine}</td>
-        <td>${i.reason||'—'}</td>
-        <td><span class="badge hi">HIGH</span></td>
-      </tr>`).join('');
-      return `<div class="report-section" style="border:1px solid rgba(245,166,35,.3);border-radius:8px;padding:12px;background:rgba(245,166,35,.05);margin-top:12px">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-          <span style="font-size:13px;font-weight:600;color:#f5a623">&#9888; Plan Changes (Raw Material)</span>
-          <span class="badge hi">HIGH IMPACT</span>
-        </div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Planned product could not run due to raw material; line switched to an amended plan. No line time lost, but customer requirements may be affected.</div>
-        <table class="tbl">
-          <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Comment</th><th>Impact</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
@@ -2162,9 +2124,7 @@ function buildWeeklyReport(){
       if(dayRM.length||lateRM.length) rmByDate[h.date]={day:dayRM,late:lateRM};
     });
     const totalRMHrs=Object.values(rmByDate).reduce((a,v)=>{
-      const dayH=v.day.reduce((s,i)=>s+(i.downtime||0),0);
-      const lateH=v.late.reduce((s,i)=>s+(i.downtime||0),0);
-      return a+dayH+lateH;
+      return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);
     },0);
     const rmRows=weekRM.map(i=>`<tr style="background:rgba(240,84,79,.05)">
       <td style="font-family:var(--mono);font-size:10px">${i.date||'—'}</td>
@@ -2349,7 +2309,7 @@ function buildMonthlyReport(){
       const lr=[...(h.dtLog||[]),...(h.noteLog||[])].filter(function(i){return i.cat==='Raw Material Issues'&&i.shift==='late';});
       if(dr.length||lr.length) rmByDate[h.date]={day:dr,late:lr};
     });
-    const totalRMHrs=rmIssues.reduce(function(a,i){return a+(i.downtime||0);},0);
+    const totalRMHrs=Object.values(rmByDate).reduce(function(a,v){return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);},0);
     let rmRows='';
     rmIssues.forEach(function(i){
       rmRows+='<tr style="background:rgba(240,84,79,.05)">'
@@ -2457,7 +2417,7 @@ function labourRow(L){
   html+='</div>';
   // Headcount breakdown row
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">';
-  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—', 'var(--text)', 'all staff');
+  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—', 'var(--text)', L.avgHeadcount!=null?((L.avgFT!=null?L.avgFT:0)+' FT + '+(L.avgTemp!=null?L.avgTemp:0)+' temp'):'all staff');
   html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—', 'var(--text)', 'operators + blenders');
   html+=card('Indirects', L.avgIndirects!=null?L.avgIndirects:'—', 'var(--text)', 'FLT + supervisors');
   html+='</div>';
@@ -2474,6 +2434,7 @@ function aggregateLabour(days){
   let dayDemand=0,lateDemand=0,dayAvail=0,lateAvail=0,dayOut=0,lateOut=0;
   let dayKgT=0,lateKgT=0,directsSum=0,headSum=0,indirectSum=0,nHC=0;
   let dayDirectsSum=0,lateDirectsSum=0,dayHeadSum=0,lateHeadSum=0,nDayHC=0,nLateHC=0;
+  let tempSum=0,dayTempSum=0,lateTempSum=0;
   days.forEach(h=>{
     const L=h.labour; if(!L) return;
     dayDemand+=L.dayDemand||0; lateDemand+=L.lateDemand||0;
@@ -2487,8 +2448,9 @@ function aggregateLabour(days){
       indirectSum+=dh-((L.dayDirects||0)+(L.lateDirects||0));
       nHC++;
     }
-    if((L.dayHeadcount||0)>0){ dayDirectsSum+=L.dayDirects||0; dayHeadSum+=L.dayHeadcount||0; nDayHC++; }
-    if((L.lateHeadcount||0)>0){ lateDirectsSum+=L.lateDirects||0; lateHeadSum+=L.lateHeadcount||0; nLateHC++; }
+    if((L.dayHeadcount||0)>0){ dayDirectsSum+=L.dayDirects||0; dayHeadSum+=L.dayHeadcount||0; dayTempSum+=L.dayOpsTemp||0; nDayHC++; }
+    if((L.lateHeadcount||0)>0){ lateDirectsSum+=L.lateDirects||0; lateHeadSum+=L.lateHeadcount||0; lateTempSum+=L.lateOpsTemp||0; nLateHC++; }
+    if(dh>0){ tempSum+=(L.dayOpsTemp||0)+(L.lateOpsTemp||0); }
   });
   const demand=dayDemand+lateDemand, avail=dayAvail+lateAvail, out=dayOut+lateOut;
   const kgT=dayKgT+lateKgT;
@@ -2505,6 +2467,10 @@ function aggregateLabour(days){
     lateKgPerOpHr: lateDemand?Math.round(lateKgT/lateDemand):null,
     kgPerOpHr: demand?Math.round(kgT/demand):null,
     avgHeadcount: nHC?Math.round(headSum/nHC*10)/10:null,
+    avgTemp: nHC?Math.round(tempSum/nHC*10)/10:null,
+    avgFT: nHC?Math.round((headSum-tempSum)/nHC*10)/10:null,
+    avgDayTemp: nDayHC?Math.round(dayTempSum/nDayHC*10)/10:null,
+    avgLateTemp: nLateHC?Math.round(lateTempSum/nLateHC*10)/10:null,
     avgDirects: nHC?Math.round(directsSum/nHC*10)/10:null,
     avgIndirects: nHC?Math.round(indirectSum/nHC*10)/10:null,
     unitsPerDirect: directsSum?Math.round(out/directsSum):null,
