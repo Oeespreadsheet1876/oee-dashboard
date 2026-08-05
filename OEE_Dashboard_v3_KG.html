@@ -1056,11 +1056,14 @@ function buildKPIs(d){
     if(L.dayUtil!=null) ks.push({l:'Day Labour Utilisation',v:L.dayUtil+'%',c:lcol(L.dayUtil),s:L.dayDemand.toFixed(0)+'h demand / '+L.dayAvail.toFixed(0)+'h available'});
     if(L.lateUtil!=null) ks.push({l:'Late Labour Utilisation',v:L.lateUtil+'%',c:lcol(L.lateUtil),s:L.lateDemand.toFixed(0)+'h demand / '+L.lateAvail.toFixed(0)+'h available'});
     if(L.util!=null) ks.push({l:'Combined Labour Utilisation',v:L.util+'%',c:lcol(L.util),s:L.demand.toFixed(0)+'h demand / '+L.avail.toFixed(0)+'h available'});
-    if(L.avgDayHeadcount!=null) ks.push({l:'Day Head Count',v:L.avgDayHeadcount,c:'blue',s:L.avgDayDirects+' directs'+(L.avgDayTemp!=null&&L.avgDayTemp>0?' · '+L.avgDayTemp+' temp':'')});
-    if(L.avgLateHeadcount!=null) ks.push({l:'Late Head Count',v:L.avgLateHeadcount,c:'blue',s:L.avgLateDirects+' directs'+(L.avgLateTemp!=null&&L.avgLateTemp>0?' · '+L.avgLateTemp+' temp':'')});
-    if(L.avgHeadcount!=null) ks.push({l:'Combined Head Count',v:L.avgHeadcount,c:'blue',s:(L.avgFT!=null?L.avgFT:0)+' FT + '+(L.avgTemp!=null?L.avgTemp:0)+' temp'});
-    if(L.avgDayDirects!=null) ks.push({l:'Day Directs',v:L.avgDayDirects,c:'blue',s:'operators + blenders'});
-    if(L.avgLateDirects!=null) ks.push({l:'Late Directs',v:L.avgLateDirects,c:'blue',s:'operators + blenders'});
+    if(L.avgDayHeadcount!=null) ks.push({l:'Day Head Count',v:Math.round(L.avgDayHeadcount),c:'blue',s:Math.round(L.avgDayDirects)+' directs'});
+    if(L.avgLateHeadcount!=null) ks.push({l:'Late Head Count',v:Math.round(L.avgLateHeadcount),c:'blue',s:Math.round(L.avgLateDirects)+' directs'});
+    if(L.avgHeadcount!=null) ks.push({l:'Combined Head Count',v:Math.round(L.avgHeadcount),c:'blue',s:Math.round(L.avgDirects)+' direct / '+(Math.round(L.avgHeadcount)-Math.round(L.avgDirects))+' indirect'});
+    if(L.avgDayDirects!=null) ks.push({l:'Day Directs',v:Math.round(L.avgDayDirects),c:'blue',s:'operators + blenders'});
+    if(L.avgLateDirects!=null) ks.push({l:'Late Directs',v:Math.round(L.avgLateDirects),c:'blue',s:'operators + blenders'});
+    if(L.avgDayTemp!=null) ks.push({l:'Day Temps',v:Math.round(L.avgDayTemp),c:'blue',s:'temps on shift'});
+    if(L.avgLateTemp!=null) ks.push({l:'Late Temps',v:Math.round(L.avgLateTemp),c:'blue',s:'temps on shift'});
+    if(L.avgTemp!=null) ks.push({l:'Combined Temps',v:Math.round(L.avgTemp),c:'blue',s:'total temps'});
     if(L.unitsPerDirect!=null) ks.push({l:'Combined Units / Direct',v:L.unitsPerDirect.toLocaleString(),c:'blue',s:(L.kgPerDirect!=null?L.kgPerDirect.toLocaleString()+'kg / direct':'')});
   }
   document.getElementById('kpi-grid').innerHTML=ks.map(k=>
@@ -2386,18 +2389,24 @@ function labourKPIs(L){
   // Head Count & Productivity - per shift
   html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
   html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Head Count &amp; Productivity (directs = operators + blenders)</div>';
-  html+=card('Day Head Count', L.avgDayHeadcount!=null?L.avgDayHeadcount:'—');
-  html+=card('Day Directs', L.avgDayDirects!=null?L.avgDayDirects:'—');
+  html+=card('Day Head Count', L.avgDayHeadcount!=null?Math.round(L.avgDayHeadcount):'—');
+  html+=card('Day Directs', L.avgDayDirects!=null?Math.round(L.avgDayDirects):'—');
   html+=card('Day Units / Direct', L.dayUnitsPerDirect!=null?L.dayUnitsPerDirect.toLocaleString():'—','#4a9eff');
   html+=card('Day Kg / Direct', L.dayKgPerDirect!=null?L.dayKgPerDirect.toLocaleString():'—','#4a9eff');
-  html+=card('Late Head Count', L.avgLateHeadcount!=null?L.avgLateHeadcount:'—');
-  html+=card('Late Directs', L.avgLateDirects!=null?L.avgLateDirects:'—');
+  html+=card('Late Head Count', L.avgLateHeadcount!=null?Math.round(L.avgLateHeadcount):'—');
+  html+=card('Late Directs', L.avgLateDirects!=null?Math.round(L.avgLateDirects):'—');
   html+=card('Late Units / Direct', L.lateUnitsPerDirect!=null?L.lateUnitsPerDirect.toLocaleString():'—','#4a9eff');
   html+=card('Late Kg / Direct', L.lateKgPerDirect!=null?L.lateKgPerDirect.toLocaleString():'—','#4a9eff');
-  html+=card('Combined Head Count', L.avgHeadcount!=null?L.avgHeadcount:'—');
-  html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—');
+  html+=card('Combined Head Count', L.avgHeadcount!=null?Math.round(L.avgHeadcount):'—');
+  html+=card('Total Directs', L.avgDirects!=null?Math.round(L.avgDirects):'—');
   html+=card('Units Produced Per Direct', L.unitsPerDirect!=null?L.unitsPerDirect.toLocaleString():'—','#4a9eff');
   html+=card('Kg Produced Per Direct', L.kgPerDirect!=null?L.kgPerDirect.toLocaleString():'—','#4a9eff');
+  html+='</div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
+  html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Temps on shift</div>';
+  html+=card('Day Temps', L.avgDayTemp!=null?Math.round(L.avgDayTemp):'—');
+  html+=card('Late Temps', L.avgLateTemp!=null?Math.round(L.avgLateTemp):'—');
+  html+=card('Combined Temps', L.avgTemp!=null?Math.round(L.avgTemp):'—');
   html+='</div>';
   return html;
 }
@@ -2417,9 +2426,12 @@ function labourRow(L){
   html+='</div>';
   // Headcount breakdown row
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">';
-  html+=card('Head Count Total', L.avgHeadcount!=null?L.avgHeadcount:'—', 'var(--text)', L.avgHeadcount!=null?((L.avgFT!=null?L.avgFT:0)+' FT + '+(L.avgTemp!=null?L.avgTemp:0)+' temp'):'all staff');
-  html+=card('Total Directs', L.avgDirects!=null?L.avgDirects:'—', 'var(--text)', 'operators + blenders');
-  html+=card('Indirects', L.avgIndirects!=null?L.avgIndirects:'—', 'var(--text)', 'FLT + supervisors');
+  html+=card('Head Count Total', L.avgHeadcount!=null?Math.round(L.avgHeadcount):'—', 'var(--text)', 'all staff');
+  html+=card('Total Directs', L.avgDirects!=null?Math.round(L.avgDirects):'—', 'var(--text)', 'operators + blenders');
+  html+=card('Indirects', (L.avgHeadcount!=null&&L.avgDirects!=null)?(Math.round(L.avgHeadcount)-Math.round(L.avgDirects)):'—', 'var(--text)', 'FLT + supervisors');
+  html+=card('Day Temps', L.avgDayTemp!=null?Math.round(L.avgDayTemp):'—', 'var(--text)', 'temps on day shift');
+  html+=card('Late Temps', L.avgLateTemp!=null?Math.round(L.avgLateTemp):'—', 'var(--text)', 'temps on late shift');
+  html+=card('Combined Temps', L.avgTemp!=null?Math.round(L.avgTemp):'—', 'var(--text)', 'total temps');
   html+='</div>';
   // Per-direct productivity row
   html+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px">';
