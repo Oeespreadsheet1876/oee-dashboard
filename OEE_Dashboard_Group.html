@@ -448,8 +448,9 @@ function overviewHTML(){
     h+=kcard('Volume ('+volUnit+')', m.vol.toLocaleString(), attColor(volAtt), 'theoretical '+(m.theoVol||0).toLocaleString()+' '+volUnit+(volAtt!=null?' ('+volAtt+'%)':''));
     h+=kcard('Labour Utilisation', m.util!=null?m.util+'%':'—', utilColor(m.util), 'demand vs available');
     h+=kcard('Total Downtime', m.dt+'h', m.dt>10?'#f0544f':'#f5a623', Math.round(m.dt*60)+' mins');
-    h+=kcard('Head Count Total', L&&L.headcount!=null?(Math.round(L.headcount*10)/10):'—', 'var(--text)', L&&L.headcount!=null?((Math.round((L.headcount-(L.opsTemp||0))*10)/10)+' FT + '+(Math.round((L.opsTemp||0)*10)/10)+' temp'):'all staff');
-    h+=kcard('Total Directs', L&&L.directs!=null?(Math.round(L.directs*10)/10):'—', 'var(--text)', 'ops + blenders');
+    h+=kcard('Head Count Total', L&&L.headcount!=null?(Math.round(L.headcount)):'—', 'var(--text)', L&&L.headcount!=null?(Math.round(L.directs)+' direct / '+(Math.round(L.headcount)-Math.round(L.directs))+' indirect'):'all staff');
+    h+=kcard('Total Directs', L&&L.directs!=null?(Math.round(L.directs)):'—', 'var(--text)', 'ops + blenders');
+    h+=kcard('Temps', L&&L.opsTemp!=null?(Math.round(L.opsTemp)):'—', 'var(--text)', 'temps on shift');
     h+=kcard('Units / Direct', (L&&L.directs)?Math.round(m.out/L.directs).toLocaleString():'—', '#4a9eff', 'productivity');
     h+=kcard(volUnit+' / Direct', (L&&L.directs)?Math.round(m.vol/L.directs).toLocaleString():'—', '#4a9eff', 'productivity');
     h+='</div></div>';
@@ -479,8 +480,9 @@ function overviewHTML(){
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px">';
   html+=kcard('Group OEE', gOEE!=null?Math.round(gOEE*100)+'%':'—', oeeColor(gOEE), 'output-weighted');
   html+=kcard('Total Units', totUnits.toLocaleString(), 'var(--text)', 'both sites');
-  html+=kcard('Total Headcount', totHead?(Math.round(totHead*10)/10):'—', 'var(--text)', totHead?((Math.round((totHead-totTemp)*10)/10)+' FT + '+(Math.round(totTemp*10)/10)+' temp'):'all staff, both sites');
-  html+=kcard('Total Directs', totDirects?(Math.round(totDirects*10)/10):'—', 'var(--text)', 'both sites');
+  html+=kcard('Total Headcount', totHead?(Math.round(totHead)):'—', 'var(--text)', totHead?((Math.round(totDirects))+' direct / '+(Math.round(totHead)-Math.round(totDirects))+' indirect'):'all staff, both sites');
+  html+=kcard('Total Directs', totDirects?(Math.round(totDirects)):'—', 'var(--text)', 'both sites');
+  html+=kcard('Temps', totTemp?(Math.round(totTemp)):'—', 'var(--text)', 'both sites');
   html+=kcard('Total Units / Direct', totDirects>0?Math.round(unitsForPD/totDirects).toLocaleString():'—', '#a855f7', 'group productivity');
   html+=kcard('Total Downtime', totDT+'h', totDT>20?'#f0544f':'#f5a623', 'both sites');
   html+='</div>';
@@ -822,10 +824,10 @@ function renderTrends(mode){
       const rows=[
         {label:'Production (Units)', val:m=>m.units, get:m=>fmt(m.units)},
         {label:'Volume Produced ('+volUnit+')', val:m=>m.vol, get:m=>fmt(m.vol)},
-        {label:'Head Count Total', val:m=>m.head, get:m=>fmt1(m.head)},
-        {label:'Operators Contracted', val:m=>m.opsC, get:m=>fmt1(m.opsC)},
-        {label:'Operators Temps', val:m=>m.opsT, get:m=>fmt1(m.opsT)},
-        {label:'Total Directs', val:m=>m.directs, get:m=>fmt1(m.directs)},
+        {label:'Head Count Total', val:m=>m.head, get:m=>fmt(m.head)},
+        {label:'Operators Contracted', val:m=>m.opsC, get:m=>fmt(m.opsC)},
+        {label:'Operators Temps', val:m=>m.opsT, get:m=>fmt(m.opsT)},
+        {label:'Total Directs', val:m=>m.directs, get:m=>fmt(m.directs)},
         {label:'Units Per Direct', val:m=>m.unitsPerDirect, get:m=>fmt(m.unitsPerDirect)},
         {label:volUnit+' Per Direct', val:m=>m.volPerDirect, get:m=>fmt(m.volPerDirect)},
         {label:'OEE', val:m=>m.oee, get:m=>m.oee!=null?Math.round(m.oee*100)+'%':'—'}
@@ -879,8 +881,8 @@ function renderTrends(mode){
       // Group totals: units and directs add up across both sites; per-direct = total units / total directs
       const rows=[
         {label:'Total Units Produced', get:(fm,sm)=>fmt((fm?fm.units:0)+(sm?sm.units:0))},
-        {label:'Total Headcount (both sites)', get:(fm,sm)=>fmt1((fm&&fm.head?fm.head:0)+(sm&&sm.head?sm.head:0))},
-        {label:'Total Directs (both sites)', get:(fm,sm)=>fmt1((fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0))},
+        {label:'Total Headcount (both sites)', get:(fm,sm)=>fmt((fm&&fm.head?fm.head:0)+(sm&&sm.head?sm.head:0))},
+        {label:'Total Directs (both sites)', get:(fm,sm)=>fmt((fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0))},
         {label:'Total Units Per Direct', get:(fm,sm)=>{
           const u=(fm&&fm.hcUnits?fm.hcUnits:0)+(sm&&sm.hcUnits?sm.hcUnits:0);
           const d=(fm&&fm.directs?fm.directs:0)+(sm&&sm.directs?sm.directs:0);
