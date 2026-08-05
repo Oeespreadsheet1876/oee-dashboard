@@ -638,8 +638,7 @@ function extract(wb){
     for(let r=10;r<=mr;r++){
       const ynRaw=cv(ws,3,r); 
       const ynVal=ynRaw===true?'Y':String(ynRaw||'').trim().toUpperCase(); 
-      const isPC=(ynVal==='PC');
-      if(ynVal!=='Y'&&ynVal!=='YES'&&!isPC) continue;
+      if(ynVal!=='Y'&&ynVal!=='YES') continue;
       const mac=cs(ws,2,r); if(!mac||mac.toUpperCase().includes('NOT REQUIRED')) continue;
       const intended=cn(ws,8,r),downtime=cn(ws,9,r),count=cn(ws,11,r);
       const scrap=cn(ws,12,r),reason=toTitleCase(cs(ws,14,r)),run=cn(ws,16,r);
@@ -659,7 +658,7 @@ function extract(wb){
       if(product && goodCount>0){
         productList.push({machine:mac,shift,product:product,part:cs(ws,6,r),units:goodCount,kg:Math.round(goodCount*kgPerUnit),theoUnits:Math.round(theoInt||0),theoKg:Math.round((theoInt||0)*kgPerUnit),pallets:0,run:run,intended:intended,downtime:downtime});
       }
-      if(isPC||downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0),planChange:isPC});
+      if(downtime>0||(reason&&reason.trim())) s.issues.push({machine:mac,reason:reason||'',downtime,mins:Math.round(downtime*60),shift,intended,isNote:downtime===0&&(!count||count===0)});
     }
   }
   scan(dWs,'day',100); if(lWs) scan(lWs,'late',100);
@@ -788,22 +787,6 @@ function extract(wb){
   const allIssues=Object.values(mach).flatMap(m=>[...m.day.issues,...m.late.issues]);
   allIssues.forEach(i=>{
     const r=(i.reason||'').toLowerCase();
-    // PC in run column = Plan Change due to raw material: HIGH impact, NO time lost, kept out of Pareto
-    if(i.planChange){
-      i.cat='Plan Change (Raw Material)';
-      i.imp='hi';
-      i.downtime=0;
-      i.mins=0;
-      return;
-    }
-    // Y due to run, no figures, but a comment = Raw Material downtime, HIGH, full shift (9.25h) lost
-    if(i.isNote){
-      i.cat='Raw Material Issues';
-      i.imp='hi';
-      i.downtime=9.25;
-      i.mins=Math.round(9.25*60);
-      return;
-    }
     // Category
     if(r.includes('heater')||r.includes('printer')||r.includes('label machine')||r.includes('label printer')||r.includes('labeller')||r.includes('breakdown')||r.includes('mechanical')||r.includes('fault')||r.includes('repair')||r.includes('engineer on machine')||r.includes('pot issue')||r.includes('labelling issue')||r.includes('lidder')||r.includes('sachet issue')||r.includes('issues with sachet')||((r.includes('darrel')||r.includes('james')||r.includes('corey'))&&r.includes('on machine'))){
       i.cat='Engineering Issues';
@@ -840,14 +823,13 @@ function extract(wb){
     }
   });
   const catMins={};
-  allIssues.filter(i=>(!i.isNote||i.cat==='Raw Material Issues')&&!i.planChange&&(i.mins||0)>0).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
+  allIssues.filter(i=>!i.isNote).forEach(i=>{catMins[i.cat]=(catMins[i.cat]||0)+i.mins});
   let cum=0; const tot=Object.values(catMins).reduce((a,v)=>a+v,0);
   const pareto=Object.entries(catMins).sort((a,b)=>b[1]-a[1])
     .map(([k,v])=>{cum+=v;return{cat:k,mins:v,cum:tot>0?Math.round(cum/tot*100):0}});
-  // Raw material notes now carry 9.25h, so they count as downtime incidents
-  const dtLog=allIssues.filter(i=>!i.isNote||i.cat==='Raw Material Issues').sort((a,b)=>b.mins-a.mins);
-  const noteLog=allIssues.filter(i=>i.isNote&&i.cat!=='Raw Material Issues');
-  const totalDT=round2(dtLog.reduce((a,i)=>a+(i.downtime||0),0));
+  const dtLog=allIssues.filter(i=>!i.isNote).sort((a,b)=>b.mins-a.mins);
+  const noteLog=allIssues.filter(i=>i.isNote);
+  const totalDT=round2(dtLog.reduce((a,i)=>a+i.downtime,0));
   const topIssue=pareto.length?pareto[0].cat:'—';
   const machines=Object.keys(mach).sort();
 
@@ -1066,8 +1048,9 @@ function buildKPIs(d){
     const L=aggregateLabour([d]);
     const lcol=u=>u==null?'amber':(u>100?'red':(u>=85?'green':'amber'));
     if(L.dayUtil!=null) ks.push({l:'Labour Utilisation',v:L.dayUtil+'%',c:lcol(L.dayUtil),s:L.dayDemand.toFixed(0)+'h demand / '+L.dayAvail.toFixed(0)+'h available'});
-    if(L.avgDayHeadcount!=null) ks.push({l:'Headcount Total',v:L.avgDayHeadcount,c:'blue',s:L.avgDayDirects+' direct / '+L.avgDayIndirects+' indirect'});
-    if(L.avgDayDirects!=null) ks.push({l:'Directs',v:L.avgDayDirects,c:'blue',s:'operators + blenders'});
+    if(L.avgDayHeadcount!=null) ks.push({l:'Headcount Total',v:Math.round(L.avgDayHeadcount),c:'blue',s:Math.round(L.avgDayDirects)+' direct / '+(Math.round(L.avgDayHeadcount)-Math.round(L.avgDayDirects))+' indirect'});
+    if(L.avgDayDirects!=null) ks.push({l:'Directs',v:Math.round(L.avgDayDirects),c:'blue',s:'operators + blenders'});
+    if(L.avgDayTemp!=null) ks.push({l:'Temps',v:Math.round(L.avgDayTemp),c:'blue',s:'temps on shift'});
     if(L.avgDayIndirects!=null) ks.push({l:'Indirects',v:L.avgDayIndirects,c:'blue',s:'FLT + supervisors'});
     if(L.dayUnitsPerDirect!=null) ks.push({l:'Units / Direct',v:L.dayUnitsPerDirect.toLocaleString(),c:'blue',s:(L.dayVolPerDirect!=null?L.dayVolPerDirect.toLocaleString()+'L / direct':'')});
     if(false) ks.push({l:'Late Labour Utilisation',v:L.lateUtil+'%',c:lcol(L.lateUtil),s:L.lateDemand.toFixed(0)+'h demand / '+L.lateAvail.toFixed(0)+'h available'});
@@ -1942,8 +1925,8 @@ function buildDailyReport(){
       if(!rmIssues.length) return '';
       const dayRM=rmIssues.filter(i=>i.shift==='day');
       const lateRM=rmIssues.filter(i=>i.shift==='late');
-      const dayHrs=dayRM.reduce((a,i)=>a+(i.downtime||0),0);
-      const lateHrs=lateRM.reduce((a,i)=>a+(i.downtime||0),0);
+      const dayHrs=dayRM.length>0?9.25:0;
+      const lateHrs=lateRM.length>0?9.25:0;
       const totalHrs=dayHrs+lateHrs;
       const rows=rmIssues.map(i=>`<tr style="background:rgba(240,84,79,.05)">
         <td style="color:#f0544f;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
@@ -1964,26 +1947,6 @@ function buildDailyReport(){
         </div>
         <table class="tbl">
           <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Issue</th><th>Downtime</th><th>Impact</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
-    })()}    ${(()=>{
-      const pcIssues=[...(rec.dtLog||[]),...(rec.noteLog||[])].filter(i=>i.planChange);
-      if(!pcIssues.length) return '';
-      const rows=pcIssues.map(i=>`<tr style="background:rgba(245,166,35,.06)">
-        <td style="color:#f5a623;font-size:10px;font-weight:600">${i.shift==='day'?'Day':'Late'}</td>
-        <td style="font-weight:500">${i.machine}</td>
-        <td>${i.reason||'—'}</td>
-        <td><span class="badge hi">HIGH</span></td>
-      </tr>`).join('');
-      return `<div class="report-section" style="border:1px solid rgba(245,166,35,.3);border-radius:8px;padding:12px;background:rgba(245,166,35,.05);margin-top:12px">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-          <span style="font-size:13px;font-weight:600;color:#f5a623">&#9888; Plan Changes (Raw Material)</span>
-          <span class="badge hi">HIGH IMPACT</span>
-        </div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Planned product could not run due to raw material; line switched to an amended plan. No line time lost, but customer requirements may be affected.</div>
-        <table class="tbl">
-          <thead><tr><th>Shift</th><th>Machine</th><th>Reason / Comment</th><th>Impact</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
@@ -2139,9 +2102,7 @@ function buildWeeklyReport(){
       if(dayRM.length||lateRM.length) rmByDate[h.date]={day:dayRM,late:lateRM};
     });
     const totalRMHrs=Object.values(rmByDate).reduce((a,v)=>{
-      const dayH=v.day.reduce((s,i)=>s+(i.downtime||0),0);
-      const lateH=v.late.reduce((s,i)=>s+(i.downtime||0),0);
-      return a+dayH+lateH;
+      return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);
     },0);
     const rmRows=weekRM.map(i=>`<tr style="background:rgba(240,84,79,.05)">
       <td style="font-family:var(--mono);font-size:10px">${i.date||'—'}</td>
@@ -2326,7 +2287,7 @@ function buildMonthlyReport(){
       const lr=[...(h.dtLog||[]),...(h.noteLog||[])].filter(function(i){return i.cat==='Raw Material Issues'&&i.shift==='late';});
       if(dr.length||lr.length) rmByDate[h.date]={day:dr,late:lr};
     });
-    const totalRMHrs=rmIssues.reduce(function(a,i){return a+(i.downtime||0);},0);
+    const totalRMHrs=Object.values(rmByDate).reduce(function(a,v){return a+(v.day.length?9.25:0)+(v.late.length?9.25:0);},0);
     let rmRows='';
     rmIssues.forEach(function(i){
       rmRows+='<tr style="background:rgba(240,84,79,.05)">'
@@ -2389,10 +2350,14 @@ function labourKPIs(L){
   // Headcount block (matching KPI report)
   html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
   html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Head Count &amp; Productivity</div>';
-  html+=card('Head Count Total', L.avgDayHeadcount!=null?L.avgDayHeadcount:'—', null, 'all staff');
-  html+=card('Total Directs', L.avgDayDirects!=null?L.avgDayDirects:'—', null, 'operators + blenders');
+  html+=card('Head Count Total', L.avgDayHeadcount!=null?Math.round(L.avgDayHeadcount):'—', null, 'all staff');
+  html+=card('Total Directs', L.avgDayDirects!=null?Math.round(L.avgDayDirects):'—', null, 'operators + blenders');
   html+=card('Units Produced Per Direct', L.dayUnitsPerDirect!=null?L.dayUnitsPerDirect.toLocaleString():'—','#4a9eff');
   html+=card('Litres Produced Per Direct', L.dayVolPerDirect!=null?L.dayVolPerDirect.toLocaleString():'—','#4a9eff');
+  html+='</div>';
+  html+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">';
+  html+='<div style="grid-column:1/-1;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px">Temps on shift</div>';
+  html+=card('Temps', L.avgDayTemp!=null?Math.round(L.avgDayTemp):'—');
   html+='</div>';
   return html;
 }
@@ -2410,9 +2375,10 @@ function labourRow(L){
   html+='</div>';
   // Row 2: Headcount breakdown (matching KPI report)
   html+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">';
-  html+=card('Head Count Total', L.avgDayHeadcount!=null?L.avgDayHeadcount:'—', 'var(--text)', 'all staff');
-  html+=card('Total Directs', L.avgDayDirects!=null?L.avgDayDirects:'—', 'var(--text)', 'operators + blenders');
-  html+=card('Indirects', L.avgDayIndirects!=null?L.avgDayIndirects:'—', 'var(--text)', 'FLT + supervisors');
+  html+=card('Head Count Total', L.avgDayHeadcount!=null?Math.round(L.avgDayHeadcount):'—', 'var(--text)', 'all staff');
+  html+=card('Total Directs', L.avgDayDirects!=null?Math.round(L.avgDayDirects):'—', 'var(--text)', 'operators + blenders');
+  html+=card('Indirects', (L.avgDayHeadcount!=null&&L.avgDayDirects!=null)?(Math.round(L.avgDayHeadcount)-Math.round(L.avgDayDirects)):'—', 'var(--text)', 'FLT + supervisors');
+  html+=card('Temps', L.avgDayTemp!=null?Math.round(L.avgDayTemp):'—', 'var(--text)', 'temps on shift');
   html+='</div>';
   // Row 3: Per-direct productivity (matching KPI report wording)
   html+='<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px">';
@@ -2425,6 +2391,7 @@ function aggregateLabour(days){
   // Sum labour across a set of day records
   let dayDemand=0,lateDemand=0,dayAvail=0,lateAvail=0,dayOut=0,lateOut=0;
   let dayKgT=0,lateKgT=0,dayDirectsSum=0,lateDirectsSum=0,dayHeadSum=0,lateHeadSum=0,nDays=0;
+  let dayTempSum=0;
   days.forEach(h=>{
     const L=h.labour; if(!L) return;
     dayDemand+=L.dayDemand||0; lateDemand+=L.lateDemand||0;
@@ -2433,6 +2400,7 @@ function aggregateLabour(days){
     dayKgT+=h.dayKg||0; lateKgT+=h.lateKg||0;
     dayDirectsSum+=L.dayDirects||0; lateDirectsSum+=L.lateDirects||0;
     dayHeadSum+=L.dayHeadcount||0; lateHeadSum+=L.lateHeadcount||0;
+    dayTempSum+=L.dayOpsTemp||0;
     nDays++;
   });
   const demand=dayDemand+lateDemand, avail=dayAvail+lateAvail, out=dayOut+lateOut;
@@ -2452,6 +2420,8 @@ function aggregateLabour(days){
     // Headcount & per-direct (averaged over the period)
     avgDayDirects: nDays?Math.round(dayDirectsSum/nDays*10)/10:null,
     avgDayHeadcount: nDays?Math.round(dayHeadSum/nDays*10)/10:null,
+    avgDayTemp: nDays?Math.round(dayTempSum/nDays*10)/10:null,
+    avgDayFT: nDays?Math.round((dayHeadSum-dayTempSum)/nDays*10)/10:null,
     avgDayIndirects: nDays?Math.round((dayHeadSum-dayDirectsSum)/nDays*10)/10:null,
     unitsPerDirect: totalDirectShifts?Math.round(out/totalDirectShifts):null,
     volPerDirect: totalDirectShifts?Math.round(kgT/totalDirectShifts):null,
